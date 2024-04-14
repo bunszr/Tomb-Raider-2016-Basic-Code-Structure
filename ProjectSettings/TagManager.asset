@@ -5,10 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - CinemachineTarget
-  - Wall
-  - ds
-  - BeforeFinish
-  - SellArea
+  - FeatureIndicatorSprite
   layers:
   - Default
   - TransparentFX

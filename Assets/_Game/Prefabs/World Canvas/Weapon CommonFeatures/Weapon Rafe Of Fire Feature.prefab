@@ -144,6 +144,62 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 88afe6142af15c5468b554e8bb95e7dc,
         type: 2}
+    - target: {fileID: 6585020796681170699, guid: 1a4d28feb6dece546a07d801ca0c35ea,
+        type: 3}
+      propertyPath: featureDataSaveable.guid
+      value: bcc6345a-8638-4bcc-afb6-72830244a8de
+      objectReference: {fileID: 0}
+    - target: {fileID: 6585020796681170699, guid: 1a4d28feb6dece546a07d801ca0c35ea,
+        type: 3}
+      propertyPath: weaponRotationStateData.localPosition.y
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 6585020796681170699, guid: 1a4d28feb6dece546a07d801ca0c35ea,
+        type: 3}
+      propertyPath: weaponRotationStateData.localPosition.z
+      value: 0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 6585020796681170699, guid: 1a4d28feb6dece546a07d801ca0c35ea,
+        type: 3}
+      propertyPath: weaponRotationStateData.localRotation.w
+      value: 0.9957247
+      objectReference: {fileID: 0}
+    - target: {fileID: 6585020796681170699, guid: 1a4d28feb6dece546a07d801ca0c35ea,
+        type: 3}
+      propertyPath: weaponRotationStateData.localRotation.x
+      value: 0.09237059
+      objectReference: {fileID: 0}
+    - target: {fileID: 6585020796681170699, guid: 1a4d28feb6dece546a07d801ca0c35ea,
+        type: 3}
+      propertyPath: weaponRotationStateData.weaponFeatureToRotationDatas.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6585020796681170699, guid: 1a4d28feb6dece546a07d801ca0c35ea,
+        type: 3}
+      propertyPath: weaponRotationStateData.weaponFeatureToRotationDatas.Array.data[0].localPosition.y
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 6585020796681170699, guid: 1a4d28feb6dece546a07d801ca0c35ea,
+        type: 3}
+      propertyPath: weaponRotationStateData.weaponFeatureToRotationDatas.Array.data[0].localPosition.z
+      value: 0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 6585020796681170699, guid: 1a4d28feb6dece546a07d801ca0c35ea,
+        type: 3}
+      propertyPath: weaponRotationStateData.weaponFeatureToRotationDatas.Array.data[0].localRotation.w
+      value: 0.9957247
+      objectReference: {fileID: 0}
+    - target: {fileID: 6585020796681170699, guid: 1a4d28feb6dece546a07d801ca0c35ea,
+        type: 3}
+      propertyPath: weaponRotationStateData.weaponFeatureToRotationDatas.Array.data[0].localRotation.x
+      value: 0.09237059
+      objectReference: {fileID: 0}
+    - target: {fileID: 6585020796681170699, guid: 1a4d28feb6dece546a07d801ca0c35ea,
+        type: 3}
+      propertyPath: weaponRotationStateData.weaponFeatureToRotationDatas.Array.data[0].weaponFeatureTypeScriptable
+      value: 
+      objectReference: {fileID: 11400000, guid: 88afe6142af15c5468b554e8bb95e7dc,
+        type: 2}
     - target: {fileID: 7752813945891223703, guid: 1a4d28feb6dece546a07d801ca0c35ea,
         type: 3}
       propertyPath: m_text

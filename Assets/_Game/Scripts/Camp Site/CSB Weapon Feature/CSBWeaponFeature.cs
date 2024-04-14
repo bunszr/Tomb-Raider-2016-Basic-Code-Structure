@@ -10,6 +10,7 @@ namespace CampSite
         public ClickState.ClickStateData clickStateData;
         public ShowInformationState.ShowInformationStateData showInformationState;
         public OpenNewFeatureState.OpenNewFeatureStateData openNewFeatureStateData;
+        public WeaponRotationState.WeaponRotationStateData weaponRotationStateData;
 
         public override string CSBName => GetComponentInParent<WeaponFeatureSaver>(true).weaponTypeScriptable.WeaponName + " - " + FeatureTypeScriptable.GetType().Name;
     }

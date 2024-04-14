@@ -31,7 +31,7 @@ PrefabInstance:
     - target: {fileID: 3291319348371380792, guid: 1a4d28feb6dece546a07d801ca0c35ea,
         type: 3}
       propertyPath: m_Name
-      value: Weapon Damage Feature (1)
+      value: Weapon Damage Feature
       objectReference: {fileID: 0}
     - target: {fileID: 3291319348371380795, guid: 1a4d28feb6dece546a07d801ca0c35ea,
         type: 3}
@@ -147,7 +147,7 @@ PrefabInstance:
     - target: {fileID: 6585020796681170699, guid: 1a4d28feb6dece546a07d801ca0c35ea,
         type: 3}
       propertyPath: featureDataSaveable.guid
-      value: 74c81238-54ba-4458-9ab2-2365216c08f6
+      value: b94a2ed8-3d01-4dc7-bcfe-07066fbf5777
       objectReference: {fileID: 0}
     - target: {fileID: 6585020796681170699, guid: 1a4d28feb6dece546a07d801ca0c35ea,
         type: 3}
@@ -159,6 +159,77 @@ PrefabInstance:
       propertyPath: showInformationState.description
       value: Damage Description
       objectReference: {fileID: 0}
+    - target: {fileID: 6585020796681170699, guid: 1a4d28feb6dece546a07d801ca0c35ea,
+        type: 3}
+      propertyPath: weaponRotationStateData.localPosition.y
+      value: 0.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6585020796681170699, guid: 1a4d28feb6dece546a07d801ca0c35ea,
+        type: 3}
+      propertyPath: weaponRotationStateData.localPosition.z
+      value: 0.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 6585020796681170699, guid: 1a4d28feb6dece546a07d801ca0c35ea,
+        type: 3}
+      propertyPath: weaponRotationStateData.localRotation.w
+      value: 0.9814939
+      objectReference: {fileID: 0}
+    - target: {fileID: 6585020796681170699, guid: 1a4d28feb6dece546a07d801ca0c35ea,
+        type: 3}
+      propertyPath: weaponRotationStateData.localRotation.x
+      value: 0.11896495
+      objectReference: {fileID: 0}
+    - target: {fileID: 6585020796681170699, guid: 1a4d28feb6dece546a07d801ca0c35ea,
+        type: 3}
+      propertyPath: weaponRotationStateData.localRotation.y
+      value: 0.11657512
+      objectReference: {fileID: 0}
+    - target: {fileID: 6585020796681170699, guid: 1a4d28feb6dece546a07d801ca0c35ea,
+        type: 3}
+      propertyPath: weaponRotationStateData.localRotation.z
+      value: 0.09448445
+      objectReference: {fileID: 0}
+    - target: {fileID: 6585020796681170699, guid: 1a4d28feb6dece546a07d801ca0c35ea,
+        type: 3}
+      propertyPath: weaponRotationStateData.weaponFeatureToRotationDatas.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6585020796681170699, guid: 1a4d28feb6dece546a07d801ca0c35ea,
+        type: 3}
+      propertyPath: weaponRotationStateData.weaponFeatureToRotationDatas.Array.data[0].localPosition.y
+      value: 0.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6585020796681170699, guid: 1a4d28feb6dece546a07d801ca0c35ea,
+        type: 3}
+      propertyPath: weaponRotationStateData.weaponFeatureToRotationDatas.Array.data[0].localPosition.z
+      value: 0.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 6585020796681170699, guid: 1a4d28feb6dece546a07d801ca0c35ea,
+        type: 3}
+      propertyPath: weaponRotationStateData.weaponFeatureToRotationDatas.Array.data[0].localRotation.w
+      value: 0.9814939
+      objectReference: {fileID: 0}
+    - target: {fileID: 6585020796681170699, guid: 1a4d28feb6dece546a07d801ca0c35ea,
+        type: 3}
+      propertyPath: weaponRotationStateData.weaponFeatureToRotationDatas.Array.data[0].localRotation.x
+      value: 0.11896495
+      objectReference: {fileID: 0}
+    - target: {fileID: 6585020796681170699, guid: 1a4d28feb6dece546a07d801ca0c35ea,
+        type: 3}
+      propertyPath: weaponRotationStateData.weaponFeatureToRotationDatas.Array.data[0].localRotation.y
+      value: 0.11657512
+      objectReference: {fileID: 0}
+    - target: {fileID: 6585020796681170699, guid: 1a4d28feb6dece546a07d801ca0c35ea,
+        type: 3}
+      propertyPath: weaponRotationStateData.weaponFeatureToRotationDatas.Array.data[0].localRotation.z
+      value: 0.09448445
+      objectReference: {fileID: 0}
+    - target: {fileID: 6585020796681170699, guid: 1a4d28feb6dece546a07d801ca0c35ea,
+        type: 3}
+      propertyPath: weaponRotationStateData.weaponFeatureToRotationDatas.Array.data[0].weaponFeatureTypeScriptable
+      value: 
+      objectReference: {fileID: 11400000, guid: 1933ef069ea6d6b4caae99464af080c6,
+        type: 2}
     - target: {fileID: 7752813945891223703, guid: 1a4d28feb6dece546a07d801ca0c35ea,
         type: 3}
       propertyPath: m_text

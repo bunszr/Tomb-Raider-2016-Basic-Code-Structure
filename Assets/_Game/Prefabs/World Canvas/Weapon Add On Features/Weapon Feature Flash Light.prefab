@@ -151,7 +151,7 @@ MonoBehaviour:
     type: 2}
   campSiteHolder: {fileID: 0}
   featureDataSaveable:
-    guid: 
+    guid: b20a568e-c811-43f1-8d86-863f8b0e1794
     isOpen: 0
   highlightStateData:
     imageToHighlight: {fileID: 7324816739293022204}
@@ -161,6 +161,22 @@ MonoBehaviour:
     fadeEase: 4
   clickStateData:
     nextCanvas: {fileID: 0}
+  showInformationState:
+    name: Flash Light
+    description: 
+    requirements: []
+    fadeDuration: 0.4
+    fadeEase: 4
+  openNewFeatureStateData:
+    nextCanvas: {fileID: 0}
+  weaponRotationStateData:
+    localRotation: {x: 0.013023894, y: -0.3603687, z: -0.005032029, w: -0.93270546}
+    localPosition: {x: 0, y: 0.19, z: 0.53}
+    weaponFeatureToRotationDatas:
+    - weaponFeatureTypeScriptable: {fileID: 11400000, guid: e606d390d36fa7546944577fc393869c,
+        type: 2}
+      localRotation: {x: 0.013023894, y: -0.3603687, z: -0.005032029, w: -0.93270546}
+      localPosition: {x: 0, y: 0.19, z: 0.53}
 --- !u!114 &7324816739293022204 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 103139942966771222, guid: 760fad17fdd1b484da90fc3e783e7414,

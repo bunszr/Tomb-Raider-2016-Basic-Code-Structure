@@ -23,7 +23,8 @@ namespace CampSite
             {
                 new HighlightState(this, false, cSBWeaponFeature.buttonEvents, cSBWeaponFeature.highlightStateData),
                 new ShowWeaponDataState(cSBWeaponFeature.buttonEvents, campSiteHolder, cSBWeaponFeature.showWeaponDataStateData, cSBWeaponFeature.FeatureTypeScriptable),
-                new ShowInformationState(cSBWeaponFeature.buttonEvents, campSiteHolder, cSBWeaponFeature.showInformationState)
+                new ShowInformationState(cSBWeaponFeature.buttonEvents, campSiteHolder, cSBWeaponFeature.showInformationState),
+                new WeaponRotationState(cSBWeaponFeature.buttonEvents, campSiteHolder, cSBWeaponFeature.weaponRotationStateData),
             };
 
             fsm = new StateMachine(this);
