@@ -1,9 +1,11 @@
 using DG.Tweening;
+using FSM;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace CampSite
 {
-    public class ShowInformationState : IStateBaseMine
+    public class ShowInformationState : CSBParalelStateBase
     {
         [System.Serializable]
         public class ShowInformationStateData
@@ -16,42 +18,23 @@ namespace CampSite
             public Ease fadeEase = Ease.InOutSine;
         }
 
-        ButtonEvents buttonEvents;
-        CampSiteHolder campSiteHolder;
-
         FeatureInformationPanelHolder featureInformationPanelHolder;
         ShowInformationStateData data;
 
-
-        public ShowInformationState(ButtonEvents buttonEvents, CampSiteHolder campSiteHolder, ShowInformationStateData showPresentationDataStateData)
+        public ShowInformationState(MonoBehaviour mono, ShowInformationStateData data) : base(mono)
         {
-            this.buttonEvents = buttonEvents;
-            this.campSiteHolder = campSiteHolder;
-            this.data = showPresentationDataStateData;
+            this.data = data;
         }
 
-        public void Init()
+        public override void Init()
         {
+            base.Init();
             featureInformationPanelHolder = campSiteHolder.FeatureInformationPanelHolder;
             featureInformationPanelHolder.tweenForActivate.KillMine();
             featureInformationPanelHolder.tweenForActivate = featureInformationPanelHolder.canvasGroup.DOFade(1, data.fadeDuration).From(0).SetAutoKill(false).SetEase(data.fadeEase).Pause();
         }
 
-        public void OnEnter()
-        {
-            buttonEvents.onPointerEnterEvent += OnPointerEnter;
-            buttonEvents.onPointerExitEvent += OnPointerExit;
-        }
-
-        public void OnExit()
-        {
-            buttonEvents.onPointerEnterEvent -= OnPointerEnter;
-            buttonEvents.onPointerExitEvent -= OnPointerExit;
-        }
-
-        public void OnLogic() { }
-
-        void OnPointerEnter(PointerEventData eventData)
+        protected override void OnPointerEnter(PointerEventData eventData)
         {
             featureInformationPanelHolder.tweenForActivate.PlayForward();
 
@@ -60,7 +43,7 @@ namespace CampSite
             featureInformationPanelHolder.requirementsText.text = "Fill it later";
         }
 
-        void OnPointerExit(PointerEventData eventData)
+        protected override void OnPointerExit(PointerEventData eventData)
         {
             featureInformationPanelHolder.tweenForActivate.PlayBackwards();
         }

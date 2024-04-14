@@ -5,10 +5,13 @@ namespace CampSite
 {
     public abstract class CampSiteButtonStateBase : StateBase
     {
-        public MonoBehaviour mono;
-        public Transform transform => mono.transform;
+        protected MonoBehaviour mono;
+        protected Transform transform => mono.transform;
+        protected CampSiteButtonBase csbBase;
+        protected ButtonEvents buttonEvents;
+        protected CampSiteHolder campSiteHolder;
 
-        public CampSiteButtonStateBase(MonoBehaviour mono, bool needsExitTime) : base(needsExitTime)
+        protected CampSiteButtonStateBase(MonoBehaviour mono, bool needsExitTime = false, bool isGhostState = false) : base(needsExitTime, isGhostState)
         {
             this.mono = mono;
         }

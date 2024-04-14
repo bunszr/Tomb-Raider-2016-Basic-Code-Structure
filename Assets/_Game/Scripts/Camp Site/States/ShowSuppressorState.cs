@@ -1,39 +1,18 @@
 using DG.Tweening;
+using FSM;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace CampSite
 {
-    public class ShowSuppressorState : IStateBaseMine
+    public class ShowSuppressorState : CSBParalelStateBase
     {
-        ButtonEvents buttonEvents;
-        CampSiteHolder campSiteHolder;
         Vector3 suppressorDefaultlocalPos;
 
-        public ShowSuppressorState(ButtonEvents buttonEvents, CampSiteHolder campSiteHolder)
-        {
-            this.buttonEvents = buttonEvents;
-            this.campSiteHolder = campSiteHolder;
-        }
+        public ShowSuppressorState(MonoBehaviour mono) : base(mono) { }
 
-        public void Init()
-        {
-        }
-
-        public void OnEnter()
-        {
-            buttonEvents.onPointerEnterEvent += OnPointerEnter;
-            buttonEvents.onPointerExitEvent += OnPointerExit;
-        }
-
-        public void OnExit()
-        {
-            buttonEvents.onPointerEnterEvent -= OnPointerEnter;
-            buttonEvents.onPointerExitEvent -= OnPointerExit;
-        }
-
-        void OnPointerEnter(PointerEventData eventData)
+        protected override void OnPointerEnter(PointerEventData eventData)
         {
             ISuppressorAddOn _suppressorAddOn = campSiteHolder._Weapon.Transform.GetComponent<ISuppressorAddOn>();
             suppressorDefaultlocalPos = _suppressorAddOn.SuppressorGO.transform.localPosition;
@@ -41,17 +20,12 @@ namespace CampSite
             _suppressorAddOn.SuppressorGO.transform.DOLocalMoveZ(.5f, .4f).From(true);
         }
 
-        void OnPointerExit(PointerEventData eventData)
+        protected override void OnPointerExit(PointerEventData eventData)
         {
             ISuppressorAddOn _suppressorAddOn = campSiteHolder._Weapon.Transform.GetComponent<ISuppressorAddOn>();
             _suppressorAddOn.SuppressorGO.transform.DOKill();
             _suppressorAddOn.SuppressorGO.SetActive(false);
             _suppressorAddOn.SuppressorGO.transform.localPosition = suppressorDefaultlocalPos;
         }
-
-        public void OnLogic()
-        {
-        }
-
     }
 }

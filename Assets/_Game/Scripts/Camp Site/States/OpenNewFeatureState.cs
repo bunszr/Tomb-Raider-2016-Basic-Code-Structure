@@ -12,14 +12,7 @@ namespace CampSite
             public Canvas nextCanvas;
         }
 
-        Vector3 vel;
-        Quaternion defaultRot;
-
-        Tween tween;
-        Tween tweenRot;
         OpenNewFeatureStateData data;
-        Camera cam;
-        CinemachineVirtualCamera virtualCamera;
 
         public OpenNewFeatureState(MonoBehaviour mono, bool needsExitTime, OpenNewFeatureStateData data) : base(mono, needsExitTime)
         {

@@ -1,33 +1,25 @@
-using UnityEngine;
 using FSM;
-using UnityEngine.EventSystems;
-using Zenject;
-using Cinemachine;
-using System.Collections;
 
 namespace CampSite
 {
-    public class CSBWeaponFeatureSuppressorFSM : MonoBehaviour
+    public class CSBWeaponFeatureSuppressorFSM : CSBBaseFSM
     {
         CSBWeaponFeatureSuppressor cSBWeaponFeatureSuppressor;
-        StateMachine fsm;
 
-        [Inject] CinemachineBrain brain;
-        [Inject] CampSiteHolder campSiteHolder;
-
-        protected void Start()
+        protected override void Start()
         {
+            base.Start();
+
             cSBWeaponFeatureSuppressor = GetComponent<CSBWeaponFeatureSuppressor>();
 
             IStateBaseMine[] _stateBaseMines = new IStateBaseMine[]
             {
-                new HighlightState(this, false, cSBWeaponFeatureSuppressor.buttonEvents, cSBWeaponFeatureSuppressor.highlightStateData),
-                new ShowInformationState(cSBWeaponFeatureSuppressor.buttonEvents, campSiteHolder, cSBWeaponFeatureSuppressor.showInformationState),
-                new WeaponRotationState(cSBWeaponFeatureSuppressor.buttonEvents, campSiteHolder, cSBWeaponFeatureSuppressor.weaponRotationStateData),
-                new ShowSuppressorState(cSBWeaponFeatureSuppressor.buttonEvents, campSiteHolder),
+                new HighlightState(csbBase, cSBWeaponFeatureSuppressor.highlightStateData),
+                new ShowInformationState(csbBase, cSBWeaponFeatureSuppressor.showInformationState),
+                new WeaponRotationState(csbBase, cSBWeaponFeatureSuppressor.weaponRotationStateData),
+                new ShowSuppressorState(csbBase),
             };
 
-            fsm = new StateMachine(this);
             fsm.AddState("InitState", new InitState(this, true, brain));
             fsm.AddState("HighlightState", new ParalelState(this, false, _stateBaseMines));
             fsm.AddState("OpenNewFeatureState", new OpenNewFeatureState(this, false, cSBWeaponFeatureSuppressor.openNewFeatureStateData));
@@ -37,33 +29,6 @@ namespace CampSite
 
             fsm.SetStartState("InitState");
             fsm.Init();
-        }
-
-        private void OnEnable()
-        {
-            StartCoroutine(MethodCO());
-        }
-
-        IEnumerator MethodCO()
-        {
-            yield return null;
-            cSBWeaponFeatureSuppressor.buttonEvents.onPointerClickEvent += OnPointerClick;
-
-        }
-
-        private void OnDisable()
-        {
-            cSBWeaponFeatureSuppressor.buttonEvents.onPointerClickEvent -= OnPointerClick;
-        }
-
-        private void Update()
-        {
-            fsm.OnLogic();
-        }
-
-        public void OnPointerClick(PointerEventData eventData)
-        {
-            fsm.Trigger("OnClick");
         }
     }
 }

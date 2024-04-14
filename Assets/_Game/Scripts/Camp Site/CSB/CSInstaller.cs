@@ -9,7 +9,6 @@ namespace CampSite
         public override void InstallBindings()
         {
             Container.Bind<Cinemachine.CinemachineBrain>().FromComponentInHierarchy().AsTransient();
-
         }
     }
 }

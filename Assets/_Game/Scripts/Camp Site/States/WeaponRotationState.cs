@@ -1,11 +1,12 @@
 using DG.Tweening;
+using FSM;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace CampSite
 {
-    public class WeaponRotationState : IStateBaseMine
+    public class WeaponRotationState : CSBParalelStateBase
     {
         [System.Serializable]
         public class WeaponRotationStateData
@@ -18,35 +19,14 @@ namespace CampSite
 #endif
         }
 
-        ButtonEvents buttonEvents;
         WeaponRotationStateData data;
-        CampSiteHolder campSiteHolder;
 
-
-        public WeaponRotationState(ButtonEvents buttonEvents, CampSiteHolder campSiteHolder, WeaponRotationStateData data)
+        public WeaponRotationState(MonoBehaviour mono, WeaponRotationStateData data) : base(mono)
         {
             this.data = data;
-            this.buttonEvents = buttonEvents;
-            this.campSiteHolder = campSiteHolder;
         }
 
-        public void Init()
-        {
-        }
-
-        public void OnEnter()
-        {
-            buttonEvents.onPointerEnterEvent += OnPointerEnter;
-            buttonEvents.onPointerExitEvent += OnPointerExit;
-        }
-
-        public void OnExit()
-        {
-            buttonEvents.onPointerEnterEvent -= OnPointerEnter;
-            buttonEvents.onPointerExitEvent -= OnPointerExit;
-        }
-
-        void OnPointerEnter(PointerEventData eventData)
+        protected override void OnPointerEnter(PointerEventData eventData)
         {
             campSiteHolder.WeaponShowLocation.DOKill();
             campSiteHolder.WeaponFeatureIndicator.DOKill();
@@ -55,13 +35,6 @@ namespace CampSite
             campSiteHolder.WeaponFeatureIndicator.DOLocalMove(data.localPosition, .2f);
         }
 
-        void OnPointerExit(PointerEventData eventData)
-        {
-        }
-
-        public void OnLogic()
-        {
-        }
-
+        protected override void OnPointerExit(PointerEventData eventData) { }
     }
 }

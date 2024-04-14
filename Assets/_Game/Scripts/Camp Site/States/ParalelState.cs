@@ -21,11 +21,6 @@ namespace CampSite
             for (int i = 0; i < stateBaseMines.Length; i++) stateBaseMines[i].OnEnter();
         }
 
-        public override void OnLogic()
-        {
-            for (int i = 0; i < stateBaseMines.Length; i++) stateBaseMines[i].OnLogic();
-        }
-
         public override void OnExit()
         {
             for (int i = 0; i < stateBaseMines.Length; i++) stateBaseMines[i].OnExit();

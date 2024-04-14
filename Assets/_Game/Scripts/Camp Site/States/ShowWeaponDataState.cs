@@ -1,11 +1,12 @@
 using System.Linq;
 using DG.Tweening;
+using FSM;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace CampSite
 {
-    public class ShowWeaponDataState : IStateBaseMine
+    public class ShowWeaponDataState : CSBParalelStateBase
     {
         [System.Serializable]
         public class ShowWeaponDataStateData
@@ -14,28 +15,20 @@ namespace CampSite
             public Ease fadeEase = Ease.InOutSine;
         }
 
-        ButtonEvents buttonEvents;
-        CampSiteHolder campSiteHolder;
         WeaponDataSlider weaponDataSlider;
         FeatureTypeScriptable featureTypeScriptable;
-
-        Tween tween;
         WeaponDataSliderHolder weaponDataSliderHolder;
         WeaponData weaponData;
         ShowWeaponDataStateData data;
 
-
-        public ShowWeaponDataState(ButtonEvents buttonEvents, CampSiteHolder campSiteHolder, ShowWeaponDataStateData showWeaponDataStateData, FeatureTypeScriptable featureTypeScriptable)
+        public ShowWeaponDataState(MonoBehaviour mono, ShowWeaponDataStateData showWeaponDataStateData) : base(mono)
         {
-            this.buttonEvents = buttonEvents;
-            this.campSiteHolder = campSiteHolder;
             this.data = showWeaponDataStateData;
-            this.featureTypeScriptable = featureTypeScriptable;
-
         }
 
-        public void Init()
+        public override void Init()
         {
+            featureTypeScriptable = csbBase.GetComponent<CSBSaveable>().FeatureTypeScriptable;
             weaponData = campSiteHolder.WeaponShowLocation.GetComponentInChildren<IWeapon>().WeaponData;
             weaponDataSliderHolder = campSiteHolder.WeaponDataSliderHolder;
             weaponDataSlider = weaponDataSliderHolder.weaponDataSliders.FirstOrDefault(x => featureTypeScriptable == x.featureTypeScriptable);
@@ -43,23 +36,7 @@ namespace CampSite
             weaponDataSliderHolder.canvasGroupTween = weaponDataSliderHolder.canvasGroup.DOFade(1, data.fadeDuration).From(0).SetAutoKill(false).SetEase(data.fadeEase).Pause();
         }
 
-        public void OnEnter()
-        {
-            buttonEvents.onPointerEnterEvent += OnPointerEnter;
-            buttonEvents.onPointerExitEvent += OnPointerExit;
-        }
-
-        public void OnExit()
-        {
-            buttonEvents.onPointerEnterEvent -= OnPointerEnter;
-            buttonEvents.onPointerExitEvent -= OnPointerExit;
-        }
-
-        public void OnLogic()
-        {
-        }
-
-        void OnPointerEnter(PointerEventData eventData)
+        protected override void OnPointerEnter(PointerEventData eventData)
         {
             weaponDataSliderHolder.canvasGroupTween.PlayForward();
 
@@ -91,7 +68,7 @@ namespace CampSite
             weaponDataSlider.addingValueImage.fillAmount = fillAmount;
         }
 
-        void OnPointerExit(PointerEventData eventData)
+        protected override void OnPointerExit(PointerEventData eventData)
         {
             weaponDataSliderHolder.canvasGroupTween.PlayBackwards();
         }
