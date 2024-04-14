@@ -190,7 +190,7 @@ GameObject:
   - component: {fileID: 2013318703}
   - component: {fileID: 2013318702}
   m_Layer: 0
-  m_Name: Suppressor
+  m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -203,12 +203,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2013318699}
-  m_LocalRotation: {x: 0.7071068, y: 0.00000026822082, z: 0.0000009767144, w: 0.70710677}
-  m_LocalPosition: {x: 0, y: 0.15200017, z: 0.83600044}
-  m_LocalScale: {x: 0.06380634, y: 0.12521997, z: 0.06380635}
+  m_LocalRotation: {x: 0.7071069, y: -0.000000038325396, z: -0.000000068893556, w: 0.7071067}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 543450653185918747}
+  m_Father: {fileID: 7742056658758234880}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!33 &2013318703
@@ -261,6 +261,39 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &2896305413042343758
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7742056658758234880}
+  m_Layer: 0
+  m_Name: Suppressor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7742056658758234880
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2896305413042343758}
+  m_LocalRotation: {x: -0.00000017462307, y: -0.00000050663937, z: 0.00000089166974,
+    w: 1}
+  m_LocalPosition: {x: 0, y: 0.15200038, z: 0.8360007}
+  m_LocalScale: {x: 0.06380634, y: 0.06380634, z: 0.12521997}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2013318700}
+  m_Father: {fileID: 543450653185918747}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1001 &514105584
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -535,9 +568,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponTypeScriptable: {fileID: 11400000, guid: e39e715d85e15594ba5d6f701370e5a5,
     type: 2}
-  baseWeaponFeatures: []
-  suppressorFeature: {fileID: 0}
-  flashlightFeature: {fileID: 0}
   automaticFireBehaviorData:
     delay: 0.2
   normalBulletModeData:
@@ -559,4 +589,4 @@ MonoBehaviour:
   flashLightAddOnData:
     addOn: {fileID: 649941921}
     light: {fileID: 903318345}
-  suppressorGO: {fileID: 2013318699}
+  suppressorGO: {fileID: 2896305413042343758}

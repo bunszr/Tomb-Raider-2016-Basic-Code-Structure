@@ -140,7 +140,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7262220697061390826}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5096801852648801473
+--- !u!114 &4020017023785184838
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5130825150905003826}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f8e04060f4ac4643b62e1b0f99d6eac, type: 3}
+  m_Script: {fileID: 11500000, guid: 250d0a87dd3dc524c8bea5762f6c89a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   featureTypeScriptable: {fileID: 11400000, guid: 7c1a4c233232cd449bdba8a00cdc3f0d,
@@ -177,35 +177,18 @@ MonoBehaviour:
   weaponRotationStateData:
     localRotation: {x: 0.070030615, y: 0.24302483, z: 0.26789317, w: 0.9296601}
     localPosition: {x: 0, y: 0.15, z: 1.09}
-    weaponFeatureToRotationDatas:
-    - weaponFeatureTypeScriptable: {fileID: 11400000, guid: 1933ef069ea6d6b4caae99464af080c6,
-        type: 2}
-      localRotation: {x: 0.11896495, y: 0.11657512, z: 0.09448445, w: 0.9814939}
-      localPosition: {x: 0, y: 0.14, z: 0.94}
-    - weaponFeatureTypeScriptable: {fileID: 11400000, guid: 441ea9d853bcbc740905aed8b738c5c5,
-        type: 2}
-      localRotation: {x: -0.076055706, y: -0.037668064, z: -0.002875254, w: 0.99638766}
-      localPosition: {x: 0, y: -0.07, z: 0.28}
-    - weaponFeatureTypeScriptable: {fileID: 11400000, guid: e606d390d36fa7546944577fc393869c,
-        type: 2}
-      localRotation: {x: 0.013023894, y: -0.3603687, z: -0.005032029, w: -0.93270546}
-      localPosition: {x: 0, y: 0.19, z: 0.53}
-    - weaponFeatureTypeScriptable: {fileID: 11400000, guid: 88afe6142af15c5468b554e8bb95e7dc,
-        type: 2}
-      localRotation: {x: 0.09237059, y: 0, z: 0, w: 0.9957247}
-      localPosition: {x: 0, y: 0.08, z: 0.09}
-    - weaponFeatureTypeScriptable: {fileID: 11400000, guid: 7336ae83219f4d44fb8ac3da8904ff49,
-        type: 2}
-      localRotation: {x: 0.03766046, y: -0.012820652, z: -0.32201052, w: -0.94589984}
-      localPosition: {x: 0, y: -0.02, z: -0.03}
-    - weaponFeatureTypeScriptable: {fileID: 11400000, guid: 7d292b08868968149a997dddcfd74d2a,
-        type: 2}
-      localRotation: {x: 0.12836291, y: 0, z: 0, w: -0.9917273}
-      localPosition: {x: 0, y: 0.21, z: 0.21}
-    - weaponFeatureTypeScriptable: {fileID: 11400000, guid: 7c1a4c233232cd449bdba8a00cdc3f0d,
-        type: 2}
-      localRotation: {x: 0.070030615, y: 0.24302483, z: 0.26789317, w: 0.9296601}
-      localPosition: {x: 0, y: 0.15, z: 1.09}
+--- !u!114 &5307719603292820361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5130825150905003826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83a4a16e4c0942442b844b77bfb2f806, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7324816739293022204 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 103139942966771222, guid: 760fad17fdd1b484da90fc3e783e7414,

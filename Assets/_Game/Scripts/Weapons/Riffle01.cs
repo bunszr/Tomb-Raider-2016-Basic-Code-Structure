@@ -1,7 +1,7 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-public class Riffle01 : WeaponBase
+public class Riffle01 : WeaponBase, ISuppressorAddOn, IFlashLightAddOn
 {
     public FireAmmo fireAmmo;
     public NormalAmmo normalAmmo;
@@ -19,6 +19,9 @@ public class Riffle01 : WeaponBase
     [ShowInInspector] public IRecoilBehaviour _recoilBehaviour;
     [ShowInInspector] public IFlashBehaviour _flashBehaviour;
     [ShowInInspector] public IMuzzleBehaviour _muzzleBehaviour;
+
+    public GameObject SuppressorGO => suppressorGO;
+    public FlashLightAddOnData FlashLightAddOnData => flashLightAddOnData;
 
     public override void Fire()
     {
@@ -39,6 +42,16 @@ public class Riffle01 : WeaponBase
         base.Unequip();
         _flashBehaviour.Exit();
     }
+}
+
+public interface ISuppressorAddOn
+{
+    GameObject SuppressorGO { get; }
+}
+
+public interface IFlashLightAddOn
+{
+    FlashLightAddOnData FlashLightAddOnData { get; }
 }
 
 [System.Serializable]
