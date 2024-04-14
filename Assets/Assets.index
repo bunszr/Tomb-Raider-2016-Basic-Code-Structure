@@ -1,0 +1,29 @@
+{
+    "name": "",
+    "type": "asset",
+    "roots": [],
+    "includes": [],
+    "excludes": [
+        "Assets/Temp/",
+        "Assets/External/",
+        "..wav",
+        ".png",
+        "Assets/UnityHFSM-master/",
+        "Assets/Plugins/",
+        "Assets/Invector/",
+        "Assets/_Game/Assets/",
+        "Assets/Demigiant/",
+        "Assets/ParadoxNotion/",
+        "Assets/TextMesh Pro/",
+        "Assets/UnityHFSM-master/",
+        "Assets/BehaviorBricks/"
+    ],
+    "options": {
+        "disabled": false,
+        "types": true,
+        "properties": true,
+        "extended": false,
+        "dependencies": false
+    },
+    "baseScore": 100
+}

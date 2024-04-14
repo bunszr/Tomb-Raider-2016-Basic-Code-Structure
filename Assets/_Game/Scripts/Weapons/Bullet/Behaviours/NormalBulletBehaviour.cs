@@ -1,0 +1,28 @@
+using Lean.Pool;
+using UnityEngine;
+
+public class NormalBulletBehaviour : BulletBehaviourBase, IBulletBehaviour
+{
+    [System.Serializable]
+    public class NormalBulletBehaviourData
+    {
+        public BulletBase bulletPrefab;
+        public Transform bulletLocation;
+        public ForceMode forceMode = ForceMode.VelocityChange;
+        public float force = 20;
+    }
+
+    public NormalBulletBehaviourData data;
+
+    public NormalBulletBehaviour(IWeapon _weapon, NormalBulletBehaviourData data) : base(_weapon)
+    {
+        this.data = data;
+    }
+
+    public void Fire()
+    {
+        BulletBase bulletBase = LeanPool.Spawn(data.bulletPrefab, data.bulletLocation.position, data.bulletLocation.rotation);
+        bulletBase.Rb.AddForce(data.bulletLocation.forward * data.force, data.forceMode);
+        LeanPool.Despawn(bulletBase, 5);
+    }
+}

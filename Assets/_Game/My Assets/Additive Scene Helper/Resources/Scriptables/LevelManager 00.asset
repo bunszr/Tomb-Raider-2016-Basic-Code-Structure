@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 239c35e179bca9e4f8d3f5ac3432161f, type: 3}
+  m_Name: LevelManager 00
+  m_EditorClassIdentifier: 
+  mainScene: {fileID: 102900000, guid: f2581f476cd8bbe41a9eab471c6a704b, type: 3}
+  sceneInfos:
+  - name: Levels
+    sceneFolderPath: Assets/_Game/Scenes/Levels
+    sceneObjects:
+    - {fileID: 102900000, guid: c92120aad8d9ac34b9abc536b9ae75ea, type: 3}
+    - {fileID: 102900000, guid: 5bb833d253dc72c47bb4c43ad5d147a0, type: 3}
+    sceneNames:
+    - Level 00
+    - Level 01
+  - name: Other Scenes
+    sceneFolderPath: Assets/_Game/Scenes/Other Scenes
+    sceneObjects:
+    - {fileID: 102900000, guid: b0e0899d441d0274babc1fa9e459b5c6, type: 3}
+    - {fileID: 102900000, guid: bbb63a041c5b4734da4cbd1f238ed4f8, type: 3}
+    sceneNames:
+    - Frequenty Use Effects
+    - Trash Scene

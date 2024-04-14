@@ -1,0 +1,143 @@
+using UnityEngine;
+using UniRx;
+using System;
+
+public class WeaponToggle : MonoBehaviour, IWeaponToggler
+{
+    [System.Serializable]
+    public class WeaponToggleData
+    {
+        [SerializeField] string triggerName;
+        public int TriggerNameHash { get; private set; }
+
+        public void InitData()
+        {
+            TriggerNameHash = Animator.StringToHash(triggerName);
+        }
+    }
+
+    public WeaponToggleData[] weaponToggleDatas;
+
+    IDisposable disposable;
+    LivingEntity livingEntity;
+    public Transform weaponHolder;
+
+    ReactiveProperty<IWeapon> _OldWeaponRP = new ReactiveProperty<IWeapon>();
+    public ReactiveProperty<IWeapon> _CurrWeaponRP { get; private set; }
+
+    // [Inject]
+    IInput _input;
+
+    int weaponIndex = -1;
+    // int oldSlot = -1;
+
+    IEquipBehaviour _handEquipBehaviourRP;
+    IEquipBehaviour _weaponEquipBehaviourRP;
+
+    public IWeapon[] GetWeapons() => GetComponentsInChildren<IWeapon>(true);
+
+    private void Awake()
+    {
+        _CurrWeaponRP = new ReactiveProperty<IWeapon>();
+
+        weaponToggleDatas.Foreach(x => x.InitData());
+
+        livingEntity = GetComponentInParent<LivingEntity>();
+        AnimationEventMono animationEventMono = livingEntity.gameObject.AddComponent<AnimationEventMono>();
+        animationEventMono.onAnimationEvent += OnDrawAnim;
+
+        _input = new DesktopInput();
+
+        _handEquipBehaviourRP = new HandEquipBehaviour(weaponHolder, animationEventMono, _input.WeaponToggleInput);
+        _weaponEquipBehaviourRP = new WeaponEquipBehaviour(weaponHolder, animationEventMono);
+    }
+
+    private void OnEnable()
+    {
+        _handEquipBehaviourRP.Enter();
+        _weaponEquipBehaviourRP.Enter();
+    }
+
+    private void OnDisable()
+    {
+        _handEquipBehaviourRP.Exit();
+        _weaponEquipBehaviourRP.Exit();
+    }
+
+    private void Update()
+    {
+        int pressedGunIndex = -1;
+
+        if (_input.WeaponToggleInput.HasEquipGun1) pressedGunIndex = 0;
+        else if (_input.WeaponToggleInput.HasEquipGun2) pressedGunIndex = 1;
+        else if (_input.WeaponToggleInput.HasEquipGun3) pressedGunIndex = 2;
+        else if (_input.WeaponToggleInput.HasEquipGun4) pressedGunIndex = 3;
+
+        if (pressedGunIndex != -1)
+        {
+            weaponIndex = pressedGunIndex;
+
+            if (!weaponHolder.GetChild(weaponIndex).gameObject.activeSelf)
+            {
+                livingEntity.Animator.SetTrigger(weaponToggleDatas[weaponIndex].TriggerNameHash);
+            }
+        }
+    }
+
+    public void CheckMistake()
+    {
+        int checkCount = 0;
+        for (int i = 0; i < weaponHolder.childCount; i++) if (weaponHolder.GetChild(i).gameObject.activeSelf) checkCount++;
+        if (checkCount > 1) Debug.LogError("There is multiple equipped weapon more than one");
+    }
+
+    public void OnDrawAnim(string name)
+    {
+        CheckMistake();
+
+        for (int i = 0; i < weaponHolder.childCount; i++)
+        {
+            if (weaponHolder.GetChild(i).gameObject.activeSelf)
+            {
+                weaponHolder.GetChild(i).GetComponentInChildren<IWeapon>().Unequip();
+            }
+        }
+
+        _CurrWeaponRP.Value = weaponHolder.GetChild(weaponIndex).GetComponentInChildren<IWeapon>(true);
+        _CurrWeaponRP.Value.Equip();
+    }
+
+}
+
+public interface IInput
+{
+    IWeaponToggleInput WeaponToggleInput { get; }
+}
+
+public interface IWeaponToggleInput
+{
+    bool HasEquipHand { get; }
+    bool HasEquipGun1 { get; }
+    bool HasEquipGun2 { get; }
+    bool HasEquipGun3 { get; }
+    bool HasEquipGun4 { get; }
+}
+
+public class WeaponToggleInputDesktop : IWeaponToggleInput
+{
+    public bool HasEquipHand => Input.GetKeyDown(KeyCode.Q);
+    public bool HasEquipGun1 => Input.GetKeyDown(KeyCode.Alpha1);
+    public bool HasEquipGun2 => Input.GetKeyDown(KeyCode.Alpha2);
+    public bool HasEquipGun3 => Input.GetKeyDown(KeyCode.Alpha3);
+    public bool HasEquipGun4 => Input.GetKeyDown(KeyCode.Alpha4);
+}
+
+public class DesktopInput : IInput
+{
+    public IWeaponToggleInput WeaponToggleInput { get; set; }
+
+    public DesktopInput()
+    {
+        WeaponToggleInput = new WeaponToggleInputDesktop();
+    }
+}
