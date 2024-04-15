@@ -7,7 +7,6 @@ namespace CampSite
 {
     public abstract class CampSiteButtonBase : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
     {
-
         public ButtonEvents buttonEvents = new ButtonEvents();
 
         [Inject, HideInInspector] public CampSiteHolder campSiteHolder;

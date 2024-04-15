@@ -4,26 +4,26 @@ namespace CampSite
 {
     public class ParalelState : StateBase
     {
-        IStateBaseMine[] stateBaseMines;
+        StateBase[] stateBases;
 
-        public ParalelState(bool needsExitTime, bool isGhostState = false, params IStateBaseMine[] stateBaseMines) : base(needsExitTime, isGhostState)
+        public ParalelState(bool needsExitTime, bool isGhostState = false, params StateBase[] stateBases) : base(needsExitTime, isGhostState)
         {
-            this.stateBaseMines = stateBaseMines;
+            this.stateBases = stateBases;
         }
 
         public override void Init()
         {
-            for (int i = 0; i < stateBaseMines.Length; i++) stateBaseMines[i].Init();
+            for (int i = 0; i < stateBases.Length; i++) stateBases[i].Init();
         }
 
         public override void OnEnter()
         {
-            for (int i = 0; i < stateBaseMines.Length; i++) stateBaseMines[i].OnEnter();
+            for (int i = 0; i < stateBases.Length; i++) stateBases[i].OnEnter();
         }
 
         public override void OnExit()
         {
-            for (int i = 0; i < stateBaseMines.Length; i++) stateBaseMines[i].OnExit();
+            for (int i = 0; i < stateBases.Length; i++) stateBases[i].OnExit();
         }
     }
 }

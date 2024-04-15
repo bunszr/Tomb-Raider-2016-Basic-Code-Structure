@@ -4,45 +4,35 @@ using UnityEngine.EventSystems;
 
 namespace CampSite
 {
-    public abstract class CSBParalelStateBase : IStateBaseMine
+    public abstract class CSBStateBase : StateBase
     {
-        protected ButtonEvents buttonEvents;
         protected MonoBehaviour mono;
+        protected Transform transform => mono.transform;
         protected CampSiteButtonBase csbBase;
+        protected ButtonEvents buttonEvents;
         protected CampSiteHolder campSiteHolder;
 
-        protected Transform transform => mono.transform;
-
-        protected CSBParalelStateBase(MonoBehaviour mono)
+        protected CSBStateBase(MonoBehaviour mono, bool needsExitTime, bool isGhostState = false) : base(needsExitTime, isGhostState)
         {
             this.mono = mono;
-            csbBase = mono.GetComponent<CampSiteButtonBase>();
+            this.csbBase = mono.GetComponent<CampSiteButtonBase>();
             this.buttonEvents = csbBase.buttonEvents;
             campSiteHolder = csbBase.campSiteHolder;
         }
 
-        public virtual void Init()
-        {
-        }
-
-        public virtual void OnEnter()
+        protected void SubcribeButtonEvents()
         {
             buttonEvents.onPointerEnterEvent += OnPointerEnter;
             buttonEvents.onPointerExitEvent += OnPointerExit;
         }
 
-        public virtual void OnExit()
+        protected void UnSubcribeButtonEvents()
         {
             buttonEvents.onPointerEnterEvent -= OnPointerEnter;
             buttonEvents.onPointerExitEvent -= OnPointerExit;
         }
 
-        protected virtual void OnPointerEnter(PointerEventData eventData)
-        {
-        }
-
-        protected virtual void OnPointerExit(PointerEventData eventData)
-        {
-        }
+        protected virtual void OnPointerEnter(PointerEventData eventData) { }
+        protected virtual void OnPointerExit(PointerEventData eventData) { }
     }
 }

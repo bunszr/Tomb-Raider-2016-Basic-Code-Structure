@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace CampSite
 {
-    public class HighlightState : CSBParalelStateBase
+    public class HighlightState : CSBStateBase
     {
         [System.Serializable]
         public class HighlightStateData
@@ -18,20 +18,20 @@ namespace CampSite
         Tween tween;
         HighlightStateData data;
 
-        public HighlightState(MonoBehaviour mono, HighlightStateData data) : base(mono)
+        public HighlightState(MonoBehaviour mono, bool needsExitTime, HighlightStateData data) : base(mono, needsExitTime)
         {
             this.data = data;
         }
 
         public override void OnEnter()
         {
-            base.OnEnter();
+            SubcribeButtonEvents();
             tween = data.imageToHighlight.DOFillAmount(1, data.duration).SetAutoKill(false).SetEase(Ease.InOutSine).Pause();
         }
 
         public override void OnExit()
         {
-            base.OnExit();
+            UnSubcribeButtonEvents();
             tween.KillMine();
         }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CampSite
 {
-    public class OpenNewFeatureState : CampSiteButtonStateBase
+    public class OpenNewFeatureState : CSBStateBase
     {
         [System.Serializable]
         public class OpenNewFeatureStateData
@@ -14,7 +14,7 @@ namespace CampSite
 
         OpenNewFeatureStateData data;
 
-        public OpenNewFeatureState(MonoBehaviour mono, bool needsExitTime, OpenNewFeatureStateData data) : base(mono, needsExitTime)
+        public OpenNewFeatureState(CampSiteButtonBase csbBase, bool needsExitTime, OpenNewFeatureStateData data) : base(csbBase, needsExitTime)
         {
             this.data = data;
         }

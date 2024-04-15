@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 namespace CampSite
 {
-    public class WeaponRotationState : CSBParalelStateBase
+    public class WeaponRotationState : CSBStateBase
     {
         [System.Serializable]
         public class WeaponRotationStateData
@@ -21,10 +21,13 @@ namespace CampSite
 
         WeaponRotationStateData data;
 
-        public WeaponRotationState(MonoBehaviour mono, WeaponRotationStateData data) : base(mono)
+        public WeaponRotationState(MonoBehaviour mono, bool needsExitTime, WeaponRotationStateData data) : base(mono, needsExitTime)
         {
             this.data = data;
         }
+
+        public override void OnEnter() => SubcribeButtonEvents();
+        public override void OnExit() => UnSubcribeButtonEvents();
 
         protected override void OnPointerEnter(PointerEventData eventData)
         {

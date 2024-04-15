@@ -6,11 +6,14 @@ using UnityEngine.EventSystems;
 
 namespace CampSite
 {
-    public class ShowSuppressorState : CSBParalelStateBase
+    public class ShowSuppressorState : CSBStateBase
     {
         Vector3 suppressorDefaultlocalPos;
 
-        public ShowSuppressorState(MonoBehaviour mono) : base(mono) { }
+        public ShowSuppressorState(MonoBehaviour mono, bool needsExitTime) : base(mono, needsExitTime) { }
+
+        public override void OnEnter() => SubcribeButtonEvents();
+        public override void OnExit() => UnSubcribeButtonEvents();
 
         protected override void OnPointerEnter(PointerEventData eventData)
         {

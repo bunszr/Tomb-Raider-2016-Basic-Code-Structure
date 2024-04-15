@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 namespace CampSite
 {
-    public class ShowInformationState : CSBParalelStateBase
+    public class ShowInformationState : CSBStateBase
     {
         [System.Serializable]
         public class ShowInformationStateData
@@ -21,10 +21,13 @@ namespace CampSite
         FeatureInformationPanelHolder featureInformationPanelHolder;
         ShowInformationStateData data;
 
-        public ShowInformationState(MonoBehaviour mono, ShowInformationStateData data) : base(mono)
+        public ShowInformationState(MonoBehaviour mono, bool needsExitTime, ShowInformationStateData data) : base(mono, needsExitTime)
         {
             this.data = data;
         }
+
+        public override void OnEnter() => SubcribeButtonEvents();
+        public override void OnExit() => UnSubcribeButtonEvents();
 
         public override void Init()
         {

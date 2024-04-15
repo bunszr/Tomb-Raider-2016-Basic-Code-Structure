@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 namespace CampSite
 {
-    public class ShowWeaponDataState : CSBParalelStateBase
+    public class ShowWeaponDataState : CSBStateBase
     {
         [System.Serializable]
         public class ShowWeaponDataStateData
@@ -21,7 +21,7 @@ namespace CampSite
         WeaponData weaponData;
         ShowWeaponDataStateData data;
 
-        public ShowWeaponDataState(MonoBehaviour mono, ShowWeaponDataStateData showWeaponDataStateData) : base(mono)
+        public ShowWeaponDataState(MonoBehaviour mono, bool needsExitTime, ShowWeaponDataStateData showWeaponDataStateData) : base(mono, needsExitTime)
         {
             this.data = showWeaponDataStateData;
         }
@@ -35,6 +35,9 @@ namespace CampSite
             weaponDataSliderHolder.canvasGroupTween.KillMine();
             weaponDataSliderHolder.canvasGroupTween = weaponDataSliderHolder.canvasGroup.DOFade(1, data.fadeDuration).From(0).SetAutoKill(false).SetEase(data.fadeEase).Pause();
         }
+
+        public override void OnEnter() => SubcribeButtonEvents();
+        public override void OnExit() => UnSubcribeButtonEvents();
 
         protected override void OnPointerEnter(PointerEventData eventData)
         {

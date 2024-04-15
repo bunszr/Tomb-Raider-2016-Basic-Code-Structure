@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace CampSite
 {
-    public class ResetState : CampSiteButtonStateBase
+    public class ResetState : CSBStateBase
     {
-        public ResetState(MonoBehaviour mono, bool needsExitTime) : base(mono, needsExitTime)
+        public ResetState(CampSiteButtonBase csbBase, bool needsExitTime) : base(csbBase, needsExitTime)
         {
         }
 

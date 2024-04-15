@@ -6,7 +6,7 @@ using Zenject;
 
 namespace CampSite
 {
-    public class InitState : CampSiteButtonStateBase
+    public class InitState : CSBStateBase
     {
         [System.Serializable]
         public class InitStateData
@@ -18,7 +18,7 @@ namespace CampSite
         CinemachineBrain brain;
         CinemachineVirtualCamera virtualCamera;
 
-        public InitState(MonoBehaviour mono, bool needsExitTime, CinemachineBrain brain) : base(mono, needsExitTime)
+        public InitState(CampSiteButtonBase csbBase, bool needsExitTime, CinemachineBrain brain) : base(csbBase, needsExitTime)
         {
             this.brain = brain;
         }

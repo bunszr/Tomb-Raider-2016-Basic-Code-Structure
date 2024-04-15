@@ -24,9 +24,5 @@ MonoBehaviour:
     - Level 01
   - name: Other Scenes
     sceneFolderPath: Assets/_Game/Scenes/Other Scenes
-    sceneObjects:
-    - {fileID: 102900000, guid: b0e0899d441d0274babc1fa9e459b5c6, type: 3}
-    - {fileID: 102900000, guid: bbb63a041c5b4734da4cbd1f238ed4f8, type: 3}
-    sceneNames:
-    - Frequenty Use Effects
-    - Trash Scene
+    sceneObjects: []
+    sceneNames: []

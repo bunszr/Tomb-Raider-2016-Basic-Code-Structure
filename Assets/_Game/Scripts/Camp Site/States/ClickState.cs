@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace CampSite
 {
-    public class ClickState : CampSiteButtonStateBase
+    public class ClickState : CSBStateBase
     {
         [System.Serializable]
         public class ClickStateData
@@ -12,7 +12,7 @@ namespace CampSite
 
         ClickStateData data;
 
-        public ClickState(MonoBehaviour mono, bool needsExitTime, ClickStateData data) : base(mono, needsExitTime)
+        public ClickState(CampSiteButtonBase csbBase, bool needsExitTime, ClickStateData data) : base(csbBase, needsExitTime)
         {
             this.data = data;
         }

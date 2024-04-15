@@ -17,17 +17,18 @@ namespace CampSite
 
             cSBWeaponFeature = GetComponent<CSBWeaponFeature>();
 
-            IStateBaseMine[] _stateBaseMines = new IStateBaseMine[]
+            bool useless = true;
+            StateBase[] stateBases = new StateBase[]
             {
-                new HighlightState(csbBase, cSBWeaponFeature.highlightStateData),
-                new ShowWeaponDataState(csbBase, cSBWeaponFeature.showWeaponDataStateData),
-                new ShowInformationState(csbBase, cSBWeaponFeature.showInformationState),
-                new WeaponRotationState(csbBase, cSBWeaponFeature.weaponRotationStateData),
+                new HighlightState(csbBase, useless, cSBWeaponFeature.highlightStateData),
+                new ShowWeaponDataState(csbBase, useless, cSBWeaponFeature.showWeaponDataStateData),
+                new ShowInformationState(csbBase, useless, cSBWeaponFeature.showInformationState),
+                new WeaponRotationState(csbBase, useless, cSBWeaponFeature.weaponRotationStateData),
             };
 
-            fsm.AddState("InitState", new InitState(this, true, brain));
-            fsm.AddState("HighlightState", new ParalelState(this, false, _stateBaseMines));
-            fsm.AddState("OpenNewFeatureState", new OpenNewFeatureState(this, false, cSBWeaponFeature.openNewFeatureStateData));
+            fsm.AddState("InitState", new InitState(csbBase, true, brain));
+            fsm.AddState("HighlightState", new ParalelState(this, false, stateBases));
+            fsm.AddState("OpenNewFeatureState", new OpenNewFeatureState(csbBase, false, cSBWeaponFeature.openNewFeatureStateData));
 
             fsm.AddTransition(new Transition("InitState", "HighlightState"));
             fsm.AddTriggerTransition("OnClick", new Transition("HighlightState", "OpenNewFeatureState"));
