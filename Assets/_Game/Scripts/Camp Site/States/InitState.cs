@@ -1,8 +1,7 @@
+using System.Collections;
 using Cinemachine;
-using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
-using Zenject;
 
 namespace CampSite
 {
@@ -30,12 +29,18 @@ namespace CampSite
 
         public override void OnEnter()
         {
-            virtualCamera.Priority = brain.ActiveVirtualCamera.Priority + 1;
+            csbBase.StartCoroutine(ActivateVirtualCameraIE());
         }
 
         public override void OnLogic()
         {
             fsm.StateCanExit();
+        }
+
+        IEnumerator ActivateVirtualCameraIE() // ActiveVirtualCamera is null in the first frame if scene is loaded again.
+        {
+            while (brain.ActiveVirtualCamera == null) yield return null;
+            virtualCamera.Priority = brain.ActiveVirtualCamera.Priority + 1;
         }
     }
 }
