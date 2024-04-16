@@ -21,7 +21,7 @@ public class SingletonAndDontDestroyOnLoad<T> : MonoBehaviour where T : Componen
         }
     }
 
-    public virtual void Awake()
+    protected virtual void Awake()
     {
         if (instance == null)
         {

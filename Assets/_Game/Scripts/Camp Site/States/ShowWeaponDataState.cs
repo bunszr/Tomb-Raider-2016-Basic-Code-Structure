@@ -28,10 +28,10 @@ namespace CampSite
 
         public override void Init()
         {
-            featureTypeScriptable = csbBase.GetComponent<CSBSaveable>().FeatureTypeScriptable;
+            featureTypeScriptable = csbBase.FeatureTypeScriptable;
             weaponData = campSiteHolder.WeaponShowLocation.GetComponentInChildren<IWeapon>().WeaponData;
             weaponDataSliderHolder = campSiteHolder.WeaponDataSliderHolder;
-            weaponDataSlider = weaponDataSliderHolder.weaponDataSliders.FirstOrDefault(x => featureTypeScriptable == x.featureTypeScriptable);
+            weaponDataSlider = weaponDataSliderHolder.weaponDataSliders.FirstOrDefault(x => featureTypeScriptable.GetType() == x.featureTypeScriptable.GetType());
             weaponDataSliderHolder.canvasGroupTween.KillMine();
             weaponDataSliderHolder.canvasGroupTween = weaponDataSliderHolder.canvasGroup.DOFade(1, data.fadeDuration).From(0).SetAutoKill(false).SetEase(data.fadeEase).Pause();
         }

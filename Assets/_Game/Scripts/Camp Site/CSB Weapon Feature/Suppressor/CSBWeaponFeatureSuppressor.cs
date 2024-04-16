@@ -3,14 +3,12 @@ using Zenject;
 
 namespace CampSite
 {
-    public class CSBWeaponFeatureSuppressor : CSBSaveable
+    public class CSBWeaponFeatureSuppressor : CampSiteButtonBase
     {
         public HighlightState.HighlightStateData highlightStateData;
         public ClickState.ClickStateData clickStateData;
         public ShowInformationState.ShowInformationStateData showInformationState;
         public OpenNewFeatureState.OpenNewFeatureStateData openNewFeatureStateData;
         public WeaponRotationState.WeaponRotationStateData weaponRotationStateData;
-
-        public override string CSBName => GetComponentInParent<WeaponFeatureSaver>(true).weaponTypeScriptable.WeaponName + " - " + FeatureTypeScriptable.GetType().Name;
     }
 }

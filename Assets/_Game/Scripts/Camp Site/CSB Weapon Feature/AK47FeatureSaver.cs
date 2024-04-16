@@ -4,8 +4,8 @@ namespace CampSite
 {
     public class AK47FeatureSaver : WeaponFeatureSaver
     {
-        public CSBSaveable suppressorCSBSaveable;
-        public CSBSaveable flashLightCSBSaveable;
+        public FeatureTypeScriptable suppressorFeatureScriptable;
+        public FeatureTypeScriptable flashLightFeatureScriptable;
 
         [Button]
         void Save()
@@ -13,8 +13,8 @@ namespace CampSite
             Data data = new Data()
             {
                 weaponDataSaveable = campSiteHolder._Weapon.WeaponData,
-                hasSuppressor = campSiteHolder.DictionaryFeatureData[suppressorCSBSaveable.featureDataSaveable.Guid].IsOpen,
-                hasFlashLight = campSiteHolder.DictionaryFeatureData[flashLightCSBSaveable.featureDataSaveable.Guid].IsOpen,
+                hasSuppressor = suppressorFeatureScriptable.IsOpen,
+                hasFlashLight = flashLightFeatureScriptable.IsOpen,
             };
             FileHandler.SaveToJSON(data, weaponTypeScriptable.WeaponName);
         }

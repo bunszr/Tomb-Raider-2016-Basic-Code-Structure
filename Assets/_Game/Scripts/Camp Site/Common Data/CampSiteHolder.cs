@@ -12,8 +12,6 @@ namespace CampSite
         [SerializeField] WeaponDataSliderHolder weaponDataSliderHolder;
         [SerializeField] FeatureInformationPanelHolder featureInformationPanelHolder;
 
-        [ReadOnly, ShowInInspector] public Dictionary<string, FeatureDataSaveable> DictionaryFeatureData { get; set; }
-
         public Transform WeaponShowLocation { get => weaponShowLocation; }
         public Transform WeaponFeatureIndicator { get => weaponFeatureIndicator; }
         public Transform CharaterStandLocation { get => charaterStandLocation; }

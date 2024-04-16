@@ -142,8 +142,7 @@ PrefabInstance:
         type: 3}
       propertyPath: featureTypeScriptable
       value: 
-      objectReference: {fileID: 11400000, guid: 7336ae83219f4d44fb8ac3da8904ff49,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 6585020796681170699, guid: 1a4d28feb6dece546a07d801ca0c35ea,
         type: 3}
       propertyPath: featureDataSaveable.guid

@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d603a47355cfe204a9001cf4a3dff833, type: 3}
-  m_Name: RateOfFireFeatureScriptable
+  m_Script: {fileID: 11500000, guid: 9dbfa03048f8ef84f8eb8c9efb42a1ec, type: 3}
+  m_Name: AmmoCapacityFeatureScriptable
   m_EditorClassIdentifier: 
-  weaponName: 
+  hash: 1967309555
+  isOpen: 1

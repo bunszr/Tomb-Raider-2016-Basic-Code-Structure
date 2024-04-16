@@ -7,10 +7,14 @@ namespace CampSite
 {
     public abstract class CampSiteButtonBase : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
     {
-        public ButtonEvents buttonEvents = new ButtonEvents();
+        [SerializeField, Required("MyMesh is nessessary for this component.")]
+        FeatureTypeScriptable featureTypeScriptable;
 
         [Inject, HideInInspector] public CampSiteHolder campSiteHolder;
 
+        public ButtonEvents buttonEvents = new ButtonEvents();
+
+        public FeatureTypeScriptable FeatureTypeScriptable => featureTypeScriptable;
 
         public void OnPointerEnter(PointerEventData eventData) => buttonEvents.onPointerEnterEvent?.Invoke(eventData);
         public void OnPointerExit(PointerEventData eventData) => buttonEvents.onPointerExitEvent?.Invoke(eventData);
