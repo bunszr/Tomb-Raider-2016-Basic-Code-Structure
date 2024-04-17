@@ -3,7 +3,7 @@ using Zenject;
 
 namespace CampSite
 {
-    public class CSBWeaponFeatureSuppressor : CampSiteButtonBase
+    public class CSBWeaponFeatureSuppressor : CSBFeatureBase
     {
         public HighlightState.HighlightStateData highlightStateData;
         public ClickState.ClickStateData clickStateData;

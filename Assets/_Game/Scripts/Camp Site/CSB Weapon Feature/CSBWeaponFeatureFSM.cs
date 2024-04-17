@@ -4,6 +4,8 @@ using UnityEngine.EventSystems;
 using Zenject;
 using Cinemachine;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CampSite
 {
@@ -18,7 +20,7 @@ namespace CampSite
             cSBWeaponFeature = GetComponent<CSBWeaponFeature>();
 
             bool useless = true;
-            StateBase[] stateBases = new StateBase[]
+            List<StateBase> stateBases = new List<StateBase>()
             {
                 new HighlightState(csbBase, useless, cSBWeaponFeature.highlightStateData),
                 new ShowWeaponDataState(csbBase, useless, cSBWeaponFeature.showWeaponDataStateData),
@@ -26,8 +28,11 @@ namespace CampSite
                 new WeaponRotationState(csbBase, useless, cSBWeaponFeature.weaponRotationStateData),
             };
 
+            if (!cSBWeaponFeature.FeatureTypeScriptable.IsOpen && csbBase.FeatureTypeScriptable.RequirementsScriptableBases.Any(x => !x.IsTrue()))
+                stateBases.Add(new RequirementsState(csbBase, campSiteHolder.FeatureInformationPanelHolder.requirementsText));
+
             fsm.AddState("InitState", new InitState(csbBase, true, brain));
-            fsm.AddState("HighlightState", new ParalelState(this, false, stateBases));
+            fsm.AddState("HighlightState", new ParalelState(this, false, stateBases.ToArray()));
             fsm.AddState("OpenNewFeatureState", new OpenNewFeatureState(csbBase, false, cSBWeaponFeature.openNewFeatureStateData));
 
             fsm.AddTransition(new Transition("InitState", "HighlightState"));

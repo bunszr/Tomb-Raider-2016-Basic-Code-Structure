@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d603a47355cfe204a9001cf4a3dff833, type: 3}
   m_Name: AK47 Rate Of Fire
   m_EditorClassIdentifier: 
-  hash: 1884081911
-  isOpen: 1
+  hash: 33350
+  isOpen: 0
+  requirementsScriptableBases: []

@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 425155ff462e5354d8f6ff8e9623858d, type: 3}
   m_Name: AK47 Recoil Stability
   m_EditorClassIdentifier: 
-  hash: 959493142
-  isOpen: 1
+  hash: 33354
+  isOpen: 0
+  requirementsScriptableBases: []

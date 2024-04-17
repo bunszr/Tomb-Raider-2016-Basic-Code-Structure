@@ -124,6 +124,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 760fad17fdd1b484da90fc3e783e7414, type: 3}
+--- !u!114 &1929162641185655324 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9083008434882098166, guid: 760fad17fdd1b484da90fc3e783e7414,
+    type: 3}
+  m_PrefabInstance: {fileID: 7262220697061390826}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5130825150905003826 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2593173388331603672, guid: 760fad17fdd1b484da90fc3e783e7414,
@@ -142,8 +154,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 250d0a87dd3dc524c8bea5762f6c89a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  campSiteHolder: {fileID: 0}
   featureTypeScriptable: {fileID: 0}
+  campSiteHolder: {fileID: 0}
+  noRequirementsImage: {fileID: 1929162641185655324}
   highlightStateData:
     imageToHighlight: {fileID: 7324816739293022204}
     duration: 0.4

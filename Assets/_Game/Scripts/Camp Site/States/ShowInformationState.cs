@@ -12,14 +12,11 @@ namespace CampSite
         {
             public string name;
             public string description;
-            public FeatureTypeScriptable[] requirements;
-
-            public float fadeDuration = .4f;
-            public Ease fadeEase = Ease.InOutSine;
         }
 
         FeatureInformationPanelHolder featureInformationPanelHolder;
         ShowInformationStateData data;
+        GameDataScriptable.CampSiteScriptableData.ShowInformationScriptableData ScriptableData => GameDataScriptable.Ins.campSiteScriptableData.showInformationScriptableData;
 
         public ShowInformationState(MonoBehaviour mono, bool needsExitTime, ShowInformationStateData data) : base(mono, needsExitTime)
         {
@@ -29,26 +26,30 @@ namespace CampSite
         public override void OnEnter() => SubcribeButtonEvents();
         public override void OnExit() => UnSubcribeButtonEvents();
 
+        float defautLocalY;
+
         public override void Init()
         {
-            base.Init();
             featureInformationPanelHolder = campSiteHolder.FeatureInformationPanelHolder;
-            featureInformationPanelHolder.tweenForActivate.KillMine();
-            featureInformationPanelHolder.tweenForActivate = featureInformationPanelHolder.canvasGroup.DOFade(1, data.fadeDuration).From(0).SetAutoKill(false).SetEase(data.fadeEase).Pause();
+            defautLocalY = featureInformationPanelHolder.canvasGroup.transform.localPosition.y;
         }
 
         protected override void OnPointerEnter(PointerEventData eventData)
         {
-            featureInformationPanelHolder.tweenForActivate.PlayForward();
+            featureInformationPanelHolder.canvasGroup.DOFade(1, ScriptableData.fadeDuration).From(0).SetEase(ScriptableData.fadeEase);
+            featureInformationPanelHolder.canvasGroup.transform.DOLocalMoveY(ScriptableData.yAnimationAmount, ScriptableData.yAnimationDuration).SetEase(ScriptableData.yAnimEase).From(true);
 
             featureInformationPanelHolder.nameText.text = data.name;
             featureInformationPanelHolder.descriptionText.text = data.description;
-            featureInformationPanelHolder.requirementsText.text = "Fill it later";
         }
 
         protected override void OnPointerExit(PointerEventData eventData)
         {
-            featureInformationPanelHolder.tweenForActivate.PlayBackwards();
+            featureInformationPanelHolder.canvasGroup.DOKill();
+            featureInformationPanelHolder.canvasGroup.transform.DOKill();
+
+            featureInformationPanelHolder.canvasGroup.alpha = 0;
+            featureInformationPanelHolder.canvasGroup.transform.SetLocalPosY(defautLocalY);
         }
     }
 }

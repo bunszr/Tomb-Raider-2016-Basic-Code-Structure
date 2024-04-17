@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hash: 33362
   isOpen: 0
+  requirementsScriptableBases:
+  - {fileID: 11400000, guid: 79a7cf24994574b4c99f5ce032beb249, type: 2}

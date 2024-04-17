@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: AK47 Flash Light
   m_EditorClassIdentifier: 
   hash: 33346
-  isOpen: 1
+  isOpen: 0
+  requirementsScriptableBases:
+  - {fileID: 11400000, guid: 769fd655b0f3fa54fb28901c29627c30, type: 2}
+  - {fileID: 11400000, guid: 93d45a0134884d540ae386d179a2527a, type: 2}

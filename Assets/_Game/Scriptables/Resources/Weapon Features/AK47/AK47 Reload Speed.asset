@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0518164b8fe193348ac17108cc938602, type: 3}
   m_Name: AK47 Reload Speed
   m_EditorClassIdentifier: 
-  hash: 1173820922
-  isOpen: 1
+  hash: 33358
+  isOpen: 0
+  requirementsScriptableBases: []

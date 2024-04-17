@@ -3,7 +3,7 @@ using Zenject;
 
 namespace CampSite
 {
-    public class CSBWeaponFeature : CampSiteButtonBase
+    public class CSBWeaponFeature : CSBFeatureBase
     {
         public HighlightState.HighlightStateData highlightStateData;
         public ShowWeaponDataState.ShowWeaponDataStateData showWeaponDataStateData;

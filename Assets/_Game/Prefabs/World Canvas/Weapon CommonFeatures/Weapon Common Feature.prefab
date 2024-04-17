@@ -410,6 +410,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Weapon Common Feature
       objectReference: {fileID: 0}
+    - target: {fileID: 5793483858998237634, guid: c86c82df673fc64489aa8c467463b486,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8347651872973830528, guid: c86c82df673fc64489aa8c467463b486,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c86c82df673fc64489aa8c467463b486, type: 3}
 --- !u!1 &3291319348371380792 stripped
@@ -442,8 +452,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f8e04060f4ac4643b62e1b0f99d6eac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  campSiteHolder: {fileID: 0}
   featureTypeScriptable: {fileID: 0}
+  campSiteHolder: {fileID: 0}
+  noRequirementsImage: {fileID: 8096492445615636246}
   highlightStateData:
     imageToHighlight: {fileID: 3580733640825325330}
     duration: 0.2
@@ -469,3 +480,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 159394076920297210}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8096492445615636246 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8244627377371417068, guid: c86c82df673fc64489aa8c467463b486,
+    type: 3}
+  m_PrefabInstance: {fileID: 159394076920297210}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

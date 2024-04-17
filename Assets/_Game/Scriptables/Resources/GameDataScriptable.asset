@@ -13,3 +13,10 @@ MonoBehaviour:
   m_Name: GameDataScriptable
   m_EditorClassIdentifier: 
   loadFeatureScriptableDataFromJSONinEditor: 0
+  campSiteScriptableData:
+    showInformationScriptableData:
+      fadeDuration: 0.3
+      fadeEase: 3
+      yAnimationDuration: 0.5
+      yAnimationAmount: 0.2
+      yAnimEase: 27

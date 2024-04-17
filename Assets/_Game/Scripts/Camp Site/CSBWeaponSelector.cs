@@ -3,7 +3,7 @@ using Zenject;
 
 namespace CampSite
 {
-    public class CSBWeapon : CampSiteButtonBase
+    public class CSBWeaponSelector : CampSiteButtonBase
     {
         [Inject] public IWeaponToggler _weaponToggler;
 

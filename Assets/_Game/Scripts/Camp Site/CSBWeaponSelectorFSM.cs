@@ -2,7 +2,7 @@
 
 // namespace CampSite
 // {
-//     public class CSBWeaponFSM : CSBBaseFSM
+//     public class CSBWeaponSelectorFSM : CSBBaseFSM
 //     {
 //         CSBWeapon cSBWeapon;
 

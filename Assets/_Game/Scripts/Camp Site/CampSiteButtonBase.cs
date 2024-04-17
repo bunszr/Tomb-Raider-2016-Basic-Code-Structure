@@ -7,7 +7,7 @@ namespace CampSite
 {
     public abstract class CampSiteButtonBase : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
     {
-        [SerializeField, Required("MyMesh is nessessary for this component.")]
+        [SerializeField, Required("Feature Type is nessessary for this component.")]
         FeatureTypeScriptable featureTypeScriptable;
 
         [Inject, HideInInspector] public CampSiteHolder campSiteHolder;

@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc7b10594dcbd0b4ab89b6b953b2a790, type: 3}
   m_Name: AK47 Damage
   m_EditorClassIdentifier: 
-  hash: 330247800
-  isOpen: 1
+  hash: 33342
+  isOpen: 0
+  requirementsScriptableBases: []
