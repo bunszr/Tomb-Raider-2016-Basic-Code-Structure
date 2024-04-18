@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 737e1a4b6b0821a4d859d9d2b707dcad, type: 3}
   m_Name: AK47 Suppressor
   m_EditorClassIdentifier: 
-  hash: 33362
+  hash: 8708
   isOpen: 0
   requirementsScriptableBases:
   - {fileID: 11400000, guid: 79a7cf24994574b4c99f5ce032beb249, type: 2}
+  costDatas:
+  - inventoryItem: {fileID: 11400000, guid: c956685664ff47347b37e655bcf0a22e, type: 2}
+    costQuantity: 3
+  - inventoryItem: {fileID: 11400000, guid: 1d23c3d6c2e31874fa9e0050641adafd, type: 2}
+    costQuantity: 3

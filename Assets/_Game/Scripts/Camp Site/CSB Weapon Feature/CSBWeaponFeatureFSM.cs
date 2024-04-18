@@ -26,6 +26,7 @@ namespace CampSite
                 new ShowWeaponDataState(csbBase, useless, cSBWeaponFeature.showWeaponDataStateData),
                 new ShowInformationState(csbBase, useless, cSBWeaponFeature.showInformationState),
                 new WeaponRotationState(csbBase, useless, cSBWeaponFeature.weaponRotationStateData),
+                new ShowCostDataState(csbBase),
             };
 
             if (!cSBWeaponFeature.FeatureTypeScriptable.IsOpen && csbBase.FeatureTypeScriptable.RequirementsScriptableBases.Any(x => !x.IsTrue()))

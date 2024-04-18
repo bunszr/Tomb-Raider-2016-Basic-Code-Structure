@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3ef430a5f0199544ac1a0f77fa4b4df, type: 3}
   m_Name: GameDataScriptable
   m_EditorClassIdentifier: 
-  loadFeatureScriptableDataFromJSONinEditor: 0
+  loadFeatureFromJSONinEditor: 0
+  loadInventoryFromJSONinEditor: 0
   campSiteScriptableData:
     showInformationScriptableData:
       fadeDuration: 0.3
@@ -20,3 +21,9 @@ MonoBehaviour:
       yAnimationDuration: 0.5
       yAnimationAmount: 0.2
       yAnimEase: 27
+    showCostAndInventoryScriptableData:
+      fadeDuration: 0.2
+      fadeEase: 4
+      posAnimationDuration: 1
+      posAnimationAmount: 0.3
+      posAnimEase: 27

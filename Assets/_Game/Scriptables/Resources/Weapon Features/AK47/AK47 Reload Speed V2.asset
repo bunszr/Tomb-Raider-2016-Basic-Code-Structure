@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0518164b8fe193348ac17108cc938602, type: 3}
   m_Name: AK47 Reload Speed V2
   m_EditorClassIdentifier: 
-  hash: 33376
+  hash: 8712
   isOpen: 0
   requirementsScriptableBases:
   - {fileID: 11400000, guid: c089ea147fac5cd4f97e6632c78736bd, type: 2}
+  costDatas:
+  - inventoryItem: {fileID: 11400000, guid: c956685664ff47347b37e655bcf0a22e, type: 2}
+    costQuantity: 2
+  - inventoryItem: {fileID: 11400000, guid: 1d23c3d6c2e31874fa9e0050641adafd, type: 2}
+    costQuantity: 3

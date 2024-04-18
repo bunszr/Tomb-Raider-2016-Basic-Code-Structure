@@ -16,7 +16,7 @@ namespace CampSite
         {
             featureTypeScriptables = Resources.LoadAll<FeatureTypeScriptable>("");
 #if UNITY_EDITOR
-            if (!GameDataScriptable.Ins.LoadFeatureScriptableDataFromJSONinEditor)
+            if (!GameDataScriptable.Ins.LoadFeatureFromJSONinEditor)
                 LoadFromScriptable();
             else
                 LoadFromJSON();

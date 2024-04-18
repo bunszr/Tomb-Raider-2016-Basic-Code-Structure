@@ -1,4 +1,5 @@
 using CampSite;
+using Inventory;
 using UnityEngine;
 
 class RuntimeInitializeOnLoadMethodClass
@@ -6,8 +7,20 @@ class RuntimeInitializeOnLoadMethodClass
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     static void BeforeSceneLoad()
     {
-        GameObject go2 = new GameObject("FeatureSaverAndLoader", typeof(FeatureSaverAndLoader));
-        GameObject.DontDestroyOnLoad(go2);
+        CreateFeatureSaverAndLoader();
+        CreateInventorySaverAndLoader();
+    }
+
+    static void CreateFeatureSaverAndLoader()
+    {
+        GameObject go = new GameObject("FeatureSaverAndLoader", typeof(FeatureSaverAndLoader));
+        GameObject.DontDestroyOnLoad(go);
+    }
+
+    static void CreateInventorySaverAndLoader()
+    {
+        GameObject go = new GameObject("InventorySaverAndLoader", typeof(InventorySaverAndLoader));
+        GameObject.DontDestroyOnLoad(go);
     }
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
