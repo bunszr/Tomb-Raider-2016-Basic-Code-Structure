@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d603a47355cfe204a9001cf4a3dff833, type: 3}
   m_Name: AK47 Rate Of Fire
   m_EditorClassIdentifier: 
-  hash: 8718
+  hash: 8746
+  featureName: Rate Of Fire
+  description: Increases rate of fire
   isOpen: 0
   requirementsScriptableBases: []
   costDatas:
@@ -20,3 +22,4 @@ MonoBehaviour:
     costQuantity: 1
   - inventoryItem: {fileID: 11400000, guid: 1d23c3d6c2e31874fa9e0050641adafd, type: 2}
     costQuantity: 1
+  valueToAdd: 9

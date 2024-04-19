@@ -1,3 +1,4 @@
+using Cinemachine;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -11,6 +12,7 @@ namespace CampSite
         FeatureTypeScriptable featureTypeScriptable;
 
         [Inject, HideInInspector] public CampSiteHolder campSiteHolder;
+        [Inject, HideInInspector] public CinemachineBrain brain;
 
         public ButtonEvents buttonEvents = new ButtonEvents();
 

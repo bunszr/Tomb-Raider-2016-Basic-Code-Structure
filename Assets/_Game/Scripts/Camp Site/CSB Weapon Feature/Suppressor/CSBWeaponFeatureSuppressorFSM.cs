@@ -29,10 +29,10 @@ namespace CampSite
 
             fsm.AddState("InitState", new InitState(csbBase, true, brain));
             fsm.AddState("HighlightState", new ParalelState(this, false, stateBases.ToArray()));
-            fsm.AddState("OpenNewFeatureState", new OpenNewFeatureState(csbBase, false, cSBWeaponFeatureSuppressor.openNewFeatureStateData));
+            // fsm.AddState("UpgradeWeaponCommonDataState", new UpgradeWeaponCommonDataState(csbBase, false));
 
             fsm.AddTransition(new Transition("InitState", "HighlightState"));
-            fsm.AddTriggerTransition("OnClick", new Transition("HighlightState", "OpenNewFeatureState"));
+            fsm.AddTriggerTransition("OnClick", new Transition("HighlightState", "UpgradeWeaponCommonDataState"));
 
             fsm.SetStartState("InitState");
             fsm.Init();

@@ -17,10 +17,10 @@ public class SingleShot : ShootBehaviourBase
 
     public override void OnUpdate()
     {
-        if (Input.GetMouseButtonDown(0) && _weapon.GetAmmoData().CurrAmmoRP.Value > 0)
+        if (Input.GetMouseButtonDown(0) && _weapon.GetAmmoData().BulletCountInMagazineRP.Value > 0)
         {
             _weapon.Fire();
-            _weapon.GetAmmoData().CurrAmmoRP.Value--;
+            _weapon.GetAmmoData().BulletCountInMagazineRP.Value--;
         }
     }
 }

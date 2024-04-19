@@ -1,15 +1,17 @@
+using Sirenix.OdinInspector;
 using UniRx;
+using UnityEngine;
 
 public class NormalAmmo : IAmmoData
 {
-    public ReactiveProperty<int> CurrAmmoRP { get; set; }
-    public ReactiveProperty<int> TotalAmmoRP { get; set; }
-    public ReactiveProperty<int> MagazineCapacity { get; set; }
+    [ReadOnly, ShowInInspector] public ReactiveProperty<int> BulletCountInMagazineRP { get; private set; }
+    [ReadOnly, ShowInInspector] public ReactiveProperty<int> MagazineCapacityRP { get; private set; }
+    [ReadOnly, ShowInInspector] public ReactiveProperty<int> CurrAmmoCapacityRP { get; private set; }
 
-    public NormalAmmo()
+    public NormalAmmo(NormalAmmoSaveable normalAmmoSaveable)
     {
-        CurrAmmoRP = new ReactiveProperty<int>(3);
-        TotalAmmoRP = new ReactiveProperty<int>(7);
-        MagazineCapacity = new ReactiveProperty<int>(3);
+        BulletCountInMagazineRP = new ReactiveProperty<int>(normalAmmoSaveable.magazineCapacity);
+        MagazineCapacityRP = new ReactiveProperty<int>(normalAmmoSaveable.magazineCapacity);
+        CurrAmmoCapacityRP = new ReactiveProperty<int>(normalAmmoSaveable.currAmmoCapacity);
     }
 }

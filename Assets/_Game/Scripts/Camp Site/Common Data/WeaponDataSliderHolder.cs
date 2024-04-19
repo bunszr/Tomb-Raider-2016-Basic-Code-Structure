@@ -5,7 +5,6 @@ namespace CampSite
 {
     public class WeaponDataSliderHolder : MonoBehaviour
     {
-        public Tween canvasGroupTween;
         public CanvasGroup canvasGroup;
         public WeaponDataSlider[] weaponDataSliders;
         public WeaponDataSlider damageSlider;

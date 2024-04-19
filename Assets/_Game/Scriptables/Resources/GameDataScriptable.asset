@@ -27,3 +27,24 @@ MonoBehaviour:
       posAnimationDuration: 1
       posAnimationAmount: 0.3
       posAnimEase: 27
+    weaponDataSliderScriptableData:
+      fadeDuration: 0.2
+      fadeEase: 4
+      yAnimationDuration: 1
+      yAnimationAmount: 0.4
+      yAnimEase: 30
+    showUpgradedFeatureStateScriptableData:
+      fadeInDuration: 0.8
+      fadeOutDuration: 0.4
+      fadeEase: 4
+      stateDuration: 1
+      yAnimationDuration: 0.8
+      yAnimationAmount: 3
+      yAnimEase: 30
+  weaponScriptableData:
+    maxWeaponDataSaveable:
+      damage: 100
+      recoilStability: 50
+      reloadSpeed: 10
+      ammoCapacity: 40
+      rateOfFire: 30

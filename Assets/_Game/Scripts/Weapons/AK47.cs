@@ -1,10 +1,10 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-public class Riffle01 : WeaponBase, ISuppressorAddOn, IFlashLightAddOn
+public class AK47 : WeaponBase, ISuppressorAddOn, IFlashLightAddOn
 {
-    public FireAmmo fireAmmo;
-    public NormalAmmo normalAmmo;
+    public SuppressorFeatureScriptable suppressorFeatureScriptable;
+    public FlashLightFeatureScriptable flashLightFeatureScriptable;
 
     public AutomaticFireBehavior.AutomaticFireBehaviorData automaticFireBehaviorData;
     public NormalBulletBehaviour.NormalBulletBehaviourData normalBulletModeData;

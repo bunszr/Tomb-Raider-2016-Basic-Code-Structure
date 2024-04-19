@@ -14,7 +14,7 @@ namespace Weapon
 
         public override TaskStatus OnUpdate()
         {
-            return _weapon.GetAmmoData().TotalAmmoRP.Value <= 0 ? TaskStatus.Success : TaskStatus.Failure;
+            return _weapon.GetAmmoData().CurrAmmoCapacityRP.Value <= 0 ? TaskStatus.Success : TaskStatus.Failure;
         }
     }
 }

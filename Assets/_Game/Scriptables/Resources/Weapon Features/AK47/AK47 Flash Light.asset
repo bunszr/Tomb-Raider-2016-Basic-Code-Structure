@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb03c92ab385cf0458a4a07f9f71447b, type: 3}
   m_Name: AK47 Flash Light
   m_EditorClassIdentifier: 
-  hash: 8732
+  hash: 8760
+  featureName: Flash Light Add On
+  description: Add flash light to the weapon
   isOpen: 0
   requirementsScriptableBases:
   - {fileID: 11400000, guid: 769fd655b0f3fa54fb28901c29627c30, type: 2}

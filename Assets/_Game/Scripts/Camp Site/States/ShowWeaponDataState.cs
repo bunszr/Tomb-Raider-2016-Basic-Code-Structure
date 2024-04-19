@@ -8,72 +8,87 @@ namespace CampSite
 {
     public class ShowWeaponDataState : CSBStateBase
     {
-        [System.Serializable]
-        public class ShowWeaponDataStateData
-        {
-            public float fadeDuration = .4f;
-            public Ease fadeEase = Ease.InOutSine;
-        }
+        float defautLocalY;
 
         WeaponDataSlider weaponDataSlider;
         FeatureTypeScriptable featureTypeScriptable;
-        WeaponDataSliderHolder weaponDataSliderHolder;
-        WeaponData weaponData;
-        ShowWeaponDataStateData data;
+        WeaponDataSliderHolder holder;
+        IAddableIntValue _addableIntegerValue;
+        WeaponDataScriptable weaponDataScriptable;
 
-        public ShowWeaponDataState(MonoBehaviour mono, bool needsExitTime, ShowWeaponDataStateData showWeaponDataStateData) : base(mono, needsExitTime)
+
+        GameDataScriptable.CampSiteScriptableData.WeaponDataSliderScriptableData ScriptableData => GameDataScriptable.Ins.campSiteScriptableData.weaponDataSliderScriptableData;
+
+        public ShowWeaponDataState(MonoBehaviour mono, WeaponDataScriptable weaponDataScriptable, bool needsExitTime = false) : base(mono, needsExitTime)
         {
-            this.data = showWeaponDataStateData;
+            this.weaponDataScriptable = weaponDataScriptable;
         }
 
         public override void Init()
         {
             featureTypeScriptable = csbBase.FeatureTypeScriptable;
-            weaponData = campSiteHolder.WeaponShowLocation.GetComponentInChildren<IWeapon>().WeaponData;
-            weaponDataSliderHolder = campSiteHolder.WeaponDataSliderHolder;
-            weaponDataSlider = weaponDataSliderHolder.weaponDataSliders.FirstOrDefault(x => featureTypeScriptable.GetType() == x.featureTypeScriptable.GetType());
-            weaponDataSliderHolder.canvasGroupTween.KillMine();
-            weaponDataSliderHolder.canvasGroupTween = weaponDataSliderHolder.canvasGroup.DOFade(1, data.fadeDuration).From(0).SetAutoKill(false).SetEase(data.fadeEase).Pause();
+            _addableIntegerValue = featureTypeScriptable as IAddableIntValue;
+            holder = campSiteHolder.WeaponDataSliderHolder;
+            weaponDataSlider = holder.weaponDataSliders.FirstOrDefault(x => featureTypeScriptable.GetType() == x.featureTypeScriptable.GetType());
+            defautLocalY = holder.canvasGroup.transform.localPosition.y;
         }
 
         public override void OnEnter() => SubcribeButtonEvents();
         public override void OnExit() => UnSubcribeButtonEvents();
 
+
         protected override void OnPointerEnter(PointerEventData eventData)
         {
-            weaponDataSliderHolder.canvasGroupTween.PlayForward();
+            GameDataScriptable.WeaponScriptableData.MaxWeaponDataSaveable maxWeaponData = GameDataScriptable.Ins.weaponScriptableData.maxWeaponDataSaveable;
+            WeaponData weaponData = weaponDataScriptable.weaponData;
 
-            weaponDataSliderHolder.damageSlider.currValueImage.fillAmount = weaponData.DamageRP.Value / WeaponHelper.maxWeaponData.damage;
-            weaponDataSliderHolder.recoilStabilitySlider.currValueImage.fillAmount = weaponData.RecoilStabilityRP.Value / WeaponHelper.maxWeaponData.recoilStability;
-            weaponDataSliderHolder.reloadSpeedSlider.currValueImage.fillAmount = weaponData.ReloadSpeedRP.Value / WeaponHelper.maxWeaponData.reloadSpeed;
-            weaponDataSliderHolder.ammoCapacitySlider.currValueImage.fillAmount = weaponData.AmmoCapacityRB.Value / WeaponHelper.maxWeaponData.ammoCapacity;
-            weaponDataSliderHolder.rateOfFireSlider.currValueImage.fillAmount = weaponData.RateOfFireRP.Value / WeaponHelper.maxWeaponData.rateOfFire;
+            holder.damageSlider.currValueImage.fillAmount = weaponData.DamageRP.Value / (float)maxWeaponData.damage;
+            holder.recoilStabilitySlider.currValueImage.fillAmount = weaponData.RecoilStabilityRP.Value / (float)maxWeaponData.recoilStability;
+            holder.reloadSpeedSlider.currValueImage.fillAmount = weaponData.ReloadSpeedRP.Value / (float)maxWeaponData.reloadSpeed;
+            holder.ammoCapacitySlider.currValueImage.fillAmount = weaponData.AmmoCapacityRP.Value / (float)maxWeaponData.ammoCapacity;
+            holder.rateOfFireSlider.currValueImage.fillAmount = weaponData.RateOfFireRP.Value / (float)maxWeaponData.rateOfFire;
 
-            weaponDataSliderHolder.damageSlider.addingValueImage.fillAmount = weaponDataSliderHolder.damageSlider.currValueImage.fillAmount;
-            weaponDataSliderHolder.recoilStabilitySlider.addingValueImage.fillAmount = weaponDataSliderHolder.recoilStabilitySlider.currValueImage.fillAmount;
-            weaponDataSliderHolder.reloadSpeedSlider.addingValueImage.fillAmount = weaponDataSliderHolder.reloadSpeedSlider.currValueImage.fillAmount;
-            weaponDataSliderHolder.ammoCapacitySlider.addingValueImage.fillAmount = weaponDataSliderHolder.ammoCapacitySlider.currValueImage.fillAmount;
-            weaponDataSliderHolder.rateOfFireSlider.addingValueImage.fillAmount = weaponDataSliderHolder.rateOfFireSlider.currValueImage.fillAmount;
+            holder.damageSlider.addingValueImage.fillAmount = holder.damageSlider.currValueImage.fillAmount;
+            holder.recoilStabilitySlider.addingValueImage.fillAmount = holder.recoilStabilitySlider.currValueImage.fillAmount;
+            holder.reloadSpeedSlider.addingValueImage.fillAmount = holder.reloadSpeedSlider.currValueImage.fillAmount;
+            holder.ammoCapacitySlider.addingValueImage.fillAmount = holder.ammoCapacitySlider.currValueImage.fillAmount;
+            holder.rateOfFireSlider.addingValueImage.fillAmount = holder.rateOfFireSlider.currValueImage.fillAmount;
 
-            float addingAmount = WeaponHelper.CommonWeaponDataAddingAmount;
+            float addingAmount = _addableIntegerValue.ValueToAdd;
             float fillAmount = 0;
-            if (featureTypeScriptable is DamageFeatureScriptable)
-                fillAmount = (weaponData.DamageRP.Value + addingAmount) / WeaponHelper.maxWeaponData.damage;
-            else if (featureTypeScriptable is RecoilStabilityFeatureScriptable)
-                fillAmount = (weaponData.RecoilStabilityRP.Value + addingAmount) / WeaponHelper.maxWeaponData.recoilStability;
-            else if (featureTypeScriptable is ReloadSpeedFeatureScriptable)
-                fillAmount = (weaponData.ReloadSpeedRP.Value + addingAmount) / WeaponHelper.maxWeaponData.reloadSpeed;
-            else if (featureTypeScriptable is AmmoCapacityFeatureScriptable)
-                fillAmount = (weaponData.AmmoCapacityRB.Value + addingAmount) / WeaponHelper.maxWeaponData.ammoCapacity;
-            else if (featureTypeScriptable is RateOfFireFeatureScriptable)
-                fillAmount = (weaponData.RateOfFireRP.Value + addingAmount) / WeaponHelper.maxWeaponData.rateOfFire;
-
+            switch (featureTypeScriptable)
+            {
+                case DamageFeatureScriptable:
+                    fillAmount = (weaponData.DamageRP.Value + addingAmount) / maxWeaponData.damage;
+                    break;
+                case RecoilStabilityFeatureScriptable:
+                    fillAmount = (weaponData.RecoilStabilityRP.Value + addingAmount) / maxWeaponData.recoilStability;
+                    break;
+                case ReloadSpeedFeatureScriptable:
+                    fillAmount = (weaponData.ReloadSpeedRP.Value + addingAmount) / maxWeaponData.reloadSpeed;
+                    break;
+                case AmmoCapacityFeatureScriptable:
+                    fillAmount = (weaponData.AmmoCapacityRP.Value + addingAmount) / maxWeaponData.ammoCapacity;
+                    break;
+                case RateOfFireFeatureScriptable:
+                    fillAmount = (weaponData.RateOfFireRP.Value + addingAmount) / maxWeaponData.rateOfFire;
+                    break;
+                default:
+                    break;
+            }
             weaponDataSlider.addingValueImage.fillAmount = fillAmount;
+
+            holder.canvasGroup.DOFade(1, ScriptableData.fadeDuration).From(0).SetEase(ScriptableData.fadeEase);
+            holder.canvasGroup.transform.DOLocalMoveY(ScriptableData.yAnimationAmount, ScriptableData.yAnimationDuration).SetEase(ScriptableData.yAnimEase).From(true);
         }
 
         protected override void OnPointerExit(PointerEventData eventData)
         {
-            weaponDataSliderHolder.canvasGroupTween.PlayBackwards();
+            holder.canvasGroup.DOKill();
+            holder.canvasGroup.transform.DOKill();
+
+            holder.canvasGroup.alpha = 0;
+            holder.canvasGroup.transform.SetLocalPosY(defautLocalY);
         }
     }
 }

@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 737e1a4b6b0821a4d859d9d2b707dcad, type: 3}
   m_Name: AK47 Suppressor
   m_EditorClassIdentifier: 
-  hash: 8708
+  hash: 8736
+  featureName: Suppressor
+  description: Add suppressor to the weapon. Enemy find you hardly
   isOpen: 0
   requirementsScriptableBases:
   - {fileID: 11400000, guid: 79a7cf24994574b4c99f5ce032beb249, type: 2}

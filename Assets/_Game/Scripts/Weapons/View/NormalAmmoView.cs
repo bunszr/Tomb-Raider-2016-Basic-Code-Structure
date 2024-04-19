@@ -1,31 +1,48 @@
 using System.Collections;
+using Sirenix.OdinInspector;
+using TMPro;
+using UniRx;
 using UnityEngine;
 
 public class NormalAmmoView : MonoBehaviour
 {
-    IView _view;
+    public WeaponDataScriptable weaponDataScriptable;
+    public TextMeshProUGUI currAmmoTMPro;
+    public TextMeshProUGUI totalAmmoTMPro;
 
-    public NormalWeaponView.NormalWeaponViewData normalWeaponViewData;
+    [ReadOnly, ShowInInspector] INormalAmmo _normalAmmo;
+    CompositeDisposable disposables;
 
     private void Awake()
     {
-        IWeapon _weapon = transform.parent.GetComponentInChildren<IWeapon>();
-        _view = new NormalWeaponView(_weapon, transform, normalWeaponViewData);
+        WeaponBase weaponBase = transform.parent.GetComponentInChildren<WeaponBase>();
+        weaponBase.onEquip += OnEquip;
+        weaponBase.onUnEquip += OnUnEquip;
     }
 
-    private void OnEnable()
+    public void OnEquip(IWeapon _weapon)
     {
-        StartCoroutine(EnterIE());
+        _normalAmmo = weaponDataScriptable as INormalAmmo;
+
+        disposables = new CompositeDisposable();
+        _normalAmmo.NormalAmmo.BulletCountInMagazineRP.Subscribe(OnBulletCountInMagazine).AddTo(disposables);
+        _normalAmmo.NormalAmmo.CurrAmmoCapacityRP.Subscribe(OnCurrAmmoChanged).AddTo(disposables);
     }
 
-    private void OnDisable()
+    public void OnUnEquip(IWeapon _weapon)
     {
-        _view.Exit();
+        disposables.Dispose();
     }
 
-    IEnumerator EnterIE()
+    private void OnDestroy() => disposables?.Dispose();
+
+    void OnBulletCountInMagazine(int ammo)
     {
-        yield return null;
-        _view.Enter();
+        currAmmoTMPro.text = ammo.ToString();
+    }
+
+    void OnCurrAmmoChanged(int ammo)
+    {
+        totalAmmoTMPro.text = ammo + "|";
     }
 }

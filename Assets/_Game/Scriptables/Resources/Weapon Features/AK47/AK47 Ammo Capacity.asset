@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dbfa03048f8ef84f8eb8c9efb42a1ec, type: 3}
   m_Name: AK47 Ammo Capacity
   m_EditorClassIdentifier: 
-  hash: 8724
-  isOpen: 1
+  hash: 8752
+  featureName: Ammo Capacity
+  description: Increases ammo capacity
+  isOpen: 0
   requirementsScriptableBases: []
   costDatas:
   - inventoryItem: {fileID: 11400000, guid: 35493c2e0b29d374f8263d60bd766bb3, type: 2}
     costQuantity: 1
   - inventoryItem: {fileID: 11400000, guid: 1d23c3d6c2e31874fa9e0050641adafd, type: 2}
     costQuantity: 3
+  valueToAdd: 8

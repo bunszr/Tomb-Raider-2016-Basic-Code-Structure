@@ -4,7 +4,9 @@ using UniRx;
 
 public abstract class WeaponBase : MonoBehaviour, IWeapon
 {
-    [SerializeField] WeaponTypeScriptable weaponTypeScriptable;
+    public WeaponDataScriptable weaponDataScriptable;
+    public System.Action<IWeapon> onEquip;
+    public System.Action<IWeapon> onUnEquip;
 
     public ReactiveProperty<IAmmoData> _ammoDataRP;
 
@@ -12,13 +14,13 @@ public abstract class WeaponBase : MonoBehaviour, IWeapon
 
     [ReadOnly, ShowInInspector] public WeaponData WeaponData { get; set; }
     public Transform Transform => transform;
-    public WeaponTypeScriptable WeaponTypeScriptable => weaponTypeScriptable;
 
     public abstract void Fire();
 
     [Button]
     public virtual void Equip()
     {
+        onEquip?.Invoke(this);
         ChangeActiveSelfMVC(true);
         _fireMode.Enter();
     }
@@ -26,6 +28,7 @@ public abstract class WeaponBase : MonoBehaviour, IWeapon
     [Button]
     public virtual void Unequip()
     {
+        onUnEquip?.Invoke(this);
         _fireMode.Exit();
         ChangeActiveSelfMVC(false);
     }

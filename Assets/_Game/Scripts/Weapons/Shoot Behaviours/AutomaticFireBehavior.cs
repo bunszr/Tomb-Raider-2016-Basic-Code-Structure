@@ -24,11 +24,11 @@ public class AutomaticFireBehavior : ShootBehaviourBase, IFireBehaviour
 
     public override void OnUpdate()
     {
-        if (Input.GetMouseButton(0) && _weapon.GetAmmoData().CurrAmmoRP.Value > 0 && nextTime < Time.time)
+        if (Input.GetMouseButton(0) && _weapon.GetAmmoData().BulletCountInMagazineRP.Value > 0 && nextTime < Time.time)
         {
             nextTime = Time.time + data.delay;
             _weapon.Fire();
-            _weapon.GetAmmoData().CurrAmmoRP.Value--;
+            _weapon.GetAmmoData().BulletCountInMagazineRP.Value--;
         }
     }
 }

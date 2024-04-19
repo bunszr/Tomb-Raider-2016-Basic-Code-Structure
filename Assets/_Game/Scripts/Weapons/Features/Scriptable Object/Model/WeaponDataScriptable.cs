@@ -1,8 +1,10 @@
 using UnityEngine;
 
-public abstract class WeaponTypeScriptable : ScriptableObject
+public abstract class WeaponDataScriptable : ScriptableObject
 {
     [SerializeField] string weaponName;
+
+    public WeaponData weaponData;
 
     public string WeaponName { get => weaponName; }
 }

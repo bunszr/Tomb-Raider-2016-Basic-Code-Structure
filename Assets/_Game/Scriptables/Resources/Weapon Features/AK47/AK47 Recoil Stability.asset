@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 425155ff462e5354d8f6ff8e9623858d, type: 3}
   m_Name: AK47 Recoil Stability
   m_EditorClassIdentifier: 
-  hash: 8716
+  hash: 8744
+  featureName: Recoil Stability
+  description: Increases recoil stability
   isOpen: 0
   requirementsScriptableBases: []
   costDatas:
@@ -20,3 +22,4 @@ MonoBehaviour:
     costQuantity: 3
   - inventoryItem: {fileID: 11400000, guid: c956685664ff47347b37e655bcf0a22e, type: 2}
     costQuantity: 1
+  valueToAdd: 6

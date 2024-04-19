@@ -13,9 +13,6 @@ public class PistolInstaller : MonoBehaviour
         pistol._shellCasingBehaviour = new NormalShellCasingBehaviour(pistol, pistol.normalShellCasingData);
         pistol._recoilBehaviour = new PistolRecoilBehaviour(pistol, pistol.pistolRecoilBehaviourData);
 
-        pistol.normalAmmo = new NormalAmmo();
-        pistol._ammoDataRP = new ReactiveProperty<IAmmoData>(pistol.normalAmmo);
-
         pistol.Equip();
     }
 }

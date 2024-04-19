@@ -7,8 +7,8 @@ public class ReloadMagazine : Action
     {
         IWeapon _weapon = transform.parent.GetComponentInChildren<IWeapon>();
         IAmmoData _ammoData = _weapon.GetAmmoData();
-        _ammoData.CurrAmmoRP.Value = Mathf.Min(_ammoData.MagazineCapacity.Value, _ammoData.TotalAmmoRP.Value);
-        _ammoData.TotalAmmoRP.Value = Mathf.Max(_ammoData.TotalAmmoRP.Value - _ammoData.MagazineCapacity.Value, 0);
+        _ammoData.BulletCountInMagazineRP.Value = Mathf.Min(_ammoData.MagazineCapacityRP.Value, _ammoData.CurrAmmoCapacityRP.Value);
+        _ammoData.CurrAmmoCapacityRP.Value = Mathf.Max(_ammoData.CurrAmmoCapacityRP.Value - _ammoData.MagazineCapacityRP.Value, 0);
         return TaskStatus.Success;
     }
 }

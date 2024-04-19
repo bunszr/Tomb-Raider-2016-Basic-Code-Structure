@@ -7,7 +7,7 @@ namespace CampSite
     {
         [Inject] public IWeaponToggler _weaponToggler;
 
-        public WeaponTypeScriptable weaponTypeScriptable;
+        public WeaponDataScriptable weaponDataScriptable;
         public HighlightState.HighlightStateData highlightStateData;
         public ClickState.ClickStateData clickStateData;
     }

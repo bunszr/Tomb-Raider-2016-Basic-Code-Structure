@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc7b10594dcbd0b4ab89b6b953b2a790, type: 3}
   m_Name: AK47 Damage
   m_EditorClassIdentifier: 
-  hash: 8722
+  hash: 8750
+  featureName: Damage
+  description: Increases damage
   isOpen: 0
   requirementsScriptableBases: []
   costDatas:
@@ -20,3 +22,4 @@ MonoBehaviour:
     costQuantity: 2
   - inventoryItem: {fileID: 11400000, guid: 1d23c3d6c2e31874fa9e0050641adafd, type: 2}
     costQuantity: 3
+  valueToAdd: 23

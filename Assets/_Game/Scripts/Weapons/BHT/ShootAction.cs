@@ -13,7 +13,7 @@ public class ShootAction : Action
     public override TaskStatus OnUpdate()
     {
         _weapon.Fire();
-        _weapon.GetAmmoData().CurrAmmoRP.Value--;
+        _weapon.GetAmmoData().BulletCountInMagazineRP.Value--;
         return TaskStatus.Success;
     }
 }

@@ -11,9 +11,6 @@ public class ShotgunInstaller : MonoBehaviour
         shotgun._bulletBehaviour = new ScatterBulletBehaviour(shotgun, shotgun.scatterBulletBehaviourData);
         shotgun._fireMode = new SingleShot(shotgun, shotgun.singleShotData);
 
-        shotgun.normalAmmo = new NormalAmmo();
-        shotgun._ammoDataRP = new ReactiveProperty<IAmmoData>(shotgun.normalAmmo);
-
         shotgun.Equip();
     }
 }

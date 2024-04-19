@@ -2,14 +2,14 @@ using UniRx;
 
 public class FireAmmo : IAmmoData
 {
-    public ReactiveProperty<int> CurrAmmoRP { get; set; }
-    public ReactiveProperty<int> TotalAmmoRP { get; set; }
-    public ReactiveProperty<int> MagazineCapacity { get; set; }
+    public ReactiveProperty<int> BulletCountInMagazineRP { get; set; }
+    public ReactiveProperty<int> CurrAmmoCapacityRP { get; set; }
+    public ReactiveProperty<int> MagazineCapacityRP { get; set; }
 
-    public FireAmmo()
+    public FireAmmo(FireAmmoSaveable fireAmmoSaveable)
     {
-        CurrAmmoRP = new ReactiveProperty<int>(3);
-        TotalAmmoRP = new ReactiveProperty<int>(7);
-        MagazineCapacity = new ReactiveProperty<int>(3);
+        BulletCountInMagazineRP = new ReactiveProperty<int>(fireAmmoSaveable.magazineCapacity);
+        MagazineCapacityRP = new ReactiveProperty<int>(fireAmmoSaveable.magazineCapacity);
+        CurrAmmoCapacityRP = new ReactiveProperty<int>(fireAmmoSaveable.currAmmoCapacity);
     }
 }

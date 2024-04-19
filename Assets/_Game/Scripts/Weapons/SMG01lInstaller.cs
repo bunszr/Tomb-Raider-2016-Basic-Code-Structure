@@ -13,10 +13,6 @@ public class SMG01lInstaller : MonoBehaviour
         sMG01._shellCasingBehaviour = new NormalShellCasingBehaviour(sMG01, sMG01.normalShellCasingData);
         sMG01._recoilBehaviour = new PistolRecoilBehaviour(sMG01, sMG01.pistolRecoilBehaviourData);
 
-        sMG01.normalAmmo = new NormalAmmo();
-        sMG01.fireAmmo = new FireAmmo();
-        sMG01._ammoDataRP = new ReactiveProperty<IAmmoData>(sMG01.normalAmmo);
-
         sMG01.Equip();
     }
 }
