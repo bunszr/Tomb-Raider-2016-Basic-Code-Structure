@@ -1,3 +1,4 @@
+using System.Linq;
 using Sirenix.OdinInspector;
 using UniRx;
 using UnityEngine;
@@ -12,13 +13,20 @@ public abstract class FeatureTypeScriptable : ScriptableObject
     [SerializeField] RequirementsScriptableBase[] requirementsScriptableBases;
 
     public int Hash { get => hash; }
-    public bool IsOpen { get => isOpen; }
-    public ReactiveProperty<bool> IsOpenRP { get; private set; }
+    [ReadOnly, ShowInInspector] public ReactiveProperty<bool> IsOpenRP { get; private set; }
     public RequirementsScriptableBase[] RequirementsScriptableBases { get => requirementsScriptableBases; }
     public string FeatureName { get => featureName; }
     public string Description { get => description; }
 
     public void Load(bool isOpenPram) => IsOpenRP = new ReactiveProperty<bool>(isOpenPram);
+    public void LoadFromItSelf() => IsOpenRP = new ReactiveProperty<bool>(isOpen);
+
+    [Button]
+    public bool AreRequirementsDone()
+    {
+        if (requirementsScriptableBases.Length == 0) return true;
+        return requirementsScriptableBases.All(x => x.IsTrue());
+    }
 
 #if UNITY_EDITOR
     private void Awake()

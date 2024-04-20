@@ -16,8 +16,10 @@ namespace CampSite
 
         public override void OnEnter()
         {
-            Debug.Log("enter ShowUpgradedFeatureState");
             hasExit = false;
+
+            csbBase.FeatureTypeScriptable.IsOpenRP.Value = true;
+            csbBase.GetComponent<CSBFeatureBase>().upgradedIndicatorImage.gameObject.SetActive(true);
 
             CanvasGroup upgradeGroup = campSiteHolder.UpgradedPanel.canvasGroup;
 

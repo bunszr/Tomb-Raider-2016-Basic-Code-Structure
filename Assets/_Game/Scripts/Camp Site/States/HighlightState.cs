@@ -33,6 +33,7 @@ namespace CampSite
         {
             UnSubcribeButtonEvents();
             tween.KillMine();
+            data.imageToHighlight.fillAmount = 0;
         }
 
         protected override void OnPointerEnter(PointerEventData eventData)

@@ -70,6 +70,15 @@ public class QuickAccess : OdinEditorWindow
         Selection.activeGameObject = FindObjectOfType<CSBWeaponFeature>().gameObject;
     }
 
+    [Button, HorizontalGroup("5")]
+    public void ToogleLoadJSON()
+    {
+        GameDataScriptable.Ins.loadWeaponDataFromJSONinEditor = !GameDataScriptable.Ins.loadWeaponDataFromJSONinEditor;
+        GameDataScriptable.Ins.loadFeatureFromJSONinEditor = !GameDataScriptable.Ins.loadFeatureFromJSONinEditor;
+        GameDataScriptable.Ins.loadInventoryFromJSONinEditor = !GameDataScriptable.Ins.loadInventoryFromJSONinEditor;
+    }
+
+
     // [Button(ButtonSizes.Small), HorizontalGroup("A")]
     // public void SaveShatter()
     // {

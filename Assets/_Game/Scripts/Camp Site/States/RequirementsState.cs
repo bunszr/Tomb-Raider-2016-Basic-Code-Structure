@@ -1,6 +1,8 @@
+using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using TMPro;
+using UniRx;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -10,6 +12,7 @@ namespace CampSite
     {
         string description;
         TextMeshProUGUI requirementsText;
+        CompositeDisposable disposablesForOnRequiringFeatureChange = new CompositeDisposable();
 
         public RequirementsState(MonoBehaviour mono, TextMeshProUGUI requirementsText, bool needsExitTime = false, bool isGhostState = false) : base(mono, needsExitTime, isGhostState)
         {
@@ -20,7 +23,12 @@ namespace CampSite
         {
             var array = csbBase.FeatureTypeScriptable.RequirementsScriptableBases.Select(x => x.Description);
             description = string.Join(", ", array);
-            csbBase.GetComponent<CSBFeatureBase>().NoRequirementsImage.gameObject.SetActive(true);
+
+            // It might be opened some requirements when upgrade some feature. We must listen our requiring feature
+            foreach (var featureType in GetRequringFeatureTypes())
+            {
+                featureType.IsOpenRP.Subscribe(OnRequiringFeatureChange).AddTo(disposablesForOnRequiringFeatureChange);
+            }
         }
 
         public override void OnEnter()
@@ -33,6 +41,8 @@ namespace CampSite
         {
             UnSubcribeButtonEvents();
             buttonEvents.onPointerClickEvent += OnClick;
+
+            disposablesForOnRequiringFeatureChange.Dispose();
         }
 
         protected override void OnPointerEnter(PointerEventData eventData)
@@ -42,7 +52,7 @@ namespace CampSite
 
         protected override void OnPointerExit(PointerEventData eventData)
         {
-            requirementsText.text = "No Requirements";
+            requirementsText.text = "";
             requirementsText.transform.DOKill();
             requirementsText.transform.SetLocalPosZ(0);
         }
@@ -51,5 +61,17 @@ namespace CampSite
         {
             requirementsText.transform.DOLocalMoveZ(-.2f, .2f).SetEase(Ease.Flash, 2).From(0);
         }
+
+        void OnRequiringFeatureChange(bool isOpen)
+        {
+            bool areRequirementsDone = csbBase.FeatureTypeScriptable.AreRequirementsDone();
+            csbBase.GetComponent<CSBFeatureBase>().requirementsImage.gameObject.SetActive(!areRequirementsDone);
+            description = areRequirementsDone ? "" : description;
+        }
+
+        IEnumerable<FeatureTypeScriptable> GetRequringFeatureTypes() => csbBase.FeatureTypeScriptable.RequirementsScriptableBases
+            .Where(x => x is FeatureRequirements)
+            .Select(x => x as FeatureRequirements)
+            .SelectMany(x => x.requireFeatureTypeScriptables);
     }
 }

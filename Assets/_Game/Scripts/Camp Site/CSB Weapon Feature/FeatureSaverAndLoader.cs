@@ -16,7 +16,7 @@ namespace CampSite
         {
             featureTypeScriptables = Resources.LoadAll<FeatureTypeScriptable>("");
 #if UNITY_EDITOR
-            if (!GameDataScriptable.Ins.LoadFeatureFromJSONinEditor)
+            if (!GameDataScriptable.Ins.loadFeatureFromJSONinEditor)
                 LoadFromScriptable();
             else
                 LoadFromJSON();
@@ -33,38 +33,28 @@ namespace CampSite
         // [Button]
         private void Save()
         {
-            List<Wrap> wraps = featureTypeScriptables.Select(x => new Wrap(x.name, x.Hash, x.IsOpen)).ToList();
+            List<Wrap> wraps = featureTypeScriptables.Select(x => new Wrap(x.name, x.Hash, x.IsOpenRP.Value)).ToList();
             FileHandler.SaveToJSON<Wrap>(wraps, fileName);
         }
 
         // [Button]
         private void LoadFromScriptable()
         {
-            featureTypeScriptables.Foreach(x => x.Load(x.IsOpen));
+            featureTypeScriptables.Foreach(x => x.LoadFromItSelf());
         }
 
         // [Button]
         private void LoadFromJSON()
         {
             List<Wrap> wraps = FileHandler.ReadListFromJSON<Wrap>(fileName);
-            if (wraps.Count == 0)
-            {
-                wraps = new List<Wrap>(featureTypeScriptables.Select(x => new Wrap(x.name, x.Hash, x.IsOpen)));
-                FileHandler.SaveToJSON<Wrap>(wraps, fileName);
-            }
+            if (wraps.Count == 0) return;
 
             Dictionary<int, bool> dic = wraps.ToDictionary(x => x.hash, y => y.isOpen);
 
             foreach (var feature in featureTypeScriptables)
             {
-                if (dic.TryGetValue(feature.Hash, out bool outIsOpen))
-                {
-                    feature.Load(outIsOpen);
-                }
-                else
-                {
-                    feature.Load(feature.IsOpen);
-                }
+                if (dic.TryGetValue(feature.Hash, out bool outIsOpen)) feature.Load(outIsOpen);
+                else feature.LoadFromItSelf();
             }
         }
 

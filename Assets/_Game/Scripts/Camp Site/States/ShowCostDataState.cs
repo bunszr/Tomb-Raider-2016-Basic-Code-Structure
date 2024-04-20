@@ -1,6 +1,8 @@
+using System.Linq;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UniRx;
 
 namespace CampSite
 {
@@ -11,6 +13,8 @@ namespace CampSite
         WeaponFeatureTypeScriptable weaponFeatureTypeScriptable;
         CostAndInventoryPanel costAndInventoryPanel;
 
+        CompositeDisposable disposablesForInventoryCostItemChanged = new CompositeDisposable();
+
         GameDataScriptable.CampSiteScriptableData.ShowCostAndInventoryScriptableData ScriptableData => GameDataScriptable.Ins.campSiteScriptableData.showCostAndInventoryScriptableData;
 
 
@@ -20,10 +24,14 @@ namespace CampSite
         {
             costAndInventoryPanel = campSiteHolder.CostAndInventoryPanel;
             weaponFeatureTypeScriptable = csbBase.FeatureTypeScriptable as WeaponFeatureTypeScriptable;
-            csbBase.GetComponent<CSBFeatureBase>().NoRequirementsImage.gameObject.SetActive(true);
             defaultLocalX = costAndInventoryPanel.transform.localPosition.x;
-            defaultColor = costAndInventoryPanel.costAndInventoryGroups[0].costText.color;
+            defaultColor = costAndInventoryPanel.groups[0].costText.color;
             costAndInventoryPanel.canvasGroup.alpha = 0;
+
+            foreach (var item in weaponFeatureTypeScriptable.costDatas.Select(x => x.inventoryItem))
+            {
+                item.QuantityRP.Subscribe(OnInventoryCostItemChanged).AddTo(disposablesForInventoryCostItemChanged);
+            }
         }
 
         public override void OnEnter()
@@ -36,28 +44,32 @@ namespace CampSite
         {
             UnSubcribeButtonEvents();
             buttonEvents.onPointerClickEvent += OnClick;
+            SetDefault();
+
+            disposablesForInventoryCostItemChanged.Dispose();
         }
 
         protected override void OnPointerEnter(PointerEventData eventData)
         {
-            int count = Mathf.Min(weaponFeatureTypeScriptable.costDatas.Length, costAndInventoryPanel.costAndInventoryGroups.Length);
+            int count = Mathf.Min(weaponFeatureTypeScriptable.costDatas.Length, costAndInventoryPanel.groups.Length);
             for (int i = 0; i < count; i++)
             {
-                CostAndInventoryGroup costAndInventoryGroup = costAndInventoryPanel.costAndInventoryGroups[i];
+                CostAndInventoryGroup costAndInventoryGroup = costAndInventoryPanel.groups[i];
                 costAndInventoryGroup.image.sprite = weaponFeatureTypeScriptable.costDatas[i].inventoryItem.Icon;
                 costAndInventoryGroup.costText.text = weaponFeatureTypeScriptable.costDatas[i].costQuantity + "";
-                costAndInventoryGroup.inventoryQuantityText.text = weaponFeatureTypeScriptable.costDatas[i].inventoryItem.Quantity + "";
+                costAndInventoryGroup.inventoryQuantityText.text = weaponFeatureTypeScriptable.costDatas[i].inventoryItem.QuantityRP.Value + "";
 
-                if (weaponFeatureTypeScriptable.costDatas[i].costQuantity < weaponFeatureTypeScriptable.costDatas[i].inventoryItem.Quantity)
+                if (weaponFeatureTypeScriptable.costDatas[i].costQuantity > weaponFeatureTypeScriptable.costDatas[i].inventoryItem.QuantityRP.Value)
                 {
                     costAndInventoryGroup.costText.color = Color.red;
                 }
+                costAndInventoryGroup.gameObject.SetActive(true);
             }
 
             // Disable third costAndInventoryGroups
-            for (int i = count; i < costAndInventoryPanel.costAndInventoryGroups.Length; i++)
+            for (int i = count; i < costAndInventoryPanel.groups.Length; i++)
             {
-                costAndInventoryPanel.costAndInventoryGroups[i].gameObject.SetActive(false);
+                costAndInventoryPanel.groups[i].gameObject.SetActive(false);
             }
 
             costAndInventoryPanel.canvasGroup.DOFade(1, ScriptableData.fadeDuration).From(0).SetEase(ScriptableData.fadeEase);
@@ -72,10 +84,16 @@ namespace CampSite
             costAndInventoryPanel.canvasGroup.alpha = 0;
             costAndInventoryPanel.canvasGroup.transform.SetLocalPosX(defaultLocalX);
 
-            for (int i = 0; i < costAndInventoryPanel.costAndInventoryGroups.Length; i++)
+            SetDefault();
+        }
+
+        void SetDefault()
+        {
+            for (int i = 0; i < costAndInventoryPanel.groups.Length; i++)
             {
-                costAndInventoryPanel.costAndInventoryGroups[i].costText.color = defaultColor;
-                costAndInventoryPanel.costAndInventoryGroups[i].transform.SetLocalPosZ(0);
+                costAndInventoryPanel.groups[i].costText.color = defaultColor;
+                costAndInventoryPanel.groups[i].transform.SetLocalPosZ(0);
+                costAndInventoryPanel.groups[i].gameObject.SetActive(false);
             }
         }
 
@@ -86,13 +104,18 @@ namespace CampSite
 
         void HighlightIfCostNotEnough()
         {
-            for (int i = 0; i < costAndInventoryPanel.costAndInventoryGroups.Length; i++)
+            for (int i = 0; i < costAndInventoryPanel.groups.Length; i++)
             {
-                if (costAndInventoryPanel.costAndInventoryGroups[i].costText.color == Color.red)
+                if (costAndInventoryPanel.groups[i].costText.color == Color.red)
                 {
-                    costAndInventoryPanel.costAndInventoryGroups[i].transform.DOLocalMoveZ(-.2f, .2f).SetEase(Ease.Flash, 2).From(0);
+                    costAndInventoryPanel.groups[i].transform.DOLocalMoveZ(-.2f, .2f).SetEase(Ease.Flash, 2).From(0);
                 }
             }
+        }
+
+        void OnInventoryCostItemChanged(int count)
+        {
+            if (!weaponFeatureTypeScriptable.HasEnoughQuantityToBuy()) csbBase.featureNameText.color = Color.red;
         }
     }
 }

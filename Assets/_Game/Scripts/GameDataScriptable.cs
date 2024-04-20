@@ -1,14 +1,13 @@
 using DG.Tweening;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "GameDataScriptable", menuName = "Third-Person-Shooter/GameDataScriptable", order = 0)]
 public class GameDataScriptable : SingletonScriptableObject<GameDataScriptable>
 {
-    [SerializeField] bool loadFeatureFromJSONinEditor = false;
-    [SerializeField] bool loadInventoryFromJSONinEditor = false;
-
-    public bool LoadFeatureFromJSONinEditor { get => loadFeatureFromJSONinEditor; }
-    public bool LoadInventoryFromJSONinEditor { get => loadInventoryFromJSONinEditor; }
+    public bool loadFeatureFromJSONinEditor = false;
+    public bool loadInventoryFromJSONinEditor = false;
+    public bool loadWeaponDataFromJSONinEditor = false;
 
     public CampSiteScriptableData campSiteScriptableData;
     public WeaponScriptableData weaponScriptableData;

@@ -16,7 +16,7 @@ namespace Inventory
         {
             inventoryItemScriptableBasees = Resources.LoadAll<InventoryItemScriptableBase>("");
 #if UNITY_EDITOR
-            if (!GameDataScriptable.Ins.LoadInventoryFromJSONinEditor) LoadFromScriptable();
+            if (!GameDataScriptable.Ins.loadInventoryFromJSONinEditor) LoadFromScriptable();
             else LoadFromJSON();
 #else
             LoadFromJSON();
@@ -27,27 +27,23 @@ namespace Inventory
 
         private void Save()
         {
-            List<Wrap> wraps = inventoryItemScriptableBasees.Select(x => new Wrap(x.ItemName, x.Hash, x.Quantity)).ToList();
+            List<Wrap> wraps = inventoryItemScriptableBasees.Select(x => new Wrap(x.ItemName, x.Hash, x.QuantityRP.Value)).ToList();
             FileHandler.SaveToJSON<Wrap>(wraps, fileName);
         }
 
-        private void LoadFromScriptable() => inventoryItemScriptableBasees.Foreach(x => x.Load(x.Quantity));
+        private void LoadFromScriptable() => inventoryItemScriptableBasees.Foreach(x => x.LoadFromItSelf());
 
         private void LoadFromJSON()
         {
             List<Wrap> wraps = FileHandler.ReadListFromJSON<Wrap>(fileName);
-            if (wraps.Count == 0)
-            {
-                wraps = new List<Wrap>(inventoryItemScriptableBasees.Select(x => new Wrap(x.ItemName, x.Hash, x.Quantity)));
-                FileHandler.SaveToJSON<Wrap>(wraps, fileName);
-            }
+            if (wraps.Count == 0) return;
 
             Dictionary<int, int> dic = wraps.ToDictionary(x => x.hash, y => y.quantity);
 
-            foreach (var feature in inventoryItemScriptableBasees)
+            foreach (var item in inventoryItemScriptableBasees)
             {
-                if (dic.TryGetValue(feature.Hash, out int outQuantity)) feature.Load(outQuantity);
-                else feature.Load(feature.Quantity);
+                if (dic.TryGetValue(item.Hash, out int outQuantity)) item.Load(outQuantity);
+                else item.LoadFromItSelf();
             }
         }
 

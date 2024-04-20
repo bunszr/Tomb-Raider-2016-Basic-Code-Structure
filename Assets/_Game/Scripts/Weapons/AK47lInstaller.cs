@@ -4,6 +4,7 @@ using UnityEngine;
 public class AK47lInstaller : MonoBehaviour
 {
     AK47 aK47;
+    AK47WeaponDataScriptable ak47WeaponDataScriptable;
 
     private void Awake()
     {
@@ -14,11 +15,17 @@ public class AK47lInstaller : MonoBehaviour
         aK47._shellCasingBehaviour = new NormalShellCasingBehaviour(aK47, aK47.normalShellCasingData);
         aK47._recoilBehaviour = new PistolRecoilBehaviour(aK47, aK47.pistolRecoilBehaviourData);
 
-        AK47WeaponDataScriptable aK47WeaponDataScriptable = aK47.weaponDataScriptable as AK47WeaponDataScriptable;
-        aK47WeaponDataScriptable.Load();
+        ak47WeaponDataScriptable = aK47.weaponDataScriptable as AK47WeaponDataScriptable;
+        if (GameDataScriptable.Ins.loadWeaponDataFromJSONinEditor) ak47WeaponDataScriptable.LoadFromJSON();
+        else ak47WeaponDataScriptable.LoadFromItSelf();
 
         aK47.suppressorFeatureScriptable.IsOpenRP.Subscribe(OnSuppressorGain);
         aK47.flashLightFeatureScriptable.IsOpenRP.Subscribe(OnFlashLightGain);
+    }
+
+    private void OnDestroy()
+    {
+        ak47WeaponDataScriptable.Save();
     }
 
     public void OnSuppressorGain(bool isOpen)

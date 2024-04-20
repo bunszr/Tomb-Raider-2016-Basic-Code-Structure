@@ -25,6 +25,7 @@ namespace CampSite
         public override void Init()
         {
             virtualCamera = transform.GetComponentInParent<Canvas>().GetComponentInChildren<CinemachineVirtualCamera>();
+            csbBase.GetComponent<CSBFeatureBase>().upgradedIndicatorImage.gameObject.SetActive(csbBase.FeatureTypeScriptable.IsOpenRP.Value);
         }
 
         public override void OnEnter()

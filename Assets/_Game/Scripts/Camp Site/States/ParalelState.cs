@@ -6,7 +6,7 @@ namespace CampSite
     {
         StateBase[] stateBases;
 
-        public ParalelState(bool needsExitTime, bool isGhostState = false, params StateBase[] stateBases) : base(needsExitTime, isGhostState)
+        public ParalelState(StateBase[] stateBases, bool needsExitTime, bool isGhostState = false) : base(needsExitTime, isGhostState)
         {
             this.stateBases = stateBases;
         }

@@ -54,29 +54,32 @@ namespace CampSite
             holder.ammoCapacitySlider.addingValueImage.fillAmount = holder.ammoCapacitySlider.currValueImage.fillAmount;
             holder.rateOfFireSlider.addingValueImage.fillAmount = holder.rateOfFireSlider.currValueImage.fillAmount;
 
-            float addingAmount = _addableIntegerValue.ValueToAdd;
-            float fillAmount = 0;
-            switch (featureTypeScriptable)
+            if (!featureTypeScriptable.IsOpenRP.Value)
             {
-                case DamageFeatureScriptable:
-                    fillAmount = (weaponData.DamageRP.Value + addingAmount) / maxWeaponData.damage;
-                    break;
-                case RecoilStabilityFeatureScriptable:
-                    fillAmount = (weaponData.RecoilStabilityRP.Value + addingAmount) / maxWeaponData.recoilStability;
-                    break;
-                case ReloadSpeedFeatureScriptable:
-                    fillAmount = (weaponData.ReloadSpeedRP.Value + addingAmount) / maxWeaponData.reloadSpeed;
-                    break;
-                case AmmoCapacityFeatureScriptable:
-                    fillAmount = (weaponData.AmmoCapacityRP.Value + addingAmount) / maxWeaponData.ammoCapacity;
-                    break;
-                case RateOfFireFeatureScriptable:
-                    fillAmount = (weaponData.RateOfFireRP.Value + addingAmount) / maxWeaponData.rateOfFire;
-                    break;
-                default:
-                    break;
+                float addingAmount = _addableIntegerValue.ValueToAdd;
+                float fillAmount = 0;
+                switch (featureTypeScriptable)
+                {
+                    case DamageFeatureScriptable:
+                        fillAmount = (weaponData.DamageRP.Value + addingAmount) / maxWeaponData.damage;
+                        break;
+                    case RecoilStabilityFeatureScriptable:
+                        fillAmount = (weaponData.RecoilStabilityRP.Value + addingAmount) / maxWeaponData.recoilStability;
+                        break;
+                    case ReloadSpeedFeatureScriptable:
+                        fillAmount = (weaponData.ReloadSpeedRP.Value + addingAmount) / maxWeaponData.reloadSpeed;
+                        break;
+                    case AmmoCapacityFeatureScriptable:
+                        fillAmount = (weaponData.AmmoCapacityRP.Value + addingAmount) / maxWeaponData.ammoCapacity;
+                        break;
+                    case RateOfFireFeatureScriptable:
+                        fillAmount = (weaponData.RateOfFireRP.Value + addingAmount) / maxWeaponData.rateOfFire;
+                        break;
+                    default:
+                        break;
+                }
+                weaponDataSlider.addingValueImage.fillAmount = fillAmount;
             }
-            weaponDataSlider.addingValueImage.fillAmount = fillAmount;
 
             holder.canvasGroup.DOFade(1, ScriptableData.fadeDuration).From(0).SetEase(ScriptableData.fadeEase);
             holder.canvasGroup.transform.DOLocalMoveY(ScriptableData.yAnimationAmount, ScriptableData.yAnimationDuration).SetEase(ScriptableData.yAnimEase).From(true);

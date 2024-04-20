@@ -1,5 +1,6 @@
 using Cinemachine;
 using Sirenix.OdinInspector;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Zenject;
@@ -10,6 +11,8 @@ namespace CampSite
     {
         [SerializeField, Required("Feature Type is nessessary for this component.")]
         FeatureTypeScriptable featureTypeScriptable;
+
+        public TextMeshProUGUI featureNameText;
 
         [Inject, HideInInspector] public CampSiteHolder campSiteHolder;
         [Inject, HideInInspector] public CinemachineBrain brain;

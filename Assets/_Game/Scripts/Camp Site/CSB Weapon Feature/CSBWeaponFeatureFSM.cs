@@ -1,11 +1,9 @@
-using UnityEngine;
 using FSM;
-using UnityEngine.EventSystems;
-using Zenject;
-using Cinemachine;
-using System.Collections;
+using UniRx;
 using System.Collections.Generic;
 using System.Linq;
+using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace CampSite
 {
@@ -26,25 +24,44 @@ namespace CampSite
                 new ShowWeaponDataState(csbBase, cSBWeaponFeature.weaponDataScriptable),
                 new ShowInformationState(csbBase, useless, cSBWeaponFeature.showInformationState),
                 new WeaponRotationState(csbBase, useless, cSBWeaponFeature.weaponRotationStateData),
-                new ShowCostDataState(csbBase),
             };
 
-            if (!cSBWeaponFeature.FeatureTypeScriptable.IsOpen && csbBase.FeatureTypeScriptable.RequirementsScriptableBases.Any(x => !x.IsTrue()))
-                stateBases.Add(new RequirementsState(csbBase, campSiteHolder.FeatureInformationPanelHolder.requirementsText));
+            if (!csbBase.FeatureTypeScriptable.IsOpenRP.Value)
+            {
+                if (!csbBase.FeatureTypeScriptable.AreRequirementsDone()) stateBases.Add(new RequirementsState(csbBase, campSiteHolder.FeatureInformationPanelHolder.requirementsText));
+                stateBases.Add(new ShowCostDataState(csbBase));
+            }
+            else stateBases.Add(new ShowOnlyCostDataState(csbBase));
+
+            StateBase[] stateBasesAfterUpgrading = new StateBase[]
+            {
+                new HighlightState(csbBase, useless, cSBWeaponFeature.highlightStateData),
+                new ShowWeaponDataState(csbBase, cSBWeaponFeature.weaponDataScriptable),
+                new ShowInformationState(csbBase, useless, cSBWeaponFeature.showInformationState),
+                new WeaponRotationState(csbBase, useless, cSBWeaponFeature.weaponRotationStateData),
+                new ShowOnlyCostDataState(csbBase),
+            };
+
+            StateBase[] paralelUpgradingStates = new StateBase[]
+            {
+                new UpgradeWeaponCommonDataState(csbBase, cSBWeaponFeature.weaponDataScriptable, false),
+                new BuyInventoryItemState(csbBase, cSBWeaponFeature.weaponDataScriptable, false),
+            };
 
             fsm.AddState("InitState", new InitState(csbBase, true, brain));
-            fsm.AddState("HighlightState", new ParalelState(this, false, stateBases.ToArray()));
-            fsm.AddState("UpgradeWeaponCommonDataState", new UpgradeWeaponCommonDataState(csbBase, cSBWeaponFeature.weaponDataScriptable, false));
+            fsm.AddState("HighlightState", new ParalelState(stateBases.ToArray(), false));
+            fsm.AddState("UpgradeState", new ParalelState(paralelUpgradingStates, false, true));
             fsm.AddState("ShowUpgradedFeatureState", new ShowUpgradedFeatureState(csbBase, true));
+            fsm.AddState("HighlightStateAfterUpgrading", new ParalelState(stateBasesAfterUpgrading, false));
 
 #if UNITY_EDITOR
             fsm.AddTransition(new Transition("HighlightState", "ShowUpgradedFeatureState", x => test, true));
 #endif
 
             fsm.AddTransition(new Transition("InitState", "HighlightState"));
-            fsm.AddTriggerTransition("OnClick", new Transition("HighlightState", "UpgradeWeaponCommonDataState", x => IsUpgrade()));
-            fsm.AddTransition(new Transition("UpgradeWeaponCommonDataState", "ShowUpgradedFeatureState", null, true));
-            fsm.AddTransition(new Transition("ShowUpgradedFeatureState", "HighlightState"));
+            fsm.AddTriggerTransition("OnClick", new Transition("HighlightState", "UpgradeState", x => IsUpgrade()));
+            fsm.AddTransition(new Transition("UpgradeState", "ShowUpgradedFeatureState"));
+            fsm.AddTransition(new Transition("ShowUpgradedFeatureState", "HighlightStateAfterUpgrading"));
 
             fsm.SetStartState("InitState");
             fsm.Init();
@@ -52,12 +69,10 @@ namespace CampSite
 
         public bool test;
 
+        [Button]
         bool IsUpgrade()
         {
-            // Debug.LogError(csbBase.FeatureTypeScriptable.RequirementsScriptableBases.All(x => x.IsTrue()));
-            bool b = !cSBWeaponFeature.FeatureTypeScriptable.IsOpen && csbBase.FeatureTypeScriptable.RequirementsScriptableBases.All(x => x.IsTrue());
-            // Debug.Log(b, csbBase);
-            return b && Input.GetMouseButtonDown(0);
+            return !cSBWeaponFeature.FeatureTypeScriptable.IsOpenRP.Value && (csbBase.FeatureTypeScriptable as WeaponFeatureTypeScriptable).HasEnoughQuantityToBuy() && csbBase.FeatureTypeScriptable.AreRequirementsDone();
         }
     }
 }

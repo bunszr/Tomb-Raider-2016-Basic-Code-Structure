@@ -17,11 +17,11 @@ namespace Inventory
         public string ItemName { get => itemName; }
         public string Description { get => description; }
         public Sprite Icon { get => icon; }
-        public int Quantity { get => quantity; }
 
-        public ReactiveProperty<int> QuantityRP { get; private set; }
+        [ReadOnly, ShowInInspector] public ReactiveProperty<int> QuantityRP { get; private set; }
 
         public void Load(int quantityPram) => QuantityRP = new ReactiveProperty<int>(quantityPram);
+        public void LoadFromItSelf() => QuantityRP = new ReactiveProperty<int>(quantity);
 
 #if UNITY_EDITOR
         private void Awake() => hash = GetInstanceID();

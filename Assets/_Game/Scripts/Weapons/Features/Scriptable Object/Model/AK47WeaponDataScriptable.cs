@@ -9,7 +9,7 @@ public class AK47WeaponDataScriptable : WeaponDataScriptable, INormalAmmo
 
     public NormalAmmo NormalAmmo => normalAmmo;
 
-    [SerializeField] SavedData savedData;
+    [SerializeField] SavedData defaultData;
 
     [System.Serializable]
     public class SavedData
@@ -20,11 +20,12 @@ public class AK47WeaponDataScriptable : WeaponDataScriptable, INormalAmmo
     }
 
     [Button]
-    public void SaveFromScriptable() => FileHandler.SaveToJSON<SavedData>(savedData, WeaponName);
+    public void SaveFromScriptable() => FileHandler.SaveToJSON<SavedData>(defaultData, WeaponName);
 
     [Button]
     public void Save()
     {
+        SavedData savedData = new SavedData();
         savedData.weaponDataSaveable = weaponData;
         savedData.normalAmmoSaveable = normalAmmo;
         savedData.fireAmmoSaveable = fireAmmo;
@@ -32,7 +33,15 @@ public class AK47WeaponDataScriptable : WeaponDataScriptable, INormalAmmo
     }
 
     [Button]
-    public void Load()
+    public void LoadFromItSelf()
+    {
+        weaponData = new WeaponData(defaultData.weaponDataSaveable);
+        normalAmmo = new NormalAmmo(defaultData.normalAmmoSaveable);
+        fireAmmo = new FireAmmo(defaultData.fireAmmoSaveable);
+    }
+
+    [Button]
+    public void LoadFromJSON()
     {
         SavedData savedData = FileHandler.ReadFromJSON<SavedData>(WeaponName);
         weaponData = new WeaponData(savedData.weaponDataSaveable);

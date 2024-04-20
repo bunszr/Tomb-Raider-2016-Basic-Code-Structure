@@ -1,5 +1,3 @@
-using Cinemachine;
-using DG.Tweening;
 using UnityEngine;
 
 namespace CampSite
@@ -13,13 +11,10 @@ namespace CampSite
             this.weaponDataScriptable = weaponDataScriptable;
         }
 
-        public override void Init()
-        {
-        }
-
         public override void OnEnter()
         {
-            IAddableIntValue _iAddableIntValue = weaponDataScriptable as IAddableIntValue;
+            Debug.Log("enter UpgradeWeaponCommonDataState");
+            IAddableIntValue _iAddableIntValue = csbBase.FeatureTypeScriptable as IAddableIntValue;
 
             switch (csbBase.FeatureTypeScriptable)
             {

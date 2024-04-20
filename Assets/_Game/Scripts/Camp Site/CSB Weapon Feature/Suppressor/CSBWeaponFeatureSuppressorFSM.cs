@@ -24,15 +24,15 @@ namespace CampSite
                 new ShowCostDataState(csbBase),
             };
 
-            if (!cSBWeaponFeatureSuppressor.FeatureTypeScriptable.IsOpen && csbBase.FeatureTypeScriptable.RequirementsScriptableBases.Any(x => !x.IsTrue()))
+            if (!cSBWeaponFeatureSuppressor.FeatureTypeScriptable.IsOpenRP.Value && csbBase.FeatureTypeScriptable.RequirementsScriptableBases.Any(x => !x.IsTrue()))
                 stateBases.Add(new RequirementsState(csbBase, campSiteHolder.FeatureInformationPanelHolder.requirementsText));
 
             fsm.AddState("InitState", new InitState(csbBase, true, brain));
-            fsm.AddState("HighlightState", new ParalelState(this, false, stateBases.ToArray()));
+            fsm.AddState("HighlightState", new ParalelState(stateBases.ToArray(), false));
             // fsm.AddState("UpgradeWeaponCommonDataState", new UpgradeWeaponCommonDataState(csbBase, false));
 
             fsm.AddTransition(new Transition("InitState", "HighlightState"));
-            fsm.AddTriggerTransition("OnClick", new Transition("HighlightState", "UpgradeWeaponCommonDataState"));
+            // fsm.AddTriggerTransition("OnClick", new Transition("HighlightState", "UpgradeWeaponCommonDataState"));
 
             fsm.SetStartState("InitState");
             fsm.Init();
