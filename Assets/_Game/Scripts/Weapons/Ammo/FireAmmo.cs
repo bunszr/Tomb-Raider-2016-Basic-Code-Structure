@@ -1,10 +1,11 @@
+using Sirenix.OdinInspector;
 using UniRx;
 
 public class FireAmmo : IAmmoData
 {
-    public ReactiveProperty<int> BulletCountInMagazineRP { get; set; }
-    public ReactiveProperty<int> CurrAmmoCapacityRP { get; set; }
-    public ReactiveProperty<int> MagazineCapacityRP { get; set; }
+    [ReadOnly, ShowInInspector] public ReactiveProperty<int> BulletCountInMagazineRP { get; set; }
+    [ReadOnly, ShowInInspector] public ReactiveProperty<int> CurrAmmoCapacityRP { get; set; }
+    [ReadOnly, ShowInInspector] public ReactiveProperty<int> MagazineCapacityRP { get; set; }
 
     public FireAmmo(FireAmmoSaveable fireAmmoSaveable)
     {

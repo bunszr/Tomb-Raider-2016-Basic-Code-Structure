@@ -17,3 +17,5 @@ MonoBehaviour:
   description: 
   isOpen: 1
   requirementsScriptableBases: []
+  weaponDataScriptable: {fileID: 11400000, guid: b0d51eb8610af37438fcf2a004635432,
+    type: 2}

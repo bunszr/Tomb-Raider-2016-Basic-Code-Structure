@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class NormalAmmoView : MonoBehaviour
 {
-    public WeaponDataScriptable weaponDataScriptable;
+    public WeaponBase weaponBase;
     public TextMeshProUGUI currAmmoTMPro;
     public TextMeshProUGUI totalAmmoTMPro;
 
@@ -15,14 +15,13 @@ public class NormalAmmoView : MonoBehaviour
 
     private void Awake()
     {
-        WeaponBase weaponBase = transform.parent.GetComponentInChildren<WeaponBase>();
         weaponBase.onEquip += OnEquip;
         weaponBase.onUnEquip += OnUnEquip;
     }
 
     public void OnEquip(IWeapon _weapon)
     {
-        _normalAmmo = weaponDataScriptable as INormalAmmo;
+        _normalAmmo = weaponBase.weaponDataScriptable as INormalAmmo;
 
         disposables = new CompositeDisposable();
         _normalAmmo.NormalAmmo.BulletCountInMagazineRP.Subscribe(OnBulletCountInMagazine).AddTo(disposables);

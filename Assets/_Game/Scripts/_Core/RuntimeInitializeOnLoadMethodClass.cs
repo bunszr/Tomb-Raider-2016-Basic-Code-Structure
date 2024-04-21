@@ -9,6 +9,7 @@ class RuntimeInitializeOnLoadMethodClass
     {
         CreateFeatureSaverAndLoader();
         CreateInventorySaverAndLoader();
+        CreateWeaponSaverAndLoader();
     }
 
     static void CreateFeatureSaverAndLoader()
@@ -20,6 +21,12 @@ class RuntimeInitializeOnLoadMethodClass
     static void CreateInventorySaverAndLoader()
     {
         GameObject go = new GameObject("InventorySaverAndLoader", typeof(InventorySaverAndLoader));
+        GameObject.DontDestroyOnLoad(go);
+    }
+
+    static void CreateWeaponSaverAndLoader()
+    {
+        GameObject go = new GameObject("WeaponSaverAndLoader", typeof(WeaponSaverAndLoader));
         GameObject.DontDestroyOnLoad(go);
     }
 

@@ -40,7 +40,7 @@ namespace CampSite
         protected override void OnPointerEnter(PointerEventData eventData)
         {
             GameDataScriptable.WeaponScriptableData.MaxWeaponDataSaveable maxWeaponData = GameDataScriptable.Ins.weaponScriptableData.maxWeaponDataSaveable;
-            WeaponData weaponData = weaponDataScriptable.weaponData;
+            WeaponData weaponData = weaponDataScriptable.WeaponData;
 
             holder.damageSlider.currValueImage.fillAmount = weaponData.DamageRP.Value / (float)maxWeaponData.damage;
             holder.recoilStabilitySlider.currValueImage.fillAmount = weaponData.RecoilStabilityRP.Value / (float)maxWeaponData.recoilStability;

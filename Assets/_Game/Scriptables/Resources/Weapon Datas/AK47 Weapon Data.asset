@@ -13,16 +13,15 @@ MonoBehaviour:
   m_Name: AK47 Weapon Data
   m_EditorClassIdentifier: 
   weaponName: AK47
-  defaultData:
-    weaponDataSaveable:
-      damage: 19
-      recoilStability: 6
-      reloadSpeed: 2
-      ammoCapacity: 5
-      rateOfFire: 15
-    normalAmmoSaveable:
-      magazineCapacity: 2
-      currAmmoCapacity: 3
-    fireAmmoSaveable:
-      magazineCapacity: 3
-      currAmmoCapacity: 4
+  weaponDataSaveable:
+    damage: 22
+    recoilStability: 13
+    reloadSpeed: 3
+    ammoCapacity: 8
+    rateOfFire: 21
+  normalAmmoSaveable:
+    magazineCapacity: 4
+    currAmmoCapacity: 2
+  fireAmmoSaveable:
+    magazineCapacity: 4
+    currAmmoCapacity: 4

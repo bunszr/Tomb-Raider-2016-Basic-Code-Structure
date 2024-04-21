@@ -19,15 +19,15 @@ namespace CampSite
             switch (csbBase.FeatureTypeScriptable)
             {
                 case DamageFeatureScriptable:
-                    weaponDataScriptable.weaponData.DamageRP.Value += _iAddableIntValue.ValueToAdd; break;
+                    weaponDataScriptable.WeaponData.DamageRP.Value += _iAddableIntValue.ValueToAdd; break;
                 case RecoilStabilityFeatureScriptable:
-                    weaponDataScriptable.weaponData.RecoilStabilityRP.Value += _iAddableIntValue.ValueToAdd; break;
+                    weaponDataScriptable.WeaponData.RecoilStabilityRP.Value += _iAddableIntValue.ValueToAdd; break;
                 case ReloadSpeedFeatureScriptable:
-                    weaponDataScriptable.weaponData.ReloadSpeedRP.Value += _iAddableIntValue.ValueToAdd; break;
+                    weaponDataScriptable.WeaponData.ReloadSpeedRP.Value += _iAddableIntValue.ValueToAdd; break;
                 case AmmoCapacityFeatureScriptable:
-                    weaponDataScriptable.weaponData.AmmoCapacityRP.Value += _iAddableIntValue.ValueToAdd; break;
+                    weaponDataScriptable.WeaponData.AmmoCapacityRP.Value += _iAddableIntValue.ValueToAdd; break;
                 case RateOfFireFeatureScriptable:
-                    weaponDataScriptable.weaponData.RateOfFireRP.Value += _iAddableIntValue.ValueToAdd; break;
+                    weaponDataScriptable.WeaponData.RateOfFireRP.Value += _iAddableIntValue.ValueToAdd; break;
             }
         }
     }

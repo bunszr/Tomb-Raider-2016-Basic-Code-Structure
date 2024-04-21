@@ -17,3 +17,5 @@ MonoBehaviour:
   description: Pistol
   isOpen: 1
   requirementsScriptableBases: []
+  weaponDataScriptable: {fileID: 11400000, guid: 6f165140cf81ebb40aaf970c60194007,
+    type: 2}

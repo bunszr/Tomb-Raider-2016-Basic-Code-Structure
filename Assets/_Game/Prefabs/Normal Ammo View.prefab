@@ -488,8 +488,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5596676835834963516}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e30eb20ac7e1e30479d1a733a90778ac, type: 3}
+  m_Script: {fileID: 11500000, guid: 0465a7b8313c56143ba64620941fd2d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponDataScriptable: {fileID: 0}
   currAmmoTMPro: {fileID: 532844122}
   totalAmmoTMPro: {fileID: 1088746127}

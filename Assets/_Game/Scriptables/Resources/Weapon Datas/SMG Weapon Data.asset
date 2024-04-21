@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a2f8e7288f9b324ea78d0fac9511efa, type: 3}
+  m_Name: SMG Weapon Data
+  m_EditorClassIdentifier: 
+  weaponName: SMG
+  weaponDataSaveable:
+    damage: 24
+    recoilStability: 30
+    reloadSpeed: 5
+    ammoCapacity: 10
+    rateOfFire: 13
+  normalAmmoSaveable:
+    magazineCapacity: 7
+    currAmmoCapacity: 45
