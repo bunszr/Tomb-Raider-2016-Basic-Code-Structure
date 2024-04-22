@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
+using UnityEngine;
 
 /**
  * Hierarchichal finite state machine for Unity
@@ -19,6 +21,28 @@ namespace FSM
 		IStateMachine<TStateId>,
 		IActionable<TEvent>
 	{
+		public StateMachineDebug stateMachineDebug;
+
+		[System.Serializable]
+		public class StateMachineDebug
+		{
+			int counter = 1;
+			[HorizontalGroup("a"), SerializeField] bool isDebug = false;
+			[HorizontalGroup("a"), SerializeField] int maxStateCountToShow = 8;
+			[SerializeField] List<string> enteringStatesList;
+
+			public void Debug(string stateName)
+			{
+#if UNITY_EDITOR
+				if (isDebug)
+				{
+					if (enteringStatesList.Count > maxStateCountToShow - 1) enteringStatesList.RemoveAt(0);
+					enteringStatesList.Add(counter++ + " " + stateName);
+				}
+#endif
+			}
+		}
+
 		/// <summary>
 		/// A bundle of a state together with the outgoing transitions and trigger transitions.
 		/// It's useful, as you only need to do one Dictionary lookup for these three items.
@@ -163,6 +187,7 @@ namespace FSM
 
 			activeState = bundle.state;
 			activeState.OnEnter();
+			if (stateMachineDebug != null) stateMachineDebug.Debug(name.ToString());
 
 			for (int i = 0; i < activeTransitions.Count; i++)
 			{
@@ -618,7 +643,7 @@ namespace FSM
 	public class StateMachine<TStateId, TEvent> : StateMachine<TStateId, TStateId, TEvent>
 	{
 		public StateMachine(bool needsExitTime = true, bool isGhostState = false)
-			: base(needsExitTime: needsExitTime, isGhostState: isGhostState)
+					: base(needsExitTime: needsExitTime, isGhostState: isGhostState)
 		{
 		}
 	}
@@ -634,7 +659,7 @@ namespace FSM
 	public class StateMachine : StateMachine<string, string, string>
 	{
 		public StateMachine(bool needsExitTime = true, bool isGhostState = false)
-			: base(needsExitTime: needsExitTime, isGhostState: isGhostState)
+					: base(needsExitTime: needsExitTime, isGhostState: isGhostState)
 		{
 		}
 	}
