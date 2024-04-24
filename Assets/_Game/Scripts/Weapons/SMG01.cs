@@ -3,10 +3,6 @@ using UnityEngine;
 
 public class SMG01 : WeaponBase
 {
-    public FireAmmo fireAmmo;
-    public NormalAmmo normalAmmo;
-
-    public AutomaticFireBehavior.AutomaticFireBehaviorData automaticFireBehaviorData;
     public NormalBulletBehaviour.NormalBulletBehaviourData normalBulletModeData;
     public NormalShellCasingBehaviour.NormalShellCasingBehaviourData normalShellCasingData;
     public PistolRecoilBehaviour.PistolRecoilBehaviourData pistolRecoilBehaviourData;

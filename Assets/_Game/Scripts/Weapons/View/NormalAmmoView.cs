@@ -17,20 +17,20 @@ public class NormalAmmoView : MonoBehaviour
     {
         weaponBase.onEquip += OnEquip;
         weaponBase.onUnEquip += OnUnEquip;
+        disposables = new CompositeDisposable();
     }
 
     public void OnEquip(IWeapon _weapon)
     {
         _normalAmmo = weaponBase.weaponDataScriptable as INormalAmmo;
 
-        disposables = new CompositeDisposable();
         _normalAmmo.NormalAmmo.BulletCountInMagazineRP.Subscribe(OnBulletCountInMagazine).AddTo(disposables);
         _normalAmmo.NormalAmmo.CurrAmmoCapacityRP.Subscribe(OnCurrAmmoChanged).AddTo(disposables);
     }
 
     public void OnUnEquip(IWeapon _weapon)
     {
-        disposables.Dispose();
+        disposables.Clear();
     }
 
     private void OnDestroy() => disposables?.Dispose();

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UniRx;
 using System;
+using Zenject;
 
 public class WeaponToggle : MonoBehaviour, IWeaponToggler
 {
@@ -25,8 +26,7 @@ public class WeaponToggle : MonoBehaviour, IWeaponToggler
     ReactiveProperty<IWeapon> _OldWeaponRP = new ReactiveProperty<IWeapon>();
     public ReactiveProperty<IWeapon> _CurrWeaponRP { get; private set; }
 
-    // [Inject]
-    IInput _input;
+    [Inject] IInput _input;
 
     int weaponIndex = -1;
     // int oldSlot = -1;
@@ -45,8 +45,6 @@ public class WeaponToggle : MonoBehaviour, IWeaponToggler
         livingEntity = GetComponentInParent<LivingEntity>();
         AnimationEventMono animationEventMono = livingEntity.gameObject.AddComponent<AnimationEventMono>();
         animationEventMono.onAnimationEvent += OnDrawAnim;
-
-        _input = new DesktopInput();
 
         _handEquipBehaviourRP = new HandEquipBehaviour(weaponHolder, animationEventMono, _input.WeaponToggleInput);
         _weaponEquipBehaviourRP = new WeaponEquipBehaviour(weaponHolder, animationEventMono);
@@ -107,37 +105,4 @@ public class WeaponToggle : MonoBehaviour, IWeaponToggler
         _CurrWeaponRP.Value.Equip();
     }
 
-}
-
-public interface IInput
-{
-    IWeaponToggleInput WeaponToggleInput { get; }
-}
-
-public interface IWeaponToggleInput
-{
-    bool HasEquipHand { get; }
-    bool HasEquipGun1 { get; }
-    bool HasEquipGun2 { get; }
-    bool HasEquipGun3 { get; }
-    bool HasEquipGun4 { get; }
-}
-
-public class WeaponToggleInputDesktop : IWeaponToggleInput
-{
-    public bool HasEquipHand => Input.GetKeyDown(KeyCode.Q);
-    public bool HasEquipGun1 => Input.GetKeyDown(KeyCode.Alpha1);
-    public bool HasEquipGun2 => Input.GetKeyDown(KeyCode.Alpha2);
-    public bool HasEquipGun3 => Input.GetKeyDown(KeyCode.Alpha3);
-    public bool HasEquipGun4 => Input.GetKeyDown(KeyCode.Alpha4);
-}
-
-public class DesktopInput : IInput
-{
-    public IWeaponToggleInput WeaponToggleInput { get; set; }
-
-    public DesktopInput()
-    {
-        WeaponToggleInput = new WeaponToggleInputDesktop();
-    }
 }

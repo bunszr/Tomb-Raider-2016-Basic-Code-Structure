@@ -22,3 +22,8 @@ MonoBehaviour:
   normalAmmoSaveable:
     magazineCapacity: 6
     currAmmoCapacity: 65
+  weaponAnimationData:
+    reloadMagazineName: Riffle Magazine Reloading
+    reloadMagazineTriggerName: RiffleMagazineReloading
+    drawTriggerName: 
+    drawAnimName: 

@@ -48,7 +48,7 @@ namespace AdditiveSceneHelper
 
         public void ShortcutUpdateMethod()
         {
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.T))
             {
                 var sceneNames = Enumerable.Range(0, SceneManager.sceneCount).Select(x => SceneManager.GetSceneAt(x).name).ToArray();
 

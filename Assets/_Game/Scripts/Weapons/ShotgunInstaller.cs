@@ -1,16 +1,15 @@
-using UniRx;
 using UnityEngine;
-using Zenject;
 
-public class ShotgunInstaller : MonoBehaviour
+public class ShotgunInstaller : BaseWeaponInstaller
 {
-    private void Awake()
+    Shotgun shotgun;
+
+    protected override void Awake()
     {
-        Shotgun shotgun = transform.parent.GetComponentInChildren<Shotgun>();
+        base.Awake();
+        shotgun = weaponBase as Shotgun;
 
-        shotgun._bulletBehaviour = new ScatterBulletBehaviour(shotgun, shotgun.scatterBulletBehaviourData);
-        shotgun._fireMode = new SingleShot(shotgun, shotgun.singleShotData);
-
-        shotgun.Equip();
+        shotgun._bulletBehaviour = new ScatterBulletBehaviour(weaponBase, shotgun.scatterBulletBehaviourData);
+        shotgun._fireMode = new SingleShotBehavior(weaponBase, _input.WeaponInput);
     }
 }

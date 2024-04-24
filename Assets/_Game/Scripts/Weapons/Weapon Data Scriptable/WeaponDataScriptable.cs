@@ -7,6 +7,7 @@ public abstract class WeaponDataScriptable : ScriptableObject, INormalAmmo
 
     [SerializeField] protected WeaponDataSaveable weaponDataSaveable;
     [SerializeField] protected NormalAmmoSaveable normalAmmoSaveable;
+    public WeaponAnimationData weaponAnimationData;
 
     [ReadOnly, ShowInInspector] public WeaponData WeaponData { get; set; }
     [ReadOnly, ShowInInspector] public NormalAmmo NormalAmmo { get; set; }
@@ -19,4 +20,11 @@ public abstract class WeaponDataScriptable : ScriptableObject, INormalAmmo
         WeaponData = new WeaponData(weaponDataSaveable);
         NormalAmmo = new NormalAmmo(normalAmmoSaveable);
     }
+
+}
+[System.Serializable]
+public class WeaponAnimationData
+{
+    public string reloadMagazineName;
+    public string reloadMagazineTriggerName;
 }

@@ -12,7 +12,7 @@ public class PistolInstaller : BaseWeaponInstaller
         pistol = weaponBase as Pistol;
 
         pistol._bulletBehaviour = new NormalBulletBehaviour(pistol, pistol.normalBulletModeData);
-        pistol._fireMode = new SingleShot(pistol, pistol.singleShotData);
+        pistol._fireMode = new SingleShotBehavior(pistol, _input.WeaponInput);
         pistol._shellCasingBehaviour = new NormalShellCasingBehaviour(pistol, pistol.normalShellCasingData);
         pistol._recoilBehaviour = new PistolRecoilBehaviour(pistol, pistol.pistolRecoilBehaviourData);
     }

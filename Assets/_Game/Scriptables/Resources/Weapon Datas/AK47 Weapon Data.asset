@@ -20,8 +20,13 @@ MonoBehaviour:
     ammoCapacity: 8
     rateOfFire: 21
   normalAmmoSaveable:
-    magazineCapacity: 4
-    currAmmoCapacity: 2
+    magazineCapacity: 25
+    currAmmoCapacity: 35
+  weaponAnimationData:
+    reloadMagazineName: Riffle Magazine Reloading
+    reloadMagazineTriggerName: RiffleMagazineReloading
+    drawTriggerName: 
+    drawAnimName: 
   fireAmmoSaveable:
-    magazineCapacity: 4
-    currAmmoCapacity: 4
+    magazineCapacity: 5
+    currAmmoCapacity: 7

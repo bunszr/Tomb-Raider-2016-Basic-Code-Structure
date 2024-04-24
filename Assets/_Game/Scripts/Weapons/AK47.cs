@@ -6,7 +6,6 @@ public class AK47 : WeaponBase, ISuppressorAddOn, IFlashLightAddOn
     public SuppressorFeatureScriptable suppressorFeatureScriptable;
     public FlashLightFeatureScriptable flashLightFeatureScriptable;
 
-    public AutomaticFireBehavior.AutomaticFireBehaviorData automaticFireBehaviorData;
     public NormalBulletBehaviour.NormalBulletBehaviourData normalBulletModeData;
     public NormalShellCasingBehaviour.NormalShellCasingBehaviourData normalShellCasingData;
     public PistolRecoilBehaviour.PistolRecoilBehaviourData pistolRecoilBehaviourData;

@@ -175,8 +175,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponDataScriptable: {fileID: 0}
-  singleShotData:
-    unnecessary: 0
   normalBulletModeData:
     bulletPrefab: {fileID: 756640760501399759, guid: 0dade95565689414e8416805f307eb7a,
       type: 3}
@@ -205,6 +203,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e8745bf452754447b107e9ec15e12da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &5238074523344749117 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9102742792682833055, guid: 182745289cb96f84faed63b67ee0c300,
+    type: 3}
+  m_PrefabInstance: {fileID: 3954742465216857762}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5969558354358996727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5238074523344749117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e8954b339500b14daf5f32570a941f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateMachineDebug:
+    isDebug: 1
+    maxStateCountToShow: 9
+    enteringStatesList: []
 --- !u!4 &5811099255684223440 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7369923832619931506, guid: 182745289cb96f84faed63b67ee0c300,

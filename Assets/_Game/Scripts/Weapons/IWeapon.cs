@@ -1,3 +1,4 @@
+using UniRx;
 using UnityEngine;
 
 public interface IWeapon
@@ -6,5 +7,5 @@ public interface IWeapon
     void Equip();
     void Unequip();
     void Fire();
-    IAmmoData GetAmmoData();
+    ReactiveProperty<IAmmoData> _AmmoRP { get; set; }
 }

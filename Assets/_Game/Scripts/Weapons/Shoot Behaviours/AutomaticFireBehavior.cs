@@ -2,19 +2,9 @@ using UnityEngine;
 
 public class AutomaticFireBehavior : ShootBehaviourBase, IFireBehaviour
 {
-    [System.Serializable]
-    public class AutomaticFireBehaviorData
-    {
-        public float delay = .2f;
-    }
-
-    public AutomaticFireBehavior(IWeapon _weapon, AutomaticFireBehaviorData data) : base(_weapon)
-    {
-        this.data = data;
-    }
-
-    public AutomaticFireBehaviorData data;
     float nextTime;
+
+    public AutomaticFireBehavior(IWeapon _weapon, IWeaponInput weaponInput) : base(_weapon, weaponInput) { }
 
     public override void Enter()
     {
@@ -24,11 +14,11 @@ public class AutomaticFireBehavior : ShootBehaviourBase, IFireBehaviour
 
     public override void OnUpdate()
     {
-        if (Input.GetMouseButton(0) && _weapon.GetAmmoData().BulletCountInMagazineRP.Value > 0 && nextTime < Time.time)
+        if (_weaponInput.HasHoldingFireKey && weaponCheckFactory.Check(WeaponCheckType.HasBulletInTheMagazineCheck) && nextTime < Time.time)
         {
-            nextTime = Time.time + data.delay;
             _weapon.Fire();
-            _weapon.GetAmmoData().BulletCountInMagazineRP.Value--;
+            _weapon._AmmoRP.Value.BulletCountInMagazineRP.Value--;
+            nextTime = Time.time + RateOfFireDivided100;
         }
     }
 }

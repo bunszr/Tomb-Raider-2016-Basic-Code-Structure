@@ -7,7 +7,6 @@ public class Pistol : WeaponBase
 {
     public NormalAmmo normalAmmo;
 
-    public SingleShot.SingleShotData singleShotData;
     public NormalBulletBehaviour.NormalBulletBehaviourData normalBulletModeData;
     public NormalShellCasingBehaviour.NormalShellCasingBehaviourData normalShellCasingData;
     public PistolRecoilBehaviour.PistolRecoilBehaviourData pistolRecoilBehaviourData;
