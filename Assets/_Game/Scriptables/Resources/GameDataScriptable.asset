@@ -49,3 +49,11 @@ MonoBehaviour:
       reloadSpeed: 10
       ammoCapacity: 40
       rateOfFire: 30
+    aimData:
+      rayMaxDistance: 33.63
+      depth: 9
+      rigWeightDuration: 0.2
+      mouseSensitive: 350
+      layerMask:
+        serializedVersion: 2
+        m_Bits: 695

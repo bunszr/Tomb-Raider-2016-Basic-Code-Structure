@@ -10,6 +10,7 @@ public class Shotgun : WeaponBase
 
     public override void Fire()
     {
+        base.Fire();
         _bulletBehaviour.Fire();
     }
 }

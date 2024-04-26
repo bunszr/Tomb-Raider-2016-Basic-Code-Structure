@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ShotgunInstaller : BaseWeaponInstaller
+public class ShotgunInstaller : WeaponBaseInstaller
 {
     Shotgun shotgun;
 

@@ -1,7 +1,7 @@
 using UniRx;
 using UnityEngine;
 
-public class AK47lInstaller : BaseWeaponInstaller
+public class AK47lInstaller : WeaponBaseInstaller
 {
     AK47 aK47;
     CompositeDisposable disposables = new CompositeDisposable();

@@ -2,7 +2,7 @@ using UniRx;
 using UnityEngine;
 using Zenject;
 
-public class SMG01lInstaller : BaseWeaponInstaller
+public class SMG01lInstaller : WeaponBaseInstaller
 {
     protected override void Awake()
     {

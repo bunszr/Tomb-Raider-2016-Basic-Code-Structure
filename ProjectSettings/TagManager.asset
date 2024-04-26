@@ -4,7 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - CinemachineTarget
   - FeatureIndicatorSprite
   layers:
   - Default
@@ -17,7 +16,7 @@ TagManager:
   - Trigger
   - Character
   - Ground
-  - PlayerFinish
+  - Weapon
   - 
   - 
   - 

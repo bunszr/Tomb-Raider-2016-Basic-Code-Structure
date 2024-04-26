@@ -2,7 +2,7 @@ using UniRx;
 using UnityEngine;
 using Zenject;
 
-public class PistolInstaller : BaseWeaponInstaller
+public class PistolInstaller : WeaponBaseInstaller
 {
     Pistol pistol;
 

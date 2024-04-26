@@ -9,9 +9,11 @@ namespace Invector.vCharacterController
         public KeyCode jumpInput = KeyCode.Space;
         public KeyCode strafeInput = KeyCode.Tab; //Strafing is the act of moving sideways in a video game relative to the player's forward direction
         public KeyCode sprintInput = KeyCode.LeftShift;
-
+        public string horizontalInput = "Horizontal";
+        public string verticallInput = "Vertical";
         [ReadOnly, ShowInInspector] public vThirdPersonController thirdPersonController;
 
+        public float strafeTurnSpeed = .05f;
         public Transform strafeDirectionT;
 
         protected virtual void Start()
@@ -24,11 +26,19 @@ namespace Invector.vCharacterController
         protected virtual void Update()
         {
             thirdPersonController.UpdateMoveDirection(strafeDirectionT);
+            MoveInput();
+            RotationInput();
             SprintInput();
             JumpInput();
             StrafeInput();
             thirdPersonController.UpdateAnimator();            // updates the Animator Parameters
         }
+
+        void RotationInput()
+        {
+            // strafeDirectionT.transform.rotation *= Quaternion.AngleAxis(Input.GetAxis(horizontalInput) * Time.deltaTime * strafeTurnSpeed, Vector3.up);
+        }
+
 
         protected virtual void FixedUpdate()
         {
@@ -37,16 +47,24 @@ namespace Invector.vCharacterController
             thirdPersonController.ControlRotationType();       // handle the controller rotation type
         }
 
+        // public virtual void OnAnimatorMove()
+        // {
+        //     if (cc == null) cc = GetComponent<vThirdPersonController>();
+        //     cc.ControlAnimatorRootMotion(); // handle root motion animations 
+        // }
 
-        public virtual void OnAnimatorMove()
+        public virtual void MoveInput()
         {
-            // if (cc == null) cc = GetComponent<vThirdPersonController>();
-
-            // cc.ControlAnimatorRootMotion(); // handle root motion animations 
+            thirdPersonController.input.x = Input.GetAxis(horizontalInput);
+            thirdPersonController.input.z = Input.GetAxis(verticallInput);
         }
 
-
         protected virtual void StrafeInput()
+        {
+            if (Input.GetKeyDown(strafeInput)) thirdPersonController.Strafe();
+        }
+
+        public void StrafeOn()
         {
             if (Input.GetKeyDown(strafeInput)) thirdPersonController.Strafe();
         }

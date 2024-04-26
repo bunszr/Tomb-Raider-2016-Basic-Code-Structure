@@ -2,23 +2,10 @@ using UnityEngine;
 using UniRx;
 using System;
 using Zenject;
+using System.Collections;
 
 public class WeaponToggle : MonoBehaviour, IWeaponToggler
 {
-    [System.Serializable]
-    public class WeaponToggleData
-    {
-        [SerializeField] string triggerName;
-        public int TriggerNameHash { get; private set; }
-
-        public void InitData()
-        {
-            TriggerNameHash = Animator.StringToHash(triggerName);
-        }
-    }
-
-    public WeaponToggleData[] weaponToggleDatas;
-
     IDisposable disposable;
     LivingEntity livingEntity;
     public Transform weaponHolder;
@@ -39,8 +26,6 @@ public class WeaponToggle : MonoBehaviour, IWeaponToggler
     private void Awake()
     {
         _CurrWeaponRP = new ReactiveProperty<IWeapon>();
-
-        weaponToggleDatas.Foreach(x => x.InitData());
 
         livingEntity = GetComponentInParent<LivingEntity>();
         AnimationEventMono animationEventMono = livingEntity.gameObject.AddComponent<AnimationEventMono>();
@@ -77,7 +62,8 @@ public class WeaponToggle : MonoBehaviour, IWeaponToggler
 
             if (!weaponHolder.GetChild(weaponIndex).gameObject.activeSelf)
             {
-                livingEntity.Animator.SetTrigger(weaponToggleDatas[weaponIndex].TriggerNameHash);
+                livingEntity.Animator.SetInteger(APs.DrawWeaponInt, weaponIndex);
+                livingEntity.Animator.SetTrigger(APs.DrawWeaponTrigger);
             }
         }
     }

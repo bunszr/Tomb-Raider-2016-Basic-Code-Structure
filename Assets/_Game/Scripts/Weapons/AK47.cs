@@ -24,6 +24,7 @@ public class AK47 : WeaponBase, ISuppressorAddOn, IFlashLightAddOn
 
     public override void Fire()
     {
+        base.Fire();
         _bulletBehaviour.Fire();
         _shellCasingBehaviour.Execute();
         _recoilBehaviour.Execute();

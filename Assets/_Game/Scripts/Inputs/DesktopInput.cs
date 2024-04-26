@@ -25,5 +25,10 @@ public partial class DesktopInput : IInput
         public bool HasPressedReloadKey => Input.GetKeyDown(KeyCode.R);
         public bool HasPressedFireKey => Input.GetMouseButtonDown(0);
         public bool HasHoldingFireKey => Input.GetMouseButton(0);
+        public bool HasPressedAimKey => Input.GetMouseButtonDown(1);
+        public bool HasReleasedAimKey => Input.GetMouseButtonUp(1);
+        public bool HasHoldingAimKey => Input.GetMouseButton(1);
+        public float HorizontalMouseAxis => Input.GetAxis("Mouse X");
+        public float VerticalMouseAxis => Input.GetAxis("Mouse Y");
     }
 }

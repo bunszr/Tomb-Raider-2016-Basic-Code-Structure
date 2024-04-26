@@ -13,6 +13,7 @@ public class SMG01 : WeaponBase
 
     public override void Fire()
     {
+        base.Fire();
         _bulletBehaviour.Fire();
         _shellCasingBehaviour.Execute();
         _recoilBehaviour.Execute();

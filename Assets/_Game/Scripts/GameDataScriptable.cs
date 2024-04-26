@@ -67,6 +67,7 @@ public class GameDataScriptable : SingletonScriptableObject<GameDataScriptable>
     public class WeaponScriptableData
     {
         public MaxWeaponDataSaveable maxWeaponDataSaveable;
+        public AimData aimData;
 
         [System.Serializable]
         public class MaxWeaponDataSaveable
@@ -76,6 +77,16 @@ public class GameDataScriptable : SingletonScriptableObject<GameDataScriptable>
             public int reloadSpeed;
             public int ammoCapacity;
             public int rateOfFire;
+        }
+
+        [System.Serializable]
+        public class AimData
+        {
+            public float rayMaxDistance = 9;
+            public float depth = 9;
+            public float rigWeightDuration = .2f;
+            public float mouseSensitive = 350;
+            public LayerMask layerMask;
         }
     }
 }

@@ -70,6 +70,7 @@ namespace Invector.vCharacterController
                 Vector3 dir = (isStrafing && (!isSprinting || sprintOnlyFree == false) || (freeSpeed.rotateWithCamera && input == Vector3.zero)) && rotateTarget ? rotateTarget.forward : moveDirection;
                 RotateToDirection(dir);
             }
+            else RotateToDirection(rotateTarget.forward);
         }
 
         public virtual void UpdateMoveDirection(Transform referenceTransform = null)
@@ -130,6 +131,11 @@ namespace Invector.vCharacterController
         public virtual void Strafe()
         {
             isStrafing = !isStrafing;
+        }
+
+        public virtual void ToggleStrafe(bool active)
+        {
+            isStrafing = active;
         }
 
         public virtual void Jump()

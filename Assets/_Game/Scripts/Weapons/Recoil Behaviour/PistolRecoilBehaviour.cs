@@ -23,7 +23,7 @@ public class PistolRecoilBehaviour : RecoilBehaviourBase
     [Button]
     public override void Execute()
     {
-        Transform.DORotateQuaternion(Quaternion.Euler(data.targetRotation), data.duration).SetEase(data.ease, 2).From(Quaternion.identity);
+        // Transform.DORotateQuaternion(Quaternion.Euler(data.targetRotation), data.duration).SetEase(data.ease, 2).From(Quaternion.identity);
     }
 
     public override void OnUpdate()

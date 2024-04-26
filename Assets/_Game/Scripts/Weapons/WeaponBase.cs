@@ -8,13 +8,20 @@ public abstract class WeaponBase : MonoBehaviour, IWeapon
     public System.Action<IWeapon> onEquip;
     public System.Action<IWeapon> onUnEquip;
 
+    public NormalAimBehavior.NormalAimBehaviorData normalAimBehaviorData;
+
     [ReadOnly, ShowInInspector] public ReactiveProperty<IAmmoData> _AmmoRP { get; set; }
 
     [ShowInInspector] public IFireBehaviour _fireMode;
+    [ShowInInspector] public IAimBehaviour _aimBehaviour;
+    [ShowInInspector] public IShotAnim _shotAnim;
 
     public Transform Transform => transform;
 
-    public abstract void Fire();
+    public virtual void Fire()
+    {
+        _shotAnim.Fire();
+    }
 
     [Button]
     public virtual void Equip()
@@ -22,6 +29,7 @@ public abstract class WeaponBase : MonoBehaviour, IWeapon
         ChangeActiveSelfMVC(true);
         onEquip?.Invoke(this);
         _fireMode.Enter();
+        _aimBehaviour.Enter();
     }
 
     [Button]
@@ -29,6 +37,7 @@ public abstract class WeaponBase : MonoBehaviour, IWeapon
     {
         onUnEquip?.Invoke(this);
         _fireMode.Exit();
+        _aimBehaviour.Exit();
         ChangeActiveSelfMVC(false);
     }
 
