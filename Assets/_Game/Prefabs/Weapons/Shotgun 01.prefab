@@ -265,8 +265,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponDataScriptable: {fileID: 11400000, guid: 79f275702380bf94b8c68736ea6aa37c,
     type: 2}
+  normalAimBehaviorData:
+    rigs: []
   scatterBulletBehaviourData:
-    bulletPrefab: {fileID: 756640760501399759, guid: bce41208853a05245acae96dedcbee78,
+    bulletPrefab: {fileID: 5873784681966129994, guid: 0dade95565689414e8416805f307eb7a,
       type: 3}
     rotation: 2.5
     scatterCount: 3

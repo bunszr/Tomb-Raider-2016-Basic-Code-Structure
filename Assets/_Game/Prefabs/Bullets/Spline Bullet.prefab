@@ -152,7 +152,7 @@ PrefabInstance:
     - target: {fileID: 6692797150664298813, guid: f50c222cf7cf34340a965e701f64a936,
         type: 3}
       propertyPath: m_Name
-      value: Normal Bullet
+      value: Spline Bullet
       objectReference: {fileID: 0}
     - target: {fileID: 6695779457385452671, guid: f50c222cf7cf34340a965e701f64a936,
         type: 3}
@@ -224,7 +224,8 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0.06609703
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3220668557721017854, guid: f50c222cf7cf34340a965e701f64a936, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f50c222cf7cf34340a965e701f64a936, type: 3}
 --- !u!54 &3144410839995391432 stripped
 Rigidbody:
@@ -244,7 +245,20 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2752328559304338737}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3846519226507846632
+--- !u!114 &932703039572541664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8850606475541281804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c6e41cd364f27d4a87a294a569b5652, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 3144410839995391432}
+--- !u!114 &5006974705361661123
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -256,16 +270,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a47bac80a21a18b4b91b990df1cb4e7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5873784681966129994
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8850606475541281804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3572db2b00474b4087541d80737af82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 3144410839995391432}

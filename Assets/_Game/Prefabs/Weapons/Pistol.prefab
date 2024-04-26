@@ -175,8 +175,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponDataScriptable: {fileID: 0}
+  normalAimBehaviorData:
+    rigs: []
   normalBulletModeData:
-    bulletPrefab: {fileID: 756640760501399759, guid: 0dade95565689414e8416805f307eb7a,
+    bulletPrefab: {fileID: 5873784681966129994, guid: 0dade95565689414e8416805f307eb7a,
       type: 3}
     bulletLocation: {fileID: 5811099255684223440}
     forceMode: 2

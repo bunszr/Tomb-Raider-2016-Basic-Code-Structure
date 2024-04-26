@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class SMG01 : WeaponBase
 {
-    public NormalBulletBehaviour.NormalBulletBehaviourData normalBulletModeData;
+    // public NormalBulletBehaviour.NormalBulletBehaviourData normalBulletModeData;
+    public SplineBulletBehaviour.SplineBulletBehaviourData splineBulletBehaviourData;
     public NormalShellCasingBehaviour.NormalShellCasingBehaviourData normalShellCasingData;
     public PistolRecoilBehaviour.PistolRecoilBehaviourData pistolRecoilBehaviourData;
 

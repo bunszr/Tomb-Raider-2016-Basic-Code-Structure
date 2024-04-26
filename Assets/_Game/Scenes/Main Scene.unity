@@ -1283,6 +1283,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &188718597 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8402333885003226435, guid: d489502bd5f41234fb33d1a3eaa45032,
+    type: 3}
+  m_PrefabInstance: {fileID: 744845813}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &230423750
 GameObject:
   m_ObjectHideFlags: 0
@@ -1523,7 +1529,6 @@ MonoBehaviour:
   colider: {fileID: 0}
   animator: {fileID: 0}
   thirdPersonController: {fileID: 0}
-  thirdPersonInput: {fileID: 0}
 --- !u!114 &268615004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4501,9 +4506,18 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1345554117, guid: d489502bd5f41234fb33d1a3eaa45032, type: 3}
+      propertyPath: splineBulletBehaviourData.bulletPrefab
+      value: 
+      objectReference: {fileID: 932703039572541664, guid: 91e051b805068024f9fb71707eabcd04,
+        type: 3}
+    - target: {fileID: 1345554117, guid: d489502bd5f41234fb33d1a3eaa45032, type: 3}
       propertyPath: normalAimBehaviorData.rigs.Array.data[0]
       value: 
       objectReference: {fileID: 790652214}
+    - target: {fileID: 1345554117, guid: d489502bd5f41234fb33d1a3eaa45032, type: 3}
+      propertyPath: splineBulletBehaviourData.bulletLocation
+      value: 
+      objectReference: {fileID: 188718597}
     - target: {fileID: 2578542682298167666, guid: d489502bd5f41234fb33d1a3eaa45032,
         type: 3}
       propertyPath: m_RootOrder
@@ -6704,7 +6718,6 @@ MonoBehaviour:
   colider: {fileID: 1037564713}
   animator: {fileID: 1037564717}
   thirdPersonController: {fileID: 1037564716}
-  thirdPersonInput: {fileID: 1037564715}
 --- !u!1 &1047649888
 GameObject:
   m_ObjectHideFlags: 3
