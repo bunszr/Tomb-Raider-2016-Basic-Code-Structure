@@ -523,22 +523,22 @@ PrefabInstance:
     - target: {fileID: 146076365070355800, guid: 2d496304b1398034fbb124c17a508bdb,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.50000167
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 146076365070355800, guid: 2d496304b1398034fbb124c17a508bdb,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.4999983
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 146076365070355800, guid: 2d496304b1398034fbb124c17a508bdb,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.4999985
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 146076365070355800, guid: 2d496304b1398034fbb124c17a508bdb,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.5000015
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 146076365070355800, guid: 2d496304b1398034fbb124c17a508bdb,
         type: 3}
@@ -643,6 +643,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponDataScriptable: {fileID: 11400000, guid: b0d51eb8610af37438fcf2a004635432,
     type: 2}
+  normalAimBehaviorData:
+    rigs: []
   suppressorFeatureScriptable: {fileID: 11400000, guid: ce4eaf6031e631443b3e14fc5e1b4c50,
     type: 2}
   flashLightFeatureScriptable: {fileID: 11400000, guid: f70a1359a5afec64d875290a8f8e5406,
