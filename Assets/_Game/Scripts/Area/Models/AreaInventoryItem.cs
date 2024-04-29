@@ -10,8 +10,8 @@ namespace TriggerableAreaNamespace
         public InventoryItemScriptableBase inventoryItemScriptableBase;
         [SerializeField] int itemCountToTake = 1;
         public TextMeshProUGUI areaNameText;
-        public GameObject pressKeyGo;
-        public GameObject fullInventoryShowerGo;
+        public GameObject popUpGo;
+        public GameObject notAllowedGo;
 
         public CanvasGroup takenItemCanvasGroup;
         public TextMeshProUGUI takenItemCountText;
@@ -20,10 +20,10 @@ namespace TriggerableAreaNamespace
 
         public int ItemCountToTake { get => itemCountToTake; }
 
-        public GameObject PopUpGo => pressKeyGo;
+        public GameObject PopUpGo => popUpGo;
         public bool HasPopUp => inventoryItemScriptableBase.QuantityRP.Value < inventoryItemScriptableBase.MaxQuantity;
 
-        public GameObject NotAllowedGo => fullInventoryShowerGo;
+        public GameObject NotAllowedGo => notAllowedGo;
         public bool NotAllowedCondition => inventoryItemScriptableBase.QuantityRP.Value >= inventoryItemScriptableBase.MaxQuantity;
     }
 }
