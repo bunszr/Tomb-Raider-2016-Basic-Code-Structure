@@ -20,4 +20,6 @@ public static class APs
 
     public static readonly int CollectInventoryItemTrigger = Animator.StringToHash("CollectInventoryItemTrigger");
     public static readonly int CollectInventoryItemInt = Animator.StringToHash("CollectInventoryItemInt");
+
+    public static readonly int InvestigateDocumentTrigger = Animator.StringToHash("InvestigateDocumentTrigger");
 }
