@@ -10,6 +10,7 @@ namespace TriggerableAreaNamespace
     {
         [Inject] IInput _input;
 
+        CommandExecuter commandExecuter;
         [SerializeField] AreaInventoryItem areaInventoryItem;
         [SerializeField] TriggerCustom triggerCustom;
         [SerializeField] MonoEvents monoEvents;
@@ -38,7 +39,7 @@ namespace TriggerableAreaNamespace
                 new EnableCharacterMovementCommand(TriggeredPlayerReference),
             };
 
-            CommandExecuter commandExecuter = new CommandExecuter(monoEvents, areaCommads) { commandExecuterDebug = commandExecuterDebug };
+            commandExecuter = new CommandExecuter(this, areaCommads) { commandExecuterDebug = commandExecuterDebug };
             commandExecuter.onFinished += OnFinishedExecutionOfCommands;
 
             _triggerEnterExits = new List<ITriggerEnterExit>()
@@ -56,6 +57,7 @@ namespace TriggerableAreaNamespace
 
         void OnFinishedExecutionOfCommands()
         {
+            commandExecuter.Deactivate();
             _triggerEnterExits.ForEach(x => x.Deactivate());
             triggerCustom.onTriggerEnterEvent -= OnCustomTriggerEnter;
             Destroy(areaInventoryItem.transform.parent.gameObject, 1);

@@ -29,13 +29,13 @@ namespace TriggerableAreaNamespace
             }
         }
 
-        MonoEvents monoUpdateEvents;
         Queue<IAreaCommad> queues = new Queue<IAreaCommad>();
+        MonoBehaviour monoToUpdate;
         IAreaCommad[] areaCommads;
 
-        public CommandExecuter(MonoEvents monoEvents, IAreaCommad[] areaCommads)
+        public CommandExecuter(MonoBehaviour monoToUpdate, IAreaCommad[] areaCommads)
         {
-            this.monoUpdateEvents = monoEvents;
+            this.monoToUpdate = monoToUpdate;
             this.areaCommads = areaCommads;
         }
 
@@ -46,13 +46,14 @@ namespace TriggerableAreaNamespace
 
             queues.Peek().Enter();
             commandExecuterDebug.Debug(queues.Peek().GetType().Name);
-            monoUpdateEvents.onUpdate += OnUpdate;
+
+            UpdateManager.Ins.RegisterAsUpdate(monoToUpdate, OnUpdate);
         }
 
         public void Deactivate()
         {
             queues.Clear();
-            monoUpdateEvents.onUpdate -= OnUpdate;
+            UpdateManager.Ins.UnregisterAsUpdate(monoToUpdate, OnUpdate);
         }
 
         private void OnUpdate()
@@ -63,11 +64,7 @@ namespace TriggerableAreaNamespace
             {
                 queues.Peek().Exit();
                 queues.Dequeue();
-                if (queues.Count == 0)
-                {
-                    monoUpdateEvents.onUpdate -= OnUpdate;
-                    onFinished?.Invoke();
-                }
+                if (queues.Count == 0) onFinished?.Invoke();
                 else
                 {
                     queues.Peek().Enter();
