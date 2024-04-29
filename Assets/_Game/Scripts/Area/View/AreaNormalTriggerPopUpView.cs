@@ -12,6 +12,13 @@ namespace TriggerableAreaNamespace
             _triggerablePopUp = areaBase as ITriggerablePopUp;
         }
 
+        public override void Deactivate()
+        {
+            base.Deactivate();
+            _triggerablePopUp.PopUpGo.SetActive(false);
+            _triggerablePopUp.PopUpGo.transform.DOKill();
+        }
+
         public override void OnCustomTriggerEnter(Collider other)
         {
             if (other.TryGetComponent(out Player player) && _triggerablePopUp.HasPopUp)

@@ -10421,6 +10421,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1428759361}
+  - component: {fileID: 1428759362}
+  - component: {fileID: 1428759363}
   m_Layer: 0
   m_Name: View
   m_TagString: Untagged
@@ -10444,6 +10446,32 @@ Transform:
   m_Father: {fileID: 6021256195211636890}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1428759362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428759360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64164702b4c59d841b6d86ae818a6315, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  areaBase: {fileID: 7482334234648932157}
+--- !u!114 &1428759363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428759360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c3d970a86f9c304a895c68c8e8c6174, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  areaInventoryItem: {fileID: 7482334234648932157}
 --- !u!1 &1429213676
 GameObject:
   m_ObjectHideFlags: 0
@@ -12667,9 +12695,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1756350502}
   - component: {fileID: 1756350505}
-  - component: {fileID: 1756350504}
   - component: {fileID: 1756350503}
-  - component: {fileID: 1756350506}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -12705,18 +12731,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.2107134
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1756350504
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1756350501}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63812790f0e425b47af64a2e93c0c5df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1756350505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12730,24 +12744,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   areaInventoryItem: {fileID: 7482334234648932157}
-  triggerCustom: {fileID: 1756350504}
-  monoEvents: {fileID: 1756350506}
   commandExecuterDebug:
     isDebug: 1
     maxStateCountToShow: 8
     enteringStatesList: []
---- !u!114 &1756350506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1756350501}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41510ffe0add20e4ca37fdc78bff4271, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1760880281
 GameObject:
   m_ObjectHideFlags: 0
@@ -19447,6 +19447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   model: {fileID: 7482334234648932156}
+  view: {fileID: 1428759360}
   controller: {fileID: 1756350501}
   inventoryItemScriptableBase: {fileID: 11400000, guid: 92344d4102e8e2b418586cb5b45f2462,
     type: 2}
