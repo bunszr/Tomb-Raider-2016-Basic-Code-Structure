@@ -10,7 +10,7 @@ namespace TriggerableAreaNamespace
         public AreaTriggerBase(AreaBase areaBase)
         {
             this.areaBase = areaBase;
-            this.triggerCustom = areaBase.controller.GetComponent<TriggerCustom>();
+            this.triggerCustom = areaBase.controller.GetOrAddComponent<TriggerCustom>();
         }
 
         public virtual void Activate()

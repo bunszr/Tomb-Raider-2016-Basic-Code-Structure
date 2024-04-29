@@ -10,10 +10,9 @@ namespace TriggerableAreaNamespace
     {
         [Inject] IInput _input;
 
+        TriggerCustom triggerCustom;
         CommandExecuter commandExecuter;
         [SerializeField] AreaInventoryItem areaInventoryItem;
-        [SerializeField] TriggerCustom triggerCustom;
-        [SerializeField] MonoEvents monoEvents;
 
         List<ITriggerEnterExit> _triggerEnterExits;
 
@@ -23,6 +22,8 @@ namespace TriggerableAreaNamespace
 
         private void Start()
         {
+            triggerCustom = gameObject.GetOrAddComponent<TriggerCustom>();
+
             areaInventoryItem.areaNameText.text = areaInventoryItem.inventoryItemScriptableBase.ItemName;
             areaInventoryItem.itemImages.Foreach(x => x.sprite = areaInventoryItem.inventoryItemScriptableBase.Icon);
 
