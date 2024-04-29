@@ -17,4 +17,7 @@ public static class APs
     public static readonly int DrawWeaponInt = Animator.StringToHash("DrawWeaponInt");
     public static readonly int Shot = Animator.StringToHash("Shot");
     public static readonly int Aim = Animator.StringToHash("Aim");
+
+    public static readonly int CollectInventoryItemTrigger = Animator.StringToHash("CollectInventoryItemTrigger");
+    public static readonly int CollectInventoryItemInt = Animator.StringToHash("CollectInventoryItemInt");
 }

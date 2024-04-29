@@ -4,11 +4,13 @@ public partial class DesktopInput : IInput
 {
     public IWeaponToggleInput WeaponToggleInput { get; set; }
     public IWeaponInput WeaponInput { get; set; }
+    public IAreaInput AreaInput { get; set; }
 
     public DesktopInput()
     {
         WeaponToggleInput = new WeaponToggleInputDesktop();
         WeaponInput = new WeaponInputDesktop();
+        AreaInput = new AreaInputDesktop();
     }
 
     public class WeaponToggleInputDesktop : IWeaponToggleInput
@@ -30,5 +32,10 @@ public partial class DesktopInput : IInput
         public bool HasHoldingAimKey => Input.GetMouseButton(1);
         public float HorizontalMouseAxis => Input.GetAxis("Mouse X");
         public float VerticalMouseAxis => Input.GetAxis("Mouse Y");
+    }
+
+    public class AreaInputDesktop : IAreaInput
+    {
+        public bool HasPressedCollectItemKey => Input.GetKeyDown(KeyCode.E);
     }
 }

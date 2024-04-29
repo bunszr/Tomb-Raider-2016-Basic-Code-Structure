@@ -9,11 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7577401674747fc4c86587a33179de2e, type: 3}
-  m_Name: GasItemScriptable
+  m_Script: {fileID: 11500000, guid: c44d0efd1a84ea349af7ea197acf108c, type: 3}
+  m_Name: CollectInventoryItemStateInfoTypeScriptable
   m_EditorClassIdentifier: 
-  itemName: Gas
-  description: Description
-  quantity: 5
-  maxQuantity: 20
-  icon: {fileID: 21300000, guid: 2c6b152263244e940b53e79d232a085e, type: 3}
