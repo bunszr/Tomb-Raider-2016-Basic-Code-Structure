@@ -19,8 +19,8 @@ namespace TriggerableAreaNamespace
 
         public void Enter()
         {
-            _disposable = MessageBroker.Default.Receive<OnWeaponReloadingEnterEvent>()
-                          .Where(x => x.animationStateInfoType is InvestigateDocumentStateInfoTypeScriptable).Subscribe(OnAnimEnter);
+            _disposable = MessageBroker.Default.Receive<OnAnimationStateEnterEvent>()
+                          .Where(x => x.stateInfoEnum == StateInfoEnum.InvestigateDocument).Subscribe(OnAnimEnter);
 
             nextTime = 0f;
             triggeredPlayerReference.Player.Animator.SetTrigger(APs.InvestigateDocumentTrigger);
@@ -33,6 +33,6 @@ namespace TriggerableAreaNamespace
             return nextTime != 0f && Time.time > nextTime ? TaskStatusEnum.Success : TaskStatusEnum.Running;
         }
 
-        void OnAnimEnter(OnWeaponReloadingEnterEvent onReloadingEnterEvent) => nextTime = Time.time + onReloadingEnterEvent.stateInfo.length;
+        void OnAnimEnter(OnAnimationStateEnterEvent onReloadingEnterEvent) => nextTime = Time.time + onReloadingEnterEvent.stateInfo.length;
     }
 }

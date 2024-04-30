@@ -16,14 +16,14 @@ public class ReloadMagazineState : WeaponStateBase
     public override void OnEnter()
     {
         nextTime = 0f;
-        _disposable = MessageBroker.Default.Receive<OnWeaponReloadingEnterEvent>()
+        _disposable = MessageBroker.Default.Receive<OnAnimationStateEnterEvent>()
                         .Where(x => x.stateInfo.IsName(weaponBase.weaponDataScriptable.weaponAnimationData.reloadMagazineName))
                         .Subscribe(OnReloadingEnter);
 
         animator.SetTrigger(weaponBase.weaponDataScriptable.weaponAnimationData.reloadMagazineTriggerName);
     }
 
-    public void OnReloadingEnter(OnWeaponReloadingEnterEvent onReloadingEnterEvent)
+    public void OnReloadingEnter(OnAnimationStateEnterEvent onReloadingEnterEvent)
     {
         nextTime = Time.time + onReloadingEnterEvent.stateInfo.length;
         _disposable.Dispose();
