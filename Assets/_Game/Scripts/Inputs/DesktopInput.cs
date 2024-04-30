@@ -37,5 +37,6 @@ public partial class DesktopInput : IInput
     public class AreaInputDesktop : IAreaInput
     {
         public bool HasPressedCollectItemKey => Input.GetKeyDown(KeyCode.E);
+        public bool HasPressedHitKey => Input.GetKeyDown(KeyCode.E);
     }
 }

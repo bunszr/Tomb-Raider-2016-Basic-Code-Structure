@@ -22,4 +22,8 @@ public static class APs
     public static readonly int CollectInventoryItemInt = Animator.StringToHash("CollectInventoryItemInt");
 
     public static readonly int InvestigateDocumentTrigger = Animator.StringToHash("InvestigateDocumentTrigger");
+
+    public static readonly int Punch = Animator.StringToHash("Punch");
+
+    public static readonly int CrossFadeEmptyState = Animator.StringToHash("CrossFadeEmptyState");
 }
