@@ -77,6 +77,8 @@ public class WeaponToggle : MonoBehaviour, IWeaponToggler
 
     public void OnDrawAnim(string name)
     {
+        if (name != "DrawWeapon") return;
+
         CheckMistake();
 
         for (int i = 0; i < weaponHolder.childCount; i++)
