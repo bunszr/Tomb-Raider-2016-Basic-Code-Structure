@@ -4686,6 +4686,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 3198655866327511967, guid: d489502bd5f41234fb33d1a3eaa45032,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1037564717}
     - target: {fileID: 4393467703331383592, guid: d489502bd5f41234fb33d1a3eaa45032,
         type: 3}
       propertyPath: m_Name
@@ -5718,6 +5723,11 @@ PrefabInstance:
       propertyPath: normalAimBehaviorData.rigs.Array.data[0]
       value: 
       objectReference: {fileID: 790652214}
+    - target: {fileID: 3513892271193575457, guid: 9d7c7539c01b1d841aff949ef83da85b,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1037564717}
     - target: {fileID: 5381831231568619378, guid: 9d7c7539c01b1d841aff949ef83da85b,
         type: 3}
       propertyPath: m_RootOrder
@@ -9110,6 +9120,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6135754185431321141, guid: f672bc3e5e5aaf64dbf1b73dcc0f5411,
         type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1037564717}
+    - target: {fileID: 6135754185431321141, guid: f672bc3e5e5aaf64dbf1b73dcc0f5411,
+        type: 3}
       propertyPath: stateMachineDebug.isDebug
       value: 1
       objectReference: {fileID: 0}
@@ -9563,6 +9578,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5969558354358996727, guid: 101f28102a806ab48b1377dc84df6bb1,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1037564717}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 101f28102a806ab48b1377dc84df6bb1, type: 3}
 --- !u!1 &1395318318
