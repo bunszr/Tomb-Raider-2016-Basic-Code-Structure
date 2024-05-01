@@ -17,7 +17,7 @@ namespace CampSite
 
         protected override void OnPointerEnter(PointerEventData eventData)
         {
-            ISuppressorAddOn _suppressorAddOn = campSiteHolder._Weapon.Transform.GetComponent<ISuppressorAddOn>();
+            ISuppressorAddOn _suppressorAddOn = campSiteHolder.weaponBase.GetComponent<ISuppressorAddOn>();
             suppressorDefaultlocalPos = _suppressorAddOn.SuppressorGO.transform.localPosition;
             _suppressorAddOn.SuppressorGO.SetActive(true);
             _suppressorAddOn.SuppressorGO.transform.DOLocalMoveZ(.5f, .4f).From(true);
@@ -25,7 +25,7 @@ namespace CampSite
 
         protected override void OnPointerExit(PointerEventData eventData)
         {
-            ISuppressorAddOn _suppressorAddOn = campSiteHolder._Weapon.Transform.GetComponent<ISuppressorAddOn>();
+            ISuppressorAddOn _suppressorAddOn = campSiteHolder.weaponBase.GetComponent<ISuppressorAddOn>();
             _suppressorAddOn.SuppressorGO.transform.DOKill();
             _suppressorAddOn.SuppressorGO.SetActive(false);
             _suppressorAddOn.SuppressorGO.transform.localPosition = suppressorDefaultlocalPos;

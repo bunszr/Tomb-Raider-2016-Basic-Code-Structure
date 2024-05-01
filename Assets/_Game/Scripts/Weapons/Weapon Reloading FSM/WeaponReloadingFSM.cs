@@ -10,9 +10,9 @@ public class WeaponReloadingFSM : MonoBehaviour
     [Inject] IInput _input;
 
     StateMachine fsm;
-    WeaponBase weaponBase;
-    IWeapon _weapon;
-    Animator animator;
+    [SerializeField] WeaponBase weaponBase;
+    [SerializeField] PlayerWeaponBaseInstaller playerWeaponBaseInstaller;
+    [SerializeField] Animator animator;
 
     WeaponCheckFactory factory;
 
@@ -21,16 +21,13 @@ public class WeaponReloadingFSM : MonoBehaviour
     private void Awake()
     {
         fsm = new StateMachine() { stateMachineDebug = stateMachineDebug };
-        _weapon = transform.parent.GetComponentInChildren<IWeapon>();
-        weaponBase = _weapon.Transform.GetComponent<WeaponBase>();
-        animator = GetComponentInParent<LivingEntity>().Animator;
 
-        factory = new WeaponCheckFactory(_weapon);
+        factory = new WeaponCheckFactory(weaponBase);
 
         fsm.AddState("EmptyState", new State());
-        fsm.AddState("ReloadMagazineState", new ReloadMagazineState(_weapon, animator, true));
-        fsm.AddState("FillMagazineState", new FillMagazineState(_weapon, false, true));
-        fsm.AddState("EmptyShotState", new EmptyShotState(_weapon, _input.WeaponInput, true, true));
+        fsm.AddState("ReloadMagazineState", new ReloadMagazineState(weaponBase, animator, true));
+        fsm.AddState("FillMagazineState", new FillMagazineState(weaponBase, false, true));
+        fsm.AddState("EmptyShotState", new EmptyShotState(weaponBase, _input.WeaponInput, true, true));
 
         fsm.AddTriggerTransition("OnMagazineEmpty", new Transition("EmptyState", "ReloadMagazineState"));
         fsm.AddTriggerTransition("OnMagazineAndAmmoIsEmpty", new Transition("EmptyState", "EmptyShotState"));
@@ -44,15 +41,15 @@ public class WeaponReloadingFSM : MonoBehaviour
         fsm.SetStartState("EmptyState");
         fsm.Init();
 
-        weaponBase.onEquip += OnEquip;
-        weaponBase.onUnEquip += OnUnEquip;
+        playerWeaponBaseInstaller.onEquip += OnEquip; // It must be call in Awake
+        playerWeaponBaseInstaller.onUnEquip += OnUnEquip; // It must be call in Awake
     }
 
     private void Update() => fsm.OnLogic();
 
     void OnEquip(IWeapon _weapon)
     {
-        _weapon._AmmoRP.Value.BulletCountInMagazineRP.Where(x => x == 0).Subscribe(OnBulletCountZero).AddTo(disposables);
+        weaponBase._AmmoRP.Value.BulletCountInMagazineRP.Where(x => x == 0).Subscribe(OnBulletCountZero).AddTo(disposables);
     }
 
     void OnUnEquip(IWeapon _weapon)

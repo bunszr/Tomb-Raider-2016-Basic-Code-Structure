@@ -5,7 +5,7 @@ public class EmptyShotState : WeaponStateBase
     IWeaponInput _weaponInput;
     bool waitAFrame;
 
-    public EmptyShotState(IWeapon _weapon, IWeaponInput _weaponInput, bool needsExitTime, bool isGhostState = false) : base(_weapon, needsExitTime, isGhostState)
+    public EmptyShotState(WeaponBase weaponBase, IWeaponInput _weaponInput, bool needsExitTime, bool isGhostState = false) : base(weaponBase, needsExitTime, isGhostState)
     {
         this._weaponInput = _weaponInput;
     }

@@ -1,9 +1,9 @@
 public class BulletBehaviourBase
 {
-    protected IWeapon _weapon;
+    protected WeaponBase weaponBase;
 
-    public BulletBehaviourBase(IWeapon weapon)
+    public BulletBehaviourBase(WeaponBase weapon)
     {
-        _weapon = weapon;
+        weaponBase = weapon;
     }
 }

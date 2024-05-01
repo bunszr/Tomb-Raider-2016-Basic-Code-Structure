@@ -85,12 +85,14 @@ public class WeaponToggle : MonoBehaviour, IWeaponToggler
         {
             if (weaponHolder.GetChild(i).gameObject.activeSelf)
             {
-                weaponHolder.GetChild(i).GetComponentInChildren<IWeapon>().Unequip();
+                IWeapon _weapon = weaponHolder.GetChild(i).GetComponentInChildren<IWeapon>();
+                _weapon.Unequip();
+                _weapon.Transform.parent.gameObject.SetActive(false);
             }
         }
 
         _CurrWeaponRP.Value = weaponHolder.GetChild(weaponIndex).GetComponentInChildren<IWeapon>(true);
+        _CurrWeaponRP.Value.Transform.parent.gameObject.SetActive(true);
         _CurrWeaponRP.Value.Equip();
     }
-
 }

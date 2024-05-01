@@ -1,4 +1,4 @@
 public interface IMuzzleBehaviour
 {
-    void Execute();
+    void Fire();
 }

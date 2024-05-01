@@ -1,25 +1,27 @@
-using UniRx;
+using System.Collections.Generic;
 using UnityEngine;
-using Zenject;
 
-public class PistolInstaller : WeaponBaseInstaller
+public class PistolInstaller : PlayerWeaponBaseInstaller
 {
-    Pistol pistol;
+    [SerializeField] LivingEntity livingEntity;
+    [SerializeField] Pistol pistol;
+    [SerializeField] Animator animator;
 
     protected override void Awake()
     {
         base.Awake();
-        pistol = weaponBase as Pistol;
 
-        pistol._bulletBehaviour = new NormalBulletBehaviour(pistol, pistol.normalBulletModeData);
-        pistol._fireMode = new SingleShotBehavior(pistol, _input.WeaponInput);
-        pistol._shellCasingBehaviour = new NormalShellCasingBehaviour(pistol, pistol.normalShellCasingData);
-        pistol._recoilBehaviour = new PistolRecoilBehaviour(pistol, pistol.pistolRecoilBehaviourData);
-    }
+        _extraFireList = new List<IExtraFire>()
+        {
+            new FireAnimationBehaviour(animator),
+            new NormalBulletBehaviour(pistol, pistol.normalBulletModeData),
+            new NormalShellCasingBehaviour(pistol, pistol.normalShellCasingData)
+        };
 
-    protected override void Start()
-    {
-        base.Start();
-        pistol.Equip();
+        _equipableList = new List<IEquiptable>()
+        {
+            new SingleFireBehavior(weaponBase, _extraFireList, _input.WeaponInput),
+            new NormalAimBehavior(weaponBase, _input.WeaponInput, livingEntity, pistol.normalAimBehaviorData, pistol.weaponAimData),
+        };
     }
 }

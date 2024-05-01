@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ShotgunInstaller : WeaponBaseInstaller
+public class ShotgunInstaller : PlayerWeaponBaseInstaller
 {
     Shotgun shotgun;
 
@@ -8,8 +8,5 @@ public class ShotgunInstaller : WeaponBaseInstaller
     {
         base.Awake();
         shotgun = weaponBase as Shotgun;
-
-        shotgun._bulletBehaviour = new ScatterBulletBehaviour(weaponBase, shotgun.scatterBulletBehaviourData);
-        shotgun._fireMode = new SingleShotBehavior(weaponBase, _input.WeaponInput);
     }
 }

@@ -1,5 +1,5 @@
 
 public interface IShellCasingBehaviour
 {
-    void Execute();
+    void Fire();
 }

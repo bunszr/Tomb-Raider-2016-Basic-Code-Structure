@@ -1,16 +1,6 @@
-using Lean.Pool;
-using UnityEngine;
-
-public abstract class BaseMuzzleBehaviour : IMuzzleBehaviour
+public abstract class BaseMuzzleBehaviour : IMuzzleBehaviour, IExtraFire
 {
-    protected IWeapon _weapon;
-
-    protected BaseMuzzleBehaviour(IWeapon weapon)
-    {
-        _weapon = weapon;
-    }
-
-    public virtual void Execute()
-    {
-    }
+    protected WeaponBase weaponBase;
+    protected BaseMuzzleBehaviour(WeaponBase weapon) => weaponBase = weapon;
+    public virtual void Fire() { }
 }

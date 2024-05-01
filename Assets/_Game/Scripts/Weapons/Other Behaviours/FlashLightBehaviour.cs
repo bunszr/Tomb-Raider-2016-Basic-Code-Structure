@@ -1,27 +1,18 @@
 using UnityEngine;
 
-public class FlashLightBehaviour : IFlashBehaviour
+public class FlashLightBehaviour : IFlashBehaviour, IEquiptable
 {
-    IWeapon _weapon;
+    WeaponBase weaponBase;
     FlashLightAddOnData flashLightAddOnData;
 
-    public FlashLightBehaviour(IWeapon weapon, FlashLightAddOnData flashLightAddOnData)
+    public FlashLightBehaviour(WeaponBase weapon, FlashLightAddOnData flashLightAddOnData)
     {
-        _weapon = weapon;
+        weaponBase = weapon;
         this.flashLightAddOnData = flashLightAddOnData;
     }
 
-    public void Enter()
-    {
-        MonoEvents monoEvents = _weapon.Transform.GetComponent<MonoEvents>();
-        monoEvents.onUpdate += OnUpdate;
-    }
-
-    public void Exit()
-    {
-        MonoEvents monoEvents = _weapon.Transform.GetComponent<MonoEvents>();
-        monoEvents.onUpdate -= OnUpdate;
-    }
+    public virtual void Enter() => UpdateManager.Ins.RegisterAsUpdate(weaponBase, OnUpdate);
+    public virtual void Exit() => UpdateManager.Ins.UnregisterAsUpdate(weaponBase, OnUpdate);
 
     void OnUpdate()
     {

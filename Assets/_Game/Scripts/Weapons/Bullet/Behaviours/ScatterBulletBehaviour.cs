@@ -16,7 +16,7 @@ public class ScatterBulletBehaviour : BulletBehaviourBase, IBulletBehaviour
 
     public ScatterBulletBehaviourData data;
 
-    public ScatterBulletBehaviour(IWeapon _weapon, ScatterBulletBehaviourData data) : base(_weapon)
+    public ScatterBulletBehaviour(WeaponBase weaponBase, ScatterBulletBehaviourData data) : base(weaponBase)
     {
         this.data = data;
     }

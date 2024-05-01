@@ -7,6 +7,7 @@ using UnityEngine;
 public class NormalAmmoView : MonoBehaviour
 {
     public WeaponBase weaponBase;
+    public PlayerWeaponBaseInstaller playerWeaponBaseInstaller;
     public TextMeshProUGUI currAmmoTMPro;
     public TextMeshProUGUI totalAmmoTMPro;
 
@@ -15,8 +16,8 @@ public class NormalAmmoView : MonoBehaviour
 
     private void Awake()
     {
-        weaponBase.onEquip += OnEquip;
-        weaponBase.onUnEquip += OnUnEquip;
+        playerWeaponBaseInstaller.onEquip += OnEquip;
+        playerWeaponBaseInstaller.onUnEquip += OnUnEquip;
         disposables = new CompositeDisposable();
     }
 

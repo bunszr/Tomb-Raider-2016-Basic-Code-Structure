@@ -8,7 +8,7 @@ public class ReloadMagazineState : WeaponStateBase
     Animator animator;
     float nextTime;
 
-    public ReloadMagazineState(IWeapon _weapon, Animator animator, bool needsExitTime, bool isGhostState = false) : base(_weapon, needsExitTime, isGhostState)
+    public ReloadMagazineState(WeaponBase weaponBase, Animator animator, bool needsExitTime, bool isGhostState = false) : base(weaponBase, needsExitTime, isGhostState)
     {
         this.animator = animator;
     }

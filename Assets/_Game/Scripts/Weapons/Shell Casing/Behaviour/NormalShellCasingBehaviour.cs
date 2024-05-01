@@ -1,7 +1,7 @@
 using Lean.Pool;
 using UnityEngine;
 
-public class NormalShellCasingBehaviour : ShellCasingBehaviourBase, IShellCasingBehaviour
+public class NormalShellCasingBehaviour : ShellCasingBehaviourBase, IShellCasingBehaviour, IExtraFire
 {
     [System.Serializable]
     public class NormalShellCasingBehaviourData
@@ -14,12 +14,12 @@ public class NormalShellCasingBehaviour : ShellCasingBehaviourBase, IShellCasing
 
     public NormalShellCasingBehaviourData data;
 
-    public NormalShellCasingBehaviour(IWeapon _weapon, NormalShellCasingBehaviourData data) : base(_weapon)
+    public NormalShellCasingBehaviour(WeaponBase weaponBase, NormalShellCasingBehaviourData data) : base(weaponBase)
     {
         this.data = data;
     }
 
-    public void Execute()
+    public void Fire()
     {
         IShellCasing _shellCasing = LeanPool.Spawn(data.shellCasingPrefab, data.location.position, data.location.rotation);
         _shellCasing.Rb.AddForce(data.location.forward * data.force, data.forceMode);

@@ -15,9 +15,9 @@ public class SplineBulletBehaviour : BulletBehaviourBase, IBulletBehaviour
     public SplineBulletBehaviourData data;
     WeaponAimData weaponAimData;
 
-    public SplineBulletBehaviour(IWeapon _weapon, SplineBulletBehaviourData data) : base(_weapon)
+    public SplineBulletBehaviour(WeaponBase weaponBase, SplineBulletBehaviourData data) : base(weaponBase)
     {
-        weaponAimData = _weapon.Transform.GetComponentInParent<WeaponAimData>();
+        weaponAimData = weaponBase.GetComponentInParent<WeaponAimData>();
         this.data = data;
     }
 

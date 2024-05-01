@@ -486,6 +486,11 @@ PrefabInstance:
       propertyPath: weaponBase
       value: 
       objectReference: {fileID: 1227285743}
+    - target: {fileID: 5131685726745698827, guid: 229cafe332d4a8247a966a29df7ef0ae,
+        type: 3}
+      propertyPath: playerWeaponBaseInstaller
+      value: 
+      objectReference: {fileID: 599077353863983286}
     - target: {fileID: 5596676835834963516, guid: 229cafe332d4a8247a966a29df7ef0ae,
         type: 3}
       propertyPath: m_Name
@@ -583,6 +588,21 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7023009953062213292}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &599077353863983286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3186234948369212456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0177f76f0af855d42af22e0bedac2746, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponBase: {fileID: 1227285743}
+  animator: {fileID: 0}
+  livingEntity: {fileID: 0}
 --- !u!114 &6135754185431321141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -595,6 +615,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e8954b339500b14daf5f32570a941f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponBase: {fileID: 1227285743}
+  playerWeaponBaseInstaller: {fileID: 599077353863983286}
+  animator: {fileID: 0}
   stateMachineDebug:
     isDebug: 0
     maxStateCountToShow: 8
@@ -617,18 +640,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7023009953062213292}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1227285742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6732110184112559853}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0177f76f0af855d42af22e0bedac2746, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1227285743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -643,6 +654,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponDataScriptable: {fileID: 11400000, guid: b0d51eb8610af37438fcf2a004635432,
     type: 2}
+  weaponAimData: {fileID: 0}
   normalAimBehaviorData:
     rigs: []
   suppressorFeatureScriptable: {fileID: 11400000, guid: ce4eaf6031e631443b3e14fc5e1b4c50,
@@ -661,10 +673,6 @@ MonoBehaviour:
     location: {fileID: 7823880432671744787}
     forceMode: 1
     force: 0.1
-  pistolRecoilBehaviourData:
-    targetRotation: {x: -17.94, y: 0, z: 0}
-    duration: 0.3
-    ease: 33
   flashLightAddOnData:
     addOn: {fileID: 649941921}
     light: {fileID: 903318345}

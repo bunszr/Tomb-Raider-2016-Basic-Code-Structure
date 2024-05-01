@@ -1,9 +1,9 @@
 public class ShellCasingBehaviourBase
 {
-    protected IWeapon _weapon;
+    protected WeaponBase weaponBase;
 
-    public ShellCasingBehaviourBase(IWeapon weapon)
+    public ShellCasingBehaviourBase(WeaponBase weapon)
     {
-        _weapon = weapon;
+        weaponBase = weapon;
     }
 }

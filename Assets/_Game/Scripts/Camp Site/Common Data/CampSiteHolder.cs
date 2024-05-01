@@ -18,7 +18,7 @@ namespace CampSite
         public Transform WeaponFeatureIndicator { get => weaponFeatureIndicator; }
         public Transform CharaterStandLocation { get => charaterStandLocation; }
         public WeaponDataSliderHolder WeaponDataSliderHolder { get => weaponDataSliderHolder; }
-        public IWeapon _Weapon { get => WeaponShowLocation.GetComponentInChildren<IWeapon>(); }
+        public WeaponBase weaponBase { get => WeaponShowLocation.GetComponentInChildren<WeaponBase>(); }
         public FeatureInformationPanelHolder FeatureInformationPanelHolder { get => featureInformationPanelHolder; }
         public CostAndInventoryPanel CostAndInventoryPanel { get => costAndInventoryPanel; }
         public UpgradedPanel UpgradedPanel { get => upgradedPanel; }

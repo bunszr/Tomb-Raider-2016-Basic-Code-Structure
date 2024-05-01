@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AutomaticFireBehavior : FireBehaviourBase, IFireBehaviour, IEquiptable
+public class SingleFireBehavior : FireBehaviourBase, IEquiptable
 {
     float nextTime;
     protected IWeaponInput _weaponInput;
 
-    public AutomaticFireBehavior(WeaponBase weaponBase, List<IExtraFire> extraFireList, IWeaponInput weaponInput) : base(weaponBase, extraFireList)
+    public SingleFireBehavior(WeaponBase weaponBase, List<IExtraFire> extraFireList, IWeaponInput weaponInput) : base(weaponBase, extraFireList)
     {
         _weaponInput = weaponInput;
     }
@@ -19,7 +19,7 @@ public class AutomaticFireBehavior : FireBehaviourBase, IFireBehaviour, IEquipta
 
     public override void OnUpdate()
     {
-        if (_weaponInput.HasHoldingFireKey && weaponCheckFactory.Check(WeaponCheckType.HasBulletInTheMagazineCheck) && nextTime < Time.time)
+        if (_weaponInput.HasPressedFireKey && nextTime < Time.time && weaponCheckFactory.Check(WeaponCheckType.HasBulletInTheMagazineCheck))
         {
             FireExtraFireList();
             weaponBase._AmmoRP.Value.BulletCountInMagazineRP.Value--;

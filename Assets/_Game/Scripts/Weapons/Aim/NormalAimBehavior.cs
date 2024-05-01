@@ -2,7 +2,7 @@ using Cinemachine;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 
-public class NormalAimBehavior : AimBehaviourBase
+public class NormalAimBehavior : AimBehaviourBase, IEquiptable
 {
     [System.Serializable]
     public class NormalAimBehaviorData
@@ -27,12 +27,14 @@ public class NormalAimBehavior : AimBehaviourBase
     LivingEntity livingEntity;
     NormalAimBehaviorData data;
     WeaponAimData weaponAimData;
+    IWeaponInput _weaponInput;
 
     GameDataScriptable.WeaponScriptableData.AimData ScriptableData => GameDataScriptable.Ins.weaponScriptableData.aimData;
 
-    public NormalAimBehavior(IWeapon _weapon, IWeaponInput weaponInput, LivingEntity livingEntity, NormalAimBehaviorData data, WeaponAimData weaponAimData) : base(_weapon, weaponInput)
+    public NormalAimBehavior(WeaponBase weaponBase, IWeaponInput weaponInput, LivingEntity livingEntity, NormalAimBehaviorData data, WeaponAimData weaponAimData) : base(weaponBase)
     {
         this.livingEntity = livingEntity;
+        this._weaponInput = weaponInput;
         this.data = data;
         this.weaponAimData = weaponAimData;
         cam = Camera.main;

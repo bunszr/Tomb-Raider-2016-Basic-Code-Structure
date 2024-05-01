@@ -1,7 +1,7 @@
 using Lean.Pool;
 using UnityEngine;
 
-public class NormalBulletBehaviour : BulletBehaviourBase, IBulletBehaviour
+public class NormalBulletBehaviour : BulletBehaviourBase, IBulletBehaviour, IExtraFire
 {
     [System.Serializable]
     public class NormalBulletBehaviourData
@@ -14,7 +14,7 @@ public class NormalBulletBehaviour : BulletBehaviourBase, IBulletBehaviour
 
     public NormalBulletBehaviourData data;
 
-    public NormalBulletBehaviour(IWeapon _weapon, NormalBulletBehaviourData data) : base(_weapon)
+    public NormalBulletBehaviour(WeaponBase weaponBase, NormalBulletBehaviourData data) : base(weaponBase)
     {
         this.data = data;
     }
