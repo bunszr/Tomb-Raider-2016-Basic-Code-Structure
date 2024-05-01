@@ -71,6 +71,12 @@ public class QuickAccess : OdinEditorWindow
     }
 
     [Button, HorizontalGroup("5")]
+    public void SelectPistol()
+    {
+        Selection.activeGameObject = FindObjectOfType<Pistol>(true).gameObject;
+    }
+
+    [Button, HorizontalGroup("5")]
     public void ToogleLoadJSON()
     {
         GameDataScriptable.Ins.loadWeaponDataFromJSONinEditor = !GameDataScriptable.Ins.loadWeaponDataFromJSONinEditor;

@@ -6,7 +6,7 @@ public class SingleFireBehavior : FireBehaviourBase, IEquiptable
     float nextTime;
     protected IWeaponInput _weaponInput;
 
-    public SingleFireBehavior(WeaponBase weaponBase, List<IExtraFire> extraFireList, IWeaponInput weaponInput) : base(weaponBase, extraFireList)
+    public SingleFireBehavior(WeaponBase weaponBase, List<IExtraFire> extraFireList, List<ICheck> checkList, IWeaponInput weaponInput) : base(weaponBase, extraFireList, checkList)
     {
         _weaponInput = weaponInput;
     }
@@ -19,7 +19,7 @@ public class SingleFireBehavior : FireBehaviourBase, IEquiptable
 
     public override void OnUpdate()
     {
-        if (_weaponInput.HasPressedFireKey && nextTime < Time.time && weaponCheckFactory.Check(WeaponCheckType.HasBulletInTheMagazineCheck))
+        if (_weaponInput.HasPressedFireKey && nextTime < Time.time && AllCheckListIsTrue())
         {
             FireExtraFireList();
             weaponBase._AmmoRP.Value.BulletCountInMagazineRP.Value--;

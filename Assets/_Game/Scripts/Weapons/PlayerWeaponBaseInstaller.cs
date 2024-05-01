@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UniRx;
 using UnityEngine;
@@ -11,10 +12,16 @@ public class PlayerWeaponBaseInstaller : WeaponBaseInstaller, IWeapon
     public event System.Action<IWeapon> onUnEquip;
 
     public Transform Transform => transform;
+    protected List<ICheck> _checksToFire;
 
     protected virtual void Awake()
     {
         weaponBase._AmmoRP = new ReactiveProperty<IAmmoData>(weaponBase.weaponDataScriptable.NormalAmmo);
+        _checksToFire = new List<ICheck>()
+        {
+            new HasBulletInTheMagazineCheck(weaponBase),
+            new HasAimCheck(weaponBase as IAimIsTaken),
+        };
     }
 
     protected virtual void Start() { }

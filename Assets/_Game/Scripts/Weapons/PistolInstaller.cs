@@ -20,7 +20,8 @@ public class PistolInstaller : PlayerWeaponBaseInstaller
 
         _equipableList = new List<IEquiptable>()
         {
-            new SingleFireBehavior(weaponBase, _extraFireList, _input.WeaponInput),
+            new SingleFireBehavior(weaponBase, _extraFireList, _checksToFire, _input.WeaponInput),
+            new AimBoolSetterBehavior(weaponBase, _input.WeaponInput),
             new NormalAimBehavior(weaponBase, _input.WeaponInput, livingEntity, pistol.normalAimBehaviorData, pistol.weaponAimData),
         };
     }

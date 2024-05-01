@@ -25,7 +25,8 @@ public class AK47lInstaller : PlayerWeaponBaseInstaller
 
         _equipableList = new List<IEquiptable>()
         {
-            new AutomaticFireBehavior(weaponBase, _extraFireList, _input.WeaponInput),
+            new AutomaticFireBehavior(weaponBase, _extraFireList, _checksToFire, _input.WeaponInput),
+            new AimBoolSetterBehavior(weaponBase, _input.WeaponInput),
             new NormalAimBehavior(weaponBase, _input.WeaponInput, livingEntity, aK47.normalAimBehaviorData, aK47.weaponAimData),
         };
 

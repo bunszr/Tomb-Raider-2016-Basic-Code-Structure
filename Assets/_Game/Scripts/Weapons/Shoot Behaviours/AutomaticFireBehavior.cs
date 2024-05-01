@@ -6,7 +6,7 @@ public class AutomaticFireBehavior : FireBehaviourBase, IFireBehaviour, IEquipta
     float nextTime;
     protected IWeaponInput _weaponInput;
 
-    public AutomaticFireBehavior(WeaponBase weaponBase, List<IExtraFire> extraFireList, IWeaponInput weaponInput) : base(weaponBase, extraFireList)
+    public AutomaticFireBehavior(WeaponBase weaponBase, List<IExtraFire> extraFireList, List<ICheck> checkList, IWeaponInput weaponInput) : base(weaponBase, extraFireList, checkList)
     {
         _weaponInput = weaponInput;
     }
@@ -19,7 +19,7 @@ public class AutomaticFireBehavior : FireBehaviourBase, IFireBehaviour, IEquipta
 
     public override void OnUpdate()
     {
-        if (_weaponInput.HasHoldingFireKey && weaponCheckFactory.Check(WeaponCheckType.HasBulletInTheMagazineCheck) && nextTime < Time.time)
+        if (_weaponInput.HasHoldingFireKey && nextTime < Time.time && AllCheckListIsTrue())
         {
             FireExtraFireList();
             weaponBase._AmmoRP.Value.BulletCountInMagazineRP.Value--;

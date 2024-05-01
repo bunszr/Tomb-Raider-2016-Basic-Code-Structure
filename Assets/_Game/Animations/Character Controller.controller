@@ -450,13 +450,14 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Pistol Holding
+  m_Name: Pistol Aim
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -3830192086550834466}
   - {fileID: -473929665487741562}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 6362469720930993791}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -20376,6 +20377,19 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &1788011443873671115
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80faea11d9d08c347911b394ddd1409f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateInfoEnum: 3
 --- !u!1101 &1897646550544638847
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -20571,7 +20585,8 @@ AnimatorState:
   m_Transitions:
   - {fileID: -1058187902171928165}
   - {fileID: -4895317676413017879}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 1788011443873671115}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -20773,6 +20788,19 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &6362469720930993791
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80faea11d9d08c347911b394ddd1409f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateInfoEnum: 3
 --- !u!1102 &6931445289945595366
 AnimatorState:
   serializedVersion: 6
