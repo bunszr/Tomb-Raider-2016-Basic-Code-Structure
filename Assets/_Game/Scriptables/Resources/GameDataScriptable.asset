@@ -48,7 +48,7 @@ MonoBehaviour:
       recoilStability: 50
       reloadSpeed: 10
       ammoCapacity: 40
-      rateOfFire: 30
+      rateOfFire: 300
     aimData:
       rayMaxDistance: 33.63
       depth: 9

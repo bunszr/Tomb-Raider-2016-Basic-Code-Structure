@@ -1,7 +1,7 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-public abstract class WeaponDataScriptable : ScriptableObject, INormalAmmo
+public class WeaponDataScriptable : ScriptableObject, INormalAmmo
 {
     [SerializeField] string weaponName;
 
@@ -21,6 +21,15 @@ public abstract class WeaponDataScriptable : ScriptableObject, INormalAmmo
         NormalAmmo = new NormalAmmo(normalAmmoSaveable);
     }
 
+    public WeaponDataScriptable CreateInstance()
+    {
+        WeaponDataScriptable instance = ScriptableObject.CreateInstance<WeaponDataScriptable>();
+        instance.WeaponData = new WeaponData(weaponDataSaveable);
+        instance.NormalAmmo = new NormalAmmo(normalAmmoSaveable);
+        instance.weaponAnimationData = weaponAnimationData;
+        instance.weaponName += "Enemy";
+        return instance;
+    }
 }
 [System.Serializable]
 public class WeaponAnimationData

@@ -6,6 +6,7 @@ using System.Linq;
 using DG.Tweening;
 using System.IO;
 using CampSite;
+using WeaponNamescape.Enemy;
 
 public class QuickAccess : OdinEditorWindow
 {
@@ -64,17 +65,9 @@ public class QuickAccess : OdinEditorWindow
     [Button(ButtonSizes.Small), HorizontalGroup("B")] public void x6() => Time.timeScale = 6;
     [Button(ButtonSizes.Small), HorizontalGroup("B")] public void x12() => Time.timeScale = 12;
 
-    [Button, HorizontalGroup("5")]
-    public void SelectCSB()
-    {
-        Selection.activeGameObject = FindObjectOfType<CSBWeaponFeature>().gameObject;
-    }
-
-    [Button, HorizontalGroup("5")]
-    public void SelectPistol()
-    {
-        Selection.activeGameObject = FindObjectOfType<Pistol>(true).gameObject;
-    }
+    [Button, HorizontalGroup("5")] public void SelectCSB() => Selection.activeGameObject = FindObjectOfType<CSBWeaponFeature>().gameObject;
+    [Button, HorizontalGroup("5")] public void SelectPistol() => Selection.activeGameObject = FindObjectOfType<Pistol>(true).gameObject;
+    [Button, HorizontalGroup("5")] public void SelectPistolEnemy() => Selection.activeGameObject = FindObjectOfType<PistolEnemy>(true).gameObject;
 
     [Button, HorizontalGroup("5")]
     public void ToogleLoadJSON()
