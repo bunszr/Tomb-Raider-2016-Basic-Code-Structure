@@ -7,18 +7,21 @@ namespace EnemyNamescape.BHT
 {
     public class MovementWithDistanceTravel : Action
     {
-        [SerializeField] SplineComputer computer;
+        SplineComputer computer;
+        IThirdPersonController _thirdPersonController;
+
+        [SerializeField] SharedGameObject moveToPlayerComputerSGO;
         [SerializeField] SharedGameObject thirdPersonControllerSGO;
         [SerializeField] SharedFloat distanceTravelSF;
         [SerializeField] SharedFloat computerLengthSF;
 
-        IThirdPersonController _thirdPersonController;
 
         [SerializeField] float maxDstBetweenEvaluatedPosAndCharacterPos = .4f;
         [SerializeField] float extraSpeed = .4f;
 
         public override void OnAwake()
         {
+            computer = moveToPlayerComputerSGO.Value.GetComponent<SplineComputer>();
             _thirdPersonController = thirdPersonControllerSGO.Value.GetComponent<IThirdPersonController>();
         }
 

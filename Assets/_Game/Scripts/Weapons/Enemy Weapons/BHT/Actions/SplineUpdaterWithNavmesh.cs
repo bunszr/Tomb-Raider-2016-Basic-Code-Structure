@@ -11,9 +11,10 @@ namespace EnemyNamescape.BHT
     {
         Tween tween;
         NavMeshPath navMeshPath;
+        SplineComputer computer;
         IThirdPersonController _thirdPersonController;
 
-        [SerializeField] SplineComputer computer;
+        [SerializeField] SharedGameObject moveToPlayerComputerSGO;
         [SerializeField] SharedGameObject enemyTargetSGO;
         [SerializeField] SharedGameObject thirdPersonControllerSGO;
         [SerializeField] SharedFloat distanceTravelSF;
@@ -24,6 +25,7 @@ namespace EnemyNamescape.BHT
 
         public override void OnAwake()
         {
+            computer = moveToPlayerComputerSGO.Value.GetComponent<SplineComputer>();
             computerLengthSF.Value = computer.CalculateLength();
             navMeshPath = new NavMeshPath();
             _thirdPersonController = thirdPersonControllerSGO.Value.GetComponent<IThirdPersonController>();
