@@ -10,6 +10,7 @@ namespace EnemyNamescape.BHT
         public SharedFloat fieldOfViewAngle = 90;
         public SharedFloat viewDistance = 1000;
         public SharedGameObject returnedObject;
+        public SharedTransform charaterControllerTransform;
 
         public override TaskStatus OnUpdate()
         {
@@ -26,9 +27,9 @@ namespace EnemyNamescape.BHT
             for (int i = 0; i < StaticColliderManager.EnemyTargetList.Count; i++)
             {
                 Transform targetT = StaticColliderManager.EnemyTargetList[i].EnemyTargetTransform;
-                var direction = targetT.position - transform.position;
+                var direction = targetT.position - charaterControllerTransform.Value.position;
                 direction.y = 0;
-                var angle = Vector3.Angle(direction, transform.forward);
+                var angle = Vector3.Angle(direction, charaterControllerTransform.Value.forward);
                 if (direction.magnitude < viewDistance && angle < fieldOfViewAngle * 0.5f)
                 {
                     if (LineOfSight(targetT.gameObject))
@@ -43,7 +44,7 @@ namespace EnemyNamescape.BHT
         private bool LineOfSight(GameObject targetObject)
         {
             RaycastHit hit;
-            if (Physics.Linecast(transform.position, targetObject.transform.position, out hit))
+            if (Physics.Linecast(charaterControllerTransform.Value.position + Vector3.up, targetObject.transform.position, out hit))
             {
                 if (StaticColliderManager._EnemyTargetDictionary.TryGetValue(hit.transform.GetInstanceID(), out IEnemyTarget _enemyTarget)) return true;
             }
@@ -59,8 +60,8 @@ namespace EnemyNamescape.BHT
             UnityEditor.Handles.color = color;
 
             var halfFOV = fieldOfViewAngle.Value * 0.5f;
-            var beginDirection = Quaternion.AngleAxis(-halfFOV, Vector3.up) * Owner.transform.forward;
-            UnityEditor.Handles.DrawSolidArc(Owner.transform.position, Owner.transform.up, beginDirection, fieldOfViewAngle.Value, viewDistance.Value);
+            var beginDirection = Quaternion.AngleAxis(-halfFOV, Vector3.up) * charaterControllerTransform.Value.forward;
+            UnityEditor.Handles.DrawSolidArc(charaterControllerTransform.Value.position, charaterControllerTransform.Value.up, beginDirection, fieldOfViewAngle.Value, viewDistance.Value);
 
             UnityEditor.Handles.color = oldColor;
 #endif
