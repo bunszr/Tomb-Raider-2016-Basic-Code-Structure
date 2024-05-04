@@ -2,7 +2,7 @@ using UnityEngine;
 using UniRx;
 using Invector.vCharacterController;
 
-public abstract class LivingEntity : MonoBehaviour
+public abstract class LivingEntity : MonoBehaviour, IThirdPersonController
 {
     [SerializeField] Rigidbody rb;
     [SerializeField] Collider colider;
@@ -16,4 +16,19 @@ public abstract class LivingEntity : MonoBehaviour
     public Animator Animator { get => animator; }
     public vThirdPersonController ThirdPersonController { get => thirdPersonController; }
     public vThirdPersonInput ThirdPersonInput { get => thirdPersonInput; }
+
+    public Transform Transform => transform;
+    public float MoveSpeed => ThirdPersonController.moveSpeed;
+
+    public bool IsStrafe
+    {
+        get => ThirdPersonController.isStrafing;
+        set => ThirdPersonController.ToggleStrafe(value);
+    }
+
+    public Vector3 Input
+    {
+        get => ThirdPersonController.input;
+        set => ThirdPersonController.input = value;
+    }
 }
