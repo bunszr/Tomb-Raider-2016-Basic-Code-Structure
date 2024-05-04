@@ -1,4 +1,5 @@
 using Cinemachine;
+using FSM;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
@@ -20,6 +21,8 @@ namespace CampSite
         public ButtonEvents buttonEvents = new ButtonEvents();
 
         public FeatureTypeScriptable FeatureTypeScriptable => featureTypeScriptable;
+
+        [SerializeField] public StateMachine.StateMachineDebug stateMachineDebug;
 
         public void OnPointerEnter(PointerEventData eventData) => buttonEvents.onPointerEnterEvent?.Invoke(eventData);
         public void OnPointerExit(PointerEventData eventData) => buttonEvents.onPointerExitEvent?.Invoke(eventData);

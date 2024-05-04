@@ -13,6 +13,7 @@ namespace CampSite
         [SerializeField] FeatureInformationPanelHolder featureInformationPanelHolder;
         [SerializeField] CostAndInventoryPanel costAndInventoryPanel;
         [SerializeField] UpgradedPanel upgradedPanel;
+        [SerializeField] CampsiteCommandExecuter campsiteCommandExecuter;
 
         public Transform WeaponShowLocation { get => weaponShowLocation; }
         public Transform WeaponFeatureIndicator { get => weaponFeatureIndicator; }
@@ -22,5 +23,6 @@ namespace CampSite
         public FeatureInformationPanelHolder FeatureInformationPanelHolder { get => featureInformationPanelHolder; }
         public CostAndInventoryPanel CostAndInventoryPanel { get => costAndInventoryPanel; }
         public UpgradedPanel UpgradedPanel { get => upgradedPanel; }
+        public CampsiteCommandExecuter CampsiteCommandExecuter { get => campsiteCommandExecuter; }
     }
 }

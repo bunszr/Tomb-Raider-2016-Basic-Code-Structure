@@ -7,46 +7,30 @@ namespace CampSite
 {
     public class FirstLevelButtonAnimationState : CSBStateBase
     {
-        [System.Serializable]
-        public class ButtonAnimationStateData
-        {
-            public float zOffset = -1;
-            public float duration = .5f;
-            public Ease ease = Ease.InOutSine;
-        }
-
         Tween tween;
         Tween tweenRot;
-        ButtonAnimationStateData data;
-        CinemachineVirtualCamera virtualCamera;
 
-        public FirstLevelButtonAnimationState(CampSiteButtonBase csbBase, bool needsExitTime, ButtonEvents buttonEvents = null, ButtonAnimationStateData data = null) : base(csbBase, needsExitTime)
+        CinemachineVirtualCamera cam;
+
+        GameDataScriptable.CampSiteScriptableData.FirstLevelAnimScriptableData Data => GameDataScriptable.Ins.campSiteScriptableData.firstLevelAnimScriptableData;
+
+        public FirstLevelButtonAnimationState(MonoBehaviour mono, CinemachineVirtualCamera cam, bool needsExitTime, bool isGhostState = false) : base(mono, needsExitTime, isGhostState)
         {
-            this.buttonEvents = buttonEvents;
-            this.data = data;
+            this.cam = cam;
         }
-
 
         public override void Init()
         {
-            virtualCamera = transform.GetComponentInParent<Canvas>().GetComponentInChildren<CinemachineVirtualCamera>();
+            tween = transform.DOLocalMoveZ(Data.zOffset, Data.duration).SetAutoKill(false).SetEase(Data.ease).Pause();
         }
 
-        public override void OnEnter()
-        {
-            SubcribeButtonEvents();
-            tween = transform.DOLocalMoveZ(data.zOffset, data.duration).SetAutoKill(false).SetEase(data.ease).Pause();
-        }
-
-        public override void OnExit()
-        {
-            UnSubcribeButtonEvents();
-            tween.KillMine();
-        }
+        public override void OnEnter() => SubcribeButtonEvents();
+        public override void OnExit() => UnSubcribeButtonEvents();
 
         protected override void OnPointerEnter(PointerEventData eventData)
         {
-            virtualCamera.Follow = transform;
+            // cam.LookAt = transform;
+
             tween.PlayForward();
             tweenRot.PlayForward();
         }

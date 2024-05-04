@@ -6,6 +6,8 @@ public partial class DesktopInput : IInput
     public IWeaponInput WeaponInput { get; set; }
     public IAreaInput AreaInput { get; set; }
 
+    public bool ClosePanelPressKey => Input.GetKeyDown(KeyCode.Escape);
+
     public DesktopInput()
     {
         WeaponToggleInput = new WeaponToggleInputDesktop();

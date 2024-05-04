@@ -42,6 +42,14 @@ MonoBehaviour:
       yAnimationDuration: 0.8
       yAnimationAmount: 3
       yAnimEase: 30
+    campsitePanelScriptableData:
+      fadeInDuration: 0.4
+      fadeOutDuration: 0.4
+      fadeEase: 4
+    firstLevelAnimScriptableData:
+      zOffset: -38.35
+      duration: 0.17
+      ease: 4
   weaponScriptableData:
     maxWeaponDataSaveable:
       damage: 100
