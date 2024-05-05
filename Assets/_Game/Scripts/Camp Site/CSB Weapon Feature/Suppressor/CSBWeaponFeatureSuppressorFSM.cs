@@ -17,7 +17,7 @@ namespace CampSite
             bool useless = true;
             List<StateBase> stateBases = new List<StateBase>()
             {
-                new HighlightState(csbBase, useless, cSBWeaponFeatureSuppressor.highlightStateData),
+                new HighlightState(csbBase, cSBWeaponFeatureSuppressor.imageToHighlight),
                 new ShowInformationState(csbBase, useless, cSBWeaponFeatureSuppressor.showInformationState),
                 new WeaponRotationState(csbBase, useless, cSBWeaponFeatureSuppressor.weaponRotationStateData),
                 new ShowSuppressorState(csbBase, useless),

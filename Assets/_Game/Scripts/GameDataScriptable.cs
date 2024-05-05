@@ -21,6 +21,8 @@ public class GameDataScriptable : SingletonScriptableObject<GameDataScriptable>
         public ShowUpgradedFeatureStateScriptableData showUpgradedFeatureStateScriptableData;
         public CampsitePanelScriptableData campsitePanelScriptableData;
         public FirstLevelAnimScriptableData firstLevelAnimScriptableData;
+        public HighlightStateScriptableData highlightStateScriptableData;
+        public LockedCommandScriptableData lockedCommandScriptableData;
 
         [System.Serializable]
         public class ShowInformationScriptableData
@@ -78,6 +80,21 @@ public class GameDataScriptable : SingletonScriptableObject<GameDataScriptable>
             public float zOffset = -1;
             public float duration = .5f;
             public Ease ease = Ease.InOutSine;
+        }
+
+        [System.Serializable]
+        public class HighlightStateScriptableData
+        {
+            public Ease ease = Ease.InOutSine;
+            public float duration = .25f;
+        }
+
+        [System.Serializable]
+        public class LockedCommandScriptableData
+        {
+            public Ease ease = Ease.InOutSine;
+            public float duration = .25f;
+            public float yMovement = 5f;
         }
     }
 

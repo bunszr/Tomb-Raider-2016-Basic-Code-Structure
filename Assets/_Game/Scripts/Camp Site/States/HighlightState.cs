@@ -1,5 +1,4 @@
 using DG.Tweening;
-using FSM;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -8,32 +7,27 @@ namespace CampSite
 {
     public class HighlightState : CSBStateBase
     {
-        [System.Serializable]
-        public class HighlightStateData
-        {
-            public Image imageToHighlight;
-            public float duration = .4f;
-        }
-
         Tween tween;
-        HighlightStateData data;
+        Image image;
 
-        public HighlightState(MonoBehaviour mono, bool needsExitTime, HighlightStateData data) : base(mono, needsExitTime)
+        GameDataScriptable.CampSiteScriptableData.HighlightStateScriptableData data => GameDataScriptable.Ins.campSiteScriptableData.highlightStateScriptableData;
+
+        public HighlightState(MonoBehaviour mono, Image image, bool needsExitTime = false, bool isGhostState = false) : base(mono, needsExitTime, isGhostState)
         {
-            this.data = data;
+            this.image = image;
         }
 
         public override void OnEnter()
         {
             SubcribeButtonEvents();
-            tween = data.imageToHighlight.DOFillAmount(1, data.duration).SetAutoKill(false).SetEase(Ease.InOutSine).Pause();
+            tween = image.DOFillAmount(1, data.duration).SetAutoKill(false).SetEase(Ease.InOutSine).Pause();
         }
 
         public override void OnExit()
         {
             UnSubcribeButtonEvents();
             tween.KillMine();
-            data.imageToHighlight.fillAmount = 0;
+            image.fillAmount = 0;
         }
 
         protected override void OnPointerEnter(PointerEventData eventData)

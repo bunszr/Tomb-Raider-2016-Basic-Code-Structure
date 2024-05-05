@@ -96,6 +96,10 @@ MonoBehaviour:
   featureNameText: {fileID: 0}
   campSiteHolder: {fileID: 0}
   brain: {fileID: 0}
+  stateMachineDebug:
+    isDebug: 0
+    maxStateCountToShow: 8
+    enteringStatesList: []
   nextPanelTogglerGO: {fileID: 0}
   cam: {fileID: 0}
 --- !u!114 &8717563519721814763
@@ -120,7 +124,7 @@ PrefabInstance:
     - target: {fileID: 217141583414367654, guid: e11b93b8e9bc5544db55674c4eb4ee55,
         type: 3}
       propertyPath: m_Name
-      value: CS Button Base
+      value: CS Image Base
       objectReference: {fileID: 0}
     - target: {fileID: 4112357594756678135, guid: e11b93b8e9bc5544db55674c4eb4ee55,
         type: 3}

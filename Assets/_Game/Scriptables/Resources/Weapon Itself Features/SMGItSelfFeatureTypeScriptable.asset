@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 862a5ec4299db4f4aa6129332389c1e9, type: 3}
   m_Name: SMGItSelfFeatureTypeScriptable
   m_EditorClassIdentifier: 
-  hash: -5832
+  hash: 8986
   featureName: SMG
   description: 
-  isOpen: 1
+  isOpen: 0
   requirementsScriptableBases: []
   weaponDataScriptable: {fileID: 11400000, guid: 2f8959d96801d8d469bb1ac7358b19c4,
     type: 2}

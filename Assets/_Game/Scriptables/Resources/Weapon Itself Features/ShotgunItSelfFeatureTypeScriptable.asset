@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac271f6b784a0b24bb280d13675201c5, type: 3}
   m_Name: ShotgunItSelfFeatureTypeScriptable
   m_EditorClassIdentifier: 
-  hash: -5740
+  hash: 8988
   featureName: Shotgun
   description: 
-  isOpen: 1
+  isOpen: 0
   requirementsScriptableBases: []
   weaponDataScriptable: {fileID: 11400000, guid: 79f275702380bf94b8c68736ea6aa37c,
     type: 2}

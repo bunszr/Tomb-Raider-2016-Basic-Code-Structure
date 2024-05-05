@@ -50,6 +50,13 @@ MonoBehaviour:
       zOffset: -38.35
       duration: 0.17
       ease: 4
+    highlightStateScriptableData:
+      ease: 4
+      duration: 0.25
+    lockedCommandScriptableData:
+      ease: 6
+      duration: 0.1
+      yMovement: 7.64
   weaponScriptableData:
     maxWeaponDataSaveable:
       damage: 100

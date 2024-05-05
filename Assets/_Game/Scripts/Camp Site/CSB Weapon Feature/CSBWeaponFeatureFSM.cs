@@ -20,7 +20,7 @@ namespace CampSite
             bool useless = true;
             List<StateBase> stateBases = new List<StateBase>()
             {
-                new HighlightState(csbBase, useless, cSBWeaponFeature.highlightStateData),
+                new HighlightState(csbBase, cSBWeaponFeature.imageToHighlight),
                 new ShowWeaponDataState(csbBase, cSBWeaponFeature.weaponDataScriptable),
                 new ShowInformationState(csbBase, useless, cSBWeaponFeature.showInformationState),
                 new WeaponRotationState(csbBase, useless, cSBWeaponFeature.weaponRotationStateData),
@@ -35,7 +35,7 @@ namespace CampSite
 
             StateBase[] stateBasesAfterUpgrading = new StateBase[]
             {
-                new HighlightState(csbBase, useless, cSBWeaponFeature.highlightStateData),
+                new HighlightState(csbBase, cSBWeaponFeature.imageToHighlight),
                 new ShowWeaponDataState(csbBase, cSBWeaponFeature.weaponDataScriptable),
                 new ShowInformationState(csbBase, useless, cSBWeaponFeature.showInformationState),
                 new WeaponRotationState(csbBase, useless, cSBWeaponFeature.weaponRotationStateData),
