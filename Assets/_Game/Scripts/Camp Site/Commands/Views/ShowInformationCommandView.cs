@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 namespace CampSite
 {
-    public class ShowInformationState : CampsiteButtonCommandBase
+    public class ShowInformationCommandView : CampsiteButtonCommandBase
     {
         float defautLocalY;
         FeatureTypeScriptable featureTypeScriptable;
@@ -11,7 +11,7 @@ namespace CampSite
 
         GameDataScriptable.CampSiteScriptableData.ShowInformationScriptableData ScriptableData => GameDataScriptable.Ins.campSiteScriptableData.showInformationScriptableData;
 
-        public ShowInformationState(CampSiteButtonBase csbBase, FeatureInformationPanelHolder featureInformationPanelHolder, FeatureTypeScriptable featureTypeScriptable) : base(csbBase)
+        public ShowInformationCommandView(CSBBase csbBase, FeatureInformationPanelHolder featureInformationPanelHolder, FeatureTypeScriptable featureTypeScriptable) : base(csbBase)
         {
             this.featureInformationPanelHolder = featureInformationPanelHolder;
             this.featureTypeScriptable = featureTypeScriptable;

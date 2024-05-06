@@ -4,14 +4,14 @@ using UniRx;
 
 namespace CampSite
 {
-    public class RequirementsStateController : ICSBActivateable
+    public class RequirementsCommandController : ICSBActivateable
     {
         CompositeDisposable disposables = new CompositeDisposable();
 
         FeatureTypeScriptable featureTypeScriptable;
         ICSBActivateable _showAndHighlightRequirementsState;
 
-        public RequirementsStateController(FeatureTypeScriptable featureTypeScriptable, ICSBActivateable _showAndHighlightRequirementsState)
+        public RequirementsCommandController(FeatureTypeScriptable featureTypeScriptable, ICSBActivateable _showAndHighlightRequirementsState)
         {
             this.featureTypeScriptable = featureTypeScriptable;
             this._showAndHighlightRequirementsState = _showAndHighlightRequirementsState;

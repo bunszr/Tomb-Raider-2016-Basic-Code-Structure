@@ -15,7 +15,7 @@ namespace CampSite
 
             if (csbBase.FeatureTypeScriptable.IsOpenRP.Value)
                 AddCommand(new FirstLevelButtonAnimationCommandView(csbBase, csbFirstLevel.cam));
-            else AddCommand(new LockedCommand(csbBase, csbFirstLevel.lockImage));
+            else AddCommand(new LockedCommandView(csbBase, csbFirstLevel.lockImage));
 
             commandExecuter = new CommandExecuterWithCondition(new ICSBExecute[]
             {

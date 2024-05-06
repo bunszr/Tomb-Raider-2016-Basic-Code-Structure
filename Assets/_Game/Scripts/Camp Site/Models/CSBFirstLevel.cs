@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace CampSite
 {
-    public class CSBFirstLevel : CampSiteButtonBase
+    public class CSBFirstLevel : CSBBase
     {
         public GameObject nextPanelTogglerGO;
         public Image lockImage;

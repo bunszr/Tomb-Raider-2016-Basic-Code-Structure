@@ -206,16 +206,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   featureTypeScriptable: {fileID: 0}
-  featureNameText: {fileID: 4064138230443742942}
   campSiteHolder: {fileID: 0}
   brain: {fileID: 0}
-  stateMachineDebug:
-    isDebug: 0
-    maxStateCountToShow: 8
-    enteringStatesList: []
-  requirementsImage: {fileID: 0}
-  upgradedIndicatorImage: {fileID: 2474177039127615000}
+  featureNameText: {fileID: 4064138230443742942}
   lockImage: {fileID: 3117988963289463179}
+  tickImage: {fileID: 2474177039127615000}
   highlightImage: {fileID: 4641070318416980078}
   weaponDataScriptable: {fileID: 0}
   weaponRotationStateData:

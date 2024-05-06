@@ -8,12 +8,11 @@ using Zenject;
 
 namespace CampSite
 {
-    public abstract class CampSiteButtonBase : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+    public abstract class CSBBase : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
     {
         [SerializeField, Required("Feature Type is nessessary for this component.")]
         FeatureTypeScriptable featureTypeScriptable;
 
-        public TextMeshProUGUI featureNameText;
 
         [Inject, HideInInspector] public CampSiteHolder campSiteHolder;
         [Inject, HideInInspector] public CinemachineBrain brain;
@@ -21,8 +20,6 @@ namespace CampSite
         public ButtonEvents buttonEvents = new ButtonEvents();
 
         public FeatureTypeScriptable FeatureTypeScriptable => featureTypeScriptable;
-
-        [SerializeField] public StateMachine.StateMachineDebug stateMachineDebug;
 
         public void OnPointerEnter(PointerEventData eventData) => buttonEvents.onPointerEnterEvent?.Invoke(eventData);
         public void OnPointerExit(PointerEventData eventData) => buttonEvents.onPointerExitEvent?.Invoke(eventData);

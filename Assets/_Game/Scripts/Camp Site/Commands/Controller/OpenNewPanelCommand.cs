@@ -7,7 +7,7 @@ namespace CampSite
     {
         GameObject nextPanelTogglerGO;
 
-        public OpenNewPanelCommand(CampSiteButtonBase csbBase, GameObject nextPanelTogglerGO) : base(csbBase) => this.nextPanelTogglerGO = nextPanelTogglerGO;
+        public OpenNewPanelCommand(CSBBase csbBase, GameObject nextPanelTogglerGO) : base(csbBase) => this.nextPanelTogglerGO = nextPanelTogglerGO;
 
         public override void OnActivate() => buttonEvents.onPointerClickEvent += OnClick;
         public override void OnDeactivate() => buttonEvents.onPointerClickEvent -= OnClick;

@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace CampSite
 {
-    public class ShowAndHighlightRequirementsState : CampsiteButtonCommandBase
+    public class ShowAndHighlightRequirementsCommandView : CampsiteButtonCommandBase
     {
         string description;
         Image lockImage;
@@ -19,7 +19,7 @@ namespace CampSite
 
         GameDataScriptable.CampSiteScriptableData.RequirementsScriptableData Data => GameDataScriptable.Ins.campSiteScriptableData.requirementsScriptableData;
 
-        public ShowAndHighlightRequirementsState(CampSiteButtonBase csbBase, TextMeshProUGUI requirementsText, FeatureTypeScriptable featureTypeScriptable, Image lockImage) : base(csbBase)
+        public ShowAndHighlightRequirementsCommandView(CSBBase csbBase, TextMeshProUGUI requirementsText, FeatureTypeScriptable featureTypeScriptable, Image lockImage) : base(csbBase)
         {
             this.requirementsText = requirementsText;
             this.featureTypeScriptable = featureTypeScriptable;

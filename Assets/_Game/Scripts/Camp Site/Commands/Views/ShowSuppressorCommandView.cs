@@ -9,7 +9,7 @@ namespace CampSite
         GameObject weaponHolder;
         Vector3 suppressorDefaultlocalPos;
 
-        public ShowSuppressorCommandView(CampSiteButtonBase csbBase, GameObject weaponHolder) : base(csbBase)
+        public ShowSuppressorCommandView(CSBBase csbBase, GameObject weaponHolder) : base(csbBase)
         {
             this.weaponHolder = weaponHolder;
         }

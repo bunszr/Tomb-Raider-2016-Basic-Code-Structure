@@ -4,10 +4,10 @@ namespace CampSite
 {
     public class CampsiteButtonCommandBase : ICSBActivateable
     {
-        protected CampSiteButtonBase csbBase;
+        protected CSBBase csbBase;
         protected ButtonEvents buttonEvents => csbBase.buttonEvents;
 
-        public CampsiteButtonCommandBase(CampSiteButtonBase csbBase) => this.csbBase = csbBase;
+        public CampsiteButtonCommandBase(CSBBase csbBase) => this.csbBase = csbBase;
 
         public virtual void OnActivate()
         {

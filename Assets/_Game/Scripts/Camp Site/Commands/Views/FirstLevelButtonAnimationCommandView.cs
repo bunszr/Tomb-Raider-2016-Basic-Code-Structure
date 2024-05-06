@@ -10,7 +10,7 @@ namespace CampSite
 
         CinemachineVirtualCamera cam;
 
-        public FirstLevelButtonAnimationCommandView(CampSiteButtonBase csbBase, CinemachineVirtualCamera cam) : base(csbBase)
+        public FirstLevelButtonAnimationCommandView(CSBBase csbBase, CinemachineVirtualCamera cam) : base(csbBase)
         {
             this.cam = cam;
             tween = csbBase.transform.DOLocalMoveZ(Data.zOffset, Data.duration).SetAutoKill(false).SetEase(Data.ease).Pause();

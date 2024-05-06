@@ -10,7 +10,7 @@ namespace CampSite
 {
     public abstract class CSBBaseController : MonoBehaviour, IPanelObserver
     {
-        protected CampSiteButtonBase csbBase;
+        protected CSBBase csbBase;
         protected List<ICSBActivateable> csbActivateableList = new List<ICSBActivateable>();
 
         [Inject] protected CinemachineBrain brain;
@@ -22,7 +22,7 @@ namespace CampSite
 
         protected virtual void Awake()
         {
-            csbBase = GetComponent<CampSiteButtonBase>();
+            csbBase = GetComponent<CSBBase>();
             GetComponentInParent<ISubject<IPanelObserver>>().Register(this);
         }
 

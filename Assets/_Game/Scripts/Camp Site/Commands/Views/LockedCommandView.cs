@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace CampSite
 {
-    public class LockedCommand : CampsiteButtonCommandBase
+    public class LockedCommandView : CampsiteButtonCommandBase
     {
         Tween tween;
         Image image;
@@ -13,7 +13,7 @@ namespace CampSite
 
         GameDataScriptable.CampSiteScriptableData.LockedCommandScriptableData data => GameDataScriptable.Ins.campSiteScriptableData.lockedCommandScriptableData;
 
-        public LockedCommand(CampSiteButtonBase csbBase, Image image) : base(csbBase)
+        public LockedCommandView(CSBBase csbBase, Image image) : base(csbBase)
         {
             this.image = image;
             defaultLocalY = image.transform.localPosition.y;

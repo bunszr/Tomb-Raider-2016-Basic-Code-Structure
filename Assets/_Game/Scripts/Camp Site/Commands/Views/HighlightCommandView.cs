@@ -11,7 +11,7 @@ namespace CampSite
 
         GameDataScriptable.CampSiteScriptableData.HighlightStateScriptableData data => GameDataScriptable.Ins.campSiteScriptableData.highlightStateScriptableData;
 
-        public HighlightCommandView(CampSiteButtonBase csbBase, Image image) : base(csbBase) => this.image = image;
+        public HighlightCommandView(CSBBase csbBase, Image image) : base(csbBase) => this.image = image;
 
         public override void OnActivate()
         {

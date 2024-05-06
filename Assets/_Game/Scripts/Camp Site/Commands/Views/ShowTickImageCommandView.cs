@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 namespace CampSite
 {
-    public class ShowTickImageCommand : CampsiteButtonCommandBase
+    public class ShowTickImageCommandView : CampsiteButtonCommandBase
     {
         Tween tween;
         GameObject image;
@@ -12,7 +12,7 @@ namespace CampSite
 
         GameDataScriptable.CampSiteScriptableData.ShowTickImageCommandScriptableData data => GameDataScriptable.Ins.campSiteScriptableData.showTickImageCommandScriptableData;
 
-        public ShowTickImageCommand(CampSiteButtonBase csbBase, GameObject tickImage) : base(csbBase)
+        public ShowTickImageCommandView(CSBBase csbBase, GameObject tickImage) : base(csbBase)
         {
             this.image = tickImage;
             defaultLocalY = image.transform.localPosition.y;

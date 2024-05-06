@@ -1,11 +1,11 @@
 namespace CampSite
 {
-    public class UpgradeWeaponCommonDataState : ICSBExecute
+    public class UpgradeCommonWeaponDataCommand : ICSBExecute
     {
         WeaponDataScriptable weaponDataScriptable;
         WeaponFeatureTypeScriptable weaponFeatureTypeScriptable;
 
-        public UpgradeWeaponCommonDataState(WeaponDataScriptable weaponDataScriptable, WeaponFeatureTypeScriptable weaponFeatureTypeScriptable)
+        public UpgradeCommonWeaponDataCommand(WeaponDataScriptable weaponDataScriptable, WeaponFeatureTypeScriptable weaponFeatureTypeScriptable)
         {
             this.weaponDataScriptable = weaponDataScriptable;
             this.weaponFeatureTypeScriptable = weaponFeatureTypeScriptable;

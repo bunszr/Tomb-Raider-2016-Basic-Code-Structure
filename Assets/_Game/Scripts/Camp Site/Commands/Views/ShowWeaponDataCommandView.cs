@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 namespace CampSite
 {
-    public class ShowWeaponDataState : CampsiteButtonCommandBase
+    public class ShowWeaponDataCommandView : CampsiteButtonCommandBase
     {
         float defautLocalY;
 
@@ -16,7 +16,7 @@ namespace CampSite
 
         GameDataScriptable.CampSiteScriptableData.WeaponDataSliderScriptableData ScriptableData => GameDataScriptable.Ins.campSiteScriptableData.weaponDataSliderScriptableData;
 
-        public ShowWeaponDataState(CampSiteButtonBase csbBase, WeaponDataScriptable weaponDataScriptable, WeaponDataSliderHolder holder) : base(csbBase)
+        public ShowWeaponDataCommandView(CSBBase csbBase, WeaponDataScriptable weaponDataScriptable, WeaponDataSliderHolder holder) : base(csbBase)
         {
             this.weaponDataScriptable = weaponDataScriptable;
 

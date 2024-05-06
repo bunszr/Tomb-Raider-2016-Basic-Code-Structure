@@ -4,12 +4,12 @@ using UnityEngine.EventSystems;
 
 namespace CampSite
 {
-    public class ShowOnlyCostDataState : CampsiteButtonCommandBase
+    public class ShowOnlyCostDataCommandView : CampsiteButtonCommandBase
     {
         float defaultLocalX;
         CostAndInventoryPanel costAndInventoryPanel;
 
-        public ShowOnlyCostDataState(CampSiteButtonBase csbBase, CostAndInventoryPanel costAndInventoryPanel) : base(csbBase)
+        public ShowOnlyCostDataCommandView(CSBBase csbBase, CostAndInventoryPanel costAndInventoryPanel) : base(csbBase)
         {
             this.costAndInventoryPanel = costAndInventoryPanel;
             defaultLocalX = costAndInventoryPanel.transform.localPosition.x;

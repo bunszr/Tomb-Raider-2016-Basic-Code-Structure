@@ -22,22 +22,22 @@ namespace CampSite
             weaponFeatureTypeScriptable = (WeaponFeatureTypeScriptable)csbWeaponFeature.FeatureTypeScriptable;
 
             AddCommand(new HighlightCommandView(csbBase, csbWeaponFeature.highlightImage));
-            AddCommand(new ShowWeaponDataState(csbBase, csbWeaponFeature.weaponDataScriptable, campSiteHolder.WeaponDataSliderHolder));
-            AddCommand(new ShowInformationState(csbBase, campSiteHolder.FeatureInformationPanelHolder, featureTypeScriptable));
-            AddCommand(new WeaponRotationState(csbBase, csbWeaponFeature.weaponRotationStateData, campSiteHolder));
+            AddCommand(new ShowWeaponDataCommandView(csbBase, csbWeaponFeature.weaponDataScriptable, campSiteHolder.WeaponDataSliderHolder));
+            AddCommand(new ShowInformationCommandView(csbBase, campSiteHolder.FeatureInformationPanelHolder, featureTypeScriptable));
+            AddCommand(new WeaponRotationCommandView(csbBase, csbWeaponFeature.weaponRotationStateData, campSiteHolder));
 
-            RequirementsStateController requirementsStateController = new RequirementsStateController(featureTypeScriptable,
+            RequirementsCommandController requirementsStateController = new RequirementsCommandController(featureTypeScriptable,
 
-                new ShowAndHighlightRequirementsState(csbBase, campSiteHolder.FeatureInformationPanelHolder.requirementsText, featureTypeScriptable, csbWeaponFeature.lockImage));
+                new ShowAndHighlightRequirementsCommandView(csbBase, campSiteHolder.FeatureInformationPanelHolder.requirementsText, featureTypeScriptable, csbWeaponFeature.lockImage));
 
             CostDataCommandController costDataCommandController = new CostDataCommandController(featureTypeScriptable,
 
-                new ShowCostDataState(csbBase, campSiteHolder.CostAndInventoryPanel, weaponFeatureTypeScriptable),
-                new ShowOnlyCostDataState(csbBase, campSiteHolder.CostAndInventoryPanel));
+                new ShowCostDataCommandView(csbBase, campSiteHolder.CostAndInventoryPanel, weaponFeatureTypeScriptable, csbWeaponFeature.featureNameText),
+                new ShowOnlyCostDataCommandView(csbBase, campSiteHolder.CostAndInventoryPanel));
 
             UpgradedTickCommandController upgradedTickCommandController = new UpgradedTickCommandController(featureTypeScriptable,
 
-                new ShowTickImageCommand(csbBase, csbWeaponFeature.upgradedIndicatorImage.gameObject));
+                new ShowTickImageCommandView(csbBase, csbWeaponFeature.tickImage.gameObject));
 
             AddCommand(requirementsStateController);
             AddCommand(costDataCommandController);
@@ -47,9 +47,9 @@ namespace CampSite
             {
                 new OpenNewPanelCommand(csbBase, nextPanelTogglerGO),
                 new BuyInventoryItemCommand(weaponFeatureTypeScriptable),
-                new UpgradeWeaponCommonDataState(csbWeaponFeature.weaponDataScriptable, weaponFeatureTypeScriptable),
+                new UpgradeCommonWeaponDataCommand(csbWeaponFeature.weaponDataScriptable, weaponFeatureTypeScriptable),
                 new UpgradedPanelDataSetterCommand(nextPanelTogglerGO, featureTypeScriptable),
-                new SetFeatureTypeBoolToTrue(featureTypeScriptable),
+                new SetFeatureTypeBoolToTrueCommand(featureTypeScriptable),
             },
                 () => IsUpgrade());
         }

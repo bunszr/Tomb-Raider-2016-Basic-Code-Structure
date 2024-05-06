@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 namespace CampSite
 {
-    public class WeaponRotationState : CampsiteButtonCommandBase
+    public class WeaponRotationCommandView : CampsiteButtonCommandBase
     {
         [System.Serializable]
         public class WeaponRotationStateData
@@ -21,7 +21,7 @@ namespace CampSite
         WeaponRotationStateData data;
         CampSiteHolder campSiteHolder;
 
-        public WeaponRotationState(CampSiteButtonBase csbBase, WeaponRotationStateData data, CampSiteHolder campSiteHolder) : base(csbBase)
+        public WeaponRotationCommandView(CSBBase csbBase, WeaponRotationStateData data, CampSiteHolder campSiteHolder) : base(csbBase)
         {
             this.data = data;
             this.campSiteHolder = campSiteHolder;

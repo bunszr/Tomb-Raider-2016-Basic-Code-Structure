@@ -5,7 +5,7 @@ namespace CampSite
         protected override void Start()
         {
             base.Start();
-            RemoveCommand(x => x is ShowWeaponDataState);
+            RemoveCommand(x => x is ShowWeaponDataCommandView);
             AddCommand(new ShowSuppressorCommandView(csbBase, campSiteHolder.WeaponShowLocation.gameObject));
         }
     }

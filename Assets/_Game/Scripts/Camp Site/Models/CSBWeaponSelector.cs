@@ -4,7 +4,7 @@ using Zenject;
 
 namespace CampSite
 {
-    public class CSBWeaponSelector : CSBFeatureBase
+    public class CSBWeaponSelector : CSBBase
     {
         [Inject] public IWeaponToggler _weaponToggler;
 

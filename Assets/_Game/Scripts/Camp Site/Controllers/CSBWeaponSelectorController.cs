@@ -13,7 +13,7 @@ namespace CampSite
             csbWeaponSelector = GetComponent<CSBWeaponSelector>();
 
             if (csbWeaponSelector.FeatureTypeScriptable.IsOpenRP.Value) AddCommand(new HighlightCommandView(csbBase, csbWeaponSelector.highlightImage));
-            else AddCommand(new LockedCommand(csbBase, csbWeaponSelector.lockImage));
+            else AddCommand(new LockedCommandView(csbBase, csbWeaponSelector.lockImage));
 
             commandExecuter = new CommandExecuterWithCondition(new ICSBExecute[]
             {
