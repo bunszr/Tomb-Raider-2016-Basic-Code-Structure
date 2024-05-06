@@ -1,8 +1,12 @@
+using UnityEngine.EventSystems;
+
 namespace CampSite
 {
-    public class CSBWeaponSelectorController : CSBBaseController
+    public class CSBWeaponSelectorController : CSBBaseController, IPointerClickHandler
     {
         CSBWeaponSelector csbWeaponSelector;
+
+        CommandExecuterWithCondition commandExecuter;
 
         protected override void Start()
         {
@@ -10,14 +14,23 @@ namespace CampSite
 
             csbWeaponSelector = GetComponent<CSBWeaponSelector>();
 
-            if (csbWeaponSelector.FeatureTypeScriptable.IsOpenRP.Value)
-            {
-                csbActivateableList.Add(new HighlightCommandView(csbBase, csbWeaponSelector.highlightImage));
-                csbActivateableList.Add(new OpenNewPanelCommand(csbBase, csbWeaponSelector.nextPanelTogglerGO));
-            }
-            else csbActivateableList.Add(new LockedCommand(csbBase, csbWeaponSelector.lockImage));
+            if (csbWeaponSelector.FeatureTypeScriptable.IsOpenRP.Value) AddCommand(new HighlightCommandView(csbBase, csbWeaponSelector.highlightImage));
+            else AddCommand(new LockedCommand(csbBase, csbWeaponSelector.lockImage));
 
-            csbActivateableList.ForEach(x => x.OnActivate());
+            commandExecuter = new CommandExecuterWithCondition(new ICSBExecute[]
+            {
+                new OpenNewPanelCommand(csbBase, csbWeaponSelector.nextPanelTogglerGO),
+                new ToggleActivationGameObjectCommand(csbWeaponSelector.weaponFeatureButtonsHolderGo, true)
+            },
+                () => csbWeaponSelector.FeatureTypeScriptable.IsOpenRP.Value);
+        }
+
+        public void OnPointerClick(PointerEventData eventData) => commandExecuter.ExecuteAll();
+
+        public override void OnPanelActive()
+        {
+            base.OnPanelActive();
+            csbWeaponSelector.weaponFeatureButtonsHolderGo.SetActive(false);
         }
     }
 }
