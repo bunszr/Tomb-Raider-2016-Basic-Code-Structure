@@ -1,36 +1,20 @@
 using DG.Tweening;
-using FSM;
-using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace CampSite
 {
-    public class ShowInformationState : CSBStateBase
+    public class ShowInformationState : CampsiteButtonCommandBase
     {
-        [System.Serializable]
-        public class ShowInformationStateData
-        {
-            public string name;
-            public string description;
-        }
-
+        float defautLocalY;
+        FeatureTypeScriptable featureTypeScriptable;
         FeatureInformationPanelHolder featureInformationPanelHolder;
-        ShowInformationStateData data;
+
         GameDataScriptable.CampSiteScriptableData.ShowInformationScriptableData ScriptableData => GameDataScriptable.Ins.campSiteScriptableData.showInformationScriptableData;
 
-        public ShowInformationState(MonoBehaviour mono, bool needsExitTime, ShowInformationStateData data) : base(mono, needsExitTime)
+        public ShowInformationState(CampSiteButtonBase csbBase, FeatureInformationPanelHolder featureInformationPanelHolder, FeatureTypeScriptable featureTypeScriptable) : base(csbBase)
         {
-            this.data = data;
-        }
-
-        public override void OnEnter() => SubcribeButtonEvents();
-        public override void OnExit() => UnSubcribeButtonEvents();
-
-        float defautLocalY;
-
-        public override void Init()
-        {
-            featureInformationPanelHolder = campSiteHolder.FeatureInformationPanelHolder;
+            this.featureInformationPanelHolder = featureInformationPanelHolder;
+            this.featureTypeScriptable = featureTypeScriptable;
             defautLocalY = featureInformationPanelHolder.canvasGroup.transform.localPosition.y;
         }
 
@@ -39,8 +23,8 @@ namespace CampSite
             featureInformationPanelHolder.canvasGroup.DOFade(1, ScriptableData.fadeDuration).From(0).SetEase(ScriptableData.fadeEase);
             featureInformationPanelHolder.canvasGroup.transform.DOLocalMoveY(ScriptableData.yAnimationAmount, ScriptableData.yAnimationDuration).SetEase(ScriptableData.yAnimEase).From(true);
 
-            featureInformationPanelHolder.nameText.text = data.name;
-            featureInformationPanelHolder.descriptionText.text = data.description;
+            featureInformationPanelHolder.nameText.text = featureTypeScriptable.FeatureName;
+            featureInformationPanelHolder.descriptionText.text = featureTypeScriptable.Description;
         }
 
         protected override void OnPointerExit(PointerEventData eventData)

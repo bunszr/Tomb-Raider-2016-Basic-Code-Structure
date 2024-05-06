@@ -1,51 +1,44 @@
-using DG.Tweening;
 using UnityEngine;
+using DG.Tweening;
 using UnityEngine.EventSystems;
 
 namespace CampSite
 {
-    public class ShowOnlyCostDataState : CSBStateBase
+    public class ShowOnlyCostDataState : CampsiteButtonCommandBase
     {
         float defaultLocalX;
+        CostAndInventoryPanel costAndInventoryPanel;
+
+        public ShowOnlyCostDataState(CampSiteButtonBase csbBase, CostAndInventoryPanel costAndInventoryPanel) : base(csbBase)
+        {
+            this.costAndInventoryPanel = costAndInventoryPanel;
+            defaultLocalX = costAndInventoryPanel.transform.localPosition.x;
+        }
+
         GameDataScriptable.CampSiteScriptableData.ShowCostAndInventoryScriptableData ScriptableData => GameDataScriptable.Ins.campSiteScriptableData.showCostAndInventoryScriptableData;
-
-        public ShowOnlyCostDataState(MonoBehaviour mono, bool needsExitTime = false, bool isGhostState = false) : base(mono, needsExitTime, isGhostState) { }
-
-        public override void Init()
-        {
-            defaultLocalX = campSiteHolder.CostAndInventoryPanel.transform.localPosition.x;
-        }
-
-        public override void OnEnter()
-        {
-            SubcribeButtonEvents();
-        }
-
-
-        public override void OnExit() => UnSubcribeButtonEvents();
 
         protected override void OnPointerEnter(PointerEventData eventData)
         {
-            campSiteHolder.CostAndInventoryPanel.canvasGroup.DOFade(1, ScriptableData.fadeDuration).From(0).SetEase(ScriptableData.fadeEase);
-            campSiteHolder.CostAndInventoryPanel.canvasGroup.transform.DOLocalMoveX(ScriptableData.posAnimationAmount, ScriptableData.posAnimationDuration).SetEase(ScriptableData.posAnimEase).From(true);
+            costAndInventoryPanel.canvasGroup.DOFade(1, ScriptableData.fadeDuration).From(0).SetEase(ScriptableData.fadeEase);
+            costAndInventoryPanel.canvasGroup.transform.DOLocalMoveX(ScriptableData.posAnimationAmount, ScriptableData.posAnimationDuration).SetEase(ScriptableData.posAnimEase).From(true);
             ChangeActivatetionCostAndInventoryGroups(false);
         }
 
         protected override void OnPointerExit(PointerEventData eventData)
         {
-            campSiteHolder.CostAndInventoryPanel.canvasGroup.DOKill();
-            campSiteHolder.CostAndInventoryPanel.canvasGroup.transform.DOKill();
+            costAndInventoryPanel.canvasGroup.DOKill();
+            costAndInventoryPanel.canvasGroup.transform.DOKill();
 
-            campSiteHolder.CostAndInventoryPanel.canvasGroup.alpha = 0;
-            campSiteHolder.CostAndInventoryPanel.canvasGroup.transform.SetLocalPosX(defaultLocalX);
+            costAndInventoryPanel.canvasGroup.alpha = 0;
+            costAndInventoryPanel.canvasGroup.transform.SetLocalPosX(defaultLocalX);
             ChangeActivatetionCostAndInventoryGroups(true);
         }
 
         void ChangeActivatetionCostAndInventoryGroups(bool isActive)
         {
-            for (int i = 0; i < campSiteHolder.CostAndInventoryPanel.groups.Length; i++)
+            for (int i = 0; i < costAndInventoryPanel.groups.Length; i++)
             {
-                campSiteHolder.CostAndInventoryPanel.groups[i].gameObject.SetActive(isActive);
+                costAndInventoryPanel.groups[i].gameObject.SetActive(isActive);
             }
         }
     }

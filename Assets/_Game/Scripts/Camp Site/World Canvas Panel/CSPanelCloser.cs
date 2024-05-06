@@ -1,38 +1,40 @@
 using UnityEngine;
 using Zenject;
 using UnityEngine.UI;
-using UniRx;
 using System.Collections;
-using System;
 using UnityEngine.EventSystems;
 
 namespace CampSite
 {
-    public class CSPanelCloser : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+    public class CSPanelCloser : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPanelObserver
     {
         [Inject] IInput _input;
         [Inject] CampSiteHolder campSiteHolder;
         [SerializeField] Button button;
         IPanelToggler _panelToggler;
 
-        IDisposable disposable;
         Coroutine coroutine;
 
         bool mouseIsEnter;
 
-        private void Awake()
+        private void Start()
         {
-            button.onClick.AddListener(OnClick);
             _panelToggler = GetComponentInParent<IPanelToggler>();
-            disposable = _panelToggler.IsActiveRP.Subscribe(OnIsActiveChange);
+            GetComponentInParent<ISubject<IPanelObserver>>().Register(this);
         }
 
-        private void OnDestroy() => disposable.Dispose();
+        private void OnDestroy() => GetComponentInParent<ISubject<IPanelObserver>>(true).Unregister(this);
 
-        void OnIsActiveChange(bool active)
+        public void OnPanelActive()
         {
-            if (active) coroutine = StartCoroutine(CheckInput());
-            else if (!active && coroutine != null) StopCoroutine(coroutine);
+            button.onClick.AddListener(OnClick);
+            coroutine = StartCoroutine(CheckInput());
+        }
+
+        public void OnPanelDeactive()
+        {
+            button.onClick.RemoveListener(OnClick);
+            StopCoroutine(coroutine);
         }
 
         public void OnClick()

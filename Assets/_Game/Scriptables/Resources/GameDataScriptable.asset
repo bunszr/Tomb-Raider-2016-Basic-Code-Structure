@@ -20,28 +20,28 @@ MonoBehaviour:
       fadeDuration: 0.3
       fadeEase: 3
       yAnimationDuration: 0.5
-      yAnimationAmount: 0.2
+      yAnimationAmount: 31.3
       yAnimEase: 27
     showCostAndInventoryScriptableData:
       fadeDuration: 0.2
       fadeEase: 4
       posAnimationDuration: 1
-      posAnimationAmount: 0.3
+      posAnimationAmount: 35.04
       posAnimEase: 27
     weaponDataSliderScriptableData:
-      fadeDuration: 0.2
+      fadeDuration: 0.1
       fadeEase: 4
       yAnimationDuration: 1
-      yAnimationAmount: 0.4
+      yAnimationAmount: 38.6
       yAnimEase: 30
     showUpgradedFeatureStateScriptableData:
-      fadeInDuration: 0.8
-      fadeOutDuration: 0.4
-      fadeEase: 4
-      stateDuration: 0.8
-      yAnimationDuration: 0.8
-      yAnimationAmount: 3
+      waitDuration: 0.5
+      yAnimationDuration: 1
+      yAnimationAmount: 301.18
       yAnimEase: 30
+    requirementsScriptableData:
+      zPos: 30
+      duration: 0.2
     campsitePanelScriptableData:
       fadeInDuration: 0.4
       fadeOutDuration: 0.4

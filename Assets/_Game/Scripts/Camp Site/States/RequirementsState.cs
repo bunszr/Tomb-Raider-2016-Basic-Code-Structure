@@ -3,45 +3,44 @@ using System.Linq;
 using DG.Tweening;
 using TMPro;
 using UniRx;
-using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace CampSite
 {
-    public class RequirementsState : CSBStateBase
+    public class ShowAndHighlightRequirementsState : CampsiteButtonCommandBase
     {
         string description;
+        Image lockImage;
         TextMeshProUGUI requirementsText;
+        FeatureTypeScriptable featureTypeScriptable;
+
         CompositeDisposable disposablesForOnRequiringFeatureChange = new CompositeDisposable();
 
-        public RequirementsState(MonoBehaviour mono, TextMeshProUGUI requirementsText, bool needsExitTime = false, bool isGhostState = false) : base(mono, needsExitTime, isGhostState)
+        GameDataScriptable.CampSiteScriptableData.RequirementsScriptableData Data => GameDataScriptable.Ins.campSiteScriptableData.requirementsScriptableData;
+
+        public ShowAndHighlightRequirementsState(CampSiteButtonBase csbBase, TextMeshProUGUI requirementsText, FeatureTypeScriptable featureTypeScriptable, Image lockImage) : base(csbBase)
         {
             this.requirementsText = requirementsText;
-        }
+            this.featureTypeScriptable = featureTypeScriptable;
+            this.lockImage = lockImage;
 
-        public override void Init()
-        {
-            var array = csbBase.FeatureTypeScriptable.RequirementsScriptableBases.Select(x => x.Description);
+            var array = featureTypeScriptable.RequirementsScriptableBases.Select(x => x.Description);
             description = string.Join(", ", array);
-
-            // It might be opened some requirements when upgrade some feature. We must listen our requiring feature
-            foreach (var featureType in GetRequringFeatureTypes())
-            {
-                featureType.IsOpenRP.Subscribe(OnRequiringFeatureChange).AddTo(disposablesForOnRequiringFeatureChange);
-            }
         }
 
-        public override void OnEnter()
+        public override void OnActivate()
         {
-            SubcribeButtonEvents();
+            base.OnActivate();
+            lockImage.gameObject.SetActive(true);
             buttonEvents.onPointerClickEvent += OnClick;
         }
 
-        public override void OnExit()
+        public override void OnDeactivate()
         {
-            UnSubcribeButtonEvents();
-            buttonEvents.onPointerClickEvent += OnClick;
-
+            base.OnDeactivate();
+            lockImage.gameObject.SetActive(false);
+            buttonEvents.onPointerClickEvent -= OnClick;
             disposablesForOnRequiringFeatureChange.Dispose();
         }
 
@@ -59,19 +58,7 @@ namespace CampSite
 
         void OnClick(PointerEventData pointerEventData)
         {
-            requirementsText.transform.DOLocalMoveZ(-.2f, .2f).SetEase(Ease.Flash, 2).From(0);
+            requirementsText.transform.DOLocalMoveZ(Data.zPos, Data.duration).SetEase(Ease.Flash, 2).From(0);
         }
-
-        void OnRequiringFeatureChange(bool isOpen)
-        {
-            bool areRequirementsDone = csbBase.FeatureTypeScriptable.AreRequirementsDone();
-            csbBase.GetComponent<CSBFeatureBase>().requirementsImage.gameObject.SetActive(!areRequirementsDone);
-            description = areRequirementsDone ? "" : description;
-        }
-
-        IEnumerable<FeatureTypeScriptable> GetRequringFeatureTypes() => csbBase.FeatureTypeScriptable.RequirementsScriptableBases
-            .Where(x => x is FeatureRequirements)
-            .Select(x => x as FeatureRequirements)
-            .SelectMany(x => x.requireFeatureTypeScriptables);
     }
 }

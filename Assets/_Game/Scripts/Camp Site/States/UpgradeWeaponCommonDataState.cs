@@ -1,22 +1,21 @@
-using UnityEngine;
-
 namespace CampSite
 {
-    public class UpgradeWeaponCommonDataState : CSBStateBase
+    public class UpgradeWeaponCommonDataState : ICSBExecute
     {
         WeaponDataScriptable weaponDataScriptable;
+        WeaponFeatureTypeScriptable weaponFeatureTypeScriptable;
 
-        public UpgradeWeaponCommonDataState(MonoBehaviour mono, WeaponDataScriptable weaponDataScriptable, bool needsExitTime, bool isGhostState = false) : base(mono, needsExitTime, isGhostState)
+        public UpgradeWeaponCommonDataState(WeaponDataScriptable weaponDataScriptable, WeaponFeatureTypeScriptable weaponFeatureTypeScriptable)
         {
             this.weaponDataScriptable = weaponDataScriptable;
+            this.weaponFeatureTypeScriptable = weaponFeatureTypeScriptable;
         }
 
-        public override void OnEnter()
+        public void Execute()
         {
-            Debug.Log("enter UpgradeWeaponCommonDataState");
-            IAddableIntValue _iAddableIntValue = csbBase.FeatureTypeScriptable as IAddableIntValue;
+            IAddableIntValue _iAddableIntValue = weaponFeatureTypeScriptable as IAddableIntValue;
 
-            switch (csbBase.FeatureTypeScriptable)
+            switch (weaponFeatureTypeScriptable)
             {
                 case DamageFeatureScriptable:
                     weaponDataScriptable.WeaponData.DamageRP.Value += _iAddableIntValue.ValueToAdd; break;

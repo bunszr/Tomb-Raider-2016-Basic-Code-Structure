@@ -19,10 +19,12 @@ public class GameDataScriptable : SingletonScriptableObject<GameDataScriptable>
         public ShowCostAndInventoryScriptableData showCostAndInventoryScriptableData;
         public WeaponDataSliderScriptableData weaponDataSliderScriptableData;
         public ShowUpgradedFeatureStateScriptableData showUpgradedFeatureStateScriptableData;
+        public RequirementsScriptableData requirementsScriptableData;
         public CampsitePanelScriptableData campsitePanelScriptableData;
         public FirstLevelAnimScriptableData firstLevelAnimScriptableData;
         public HighlightStateScriptableData highlightStateScriptableData;
         public LockedCommandScriptableData lockedCommandScriptableData;
+        public ShowTickImageCommandScriptableData showTickImageCommandScriptableData;
 
         [System.Serializable]
         public class ShowInformationScriptableData
@@ -45,6 +47,13 @@ public class GameDataScriptable : SingletonScriptableObject<GameDataScriptable>
         }
 
         [System.Serializable]
+        public class RequirementsScriptableData
+        {
+            public float zPos = 30f;
+            public float duration = 1f;
+        }
+
+        [System.Serializable]
         public class WeaponDataSliderScriptableData
         {
             public float fadeDuration = .4f;
@@ -57,10 +66,7 @@ public class GameDataScriptable : SingletonScriptableObject<GameDataScriptable>
         [System.Serializable]
         public class ShowUpgradedFeatureStateScriptableData
         {
-            public float fadeInDuration = .4f;
-            public float fadeOutDuration = .4f;
-            public Ease fadeEase = Ease.InOutSine;
-            public float stateDuration = 3f;
+            public float waitDuration = 1f;
             public float yAnimationDuration = .4f;
             public float yAnimationAmount = .3f;
             public Ease yAnimEase = Ease.OutElastic;
@@ -91,6 +97,14 @@ public class GameDataScriptable : SingletonScriptableObject<GameDataScriptable>
 
         [System.Serializable]
         public class LockedCommandScriptableData
+        {
+            public Ease ease = Ease.InOutSine;
+            public float duration = .25f;
+            public float yMovement = 5f;
+        }
+
+        [System.Serializable]
+        public class ShowTickImageCommandScriptableData
         {
             public Ease ease = Ease.InOutSine;
             public float duration = .25f;

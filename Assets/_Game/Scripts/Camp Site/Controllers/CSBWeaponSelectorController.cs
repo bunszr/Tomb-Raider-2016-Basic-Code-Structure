@@ -12,12 +12,12 @@ namespace CampSite
 
             if (csbWeaponSelector.FeatureTypeScriptable.IsOpenRP.Value)
             {
-                cSBEnterExits.Add(new HighlighCommand(csbBase, csbWeaponSelector.highlightImage));
-                cSBEnterExits.Add(new ClickCommand(csbBase, csbWeaponSelector.nextPanelTogglerGO));
+                csbActivateableList.Add(new HighlightCommandView(csbBase, csbWeaponSelector.highlightImage));
+                csbActivateableList.Add(new OpenNewPanelCommand(csbBase, csbWeaponSelector.nextPanelTogglerGO));
             }
-            else cSBEnterExits.Add(new LockedCommand(csbBase, csbWeaponSelector.lockImage));
+            else csbActivateableList.Add(new LockedCommand(csbBase, csbWeaponSelector.lockImage));
 
-            cSBEnterExits.ForEach(x => x.OnActivate());
+            csbActivateableList.ForEach(x => x.OnActivate());
         }
     }
 }

@@ -1,12 +1,10 @@
 using System.Linq;
 using DG.Tweening;
-using FSM;
-using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace CampSite
 {
-    public class ShowWeaponDataState : CSBStateBase
+    public class ShowWeaponDataState : CampsiteButtonCommandBase
     {
         float defautLocalY;
 
@@ -16,26 +14,18 @@ namespace CampSite
         IAddableIntValue _addableIntegerValue;
         WeaponDataScriptable weaponDataScriptable;
 
-
         GameDataScriptable.CampSiteScriptableData.WeaponDataSliderScriptableData ScriptableData => GameDataScriptable.Ins.campSiteScriptableData.weaponDataSliderScriptableData;
 
-        public ShowWeaponDataState(MonoBehaviour mono, WeaponDataScriptable weaponDataScriptable, bool needsExitTime = false) : base(mono, needsExitTime)
+        public ShowWeaponDataState(CampSiteButtonBase csbBase, WeaponDataScriptable weaponDataScriptable, WeaponDataSliderHolder holder) : base(csbBase)
         {
             this.weaponDataScriptable = weaponDataScriptable;
-        }
 
-        public override void Init()
-        {
+            this.holder = holder;
             featureTypeScriptable = csbBase.FeatureTypeScriptable;
             _addableIntegerValue = featureTypeScriptable as IAddableIntValue;
-            holder = campSiteHolder.WeaponDataSliderHolder;
             weaponDataSlider = holder.weaponDataSliders.FirstOrDefault(x => featureTypeScriptable.GetType() == x.featureTypeScriptable.GetType());
             defautLocalY = holder.canvasGroup.transform.localPosition.y;
         }
-
-        public override void OnEnter() => SubcribeButtonEvents();
-        public override void OnExit() => UnSubcribeButtonEvents();
-
 
         protected override void OnPointerEnter(PointerEventData eventData)
         {

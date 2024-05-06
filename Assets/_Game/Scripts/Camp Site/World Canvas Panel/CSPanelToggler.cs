@@ -1,18 +1,18 @@
 using UnityEngine;
 using DG.Tweening;
 using Cinemachine;
-using UniRx;
+using System.Collections.Generic;
 
 namespace CampSite
 {
-    public class CSPanelToggler : MonoBehaviour, IPanelToggler
+    public class CSPanelToggler : MonoBehaviour, IPanelToggler, ISubject<IPanelObserver>
     {
         [SerializeField] CanvasGroup canvasGroup;
         [SerializeField] CinemachineVirtualCamera cam;
 
         GameDataScriptable.CampSiteScriptableData.CampsitePanelScriptableData Data => GameDataScriptable.Ins.campSiteScriptableData.campsitePanelScriptableData;
 
-        public ReactiveProperty<bool> IsActiveRP { get; private set; } = new ReactiveProperty<bool>();
+        List<IPanelObserver> _panelObservers = new List<IPanelObserver>();
 
         public void Active()
         {
@@ -21,7 +21,7 @@ namespace CampSite
             canvasGroup.DOKill();
             canvasGroup.DOFade(1, Data.fadeOutDuration).From(0).SetEase(Data.fadeEase).onComplete = OnComplete;
             cam.gameObject.SetActive(true);
-            IsActiveRP.Value = true;
+            _panelObservers.ForEach(x => x.OnPanelActive());
         }
 
         public void Deactive()
@@ -31,7 +31,7 @@ namespace CampSite
             canvasGroup.DOKill();
             canvasGroup.DOFade(0, Data.fadeInDuration).From(1).SetEase(Data.fadeEase);
             cam.gameObject.SetActive(false);
-            IsActiveRP.Value = false;
+            _panelObservers.ForEach(x => x.OnPanelDeactive());
         }
 
         public void OnComplete()
@@ -39,5 +39,8 @@ namespace CampSite
             canvasGroup.blocksRaycasts = true;
             canvasGroup.interactable = true;
         }
+
+        public void Register(IPanelObserver panelObserver) => _panelObservers.Add(panelObserver);
+        public void Unregister(IPanelObserver panelObserver) => _panelObservers.Remove(panelObserver);
     }
 }

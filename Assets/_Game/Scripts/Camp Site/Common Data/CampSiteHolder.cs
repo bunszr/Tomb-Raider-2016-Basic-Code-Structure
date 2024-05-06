@@ -12,7 +12,7 @@ namespace CampSite
         [SerializeField] WeaponDataSliderHolder weaponDataSliderHolder;
         [SerializeField] FeatureInformationPanelHolder featureInformationPanelHolder;
         [SerializeField] CostAndInventoryPanel costAndInventoryPanel;
-        [SerializeField] UpgradedPanel upgradedPanel;
+        [SerializeField] CSUpgradedPanel upgradedPanel;
         [SerializeField] CampsiteCommandExecuter campsiteCommandExecuter;
 
         public Transform WeaponShowLocation { get => weaponShowLocation; }
@@ -22,7 +22,7 @@ namespace CampSite
         public WeaponBase weaponBase { get => WeaponShowLocation.GetComponentInChildren<WeaponBase>(); }
         public FeatureInformationPanelHolder FeatureInformationPanelHolder { get => featureInformationPanelHolder; }
         public CostAndInventoryPanel CostAndInventoryPanel { get => costAndInventoryPanel; }
-        public UpgradedPanel UpgradedPanel { get => upgradedPanel; }
+        public CSUpgradedPanel UpgradedPanel { get => upgradedPanel; }
         public CampsiteCommandExecuter CampsiteCommandExecuter { get => campsiteCommandExecuter; }
     }
 }

@@ -2,12 +2,12 @@ using UnityEngine.EventSystems;
 
 namespace CampSite
 {
-    public class CampsiteCommandBase : ICSBActivateable
+    public class CampsiteButtonCommandBase : ICSBActivateable
     {
         protected CampSiteButtonBase csbBase;
         protected ButtonEvents buttonEvents => csbBase.buttonEvents;
 
-        public CampsiteCommandBase(CampSiteButtonBase csbBase) => this.csbBase = csbBase;
+        public CampsiteButtonCommandBase(CampSiteButtonBase csbBase) => this.csbBase = csbBase;
 
         public virtual void OnActivate()
         {

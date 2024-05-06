@@ -30,7 +30,7 @@ public class QuickAccess : OdinEditorWindow
     [Button, FoldoutGroup("Other")]
     public void SelectWithName()
     {
-        Selection.objects = FindObjectsOfType<GameObject>().Where(x => x.name == typeName).Select(x => (Object)x.gameObject).ToArray();
+        Selection.objects = FindObjectsOfType<GameObject>(true).Where(x => x.name == typeName).Select(x => (Object)x.gameObject).ToArray();
     }
 
     [Button, HorizontalGroup("4")]

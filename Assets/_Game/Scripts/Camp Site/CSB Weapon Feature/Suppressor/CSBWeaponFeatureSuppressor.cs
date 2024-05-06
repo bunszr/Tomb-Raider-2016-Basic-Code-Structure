@@ -8,7 +8,6 @@ namespace CampSite
     {
         public Image imageToHighlight;
         public ClickState.ClickStateData clickStateData;
-        public ShowInformationState.ShowInformationStateData showInformationState;
         public WeaponRotationState.WeaponRotationStateData weaponRotationStateData;
     }
 }

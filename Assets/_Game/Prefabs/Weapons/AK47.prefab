@@ -496,6 +496,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Normal Ammo View
       objectReference: {fileID: 0}
+    - target: {fileID: 5596676835834963516, guid: 229cafe332d4a8247a966a29df7ef0ae,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 229cafe332d4a8247a966a29df7ef0ae, type: 3}
 --- !u!1001 &7023009953062213292
@@ -603,25 +608,6 @@ MonoBehaviour:
   weaponBase: {fileID: 1227285743}
   animator: {fileID: 0}
   livingEntity: {fileID: 0}
---- !u!114 &6135754185431321141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3186234948369212456}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e8954b339500b14daf5f32570a941f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponBase: {fileID: 1227285743}
-  playerWeaponBaseInstaller: {fileID: 599077353863983286}
-  animator: {fileID: 0}
-  stateMachineDebug:
-    isDebug: 0
-    maxStateCountToShow: 8
-    enteringStatesList: []
 --- !u!4 &3757001781840705477 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6148877357165945193, guid: 2d496304b1398034fbb124c17a508bdb,

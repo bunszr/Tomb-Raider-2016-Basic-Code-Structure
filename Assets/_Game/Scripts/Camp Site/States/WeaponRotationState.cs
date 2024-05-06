@@ -1,12 +1,11 @@
 using DG.Tweening;
-using FSM;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace CampSite
 {
-    public class WeaponRotationState : CSBStateBase
+    public class WeaponRotationState : CampsiteButtonCommandBase
     {
         [System.Serializable]
         public class WeaponRotationStateData
@@ -20,14 +19,13 @@ namespace CampSite
         }
 
         WeaponRotationStateData data;
+        CampSiteHolder campSiteHolder;
 
-        public WeaponRotationState(MonoBehaviour mono, bool needsExitTime, WeaponRotationStateData data) : base(mono, needsExitTime)
+        public WeaponRotationState(CampSiteButtonBase csbBase, WeaponRotationStateData data, CampSiteHolder campSiteHolder) : base(csbBase)
         {
             this.data = data;
+            this.campSiteHolder = campSiteHolder;
         }
-
-        public override void OnEnter() => SubcribeButtonEvents();
-        public override void OnExit() => UnSubcribeButtonEvents();
 
         protected override void OnPointerEnter(PointerEventData eventData)
         {
@@ -37,7 +35,5 @@ namespace CampSite
             campSiteHolder.WeaponShowLocation.DOLocalRotateQuaternion(data.localRotation, .2f);
             campSiteHolder.WeaponFeatureIndicator.DOLocalMove(data.localPosition, .2f);
         }
-
-        protected override void OnPointerExit(PointerEventData eventData) { }
     }
 }
