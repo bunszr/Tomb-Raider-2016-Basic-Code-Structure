@@ -9,10 +9,8 @@ namespace CampSite
 
         CommandExecuterWithCondition commandExecuter;
 
-        protected override void Start()
+        protected void Start()
         {
-            base.Start();
-
             csbFirstLevel = GetComponent<CSBFirstLevel>();
 
             if (csbBase.FeatureTypeScriptable.IsOpenRP.Value)

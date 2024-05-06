@@ -25,10 +25,6 @@ namespace CampSite
             GetComponentInParent<ISubject<IPanelObserver>>().Register(this);
         }
 
-        protected virtual void Start() { }
-        protected virtual void OnEnable() { }
-        protected virtual void OnDisable() { }
-
         protected virtual void OnDestroy() => GetComponentInParent<ISubject<IPanelObserver>>(true).Unregister(this);
 
         public void AddCommand(ICSBActivateable _csbActivateable)

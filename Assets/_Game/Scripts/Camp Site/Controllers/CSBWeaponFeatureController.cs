@@ -14,10 +14,8 @@ namespace CampSite
 
         CommandExecuterWithCondition commandExecuter;
 
-        protected override void Start()
+        protected virtual void Start()
         {
-            base.Start();
-
             csbWeaponFeature = csbBase.GetComponent<CSBWeaponFeature>();
 
             featureTypeScriptable = csbWeaponFeature.FeatureTypeScriptable;
