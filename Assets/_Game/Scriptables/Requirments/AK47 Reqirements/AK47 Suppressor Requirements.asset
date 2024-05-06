@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: Open Fast Healing Skill
   requireFeatureTypeScriptables:
-  - {fileID: 11400000, guid: e459c92c6ab9d3e4aa9a65f5c2301557, type: 2}
+  - {fileID: 11400000, guid: 1cf8e4a221eec664d9da620445b8bda5, type: 2}

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Cinemachine;
@@ -30,6 +31,11 @@ namespace CampSite
         public void AddCommand(ICSBActivateable _csbActivateable)
         {
             csbActivateableList.Add(_csbActivateable);
+        }
+
+        public void RemoveCommand(Func<ICSBActivateable, bool> predicate)
+        {
+            csbActivateableList.Remove(csbActivateableList.FirstOrDefault(predicate));
         }
 
         public virtual void OnPanelActive() => csbActivateableList.ForEach(x => x.OnActivate());

@@ -8,10 +8,8 @@ namespace CampSite
 
         CommandExecuterWithCondition commandExecuter;
 
-        protected override void Start()
+        protected void Start()
         {
-            base.Start();
-
             csbWeaponSelector = GetComponent<CSBWeaponSelector>();
 
             if (csbWeaponSelector.FeatureTypeScriptable.IsOpenRP.Value) AddCommand(new HighlightCommandView(csbBase, csbWeaponSelector.highlightImage));
