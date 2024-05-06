@@ -1,7 +1,4 @@
 namespace CampSite
 {
-    public interface ICSBExecute
-    {
-        void Execute();
-    }
+    public interface ICSBExecute : IExecute { }
 }

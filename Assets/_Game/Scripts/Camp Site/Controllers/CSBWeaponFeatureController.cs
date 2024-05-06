@@ -12,7 +12,7 @@ namespace CampSite
 
         GameObject nextPanelTogglerGO => campSiteHolder.UpgradedPanel.gameObject;
 
-        ICSBExecute[] _csbExecuteableArray;
+        CommandExecuterWithCondition commandExecuter;
 
         protected override void Start()
         {
@@ -45,14 +45,15 @@ namespace CampSite
             AddCommand(costDataCommandController);
             AddCommand(upgradedTickCommandController);
 
-            _csbExecuteableArray = new ICSBExecute[]
+            commandExecuter = new CommandExecuterWithCondition(new ICSBExecute[]
             {
                 new OpenNewPanelCommand(csbBase, nextPanelTogglerGO),
                 new BuyInventoryItemCommand(weaponFeatureTypeScriptable),
                 new UpgradeWeaponCommonDataState(csbWeaponFeature.weaponDataScriptable, weaponFeatureTypeScriptable),
                 new UpgradedPanelDataSetterCommand(nextPanelTogglerGO, featureTypeScriptable),
                 new SetFeatureTypeBoolToTrue(featureTypeScriptable),
-            };
+            },
+                () => IsUpgrade());
         }
 
         [Button]
@@ -61,10 +62,7 @@ namespace CampSite
             return !csbWeaponFeature.FeatureTypeScriptable.IsOpenRP.Value && weaponFeatureTypeScriptable.HasEnoughQuantityToBuy() && csbBase.FeatureTypeScriptable.AreRequirementsDone();
         }
 
-        public void OnPointerClick(PointerEventData eventData)
-        {
-            if (IsUpgrade()) _csbExecuteableArray.Foreach(x => x.Execute());
-        }
+        public void OnPointerClick(PointerEventData eventData) => commandExecuter.ExecuteAll();
     }
 }
 
