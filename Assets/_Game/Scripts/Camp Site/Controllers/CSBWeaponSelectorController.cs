@@ -2,7 +2,7 @@ using UnityEngine.EventSystems;
 
 namespace CampSite
 {
-    public class CSBWeaponSelectorController : CSBBaseController, IPointerClickHandler
+    public class CSBWeaponSelectorController : CSBBaseController
     {
         CSBWeaponSelector csbWeaponSelector;
 
@@ -23,12 +23,16 @@ namespace CampSite
                 () => csbWeaponSelector.FeatureTypeScriptable.IsOpenRP.Value);
         }
 
-        public void OnPointerClick(PointerEventData eventData) => commandExecuter.ExecuteAll();
-
         public override void OnPanelActive()
         {
             base.OnPanelActive();
             csbWeaponSelector.weaponFeatureButtonsHolderGo.SetActive(false);
+        }
+
+        public override void OnPointerClick(PointerEventData eventData)
+        {
+            base.OnPointerClick(eventData);
+            commandExecuter.ExecuteAll();
         }
     }
 }

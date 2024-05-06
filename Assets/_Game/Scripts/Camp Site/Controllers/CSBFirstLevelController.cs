@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 namespace CampSite
 {
-    public class CSBFirstLevelController : CSBBaseController, IPointerClickHandler
+    public class CSBFirstLevelController : CSBBaseController
     {
         CSBFirstLevel csbFirstLevel;
 
@@ -24,6 +24,10 @@ namespace CampSite
                 () => csbBase.FeatureTypeScriptable.IsOpenRP.Value);
         }
 
-        public void OnPointerClick(PointerEventData eventData) => commandExecuter.ExecuteAll();
+        public override void OnPointerClick(PointerEventData eventData)
+        {
+            base.OnPointerClick(eventData);
+            commandExecuter.ExecuteAll();
+        }
     }
 }

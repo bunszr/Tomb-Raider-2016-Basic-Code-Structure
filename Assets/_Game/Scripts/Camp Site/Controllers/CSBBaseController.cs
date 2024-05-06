@@ -4,11 +4,12 @@ using System.Linq;
 using Cinemachine;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Zenject;
 
 namespace CampSite
 {
-    public abstract class CSBBaseController : MonoBehaviour, IPanelObserver
+    public abstract class CSBBaseController : MonoBehaviour, IPanelObserver, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
     {
         protected CSBBase csbBase;
         protected List<ICSBActivateable> csbActivateableList = new List<ICSBActivateable>();
@@ -40,5 +41,9 @@ namespace CampSite
 
         public virtual void OnPanelActive() => csbActivateableList.ForEach(x => x.OnActivate());
         public virtual void OnPanelDeactive() => csbActivateableList.ForEach(x => x.OnDeactivate());
+
+        public virtual void OnPointerEnter(PointerEventData eventData) => csbBase.buttonEvents.onPointerEnterEvent?.Invoke(eventData);
+        public virtual void OnPointerExit(PointerEventData eventData) => csbBase.buttonEvents.onPointerExitEvent?.Invoke(eventData);
+        public virtual void OnPointerClick(PointerEventData eventData) => csbBase.buttonEvents.onPointerClickEvent?.Invoke(eventData);
     }
 }
