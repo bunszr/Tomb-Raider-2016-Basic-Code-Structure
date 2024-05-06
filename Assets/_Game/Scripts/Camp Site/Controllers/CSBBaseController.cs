@@ -7,7 +7,7 @@ using Zenject;
 
 namespace CampSite
 {
-    public abstract class CSBBaseController : MonoBehaviour
+    public abstract class CSBBaseController : MonoBehaviour, IPanelObserver
     {
         protected CampSiteButtonBase csbBase;
         protected List<ICSBActivateable> csbActivateableList = new List<ICSBActivateable>();
@@ -22,15 +22,21 @@ namespace CampSite
         protected virtual void Awake()
         {
             csbBase = GetComponent<CampSiteButtonBase>();
+            GetComponentInParent<ISubject<IPanelObserver>>().Register(this);
         }
 
         protected virtual void Start() { }
         protected virtual void OnEnable() { }
         protected virtual void OnDisable() { }
 
+        protected virtual void OnDestroy() => GetComponentInParent<ISubject<IPanelObserver>>(true).Unregister(this);
+
         public void AddCommand(ICSBActivateable _csbActivateable)
         {
             csbActivateableList.Add(_csbActivateable);
         }
+
+        public virtual void OnPanelActive() => csbActivateableList.ForEach(x => x.OnActivate());
+        public virtual void OnPanelDeactive() => csbActivateableList.ForEach(x => x.OnDeactivate());
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 namespace CampSite
 {
-    public class CSBWeaponFeatureController : CSBBaseController, IPointerClickHandler, IPanelObserver
+    public class CSBWeaponFeatureController : CSBBaseController, IPointerClickHandler
     {
         CSBWeaponFeature csbWeaponFeature;
         FeatureTypeScriptable featureTypeScriptable;
@@ -53,11 +53,7 @@ namespace CampSite
                 new UpgradedPanelDataSetterCommand(nextPanelTogglerGO, featureTypeScriptable),
                 new SetFeatureTypeBoolToTrue(featureTypeScriptable),
             };
-
-            GetComponentInParent<ISubject<IPanelObserver>>().Register(this);
         }
-
-        private void OnDestroy() => GetComponentInParent<ISubject<IPanelObserver>>(true).Unregister(this);
 
         [Button]
         bool IsUpgrade()
@@ -68,16 +64,6 @@ namespace CampSite
         public void OnPointerClick(PointerEventData eventData)
         {
             if (IsUpgrade()) _csbExecuteableArray.Foreach(x => x.Execute());
-        }
-
-        public void OnPanelActive()
-        {
-            csbActivateableList.ForEach(x => x.OnActivate());
-        }
-
-        public void OnPanelDeactive()
-        {
-            csbActivateableList.ForEach(x => x.OnDeactivate());
         }
     }
 }
