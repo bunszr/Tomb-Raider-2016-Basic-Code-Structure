@@ -1,0 +1,126 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &1213432188078799407
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3183554263854994183, guid: 9765512d5f5ab5742a5319e3b3a9ecf3,
+        type: 3}
+      propertyPath: m_Name
+      value: SMG MP5 Base
+      objectReference: {fileID: 0}
+    - target: {fileID: 3683426406335155037, guid: 9765512d5f5ab5742a5319e3b3a9ecf3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3683426406335155037, guid: 9765512d5f5ab5742a5319e3b3a9ecf3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3683426406335155037, guid: 9765512d5f5ab5742a5319e3b3a9ecf3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3683426406335155037, guid: 9765512d5f5ab5742a5319e3b3a9ecf3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393931012560057274, guid: 9765512d5f5ab5742a5319e3b3a9ecf3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.2166
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393931012560057274, guid: 9765512d5f5ab5742a5319e3b3a9ecf3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.1093
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227692477894780780, guid: 9765512d5f5ab5742a5319e3b3a9ecf3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.499
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9765512d5f5ab5742a5319e3b3a9ecf3, type: 3}
+--- !u!4 &6814061399031385795 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5640356765120967916, guid: 9765512d5f5ab5742a5319e3b3a9ecf3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1213432188078799407}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7194143102466729188
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6814061399031385795}
+    m_Modifications:
+    - target: {fileID: 525521675982858727, guid: be73c545c149f594485b35ef56ccb990,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 525521675982858727, guid: be73c545c149f594485b35ef56ccb990,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 525521675982858727, guid: be73c545c149f594485b35ef56ccb990,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 525521675982858727, guid: be73c545c149f594485b35ef56ccb990,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.154
+      objectReference: {fileID: 0}
+    - target: {fileID: 525521675982858727, guid: be73c545c149f594485b35ef56ccb990,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 525521675982858727, guid: be73c545c149f594485b35ef56ccb990,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 525521675982858727, guid: be73c545c149f594485b35ef56ccb990,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 525521675982858727, guid: be73c545c149f594485b35ef56ccb990,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 525521675982858727, guid: be73c545c149f594485b35ef56ccb990,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 525521675982858727, guid: be73c545c149f594485b35ef56ccb990,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 525521675982858727, guid: be73c545c149f594485b35ef56ccb990,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 864928084083192669, guid: be73c545c149f594485b35ef56ccb990,
+        type: 3}
+      propertyPath: m_Name
+      value: SMG Itself
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: be73c545c149f594485b35ef56ccb990, type: 3}

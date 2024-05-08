@@ -6,7 +6,7 @@ public class FireBehaviourBase : IFireBehaviour
     protected List<IExtraFire> _extraFireList;
     protected List<ICheck> _checkList;
 
-    protected float RateOfFireDivided100 => weaponBase.weaponDataScriptable.WeaponData.RateOfFireRP.Value / 100f;
+    protected float RateOfFireDivided100 => weaponBase.WeaponDataScriptable.WeaponData.RateOfFireRP.Value / 100f;
 
     public FireBehaviourBase(WeaponBase weaponBase, List<IExtraFire> extraFireList, List<ICheck> checkList)
     {

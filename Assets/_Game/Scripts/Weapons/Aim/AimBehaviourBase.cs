@@ -3,7 +3,7 @@ public class AimBehaviourBase : IAimBehaviour
 {
     protected WeaponBase weaponBase;
 
-    protected float RateOfFireDivided100 => weaponBase.weaponDataScriptable.WeaponData.RateOfFireRP.Value / 100f;
+    protected float RateOfFireDivided100 => weaponBase.WeaponDataScriptable.WeaponData.RateOfFireRP.Value / 100f;
 
     public AimBehaviourBase(WeaponBase weaponBase)
     {

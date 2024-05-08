@@ -15,12 +15,12 @@ namespace WeaponNamescape.Enemy
 
         protected virtual void Awake()
         {
-            weaponBase.weaponDataScriptable = weaponBase.weaponDataScriptable.CreateInstance();
-            weaponBase._AmmoRP = new ReactiveProperty<IAmmoData>(weaponBase.weaponDataScriptable.NormalAmmo);
+            WeaponBase.WeaponDataScriptable = WeaponBase.WeaponDataScriptable.CreateInstance();
+            WeaponBase._AmmoRP = new ReactiveProperty<IAmmoData>(WeaponBase.WeaponDataScriptable.NormalAmmo);
             _checksToFire = new List<ICheck>()
             {
-                new HasBulletInTheMagazineCheck(weaponBase),
-                new HasAimCheck(weaponBase as IAimIsTaken),
+                new HasBulletInTheMagazineCheck(WeaponBase),
+                new HasAimCheck(WeaponBase as IAimIsTaken),
             };
         }
 
@@ -29,14 +29,14 @@ namespace WeaponNamescape.Enemy
         [Button]
         public virtual void Equip()
         {
-            _equipableList.ForEach(x => x.Enter());
+            _EquipableList.ForEach(x => x.Enter());
             onEquip?.Invoke(this);
         }
 
         [Button]
         public virtual void Unequip()
         {
-            _equipableList.ForEach(x => x.Exit());
+            _EquipableList.ForEach(x => x.Exit());
             onUnEquip?.Invoke(this);
         }
     }

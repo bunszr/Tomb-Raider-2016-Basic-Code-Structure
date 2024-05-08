@@ -1,5 +1,74 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3023208059487859908
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2981875688649379501}
+    m_Modifications:
+    - target: {fileID: 3640874799500466129, guid: eb1780c25dc046449bf65cdfb22180f2,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640874799500466129, guid: eb1780c25dc046449bf65cdfb22180f2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640874799500466129, guid: eb1780c25dc046449bf65cdfb22180f2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640874799500466129, guid: eb1780c25dc046449bf65cdfb22180f2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.519
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640874799500466129, guid: eb1780c25dc046449bf65cdfb22180f2,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640874799500466129, guid: eb1780c25dc046449bf65cdfb22180f2,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640874799500466129, guid: eb1780c25dc046449bf65cdfb22180f2,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640874799500466129, guid: eb1780c25dc046449bf65cdfb22180f2,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640874799500466129, guid: eb1780c25dc046449bf65cdfb22180f2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640874799500466129, guid: eb1780c25dc046449bf65cdfb22180f2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640874799500466129, guid: eb1780c25dc046449bf65cdfb22180f2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165034689575636331, guid: eb1780c25dc046449bf65cdfb22180f2,
+        type: 3}
+      propertyPath: m_Name
+      value: Shotgun Itself
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: eb1780c25dc046449bf65cdfb22180f2, type: 3}
 --- !u!1001 &5349201790529047151
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10,7 +79,7 @@ PrefabInstance:
     - target: {fileID: 87043561141281577, guid: 1c772c2ee3364d14abe5512ea11cdec1,
         type: 3}
       propertyPath: m_Name
-      value: Weapon Base
+      value: Shotgun Base
       objectReference: {fileID: 0}
     - target: {fileID: 2163228487147125619, guid: 1c772c2ee3364d14abe5512ea11cdec1,
         type: 3}
@@ -69,3 +138,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c772c2ee3364d14abe5512ea11cdec1, type: 3}
+--- !u!4 &2981875688649379501 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7160141267887703234, guid: 1c772c2ee3364d14abe5512ea11cdec1,
+    type: 3}
+  m_PrefabInstance: {fileID: 5349201790529047151}
+  m_PrefabAsset: {fileID: 0}

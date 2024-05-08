@@ -31,4 +31,6 @@ public abstract class LivingEntity : MonoBehaviour, IThirdPersonController
         get => ThirdPersonController.input;
         set => ThirdPersonController.input = value;
     }
+
+    public Transform StrafeDirectionTransform => thirdPersonInput.strafeDirectionT;
 }

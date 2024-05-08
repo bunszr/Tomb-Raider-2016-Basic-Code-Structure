@@ -5,30 +5,20 @@ using UnityEngine;
 public class AK47lInstaller : PlayerWeaponBaseInstaller
 {
     AK47 aK47;
-    [SerializeField] Animator animator;
-    [SerializeField] LivingEntity livingEntity;
-
     CompositeDisposable disposables = new CompositeDisposable();
 
-    protected override void Awake()
+    public override void Install()
     {
-        base.Awake();
-        aK47 = weaponBase as AK47;
+        base.Install();
+        aK47 = WeaponBase as AK47;
 
-        _extraFireList = new List<IExtraFire>()
-        {
-            new FireAnimationBehaviour(animator),
-            new NormalBulletBehaviour(aK47, aK47.normalBulletModeData),
-            new NormalShellCasingBehaviour(aK47, aK47.normalShellCasingData),
-            // new NormalMuzzleBehaviour()
-        };
+        AddExtraFire(new FireAnimationBehaviour(WeaponBase._ThirdPersonController.Animator));
+        AddExtraFire(new NormalBulletBehaviour(aK47, aK47.normalBulletModeData));
+        AddExtraFire(new NormalShellCasingBehaviour(aK47, aK47.normalShellCasingData));
 
-        _equipableList = new List<IEquiptable>()
-        {
-            new AutomaticFireBehavior(weaponBase, _extraFireList, _checksToFire, _input.WeaponInput),
-            new AimBoolSetterBehavior(weaponBase, _input.WeaponInput),
-            new NormalAimBehavior(weaponBase, _input.WeaponInput, livingEntity, aK47.normalAimBehaviorData, aK47.weaponAimData),
-        };
+        AddEquiptable(new AutomaticFireBehavior(WeaponBase, _ExtraFireList, _ChecksToFire, _input.WeaponInput));
+        AddEquiptable(new AimBoolSetterBehavior(WeaponBase, _input.WeaponInput));
+        AddEquiptable(new NormalAimBehavior(WeaponBase, _input.WeaponInput, WeaponBase._ThirdPersonController, aK47.NormalAimBehaviorData, aK47.WeaponAimData));
 
         aK47.suppressorFeatureScriptable.IsOpenRP.Subscribe(OnSuppressorGain).AddTo(disposables);
         aK47.flashLightFeatureScriptable.IsOpenRP.Subscribe(OnFlashLightGain).AddTo(disposables);

@@ -14,24 +14,18 @@ namespace WeaponNamescape.Enemy
         protected override void Awake()
         {
             base.Awake();
-            pistolEnemy = weaponBase as PistolEnemy;
+            pistolEnemy = WeaponBase as PistolEnemy;
 
             weaponHolder.transform.parent = weaponHolderUnderHand;
             weaponHolder.transform.localPosition = Vector3.zero;
             weaponHolder.transform.localRotation = Quaternion.identity;
 
-            _extraFireList = new List<IExtraFire>()
-            {
-                new FireAnimationBehaviour(livingEntity.Animator),
-                new NormalBulletBehaviour(pistolEnemy, pistolEnemy.normalBulletModeData),
-            };
+            AddExtraFire(new FireAnimationBehaviour(livingEntity.Animator));
+            AddExtraFire(new NormalBulletBehaviour(pistolEnemy, pistolEnemy.normalBulletModeData));
 
-            _equipableList = new List<IEquiptable>()
-            {
-                new EnemyFireBehavior(weaponBase, _extraFireList, _checksToFire),
-                new EnemyAimBoolSetterBehavior(weaponBase),
-                new EnemyAimBehavior(weaponBase, livingEntity, pistolEnemy.enemyAimBehaviorData),
-            };
+            AddEquiptable(new EnemyFireBehavior(WeaponBase, _ExtraFireList, _checksToFire));
+            AddEquiptable(new EnemyAimBoolSetterBehavior(WeaponBase));
+            AddEquiptable(new EnemyAimBehavior(WeaponBase, livingEntity, pistolEnemy.enemyAimBehaviorData));
 
             livingEntity.Animator.SetInteger(APs.DrawWeaponInt, 0); // Fix Later - Add DrawWeaponInt to WeaponDataScriptable
             livingEntity.Animator.SetTrigger(APs.DrawWeaponTrigger);

@@ -3,26 +3,18 @@ using UnityEngine;
 
 public class PistolInstaller : PlayerWeaponBaseInstaller
 {
-    [SerializeField] LivingEntity livingEntity;
-    [SerializeField] Pistol pistol;
-    [SerializeField] Animator animator;
-
-    protected override void Awake()
+    public override void Install()
     {
-        base.Awake();
+        base.Install();
 
-        _extraFireList = new List<IExtraFire>()
-        {
-            new FireAnimationBehaviour(animator),
-            new NormalBulletBehaviour(pistol, pistol.normalBulletModeData),
-            new NormalShellCasingBehaviour(pistol, pistol.normalShellCasingData)
-        };
+        Pistol pistol = WeaponBase as Pistol;
 
-        _equipableList = new List<IEquiptable>()
-        {
-            new SingleFireBehavior(weaponBase, _extraFireList, _checksToFire, _input.WeaponInput),
-            new AimBoolSetterBehavior(weaponBase, _input.WeaponInput),
-            new NormalAimBehavior(weaponBase, _input.WeaponInput, livingEntity, pistol.normalAimBehaviorData, pistol.weaponAimData),
-        };
+        AddExtraFire(new FireAnimationBehaviour(WeaponBase._ThirdPersonController.Animator));
+        AddExtraFire(new NormalBulletBehaviour(pistol, pistol.normalBulletModeData));
+        AddExtraFire(new NormalShellCasingBehaviour(pistol, pistol.normalShellCasingData));
+
+        AddEquiptable(new SingleFireBehavior(WeaponBase, _ExtraFireList, _ChecksToFire, _input.WeaponInput));
+        AddEquiptable(new AimBoolSetterBehavior(WeaponBase, _input.WeaponInput));
+        AddEquiptable(new NormalAimBehavior(WeaponBase, _input.WeaponInput, WeaponBase._ThirdPersonController, pistol.NormalAimBehaviorData, pistol.WeaponAimData));
     }
 }

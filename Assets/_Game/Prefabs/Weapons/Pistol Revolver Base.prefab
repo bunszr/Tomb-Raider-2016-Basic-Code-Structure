@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3954742465216857762
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3324948529512751897, guid: 182745289cb96f84faed63b67ee0c300,
+        type: 3}
+      propertyPath: m_Name
+      value: Pistol Revolver Base
+      objectReference: {fileID: 0}
+    - target: {fileID: 3324948529512751897, guid: 182745289cb96f84faed63b67ee0c300,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3536731310355118915, guid: 182745289cb96f84faed63b67ee0c300,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3536731310355118915, guid: 182745289cb96f84faed63b67ee0c300,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3536731310355118915, guid: 182745289cb96f84faed63b67ee0c300,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3536731310355118915, guid: 182745289cb96f84faed63b67ee0c300,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5497844245673854194, guid: 182745289cb96f84faed63b67ee0c300,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5497844245673854194, guid: 182745289cb96f84faed63b67ee0c300,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5497844245673854194, guid: 182745289cb96f84faed63b67ee0c300,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 182745289cb96f84faed63b67ee0c300, type: 3}
+--- !u!4 &8840097022745215568 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5497844245673854194, guid: 182745289cb96f84faed63b67ee0c300,
+    type: 3}
+  m_PrefabInstance: {fileID: 3954742465216857762}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5260037952247233647
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8840097022745215568}
+    m_Modifications:
+    - target: {fileID: 5180919376795638067, guid: fc7a6e87067a1e94283c2d0f44f74554,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5180919376795638067, guid: fc7a6e87067a1e94283c2d0f44f74554,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.131
+      objectReference: {fileID: 0}
+    - target: {fileID: 5180919376795638067, guid: fc7a6e87067a1e94283c2d0f44f74554,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5180919376795638067, guid: fc7a6e87067a1e94283c2d0f44f74554,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5180919376795638067, guid: fc7a6e87067a1e94283c2d0f44f74554,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525215347468649353, guid: fc7a6e87067a1e94283c2d0f44f74554,
+        type: 3}
+      propertyPath: m_Name
+      value: Pistol Revolver Itself
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fc7a6e87067a1e94283c2d0f44f74554, type: 3}

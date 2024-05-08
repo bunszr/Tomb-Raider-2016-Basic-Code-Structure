@@ -24,20 +24,21 @@ public class NormalAimBehavior : AimBehaviourBase, IEquiptable
     bool enter;
     bool aim;
     Camera cam;
-    LivingEntity livingEntity;
+
     NormalAimBehaviorData data;
     WeaponAimData weaponAimData;
     IWeaponInput _weaponInput;
+    IThirdPersonController _thirdPersonController;
 
     GameDataScriptable.WeaponScriptableData.AimData ScriptableData => GameDataScriptable.Ins.weaponScriptableData.aimData;
 
-    public NormalAimBehavior(WeaponBase weaponBase, IWeaponInput weaponInput, LivingEntity livingEntity, NormalAimBehaviorData data, WeaponAimData weaponAimData) : base(weaponBase)
+    public NormalAimBehavior(WeaponBase weaponBase, IWeaponInput weaponInput, IThirdPersonController thirdPersonController, NormalAimBehaviorData data, WeaponAimData weaponAimData) : base(weaponBase)
     {
-        this.livingEntity = livingEntity;
         this._weaponInput = weaponInput;
         this.data = data;
         this.weaponAimData = weaponAimData;
         cam = Camera.main;
+        this._thirdPersonController = thirdPersonController;
     }
 
     public override void Enter()
@@ -51,8 +52,8 @@ public class NormalAimBehavior : AimBehaviourBase, IEquiptable
     {
         aim = true;
         weaponAimData.aimVCamera.gameObject.SetActive(true);
-        livingEntity.Animator.SetBool(APs.Aim, true);
-        livingEntity.ThirdPersonController.ToggleStrafe(true);
+        _thirdPersonController.Animator.SetBool(APs.Aim, true);
+        _thirdPersonController.IsStrafe = true;
         weaponAimData.aimIndicatorCanvas.gameObject.SetActive(true);
     }
 
@@ -60,8 +61,8 @@ public class NormalAimBehavior : AimBehaviourBase, IEquiptable
     {
         aim = false;
         weaponAimData.aimVCamera.gameObject.SetActive(false);
-        livingEntity.Animator.SetBool(APs.Aim, false);
-        livingEntity.ThirdPersonController.ToggleStrafe(false);
+        _thirdPersonController.Animator.SetBool(APs.Aim, false);
+        _thirdPersonController.IsStrafe = false;
         weaponAimData.aimIndicatorCanvas.gameObject.SetActive(false);
     }
 

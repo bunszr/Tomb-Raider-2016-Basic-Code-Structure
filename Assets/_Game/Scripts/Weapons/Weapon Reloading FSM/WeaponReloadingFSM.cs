@@ -3,25 +3,25 @@ using UniRx;
 using UnityEngine;
 using Zenject;
 
-public class WeaponReloadingFSM : MonoBehaviour
+public class WeaponReloadingFSM : IEquiptable
 {
+    StateMachine fsm;
+    WeaponCheckFactory factory;
     CompositeDisposable disposables = new CompositeDisposable();
 
-    [Inject] IInput _input;
-
-    StateMachine fsm;
-    [SerializeField] WeaponBase weaponBase;
-    [SerializeField] PlayerWeaponBaseInstaller playerWeaponBaseInstaller;
-    [SerializeField] Animator animator;
-
-    WeaponCheckFactory factory;
+    IInput _input;
+    WeaponBase weaponBase;
 
     [SerializeField] StateMachine.StateMachineDebug stateMachineDebug;
 
-    private void Awake()
+    public WeaponReloadingFSM(IInput input, WeaponBase weaponBase)
     {
+        _input = input;
+        this.weaponBase = weaponBase;
+
         fsm = new StateMachine() { stateMachineDebug = stateMachineDebug };
 
+        Animator animator = weaponBase._ThirdPersonController.Animator;
         factory = new WeaponCheckFactory(weaponBase);
 
         fsm.AddState("EmptyState", new State());
@@ -40,22 +40,19 @@ public class WeaponReloadingFSM : MonoBehaviour
 
         fsm.SetStartState("EmptyState");
         fsm.Init();
-
-        playerWeaponBaseInstaller.onEquip += OnEquip; // It must be call in Awake
-        playerWeaponBaseInstaller.onUnEquip += OnUnEquip; // It must be call in Awake
     }
 
-    private void Update() => fsm.OnLogic();
-
-    void OnEquip(IWeapon _weapon)
+    public void Enter()
     {
         weaponBase._AmmoRP.Value.BulletCountInMagazineRP.Where(x => x == 0).Subscribe(OnBulletCountZero).AddTo(disposables);
+        UpdateManager.Ins.RegisterAsUpdate(weaponBase, fsm.OnLogic);
     }
 
-    void OnUnEquip(IWeapon _weapon)
+    public void Exit()
     {
         disposables.Clear();
         fsm.TriggerLocally("OnUnEquip");
+        UpdateManager.Ins.UnregisterAsUpdate(weaponBase, fsm.OnLogic);
     }
 
     void OnBulletCountZero(int count)

@@ -4,24 +4,24 @@ using UniRx;
 using UnityEngine;
 using Zenject;
 
-public class PlayerWeaponBaseInstaller : WeaponBaseInstaller, IWeapon
+public class PlayerWeaponBaseInstaller : WeaponBaseInstaller, IWeapon, IWeaponInstaller
 {
-    [Inject] protected IInput _input;
+    public IInput _input;
 
     public event System.Action<IWeapon> onEquip;
     public event System.Action<IWeapon> onUnEquip;
 
     public Transform Transform => transform;
-    protected List<ICheck> _checksToFire;
+    protected List<ICheck> _ChecksToFire { get; private set; } = new List<ICheck>();
 
-    protected virtual void Awake()
+    public virtual void Install()
     {
-        weaponBase._AmmoRP = new ReactiveProperty<IAmmoData>(weaponBase.weaponDataScriptable.NormalAmmo);
-        _checksToFire = new List<ICheck>()
-        {
-            new HasBulletInTheMagazineCheck(weaponBase),
-            new HasAimCheck(weaponBase as IAimIsTaken),
-        };
+        WeaponBase._AmmoRP = new ReactiveProperty<IAmmoData>(WeaponBase.WeaponDataScriptable.NormalAmmo);
+
+        AddChecksToFire(new HasBulletInTheMagazineCheck(WeaponBase));
+        AddChecksToFire(new HasAimCheck(WeaponBase as IAimIsTaken));
+
+        AddEquiptable(new WeaponReloadingFSM(_input, WeaponBase));
     }
 
     protected virtual void Start() { }
@@ -29,14 +29,19 @@ public class PlayerWeaponBaseInstaller : WeaponBaseInstaller, IWeapon
     [Button]
     public virtual void Equip()
     {
-        _equipableList.ForEach(x => x.Enter());
+        _EquipableList.ForEach(x => x.Enter());
         onEquip?.Invoke(this);
     }
 
     [Button]
     public virtual void Unequip()
     {
-        _equipableList.ForEach(x => x.Exit());
+        _EquipableList.ForEach(x => x.Exit());
         onUnEquip?.Invoke(this);
+    }
+
+    protected void AddChecksToFire(ICheck _check)
+    {
+        _ChecksToFire.Add(_check);
     }
 }

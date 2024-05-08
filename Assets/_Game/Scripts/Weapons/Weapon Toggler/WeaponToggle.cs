@@ -7,8 +7,8 @@ using System.Collections;
 public class WeaponToggle : MonoBehaviour, IWeaponToggler
 {
     IDisposable disposable;
-    LivingEntity livingEntity;
-    public Transform weaponHolder;
+    [SerializeField] LivingEntity livingEntity;
+    [SerializeField] Transform weaponHolder;
 
     ReactiveProperty<IWeapon> _OldWeaponRP = new ReactiveProperty<IWeapon>();
     public ReactiveProperty<IWeapon> _CurrWeaponRP { get; private set; }
@@ -18,8 +18,9 @@ public class WeaponToggle : MonoBehaviour, IWeaponToggler
     int weaponIndex = -1;
     // int oldSlot = -1;
 
-    IEquipBehaviour _handEquipBehaviourRP;
-    IEquipBehaviour _weaponEquipBehaviourRP;
+    // IEquipBehaviour _handEquipBehaviourRP;
+    // IEquipBehaviour _weaponEquipBehaviourRP;
+    AnimationEventMono animationEventMono;
 
     public IWeapon[] GetWeapons() => GetComponentsInChildren<IWeapon>(true);
 
@@ -27,24 +28,28 @@ public class WeaponToggle : MonoBehaviour, IWeaponToggler
     {
         _CurrWeaponRP = new ReactiveProperty<IWeapon>();
 
-        livingEntity = GetComponentInParent<LivingEntity>();
-        AnimationEventMono animationEventMono = livingEntity.gameObject.AddComponent<AnimationEventMono>();
+        animationEventMono = livingEntity.gameObject.GetOrAddComponent<AnimationEventMono>();
         animationEventMono.onAnimationEvent += OnDrawAnim;
 
-        _handEquipBehaviourRP = new HandEquipBehaviour(weaponHolder, animationEventMono, _input.WeaponToggleInput);
-        _weaponEquipBehaviourRP = new WeaponEquipBehaviour(weaponHolder, animationEventMono);
+        // _handEquipBehaviourRP = new HandEquipBehaviour(weaponHolder, animationEventMono, _input.WeaponToggleInput);
+        // _weaponEquipBehaviourRP = new WeaponEquipBehaviour(weaponHolder, animationEventMono);
+    }
+
+    private void OnDestroy()
+    {
+        animationEventMono.onAnimationEvent -= OnDrawAnim;
     }
 
     private void OnEnable()
     {
-        _handEquipBehaviourRP.Enter();
-        _weaponEquipBehaviourRP.Enter();
+        // _handEquipBehaviourRP.Enter();
+        // _weaponEquipBehaviourRP.Enter();
     }
 
     private void OnDisable()
     {
-        _handEquipBehaviourRP.Exit();
-        _weaponEquipBehaviourRP.Exit();
+        //     _handEquipBehaviourRP.Exit();
+        //     _weaponEquipBehaviourRP.Exit();
     }
 
     private void Update()

@@ -643,7 +643,6 @@ GameObject:
   - component: {fileID: 3475373706220360215}
   - component: {fileID: 1668980234487247464}
   - component: {fileID: 6169439910559207335}
-  - component: {fileID: 526833670858081053}
   - component: {fileID: 578861100761609035}
   - component: {fileID: 6276305117526893909}
   - component: {fileID: 311956865715230071}
@@ -742,26 +741,6 @@ MonoBehaviour:
   groundMinDistance: 0.25
   groundMaxDistance: 0.5
   slopeLimit: 45
---- !u!114 &526833670858081053
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2519809860901329322}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5deb9ff5611cb9d4596d397ac57ee8c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpInput: 32
-  strafeInput: 9
-  sprintInput: 304
-  horizontalInput: Horizontal
-  verticallInput: Vertical
-  thirdPersonController: {fileID: 0}
-  strafeTurnSpeed: 350
-  strafeDirectionT: {fileID: 0}
 --- !u!54 &578861100761609035
 Rigidbody:
   m_ObjectHideFlags: 0

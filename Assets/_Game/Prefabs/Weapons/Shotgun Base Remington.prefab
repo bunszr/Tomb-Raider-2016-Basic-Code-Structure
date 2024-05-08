@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &2200396044321609326
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 246218827925167405, guid: 7c8b13e6dbb12c943aeac721646f6446,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.004
+      objectReference: {fileID: 0}
+    - target: {fileID: 246218827925167405, guid: 7c8b13e6dbb12c943aeac721646f6446,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 246218827925167405, guid: 7c8b13e6dbb12c943aeac721646f6446,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.981
+      objectReference: {fileID: 0}
+    - target: {fileID: 1977761802162447125, guid: 7c8b13e6dbb12c943aeac721646f6446,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.83206
+      objectReference: {fileID: 0}
+    - target: {fileID: 1977761802162447125, guid: 7c8b13e6dbb12c943aeac721646f6446,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.83206
+      objectReference: {fileID: 0}
+    - target: {fileID: 1977761802162447125, guid: 7c8b13e6dbb12c943aeac721646f6446,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.83206
+      objectReference: {fileID: 0}
+    - target: {fileID: 5406873751399803206, guid: 7c8b13e6dbb12c943aeac721646f6446,
+        type: 3}
+      propertyPath: m_Name
+      value: Shotgun Base Remington
+      objectReference: {fileID: 0}
+    - target: {fileID: 6069016623911989532, guid: 7c8b13e6dbb12c943aeac721646f6446,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6069016623911989532, guid: 7c8b13e6dbb12c943aeac721646f6446,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6069016623911989532, guid: 7c8b13e6dbb12c943aeac721646f6446,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6069016623911989532, guid: 7c8b13e6dbb12c943aeac721646f6446,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6619502287409023483, guid: 7c8b13e6dbb12c943aeac721646f6446,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.035
+      objectReference: {fileID: 0}
+    - target: {fileID: 6619502287409023483, guid: 7c8b13e6dbb12c943aeac721646f6446,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.121
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7c8b13e6dbb12c943aeac721646f6446, type: 3}

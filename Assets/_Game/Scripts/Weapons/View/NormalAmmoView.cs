@@ -23,7 +23,7 @@ public class NormalAmmoView : MonoBehaviour
 
     public void OnEquip(IWeapon _weapon)
     {
-        _normalAmmo = weaponBase.weaponDataScriptable as INormalAmmo;
+        _normalAmmo = weaponBase.WeaponDataScriptable as INormalAmmo;
 
         _normalAmmo.NormalAmmo.BulletCountInMagazineRP.Subscribe(OnBulletCountInMagazine).AddTo(disposables);
         _normalAmmo.NormalAmmo.CurrAmmoCapacityRP.Subscribe(OnCurrAmmoChanged).AddTo(disposables);

@@ -6,4 +6,6 @@ public interface IThirdPersonController
     float MoveSpeed { get; }
     bool IsStrafe { get; set; }
     Vector3 Input { get; set; }
+    Animator Animator { get; }
+    Transform StrafeDirectionTransform { get; }
 }
