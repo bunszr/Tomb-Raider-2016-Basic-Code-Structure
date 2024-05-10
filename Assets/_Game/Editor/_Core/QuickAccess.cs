@@ -10,13 +10,22 @@ using WeaponNamescape.Enemy;
 
 public class QuickAccess : OdinEditorWindow
 {
-    [HorizontalGroup("C")] public Object[] objectsA;
-    [HorizontalGroup("C")] public Object[] objectsB;
+    [SerializeField] QuickAccessData quickAccess;
 
     [MenuItem("Tools/QuickAccess")]
     public static void ShowWindow()
     {
         GetWindow(typeof(QuickAccess));
+    }
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        if (quickAccess == null)
+        {
+            quickAccess = Resources.LoadAll<QuickAccessData>("").FirstOrDefault();
+            Debug.Log(quickAccess);
+        }
     }
 
     [FoldoutGroup("Other")]
