@@ -6,7 +6,7 @@ using Zenject;
 
 public class PlayerWeaponBaseInstaller : WeaponBaseInstaller, IWeapon, IWeaponInstaller
 {
-    public IInput _input;
+    protected PlayerWeaponBase playerWeaponBase;
 
     public event System.Action<IWeapon> onEquip;
     public event System.Action<IWeapon> onUnEquip;
@@ -18,10 +18,12 @@ public class PlayerWeaponBaseInstaller : WeaponBaseInstaller, IWeapon, IWeaponIn
     {
         WeaponBase._AmmoRP = new ReactiveProperty<IAmmoData>(WeaponBase.WeaponDataScriptable.NormalAmmo);
 
+        playerWeaponBase = WeaponBase as PlayerWeaponBase;
+
         AddChecksToFire(new HasBulletInTheMagazineCheck(WeaponBase));
         AddChecksToFire(new HasAimCheck(WeaponBase as IAimIsTaken));
 
-        AddEquiptable(new WeaponReloadingFSM(_input, WeaponBase));
+        AddEquiptable(new WeaponReloadingFSM(playerWeaponBase._WeaponInput, WeaponBase));
     }
 
     protected virtual void Start() { }

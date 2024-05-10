@@ -66,7 +66,7 @@ public class WeaponInstantiaterAccordingFeatureOpen : MonoBehaviour
     public void Create(IWeapon _weapon)
     {
         if (_weapon.Transform.GetComponent<PlayerWeaponBaseInstaller>())
-            new PlayerWeaponBaseInitializer(_weapon, _thirdPersonController, playerWeaponBaseInitializerData, _input).Initialize();
+            new PlayerWeaponBaseInitializer(_weapon, _thirdPersonController, playerWeaponBaseInitializerData, _input.WeaponInput).Initialize();
     }
 
     void DestroyExistingWeapons()

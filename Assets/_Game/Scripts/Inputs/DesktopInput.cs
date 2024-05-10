@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public partial class DesktopInput : IInput
+public class DesktopInput : IInput
 {
     public IWeaponToggleInput WeaponToggleInput { get; set; }
     public IWeaponInput WeaponInput { get; set; }

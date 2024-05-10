@@ -11,19 +11,19 @@ public class PlayerWeaponBaseInitializer : WeaponInitializerBase
 
     PlayerWeaponBase playerWeaponBase;
     PlayerWeaponBaseInitializerData data;
-    IInput _input;
+    IWeaponInput _weaponInput;
 
-    public PlayerWeaponBaseInitializer(IWeapon weapon, IThirdPersonController thirdPersonController, PlayerWeaponBaseInitializerData data, IInput input) : base(weapon, thirdPersonController)
+    public PlayerWeaponBaseInitializer(IWeapon weapon, IThirdPersonController thirdPersonController, PlayerWeaponBaseInitializerData data, IWeaponInput _weaponInput) : base(weapon, thirdPersonController)
     {
         PlayerWeaponBaseInstaller playerWeaponBaseInstaller = _weapon.Transform.GetComponent<PlayerWeaponBaseInstaller>();
-        playerWeaponBaseInstaller._input = input; // Fix Later
         playerWeaponBase = playerWeaponBaseInstaller.WeaponBase.GetComponent<PlayerWeaponBase>();
         this.data = data;
-        _input = input;
+        this._weaponInput = _weaponInput;
     }
 
     public override void Initialize()
     {
+        playerWeaponBase._WeaponInput = _weaponInput;
         playerWeaponBase._ThirdPersonController = _thirdPersonController;
         playerWeaponBase.WeaponAimData = data.weaponAimData;
         playerWeaponBase.NormalAimBehaviorData.rigs = new Rig[] { data.bodyAndHandRig };
