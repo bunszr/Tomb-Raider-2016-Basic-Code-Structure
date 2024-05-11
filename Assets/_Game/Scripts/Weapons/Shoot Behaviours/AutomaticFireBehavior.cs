@@ -4,11 +4,9 @@ using UnityEngine;
 public class AutomaticFireBehavior : FireBehaviourBase, IFireBehaviour, IEquiptable
 {
     float nextTime;
-    protected IWeaponInput _weaponInput;
 
-    public AutomaticFireBehavior(WeaponBase weaponBase, List<IExtraFire> extraFireList, List<ICheck> checkList, IWeaponInput weaponInput) : base(weaponBase, extraFireList, checkList)
+    public AutomaticFireBehavior(WeaponBase weaponBase, List<IExtraFire> extraFireList, List<ICheck> checkList) : base(weaponBase, extraFireList, checkList)
     {
-        _weaponInput = weaponInput;
     }
 
     public override void Enter()
@@ -19,7 +17,7 @@ public class AutomaticFireBehavior : FireBehaviourBase, IFireBehaviour, IEquipta
 
     public override void OnUpdate()
     {
-        if (_weaponInput.HasHoldingFireKey && nextTime < Time.time && AllCheckListIsTrue())
+        if (IM.Ins.Input.WeaponInput.HasHoldingFireKey && nextTime < Time.time && AllCheckListIsTrue())
         {
             FireExtraFireList();
             weaponBase._AmmoRP.Value.BulletCountInMagazineRP.Value--;

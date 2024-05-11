@@ -5,8 +5,6 @@ using Zenject;
 
 public class Player : LivingEntity, IEnemyTarget
 {
-    [Inject] public IInput _Input { get; }
-
     public Transform EnemyTargetTransform => transform;
     public Vector3 BulletTargetLocation => transform.position + Vector3.up * 1.3f;
 

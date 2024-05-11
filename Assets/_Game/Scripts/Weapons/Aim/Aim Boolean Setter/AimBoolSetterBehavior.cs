@@ -5,7 +5,6 @@ using UnityEngine;
 public class AimBoolSetterBehavior : IEquiptable
 {
     WeaponBase weaponBase;
-    IWeaponInput _weaponInput;
     IAimIsTaken _aimIsTaken;
 
     IDisposable _disposable;
@@ -13,10 +12,10 @@ public class AimBoolSetterBehavior : IEquiptable
     bool firstEnter;
     bool isPressed;
 
-    public AimBoolSetterBehavior(WeaponBase weaponBase, IWeaponInput weaponInput)
+    public AimBoolSetterBehavior(WeaponBase weaponBase)
     {
         this.weaponBase = weaponBase;
-        _weaponInput = weaponInput;
+
         _aimIsTaken = weaponBase as IAimIsTaken;
     }
 
@@ -35,9 +34,9 @@ public class AimBoolSetterBehavior : IEquiptable
 
     public void OnUpdate()
     {
-        if (_weaponInput.HasHoldingAimKey && firstEnter) PressedMethod();
-        else if (_weaponInput.HasPressedAimKey) PressedMethod();
-        else if (_weaponInput.HasReleasedAimKey) ReleasedMethod();
+        if (IM.Ins.Input.WeaponInput.HasHoldingAimKey && firstEnter) PressedMethod();
+        else if (IM.Ins.Input.WeaponInput.HasPressedAimKey) PressedMethod();
+        else if (IM.Ins.Input.WeaponInput.HasReleasedAimKey) ReleasedMethod();
 
         if (isPressed && nextTime != 0 && Time.time > nextTime && !_aimIsTaken.HasAimed.Value) _aimIsTaken.HasAimed.Value = true;
 
@@ -46,7 +45,7 @@ public class AimBoolSetterBehavior : IEquiptable
 
     void PressedMethod()
     {
-        if (firstEnter && _weaponInput.HasHoldingAimKey) _aimIsTaken.HasAimed.Value = true;
+        if (firstEnter && IM.Ins.Input.WeaponInput.HasHoldingAimKey) _aimIsTaken.HasAimed.Value = true;
         else
         {
             _disposable = MessageBroker.Default.Receive<OnAnimationStateEnterEvent>().Where(x => x.stateInfoEnum == StateInfoEnum.HasAimed).Subscribe(OnAnimEnter);

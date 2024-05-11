@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerWeaponBase : WeaponBase, IAimIsTaken, IWeaponThatHasFeatureItself
 {
-    public IWeaponInput _WeaponInput { get; set; }
-
     [SerializeField] WeaponItSelfFeatureTypeScriptable weaponItSelfFeatureTypeScriptable;
     [ReadOnly, ShowInInspector] public ReactiveProperty<bool> HasAimed { get; private set; } = new ReactiveProperty<bool>();
 

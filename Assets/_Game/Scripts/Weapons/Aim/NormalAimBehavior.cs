@@ -27,14 +27,12 @@ public class NormalAimBehavior : AimBehaviourBase, IEquiptable
 
     NormalAimBehaviorData data;
     WeaponAimData weaponAimData;
-    IWeaponInput _weaponInput;
     IThirdPersonController _thirdPersonController;
 
     GameDataScriptable.WeaponScriptableData.AimData ScriptableData => GameDataScriptable.Ins.weaponScriptableData.aimData;
 
-    public NormalAimBehavior(WeaponBase weaponBase, IWeaponInput weaponInput, IThirdPersonController thirdPersonController, NormalAimBehaviorData data, WeaponAimData weaponAimData) : base(weaponBase)
+    public NormalAimBehavior(WeaponBase weaponBase, IThirdPersonController thirdPersonController, NormalAimBehaviorData data, WeaponAimData weaponAimData) : base(weaponBase)
     {
-        this._weaponInput = weaponInput;
         this.data = data;
         this.weaponAimData = weaponAimData;
         cam = Camera.main;
@@ -69,15 +67,15 @@ public class NormalAimBehavior : AimBehaviourBase, IEquiptable
     public override void OnUpdate()
     {
         // Check if it is already pressed "HasPressedAimKey" when weapon toggling process
-        if (_weaponInput.HasHoldingAimKey && enter) PressedMethod();
-        else if (_weaponInput.HasPressedAimKey) PressedMethod();
+        if (IM.Ins.Input.WeaponInput.HasHoldingAimKey && enter) PressedMethod();
+        else if (IM.Ins.Input.WeaponInput.HasPressedAimKey) PressedMethod();
 
-        if (_weaponInput.HasReleasedAimKey) ReleasedMethod();
+        if (IM.Ins.Input.WeaponInput.HasReleasedAimKey) ReleasedMethod();
 
         if (aim)
         {
-            Quaternion rotX = Quaternion.AngleAxis(_weaponInput.HorizontalMouseAxis * Time.deltaTime * ScriptableData.mouseSensitive, Vector3.up);
-            Quaternion rotY = Quaternion.AngleAxis(-_weaponInput.VerticalMouseAxis * Time.deltaTime * ScriptableData.mouseSensitive, Vector3.right);
+            Quaternion rotX = Quaternion.AngleAxis(IM.Ins.Input.WeaponInput.HorizontalMouseAxis * Time.deltaTime * ScriptableData.mouseSensitive, Vector3.up);
+            Quaternion rotY = Quaternion.AngleAxis(-IM.Ins.Input.WeaponInput.VerticalMouseAxis * Time.deltaTime * ScriptableData.mouseSensitive, Vector3.right);
             weaponAimData.strafeDirectionTransform.rotation *= rotX;
             weaponAimData.aimCamFollowTarget.rotation *= rotY;
 

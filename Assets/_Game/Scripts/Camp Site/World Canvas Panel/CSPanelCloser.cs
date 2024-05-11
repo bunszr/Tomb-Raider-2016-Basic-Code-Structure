@@ -8,7 +8,6 @@ namespace CampSite
 {
     public class CSPanelCloser : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPanelObserver
     {
-        [Inject] IInput _input;
         [Inject] CampSiteHolder campSiteHolder;
         [SerializeField] Button button;
         IPanelToggler _panelToggler;
@@ -48,7 +47,7 @@ namespace CampSite
             yield return null; // Another Panel closer active after this one. It must be waited a frame
             while (true)
             {
-                if (_input.ClosePanelPressKey && !mouseIsEnter) OnClick();
+                if (IM.Ins.Input.ClosePanelPressKey && !mouseIsEnter) OnClick();
                 yield return null;
             }
         }

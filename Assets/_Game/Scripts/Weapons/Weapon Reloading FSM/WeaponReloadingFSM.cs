@@ -9,14 +9,12 @@ public class WeaponReloadingFSM : IEquiptable
     WeaponCheckFactory factory;
     CompositeDisposable disposables = new CompositeDisposable();
 
-    IWeaponInput _weaponInput;
     WeaponBase weaponBase;
 
     [SerializeField] StateMachine.StateMachineDebug stateMachineDebug;
 
-    public WeaponReloadingFSM(IWeaponInput _weaponInput, WeaponBase weaponBase)
+    public WeaponReloadingFSM(WeaponBase weaponBase)
     {
-        this._weaponInput = _weaponInput;
         this.weaponBase = weaponBase;
 
         fsm = new StateMachine() { stateMachineDebug = stateMachineDebug };
@@ -27,11 +25,11 @@ public class WeaponReloadingFSM : IEquiptable
         fsm.AddState("EmptyState", new State());
         fsm.AddState("ReloadMagazineState", new ReloadMagazineState(weaponBase, animator, true));
         fsm.AddState("FillMagazineState", new FillMagazineState(weaponBase, false, true));
-        fsm.AddState("EmptyShotState", new EmptyShotState(weaponBase, _weaponInput, true, true));
+        fsm.AddState("EmptyShotState", new EmptyShotState(weaponBase, true, true));
 
         fsm.AddTriggerTransition("OnMagazineEmpty", new Transition("EmptyState", "ReloadMagazineState"));
         fsm.AddTriggerTransition("OnMagazineAndAmmoIsEmpty", new Transition("EmptyState", "EmptyShotState"));
-        fsm.AddTransition(new Transition("EmptyState", "ReloadMagazineState", x => _weaponInput.HasPressedReloadKey && factory.Check(WeaponCheckType.HasAmmoCheck) && !factory.Check(WeaponCheckType.HasMagazineIsFullCheck)));
+        fsm.AddTransition(new Transition("EmptyState", "ReloadMagazineState", x => IM.Ins.Input.WeaponInput.HasPressedReloadKey && factory.Check(WeaponCheckType.HasAmmoCheck) && !factory.Check(WeaponCheckType.HasMagazineIsFullCheck)));
         fsm.AddTransition(new Transition("ReloadMagazineState", "FillMagazineState"));
         fsm.AddTransition(new Transition("FillMagazineState", "EmptyState"));
 

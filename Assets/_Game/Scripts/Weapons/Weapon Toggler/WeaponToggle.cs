@@ -13,8 +13,6 @@ public class WeaponToggle : MonoBehaviour, IWeaponToggler
     ReactiveProperty<IWeapon> _OldWeaponRP = new ReactiveProperty<IWeapon>();
     public ReactiveProperty<IWeapon> _CurrWeaponRP { get; private set; }
 
-    [Inject] IInput _input;
-
     int weaponIndex = -1;
     // int oldSlot = -1;
 
@@ -31,7 +29,7 @@ public class WeaponToggle : MonoBehaviour, IWeaponToggler
         animationEventMono = livingEntity.gameObject.GetOrAddComponent<AnimationEventMono>();
         animationEventMono.onAnimationEvent += OnDrawAnim;
 
-        // _handEquipBehaviourRP = new HandEquipBehaviour(weaponHolder, animationEventMono, _input.WeaponToggleInput);
+        // _handEquipBehaviourRP = new HandEquipBehaviour(weaponHolder, animationEventMono, IM.Ins._Input.WeaponToggleInput);
         // _weaponEquipBehaviourRP = new WeaponEquipBehaviour(weaponHolder, animationEventMono);
     }
 
@@ -56,10 +54,10 @@ public class WeaponToggle : MonoBehaviour, IWeaponToggler
     {
         int pressedGunIndex = -1;
 
-        if (_input.WeaponToggleInput.HasEquipGun1) pressedGunIndex = 0;
-        else if (_input.WeaponToggleInput.HasEquipGun2) pressedGunIndex = 1;
-        else if (_input.WeaponToggleInput.HasEquipGun3) pressedGunIndex = 2;
-        else if (_input.WeaponToggleInput.HasEquipGun4) pressedGunIndex = 3;
+        if (IM.Ins.Input.WeaponToggleInput.HasEquipGun1) pressedGunIndex = 0;
+        else if (IM.Ins.Input.WeaponToggleInput.HasEquipGun2) pressedGunIndex = 1;
+        else if (IM.Ins.Input.WeaponToggleInput.HasEquipGun3) pressedGunIndex = 2;
+        else if (IM.Ins.Input.WeaponToggleInput.HasEquipGun4) pressedGunIndex = 3;
 
         if (pressedGunIndex != -1)
         {

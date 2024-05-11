@@ -6,8 +6,6 @@ namespace TriggerableAreaNamespace
 {
     public class AreaDestructibleController : MonoBehaviour
     {
-        [Inject] IInput _input;
-
         TriggerCustom triggerCustom;
         CommandExecuter commandExecuter;
         [SerializeField] AreaDestructible areaDestructible;
@@ -24,20 +22,20 @@ namespace TriggerableAreaNamespace
 
 
             Func<bool> areaConditionCheck = new Func<bool>(() => true);
-            Func<bool> pressPunchKeyConditionCheck = new Func<bool>(() => _input.AreaInput.HasPressedHitKey);
+            Func<bool> pressPunchKeyConditionCheck = new Func<bool>(() => IM.Ins.Input.AreaInput.HasPressedHitKey);
 
             fragmentsRb = areaDestructible.fragmentsHolder.GetComponentsInChildren<Rigidbody>();
 
             IAreaCommad[] areaCommads = new IAreaCommad[]
             {
-                new ParalelCommand( new IAreaCommad[] { new PressKeyCommand(_input.AreaInput), new AreaHasTriggeredCommand(triggerCustom, areaConditionCheck), new TriggeredPlayerSetterCommand(triggerCustom, TriggeredPlayerReference) }),
+                new ParalelCommand( new IAreaCommad[] { new PressKeyCommand(IM.Ins.Input.AreaInput), new AreaHasTriggeredCommand(triggerCustom, areaConditionCheck), new TriggeredPlayerSetterCommand(triggerCustom, TriggeredPlayerReference) }),
                 new DestoryAreaCommonViewerCommand(areaDestructible),
                 new CrossFadeAnimationCommand(TriggeredPlayerReference, areaDestructible.punchWallIdleAnim),
                 new DisableCharacterMovementCommand(TriggeredPlayerReference),
                 new ToggleCameraCommand(areaDestructible, TriggeredPlayerReference, true),
                 new MovePlayerToLocationCommand(areaDestructible, TriggeredPlayerReference),
                 new ParalelCommand(new IAreaCommad[] {
-                    new BreakWallCommand(TriggeredPlayerReference, fragmentsRb, _input.AreaInput, areaDestructible.maxPunchCount),
+                    new BreakWallCommand(TriggeredPlayerReference, fragmentsRb, IM.Ins.Input.AreaInput, areaDestructible.maxPunchCount),
                     new PressKeyToInteractionWithDelayCommand(areaDestructible.punchPopUpGo, pressPunchKeyConditionCheck, 1, areaDestructible.maxPunchCount) }),
                 new CrossFadeAnimationCommand(TriggeredPlayerReference, APs.CrossFadeEmptyState),
                 new ToggleCameraCommand(areaDestructible, TriggeredPlayerReference, false),

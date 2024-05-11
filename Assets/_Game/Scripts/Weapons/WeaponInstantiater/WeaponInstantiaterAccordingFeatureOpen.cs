@@ -19,8 +19,6 @@ public class WeaponInstantiaterAccordingFeatureOpen : MonoBehaviour
         }
     }
 
-    [Inject] IInput _input;
-
     CompositeDisposable disposables = new CompositeDisposable();
     IThirdPersonController _thirdPersonController;
 
@@ -66,7 +64,7 @@ public class WeaponInstantiaterAccordingFeatureOpen : MonoBehaviour
     public void Create(IWeapon _weapon)
     {
         if (_weapon.Transform.GetComponent<PlayerWeaponBaseInstaller>())
-            new PlayerWeaponBaseInitializer(_weapon, _thirdPersonController, playerWeaponBaseInitializerData, _input.WeaponInput).Initialize();
+            new PlayerWeaponBaseInitializer(_weapon, _thirdPersonController, playerWeaponBaseInitializerData).Initialize();
     }
 
     void DestroyExistingWeapons()

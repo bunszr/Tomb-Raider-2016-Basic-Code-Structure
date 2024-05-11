@@ -23,7 +23,7 @@ public class PlayerWeaponBaseInstaller : WeaponBaseInstaller, IWeapon, IWeaponIn
         AddChecksToFire(new HasBulletInTheMagazineCheck(WeaponBase));
         AddChecksToFire(new HasAimCheck(WeaponBase as IAimIsTaken));
 
-        AddEquiptable(new WeaponReloadingFSM(playerWeaponBase._WeaponInput, WeaponBase));
+        AddEquiptable(new WeaponReloadingFSM(WeaponBase));
     }
 
     protected virtual void Start() { }

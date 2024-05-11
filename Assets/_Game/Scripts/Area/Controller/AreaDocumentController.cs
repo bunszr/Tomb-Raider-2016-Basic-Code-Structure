@@ -8,8 +8,6 @@ namespace TriggerableAreaNamespace
 {
     public class AreaDocumentController : MonoBehaviour
     {
-        [Inject] IInput _input;
-
         TriggerCustom triggerCustom;
         CommandExecuter commandExecuter;
         [SerializeField] AreaDocument areaDocument;
@@ -26,7 +24,7 @@ namespace TriggerableAreaNamespace
 
             IAreaCommad[] areaCommads = new IAreaCommad[]
             {
-                new ParalelCommand( new IAreaCommad[] { new PressKeyCommand(_input.AreaInput), new AreaHasTriggeredCommand(triggerCustom, areaConditionCheck), new TriggeredPlayerSetterCommand(triggerCustom, TriggeredPlayerReference) }),
+                new ParalelCommand( new IAreaCommad[] { new PressKeyCommand(IM.Ins.Input.AreaInput), new AreaHasTriggeredCommand(triggerCustom, areaConditionCheck), new TriggeredPlayerSetterCommand(triggerCustom, TriggeredPlayerReference) }),
                 new DestoryAreaCommonViewerCommand(areaDocument),
                 new DisableCharacterMovementCommand(TriggeredPlayerReference),
                 new ToggleCameraCommand(areaDocument, TriggeredPlayerReference, true),
