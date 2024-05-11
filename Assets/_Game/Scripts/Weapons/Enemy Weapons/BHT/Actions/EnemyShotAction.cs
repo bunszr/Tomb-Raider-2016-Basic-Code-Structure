@@ -6,7 +6,6 @@ namespace EnemyNamescape.BHT
 {
     public class EnemyShotAction : Action
     {
-        [SerializeField] SharedTransform weaponModelTransform;
         [SerializeField] SharedTransform weaponBaseInstallerTransform;
         [SerializeField] SharedGameObject enemyTarget;
 

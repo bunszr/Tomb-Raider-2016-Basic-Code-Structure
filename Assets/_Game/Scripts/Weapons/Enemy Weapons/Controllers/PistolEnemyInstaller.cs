@@ -8,17 +8,10 @@ namespace WeaponNamescape.Enemy
         [SerializeField] LivingEntity livingEntity;
         [SerializeField] PistolEnemy pistolEnemy;
 
-        [SerializeField] Transform weaponHolder;
-        [SerializeField] Transform weaponHolderUnderHand;
-
         protected override void Awake()
         {
             base.Awake();
             pistolEnemy = WeaponBase as PistolEnemy;
-
-            weaponHolder.transform.parent = weaponHolderUnderHand;
-            weaponHolder.transform.localPosition = Vector3.zero;
-            weaponHolder.transform.localRotation = Quaternion.identity;
 
             AddExtraFire(new FireAnimationBehaviour(livingEntity.Animator));
             AddExtraFire(new NormalBulletBehaviour(pistolEnemy, pistolEnemy.normalBulletModeData));

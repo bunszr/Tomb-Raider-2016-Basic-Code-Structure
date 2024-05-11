@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dddd30dbee9e654bbb9f181ca841b22, type: 3}
   m_Name: WeaponQuickAccess
   m_EditorClassIdentifier: 
-  objectsA: []
-  objectsB: []
+  objectsA:
+  - {fileID: 3324948529512751897, guid: 182745289cb96f84faed63b67ee0c300, type: 3}
+  objectsB:
+  - {fileID: 8627159283635660551, guid: 1037133ff907fe7488fbfdfc47b4749f, type: 3}
