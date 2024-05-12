@@ -33,4 +33,7 @@ public abstract class LivingEntity : MonoBehaviour, IThirdPersonController
     }
 
     public Transform StrafeDirectionTransform => thirdPersonInput.strafeDirectionT;
+
+    public bool IsWalking { get => thirdPersonController.freeSpeed.walkByDefault; set => thirdPersonController.freeSpeed.walkByDefault = value; }
+
 }
