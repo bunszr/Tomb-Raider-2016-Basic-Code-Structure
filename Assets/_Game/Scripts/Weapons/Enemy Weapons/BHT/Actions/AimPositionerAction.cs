@@ -1,33 +1,16 @@
 using UnityEngine;
 using BehaviorDesigner.Runtime.Tasks;
 using BehaviorDesigner.Runtime;
-using WeaponNamescape.Enemy;
 
 namespace EnemyNamescape.BHT
 {
     public class AimPositionerAction : Action
     {
-        [SerializeField] SharedTransform weaponModelTransform;
-        [SerializeField] SharedGameObject enemyTarget;
-
-        IAimTargetTransform _aimTargetTransform;
-        IEnemyTarget _enemyTarget;
-
-        public override void OnAwake()
-        {
-            _aimTargetTransform = weaponModelTransform.Value.transform.GetComponent<IAimTargetTransform>();
-        }
-
-        public override void OnStart()
-        {
-            _enemyTarget = enemyTarget.Value.transform.GetComponent<IEnemyTarget>();
-        }
-
-        public override void OnEnd() { }
+        [SerializeField] SharedTransform aimTargetSH;
 
         public override TaskStatus OnUpdate()
         {
-            _aimTargetTransform.AimTargetTransform.position = _enemyTarget.BulletTargetLocation;
+            aimTargetSH.Value.position = EnemyManager.Ins.player.BulletTargetLocation;
             return TaskStatus.Running;
         }
     }

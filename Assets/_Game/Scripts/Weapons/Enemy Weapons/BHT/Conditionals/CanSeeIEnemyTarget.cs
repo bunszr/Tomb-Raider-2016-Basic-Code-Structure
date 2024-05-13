@@ -7,48 +7,29 @@ namespace EnemyNamescape.BHT
 {
     public class CanSeeIEnemyTarget : Conditional
     {
-        public SharedFloat fieldOfViewAngle = 90;
-        public SharedFloat viewDistance = 1000;
-        public SharedGameObject returnedObject;
-        public SharedTransform charaterControllerTransform;
+        [SerializeField] SharedFloat fieldOfViewAngle = 90;
+        [SerializeField] SharedFloat viewDistance = 1000;
+        [SerializeField] SharedGameObject thirdPersonControllerGo;
 
         public override TaskStatus OnUpdate()
         {
-            returnedObject.Value = WithinSight(fieldOfViewAngle.Value, viewDistance.Value);
-            if (returnedObject.Value != null)
-            {
-                return TaskStatus.Success;
-            }
-            return TaskStatus.Failure;
+            return WithinSight(fieldOfViewAngle.Value, viewDistance.Value) ? TaskStatus.Success : TaskStatus.Failure;
         }
 
         private GameObject WithinSight(float fieldOfViewAngle, float viewDistance)
         {
-            for (int i = 0; i < StaticColliderManager.EnemyTargetList.Count; i++)
+            var direction = EnemyManager.Ins.player.transform.position - thirdPersonControllerGo.Value.transform.position;
+            direction.y = 0;
+            var angle = Vector3.Angle(direction, thirdPersonControllerGo.Value.transform.forward);
+            if (direction.magnitude < viewDistance && angle < fieldOfViewAngle * 0.5f)
             {
-                Transform targetT = StaticColliderManager.EnemyTargetList[i].EnemyTargetTransform;
-                var direction = targetT.position - charaterControllerTransform.Value.position;
-                direction.y = 0;
-                var angle = Vector3.Angle(direction, charaterControllerTransform.Value.forward);
-                if (direction.magnitude < viewDistance && angle < fieldOfViewAngle * 0.5f)
+                RaycastHit hit;
+                if (Physics.Linecast(thirdPersonControllerGo.Value.transform.position + EnemyStaticData.RaycastUpVector, EnemyManager.Ins.player.BulletTargetLocation, out hit))
                 {
-                    if (LineOfSight(targetT.gameObject))
-                    {
-                        return targetT.gameObject;
-                    }
+                    if (EnemyManager.Ins.player.transform == hit.transform) return EnemyManager.Ins.player.gameObject;
                 }
             }
             return null;
-        }
-
-        private bool LineOfSight(GameObject targetObject)
-        {
-            RaycastHit hit;
-            if (Physics.Linecast(charaterControllerTransform.Value.position + Vector3.up, targetObject.transform.position, out hit))
-            {
-                if (StaticColliderManager._EnemyTargetDictionary.TryGetValue(hit.transform.GetInstanceID(), out IEnemyTarget _enemyTarget)) return true;
-            }
-            return false;
         }
 
         public override void OnDrawGizmos()
@@ -60,8 +41,8 @@ namespace EnemyNamescape.BHT
             UnityEditor.Handles.color = color;
 
             var halfFOV = fieldOfViewAngle.Value * 0.5f;
-            var beginDirection = Quaternion.AngleAxis(-halfFOV, Vector3.up) * charaterControllerTransform.Value.forward;
-            UnityEditor.Handles.DrawSolidArc(charaterControllerTransform.Value.position, charaterControllerTransform.Value.up, beginDirection, fieldOfViewAngle.Value, viewDistance.Value);
+            var beginDirection = Quaternion.AngleAxis(-halfFOV, Vector3.up) * thirdPersonControllerGo.Value.transform.forward;
+            UnityEditor.Handles.DrawSolidArc(thirdPersonControllerGo.Value.transform.position, thirdPersonControllerGo.Value.transform.up, beginDirection, fieldOfViewAngle.Value, viewDistance.Value);
 
             UnityEditor.Handles.color = oldColor;
 #endif

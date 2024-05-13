@@ -6,14 +6,12 @@ namespace EnemyNamescape.BHT
 {
     public class EnemyShotAction : Action
     {
-        [SerializeField] SharedTransform weaponBaseInstallerTransform;
-        [SerializeField] SharedGameObject enemyTarget;
-
+        [SerializeField] SharedGameObject weaponControllerGo;
         IWeapon _weapon;
 
         public override void OnAwake()
         {
-            _weapon = weaponBaseInstallerTransform.Value.GetComponent<WeaponBaseInstaller>() as IWeapon;
+            _weapon = weaponControllerGo.Value.GetComponent<IWeapon>();
         }
 
         public override void OnStart()

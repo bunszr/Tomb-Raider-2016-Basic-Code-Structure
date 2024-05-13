@@ -61,5 +61,9 @@ public class PatrolAction : Action
 #endif
     }
 
-    public override void OnEnd() => distanceTravel = 0;
+    public override void OnEnd()
+    {
+        distanceTravel = 0;
+        _thirdPersonController.Input *= .001f;
+    }
 }

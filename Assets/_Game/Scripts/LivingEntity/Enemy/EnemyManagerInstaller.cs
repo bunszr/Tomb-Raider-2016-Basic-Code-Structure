@@ -8,5 +8,6 @@ public class EnemyManagerInstaller : MonoInstaller<EnemyManagerInstaller>
     public override void InstallBindings()
     {
         Container.BindInstances(coverLocationHolder);
+        Container.Bind<Player>().FromComponentInHierarchy().AsSingle();
     }
 }
