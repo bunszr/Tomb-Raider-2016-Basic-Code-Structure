@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public struct OnAnimationStateEnterEvent
+public struct OnAnimationStateExitEvent
 {
     public readonly Animator animator;
     public readonly AnimatorStateInfo stateInfo;
     public readonly StateInfoEnum stateInfoEnum;
     public readonly int layerIndex;
 
-    public OnAnimationStateEnterEvent(Animator animator, AnimatorStateInfo stateInfo, StateInfoEnum stateInfoEnum, int layerIndex)
+    public OnAnimationStateExitEvent(Animator animator, AnimatorStateInfo stateInfo, StateInfoEnum stateInfoEnum, int layerIndex)
     {
         this.animator = animator;
         this.stateInfo = stateInfo;

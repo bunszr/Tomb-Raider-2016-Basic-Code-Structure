@@ -23,7 +23,6 @@ MonoBehaviour:
     magazineCapacity: 7
     currAmmoCapacity: 45
   weaponAnimationData:
+    fireAnimName: Rifle Fire
     reloadMagazineName: Riffle Magazine Reloading
     reloadMagazineTriggerName: RiffleMagazineReloading
-    drawTriggerName: 
-    drawAnimName: 

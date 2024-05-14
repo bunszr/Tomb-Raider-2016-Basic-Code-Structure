@@ -7,6 +7,6 @@ public class OnAnimationStateEnterSMB : StateMachineBehaviour
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        MessageBroker.Default.Publish<OnAnimationStateEnterEvent>(new OnAnimationStateEnterEvent(stateInfo, stateInfoEnum));
+        MessageBroker.Default.Publish<OnAnimationStateEnterEvent>(new OnAnimationStateEnterEvent(animator, stateInfo, stateInfoEnum, layerIndex));
     }
 }

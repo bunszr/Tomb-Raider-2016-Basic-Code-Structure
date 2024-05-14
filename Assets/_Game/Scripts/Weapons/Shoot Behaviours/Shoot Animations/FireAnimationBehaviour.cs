@@ -3,6 +3,12 @@ using UnityEngine;
 public class FireAnimationBehaviour : IExtraFire
 {
     Animator animator;
-    public FireAnimationBehaviour(Animator animator) => this.animator = animator;
-    public void Fire() => animator.SetTrigger(APs.Shot);
+    int hash;
+    public FireAnimationBehaviour(Animator animator, string name)
+    {
+        this.animator = animator;
+        this.hash = Animator.StringToHash(name);
+    }
+
+    public void Fire() => animator.CrossFade(hash, .05f);
 }

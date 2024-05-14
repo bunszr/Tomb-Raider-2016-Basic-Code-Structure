@@ -34,6 +34,7 @@ public class WeaponDataScriptable : ScriptableObject, INormalAmmo
 [System.Serializable]
 public class WeaponAnimationData
 {
+    public string fireAnimName;
     public string reloadMagazineName;
     public string reloadMagazineTriggerName;
 }

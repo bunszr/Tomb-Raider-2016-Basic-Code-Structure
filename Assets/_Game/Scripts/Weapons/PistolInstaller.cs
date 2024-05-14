@@ -9,7 +9,6 @@ public class PistolInstaller : PlayerWeaponBaseInstaller
 
         Pistol pistol = WeaponBase as Pistol;
 
-        AddExtraFire(new FireAnimationBehaviour(WeaponBase._ThirdPersonController.Animator));
         AddExtraFire(new NormalBulletBehaviour(pistol, pistol.normalBulletModeData));
         AddExtraFire(new NormalShellCasingBehaviour(pistol, pistol.normalShellCasingData));
 

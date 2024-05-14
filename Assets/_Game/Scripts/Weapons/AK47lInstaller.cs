@@ -12,7 +12,6 @@ public class AK47lInstaller : PlayerWeaponBaseInstaller
         base.Install();
         aK47 = WeaponBase as AK47;
 
-        AddExtraFire(new FireAnimationBehaviour(WeaponBase._ThirdPersonController.Animator));
         AddExtraFire(new NormalBulletBehaviour(aK47, aK47.normalBulletModeData));
         AddExtraFire(new NormalShellCasingBehaviour(aK47, aK47.normalShellCasingData));
 

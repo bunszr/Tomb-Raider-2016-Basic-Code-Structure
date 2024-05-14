@@ -6,59 +6,65 @@ public class AimBoolSetterBehavior : IEquiptable
 {
     WeaponBase weaponBase;
     IAimIsTaken _aimIsTaken;
-
-    IDisposable _disposable;
     float nextTime;
-    bool firstEnter;
-    bool isPressed;
+    bool aimAnimIsPlaying;
+    CompositeDisposable disposables = new CompositeDisposable();
 
     public AimBoolSetterBehavior(WeaponBase weaponBase)
     {
         this.weaponBase = weaponBase;
-
         _aimIsTaken = weaponBase as IAimIsTaken;
     }
 
     public virtual void Enter()
     {
-        firstEnter = true;
-        nextTime = 0f;
         UpdateManager.Ins.RegisterAsUpdate(weaponBase, OnUpdate);
+
+        MessageBroker.Default.Receive<OnAnimationStateEnterEvent>()
+            .Where(x => x.animator == weaponBase._ThirdPersonController.Animator && x.stateInfoEnum == StateInfoEnum.HasAimed)
+            .Subscribe(OnAnimEnter).AddTo(disposables);
+
+        MessageBroker.Default.Receive<OnAnimationStateExitEvent>()
+            .Where(x => x.animator == weaponBase._ThirdPersonController.Animator && x.stateInfoEnum == StateInfoEnum.HasAimed)
+            .Subscribe(OnAnimExit).AddTo(disposables);
+
+        nextTime = 0f;
     }
 
     public virtual void Exit()
     {
-        _disposable?.Dispose();
+        _aimIsTaken.HasAimed.Value = false;
         UpdateManager.Ins.UnregisterAsUpdate(weaponBase, OnUpdate);
+        disposables.Clear();
     }
 
     public void OnUpdate()
     {
-        if (IM.Ins.Input.WeaponInput.HasHoldingAimKey && firstEnter) PressedMethod();
-        else if (IM.Ins.Input.WeaponInput.HasPressedAimKey) PressedMethod();
+        if (IM.Ins.Input.WeaponInput.HasPressedAimKey) PressedMethod();
         else if (IM.Ins.Input.WeaponInput.HasReleasedAimKey) ReleasedMethod();
 
-        if (isPressed && nextTime != 0 && Time.time > nextTime && !_aimIsTaken.HasAimed.Value) _aimIsTaken.HasAimed.Value = true;
-
-        firstEnter = false;
+        if (aimAnimIsPlaying && nextTime != 0 && Time.time > nextTime && !_aimIsTaken.HasAimed.Value) _aimIsTaken.HasAimed.Value = true;
     }
 
     void PressedMethod()
     {
-        if (firstEnter && IM.Ins.Input.WeaponInput.HasHoldingAimKey) _aimIsTaken.HasAimed.Value = true;
-        else
-        {
-            _disposable = MessageBroker.Default.Receive<OnAnimationStateEnterEvent>().Where(x => x.stateInfoEnum == StateInfoEnum.HasAimed).Subscribe(OnAnimEnter);
-            nextTime = 0f;
-        }
-        isPressed = true;
+        nextTime = 0f;
     }
 
-    void OnAnimEnter(OnAnimationStateEnterEvent onAnimationStateEnterEvent) => nextTime = Time.time + onAnimationStateEnterEvent.stateInfo.length;
     void ReleasedMethod()
     {
-        isPressed = false;
         _aimIsTaken.HasAimed.Value = false;
-        _disposable?.Dispose();
+    }
+
+    void OnAnimEnter(OnAnimationStateEnterEvent onAnimationStateEnterEvent)
+    {
+        aimAnimIsPlaying = true;
+        nextTime = Time.time + onAnimationStateEnterEvent.stateInfo.length;
+    }
+
+    void OnAnimExit(OnAnimationStateExitEvent onAnimationStateExitEvent)
+    {
+        _aimIsTaken.HasAimed.Value = false;
+        aimAnimIsPlaying = false;
     }
 }
