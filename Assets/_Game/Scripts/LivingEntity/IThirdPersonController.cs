@@ -9,4 +9,5 @@ public interface IThirdPersonController
     Vector3 Input { get; set; }
     Animator Animator { get; }
     Transform StrafeDirectionTransform { get; }
+    MonoBehaviour ThirdPersonInputMonobehaviour { get; }
 }

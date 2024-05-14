@@ -14,26 +14,25 @@ public abstract class LivingEntity : MonoBehaviour, IThirdPersonController
     public Rigidbody Rb { get => rb; }
     public Collider Colider { get => colider; }
     public Animator Animator { get => animator; }
-    public vThirdPersonController ThirdPersonController { get => thirdPersonController; }
-    public vThirdPersonInputBase ThirdPersonInput { get => thirdPersonInput; }
 
     public Transform Transform => transform;
-    public float MoveSpeed => ThirdPersonController.moveSpeed;
+    public float MoveSpeed => thirdPersonController.moveSpeed;
 
     public bool IsStrafe
     {
-        get => ThirdPersonController.isStrafing;
-        set => ThirdPersonController.ToggleStrafe(value);
+        get => thirdPersonController.isStrafing;
+        set => thirdPersonController.ToggleStrafe(value);
     }
 
     public Vector3 Input
     {
-        get => ThirdPersonController.input;
-        set => ThirdPersonController.input = value;
+        get => thirdPersonController.input;
+        set => thirdPersonController.input = value;
     }
 
     public Transform StrafeDirectionTransform => thirdPersonInput.strafeDirectionT;
 
     public bool IsWalking { get => thirdPersonController.freeSpeed.walkByDefault; set => thirdPersonController.freeSpeed.walkByDefault = value; }
 
+    public MonoBehaviour ThirdPersonInputMonobehaviour => thirdPersonInput;
 }

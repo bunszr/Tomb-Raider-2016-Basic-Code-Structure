@@ -15,8 +15,8 @@ namespace TriggerableAreaNamespace
         }
         public void Enter()
         {
-            triggeredPlayerReference.Player.ThirdPersonInput.enabled = false; // TODO
-            triggeredPlayerReference.Player.ThirdPersonController.input = Vector3.zero;
+            triggeredPlayerReference.Player.ThirdPersonInputMonobehaviour.enabled = false; // TODO
+            triggeredPlayerReference.Player.Input = Vector3.zero;
             triggeredPlayerReference.Player.Rb.velocity = Vector3.zero;
             triggeredPlayerReference.Player.Rb.angularVelocity = Vector3.zero;
         }
