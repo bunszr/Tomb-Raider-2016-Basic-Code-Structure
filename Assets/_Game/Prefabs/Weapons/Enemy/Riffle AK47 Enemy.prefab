@@ -65,7 +65,64 @@ PrefabInstance:
     - target: {fileID: 8953191830081520558, guid: f672bc3e5e5aaf64dbf1b73dcc0f5411,
         type: 3}
       propertyPath: m_Name
-      value: Riffle AK47 Base
+      value: Riffle AK47 Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f672bc3e5e5aaf64dbf1b73dcc0f5411, type: 3}
+--- !u!1 &346164060872748996 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6732110184112559853, guid: f672bc3e5e5aaf64dbf1b73dcc0f5411,
+    type: 3}
+  m_PrefabInstance: {fileID: 6458321201596086569}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &388254309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 346164060872748996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 508e663be93fa514cbef070ee7860b66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponDataScriptable: {fileID: 11400000, guid: e9d06158c50935b4d99520568a60d35e,
+    type: 2}
+  normalBulletModeData:
+    bulletPrefab: {fileID: 5873784681966129994, guid: 0dade95565689414e8416805f307eb7a,
+      type: 3}
+    bulletLocation: {fileID: 2215994932912210599}
+    forceMode: 2
+    force: 20
+  enemyAimBehaviorData:
+    rigs: []
+    aimTargetTransform: {fileID: 0}
+    strafeDirectionTransform: {fileID: 0}
+--- !u!4 &2215994932912210599 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5143211160103713678, guid: f672bc3e5e5aaf64dbf1b73dcc0f5411,
+    type: 3}
+  m_PrefabInstance: {fileID: 6458321201596086569}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8473337051469143297 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3186234948369212456, guid: f672bc3e5e5aaf64dbf1b73dcc0f5411,
+    type: 3}
+  m_PrefabInstance: {fileID: 6458321201596086569}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4205123885620375093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8473337051469143297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7806d5a3abef5e645b38c536fe236c0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponBase: {fileID: 388254309}
+  livingEntity: {fileID: 0}
+  riffleAK47Enemy: {fileID: 388254309}
