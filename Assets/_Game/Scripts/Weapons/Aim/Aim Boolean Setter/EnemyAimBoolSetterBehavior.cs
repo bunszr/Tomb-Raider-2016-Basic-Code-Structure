@@ -1,3 +1,5 @@
+using System;
+using UniRx;
 using UnityEngine;
 
 public class EnemyAimBoolSetterBehavior : IEquiptable
@@ -6,7 +8,7 @@ public class EnemyAimBoolSetterBehavior : IEquiptable
     IAimIsTaken _aimIsTaken;
 
     float nextTime;
-    float delay = 1;
+    CompositeDisposable disposables;
 
     public EnemyAimBoolSetterBehavior(WeaponBase weaponBase)
     {
@@ -16,18 +18,40 @@ public class EnemyAimBoolSetterBehavior : IEquiptable
 
     public virtual void Enter()
     {
-        nextTime = Time.time + delay; // Fix Later - Subscribe SMB event, then calculate delay like area commands classes
         UpdateManager.Ins.RegisterAsUpdate(weaponBase, OnUpdate);
+        disposables = new CompositeDisposable();
+
+        MessageBroker.Default.Receive<OnAnimationStateEnterEvent>()
+            .Where(x => x.animator == weaponBase._ThirdPersonController.Animator && x.stateInfoEnum == StateInfoEnum.HasAimed)
+            .Subscribe(OnAnimEnter).AddTo(disposables);
+
+        MessageBroker.Default.Receive<OnAnimationStateExitEvent>()
+            .Where(x => x.animator == weaponBase._ThirdPersonController.Animator && x.stateInfoEnum == StateInfoEnum.HasAimed)
+            .Subscribe(OnAnimExit).AddTo(disposables);
+
+        nextTime = 0f;
     }
 
     public virtual void Exit()
     {
         _aimIsTaken.HasAimed.Value = false;
         UpdateManager.Ins.UnregisterAsUpdate(weaponBase, OnUpdate);
+        disposables.Dispose();
     }
 
     public void OnUpdate()
     {
-        if (Time.time > nextTime && !_aimIsTaken.HasAimed.Value) _aimIsTaken.HasAimed.Value = true;
+        if (nextTime != 0 && Time.time > nextTime && !_aimIsTaken.HasAimed.Value) _aimIsTaken.HasAimed.Value = true;
+    }
+
+    void OnAnimEnter(OnAnimationStateEnterEvent onAnimationStateEnterEvent)
+    {
+        nextTime = Time.time + onAnimationStateEnterEvent.stateInfo.length;
+    }
+
+    void OnAnimExit(OnAnimationStateExitEvent onAnimationStateExitEvent)
+    {
+        _aimIsTaken.HasAimed.Value = false;
+        nextTime = 0f;
     }
 }

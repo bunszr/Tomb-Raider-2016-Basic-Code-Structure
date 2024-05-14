@@ -20,8 +20,9 @@ MonoBehaviour:
     ammoCapacity: 5
     rateOfFire: 200
   normalAmmoSaveable:
-    magazineCapacity: 15
-    currAmmoCapacity: 15
+    magazineCapacity: 3
+    currAmmoCapacity: 10
   weaponAnimationData:
+    fireAnimName: Pistol Fire
     reloadMagazineName: Pistol Magazine Reloading
     reloadMagazineTriggerName: PistolMagazineReloading

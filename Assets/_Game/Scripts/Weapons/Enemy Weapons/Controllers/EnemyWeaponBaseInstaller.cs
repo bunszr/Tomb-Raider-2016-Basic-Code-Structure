@@ -7,6 +7,8 @@ namespace WeaponNamescape.Enemy
 {
     public class EnemyWeaponBaseInstaller : WeaponBaseInstaller, IWeapon
     {
+        [SerializeField] protected LivingEntity livingEntity;
+
         public event System.Action<IWeapon> onEquip;
         public event System.Action<IWeapon> onUnEquip;
 
@@ -22,6 +24,10 @@ namespace WeaponNamescape.Enemy
                 new HasBulletInTheMagazineCheck(WeaponBase),
                 new HasAimCheck(WeaponBase as IAimIsTaken),
             };
+
+            WeaponBase._ThirdPersonController = livingEntity as IThirdPersonController;
+
+            AddEquiptable(new WeaponReloadingEnemyFSM(WeaponBase));
         }
 
         protected virtual void Start() { }
