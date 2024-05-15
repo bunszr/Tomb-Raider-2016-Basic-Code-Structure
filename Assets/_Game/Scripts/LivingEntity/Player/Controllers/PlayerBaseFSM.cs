@@ -8,6 +8,7 @@ namespace CharacterPlayer
         protected Camera cam;
         protected StateMachine fsm;
         [SerializeField] protected Player player;
+        [SerializeField] protected GameObject playerControllerGo;
 
         [SerializeField] StateMachine.StateMachineDebug stateMachineDebug;
 

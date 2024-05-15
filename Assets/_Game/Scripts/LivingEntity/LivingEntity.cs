@@ -4,12 +4,15 @@ using Invector.vCharacterController;
 
 public abstract class LivingEntity : MonoBehaviour, IThirdPersonController
 {
+    [SerializeField] float maxHealth = 100;
     [SerializeField] Rigidbody rb;
     [SerializeField] Collider colider;
     [SerializeField] Animator animator;
     [SerializeField] vThirdPersonController thirdPersonController;
     [SerializeField] vThirdPersonInputBase thirdPersonInput;
-    public ReactiveProperty<int> Health { get; private set; } = new ReactiveProperty<int>(10);
+    public ReactiveProperty<float> HealthRP { get; private set; } = new ReactiveProperty<float>(80);
+
+    public float MaxHealth { get => maxHealth; }
 
     public Rigidbody Rb { get => rb; }
     public Collider Colider { get => colider; }

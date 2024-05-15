@@ -1,10 +1,13 @@
 using UnityEngine;
 using System.Collections.Generic;
 using WeaponNamescape.Enemy;
+using CharacterPlayer;
 
 public static class StaticColliderManager
 {
     // You can get via transform instance id
+
+    public static Dictionary<int, IGiveDamage> IGiveDamageDictionary { get; private set; } = new Dictionary<int, IGiveDamage>();
 
     public static Dictionary<int, Player> PlayerDictionary { get; private set; } = new Dictionary<int, Player>();
 

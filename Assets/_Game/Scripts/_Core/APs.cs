@@ -26,4 +26,6 @@ public static class APs
     public static readonly int Punch = Animator.StringToHash("Punch");
 
     public static readonly int CrossFadeEmptyState = Animator.StringToHash("CrossFadeEmptyState");
+
+    public static readonly int TakeDamageCF = Animator.StringToHash("TakeDamageCF");
 }

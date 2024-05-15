@@ -11,6 +11,7 @@ namespace CharacterPlayer
     public class PlayerFSM : PlayerBaseFSM
     {
         TriggerCustom triggerCustom;
+        CompositeDisposable disposables = new CompositeDisposable();
 
         protected override void Start()
         {
@@ -18,7 +19,7 @@ namespace CharacterPlayer
 
             fsm.AddState("PlayerInitState", new PlayerInitState(player));
             fsm.AddState("EmptyState", new State());
-            fsm.AddState("DeathState", new PlayerDeathState(player, false));
+            fsm.AddState("DeathState", new PlayerDeathState(player, playerControllerGo, false));
 
             fsm.AddTransition(new Transition("PlayerInitState", "EmptyState"));
             fsm.AddTriggerTransitionFromAny("OnDeath", new Transition("", "DeathState"));
@@ -30,13 +31,20 @@ namespace CharacterPlayer
             triggerCustom.onTriggerEnterEvent += OnCustomTriggerEnter;
             triggerCustom.onTriggerExitEvent += OnCustomTriggerExit;
 
-            player.Health.Where(x => x <= 0).Subscribe(x => OnPlayerDeath());
+            player.HealthRP.Where(x => x <= 0).Subscribe(x => OnPlayerDeath());
+
+            player.FastHealingFeatureScriptable.IsOpenRP.Subscribe(OnFastHealing).AddTo(disposables);
+        }
+
+        public void OnFastHealing(bool isOpen)
+        {
         }
 
         private void OnDestroy()
         {
             triggerCustom.onTriggerEnterEvent -= OnCustomTriggerEnter;
             triggerCustom.onTriggerExitEvent -= OnCustomTriggerExit;
+            disposables.Dispose();
         }
 
         void OnPlayerDeath() => fsm.TriggerLocally("OnDeath");
@@ -46,7 +54,7 @@ namespace CharacterPlayer
 
 
 #if UNITY_EDITOR
-        [Button] void SetHealth(int value = 0) => player.Health.Value = value;
+        [Button] void SetHealth(int value = 0) => player.HealthRP.Value = value;
 #endif
     }
 }
