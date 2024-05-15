@@ -15,7 +15,6 @@ public class SingletonAndDontDestroyOnLoad<T> : MonoBehaviour where T : Componen
                     GameObject obj = new GameObject();
                     obj.name = typeof(T).Name;
                     instance = obj.AddComponent<T>();
-                    DontDestroyOnLoad(obj);
                 }
             }
             return instance;
@@ -24,6 +23,7 @@ public class SingletonAndDontDestroyOnLoad<T> : MonoBehaviour where T : Componen
 
     protected virtual void Awake()
     {
-        if (instance != null) Destroy(gameObject);
+        if (Ins != null && Ins != this) Destroy(gameObject);
+        else DontDestroyOnLoad(gameObject);
     }
 }
