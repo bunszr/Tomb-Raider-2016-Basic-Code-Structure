@@ -41,7 +41,7 @@ namespace Character
             enemy.Colider.enabled = false;
             enemy.Animator.CrossFade("Death", .15f);
             behaviorTrees.Foreach(x => x.enabled = false);
-            enemy.WeaponHolder.GetComponentInChildren<IWeapon>().Unequip();
+            // enemy.WeaponHolder.GetComponentInChildren<IWeapon>().Unequip(); // BHT is called. Therefore you can not call twice
             enemy.GetComponent<RigBuilder>().enabled = false;
         }
 
