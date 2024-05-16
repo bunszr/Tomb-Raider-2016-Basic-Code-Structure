@@ -14,6 +14,8 @@ public class PlayerWeaponBaseInstaller : WeaponBaseInstaller, IWeapon, IWeaponIn
     public Transform Transform => transform;
     protected List<ICheck> _ChecksToFire { get; private set; } = new List<ICheck>();
 
+    public ReactiveProperty<bool> HasEquipRP { get; private set; } = new ReactiveProperty<bool>();
+
     public virtual void Install()
     {
         WeaponBase._AmmoRP = new ReactiveProperty<IAmmoData>(WeaponBase.WeaponDataScriptable.NormalAmmo);
@@ -33,15 +35,19 @@ public class PlayerWeaponBaseInstaller : WeaponBaseInstaller, IWeapon, IWeaponIn
     [Button]
     public virtual void Equip()
     {
+        if (HasEquipRP.Value) Debug.LogError("The weapon already equiped", transform);
         _EquipableList.ForEach(x => x.Enter());
         onEquip?.Invoke(this);
+        HasEquipRP.Value = true;
     }
 
     [Button]
     public virtual void Unequip()
     {
+        if (!HasEquipRP.Value) Debug.LogError("The weapon already unequiped", transform);
         _EquipableList.ForEach(x => x.Exit());
         onUnEquip?.Invoke(this);
+        HasEquipRP.Value = false;
     }
 
     protected void AddChecksToFire(ICheck _check)

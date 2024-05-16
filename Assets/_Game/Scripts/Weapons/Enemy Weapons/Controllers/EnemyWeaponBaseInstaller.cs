@@ -15,6 +15,8 @@ namespace WeaponNamescape.Enemy
         public Transform Transform => transform;
         protected List<ICheck> _checksToFire;
 
+        public ReactiveProperty<bool> HasEquipRP { get; private set; } = new ReactiveProperty<bool>();
+
         protected virtual void Awake()
         {
             WeaponBase.WeaponDataScriptable = WeaponBase.WeaponDataScriptable.CreateInstance();
@@ -35,15 +37,19 @@ namespace WeaponNamescape.Enemy
         [Button]
         public virtual void Equip()
         {
+            if (HasEquipRP.Value) Debug.LogError("The weapon already equiped", transform);
             _EquipableList.ForEach(x => x.Enter());
             onEquip?.Invoke(this);
+            HasEquipRP.Value = true;
         }
 
         [Button]
         public virtual void Unequip()
         {
+            if (!HasEquipRP.Value) Debug.LogError("The weapon already unequip", transform);
             _EquipableList.ForEach(x => x.Exit());
             onUnEquip?.Invoke(this);
+            HasEquipRP.Value = false;
         }
     }
 }
