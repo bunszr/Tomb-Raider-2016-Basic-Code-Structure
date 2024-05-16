@@ -1,4 +1,3 @@
-using System.Collections;
 using Sirenix.OdinInspector;
 using TMPro;
 using UniRx;
@@ -6,35 +5,44 @@ using UnityEngine;
 
 public class NormalAmmoView : MonoBehaviour
 {
-    public WeaponBase weaponBase;
-    public PlayerWeaponBaseInstaller playerWeaponBaseInstaller;
-    public TextMeshProUGUI currAmmoTMPro;
-    public TextMeshProUGUI totalAmmoTMPro;
+    [SerializeField] WeaponBase weaponBase;
+    [SerializeField] PlayerWeaponBaseInstaller playerWeaponBaseInstaller;
+    [SerializeField] GameObject panelParent;
+    [SerializeField] TextMeshProUGUI currAmmoTMPro;
+    [SerializeField] TextMeshProUGUI totalAmmoTMPro;
 
     [ReadOnly, ShowInInspector] INormalAmmo _normalAmmo;
-    CompositeDisposable disposables;
+    CompositeDisposable viewDisposables;
+    System.IDisposable disposable;
 
     private void Awake()
     {
-        playerWeaponBaseInstaller.onEquip += OnEquip;
-        playerWeaponBaseInstaller.onUnEquip += OnUnEquip;
-        disposables = new CompositeDisposable();
+        viewDisposables = new CompositeDisposable();
+        disposable = playerWeaponBaseInstaller.GetComponent<IWeapon>().HasEquipRP.Subscribe(OnChangeEquipStatus);
     }
 
-    public void OnEquip(IWeapon _weapon)
+    void OnChangeEquipStatus(bool active)
     {
+        if (active) OnEquip();
+        else OnUnEquip();
+    }
+
+    public void OnEquip()
+    {
+        panelParent.SetActive(true);
         _normalAmmo = weaponBase.WeaponDataScriptable as INormalAmmo;
 
-        _normalAmmo.NormalAmmo.BulletCountInMagazineRP.Subscribe(OnBulletCountInMagazine).AddTo(disposables);
-        _normalAmmo.NormalAmmo.CurrAmmoCapacityRP.Subscribe(OnCurrAmmoChanged).AddTo(disposables);
+        _normalAmmo.NormalAmmo.BulletCountInMagazineRP.Subscribe(OnBulletCountInMagazine).AddTo(viewDisposables);
+        _normalAmmo.NormalAmmo.CurrAmmoCapacityRP.Subscribe(OnCurrAmmoChanged).AddTo(viewDisposables);
     }
 
-    public void OnUnEquip(IWeapon _weapon)
+    public void OnUnEquip()
     {
-        disposables.Clear();
+        panelParent.SetActive(false);
+        viewDisposables.Clear();
     }
 
-    private void OnDestroy() => disposables?.Dispose();
+    private void OnDestroy() => disposable.Dispose();
 
     void OnBulletCountInMagazine(int ammo)
     {

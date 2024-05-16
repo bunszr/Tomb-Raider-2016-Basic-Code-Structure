@@ -9,9 +9,6 @@ namespace WeaponNamescape.Enemy
     {
         [SerializeField] protected LivingEntity livingEntity;
 
-        public event System.Action<IWeapon> onEquip;
-        public event System.Action<IWeapon> onUnEquip;
-
         public Transform Transform => transform;
         protected List<ICheck> _checksToFire;
 
@@ -39,7 +36,6 @@ namespace WeaponNamescape.Enemy
         {
             if (HasEquipRP.Value) Debug.LogError("The weapon already equiped", transform);
             _EquipableList.ForEach(x => x.Enter());
-            onEquip?.Invoke(this);
             HasEquipRP.Value = true;
         }
 
@@ -48,7 +44,6 @@ namespace WeaponNamescape.Enemy
         {
             if (!HasEquipRP.Value) Debug.LogError("The weapon already unequip", transform);
             _EquipableList.ForEach(x => x.Exit());
-            onUnEquip?.Invoke(this);
             HasEquipRP.Value = false;
         }
     }

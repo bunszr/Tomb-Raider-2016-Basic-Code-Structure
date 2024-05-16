@@ -8,9 +8,6 @@ public class PlayerWeaponBaseInstaller : WeaponBaseInstaller, IWeapon, IWeaponIn
 {
     protected PlayerWeaponBase playerWeaponBase;
 
-    public event System.Action<IWeapon> onEquip;
-    public event System.Action<IWeapon> onUnEquip;
-
     public Transform Transform => transform;
     protected List<ICheck> _ChecksToFire { get; private set; } = new List<ICheck>();
 
@@ -37,7 +34,6 @@ public class PlayerWeaponBaseInstaller : WeaponBaseInstaller, IWeapon, IWeaponIn
     {
         if (HasEquipRP.Value) Debug.LogError("The weapon already equiped", transform);
         _EquipableList.ForEach(x => x.Enter());
-        onEquip?.Invoke(this);
         HasEquipRP.Value = true;
     }
 
@@ -46,7 +42,6 @@ public class PlayerWeaponBaseInstaller : WeaponBaseInstaller, IWeapon, IWeaponIn
     {
         if (!HasEquipRP.Value) Debug.LogError("The weapon already unequiped", transform);
         _EquipableList.ForEach(x => x.Exit());
-        onUnEquip?.Invoke(this);
         HasEquipRP.Value = false;
     }
 

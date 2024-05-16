@@ -297,7 +297,7 @@ RectTransform:
   m_GameObject: {fileID: 1654238306}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.44315, y: 0.44315, z: 0.44315}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 532844121}
@@ -307,7 +307,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -131, y: 41.735138}
+  m_AnchoredPosition: {x: -60.3, y: 18.7}
   m_SizeDelta: {x: 218.7164, y: 47.4441}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1654238309
@@ -363,7 +363,7 @@ PrefabInstance:
     - target: {fileID: 3429054604596793418, guid: b52d554ac7dda9141a447d800af3ae4e,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7570631768218165506, guid: b52d554ac7dda9141a447d800af3ae4e,
         type: 3}
@@ -498,5 +498,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponBase: {fileID: 0}
   playerWeaponBaseInstaller: {fileID: 0}
+  panelParent: {fileID: 1654238306}
   currAmmoTMPro: {fileID: 532844122}
   totalAmmoTMPro: {fileID: 1088746127}

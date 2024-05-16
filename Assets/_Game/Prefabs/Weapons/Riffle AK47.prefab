@@ -75,17 +75,17 @@ PrefabInstance:
     - target: {fileID: 805397128193972084, guid: 229cafe332d4a8247a966a29df7ef0ae,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 805397128193972084, guid: 229cafe332d4a8247a966a29df7ef0ae,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 805397128193972084, guid: 229cafe332d4a8247a966a29df7ef0ae,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 805397128193972084, guid: 229cafe332d4a8247a966a29df7ef0ae,
         type: 3}
@@ -116,21 +116,16 @@ PrefabInstance:
         type: 3}
       propertyPath: weaponBase
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 6730589368444427489}
     - target: {fileID: 5131685726745698827, guid: 229cafe332d4a8247a966a29df7ef0ae,
         type: 3}
       propertyPath: playerWeaponBaseInstaller
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8382166155138846416}
     - target: {fileID: 5596676835834963516, guid: 229cafe332d4a8247a966a29df7ef0ae,
         type: 3}
       propertyPath: m_Name
       value: Normal Ammo View
-      objectReference: {fileID: 0}
-    - target: {fileID: 5596676835834963516, guid: 229cafe332d4a8247a966a29df7ef0ae,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 229cafe332d4a8247a966a29df7ef0ae, type: 3}
