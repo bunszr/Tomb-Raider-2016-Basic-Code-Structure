@@ -26,7 +26,7 @@ public class ScatterBulletBehaviour : BulletBehaviourBase, IBulletBehaviour
         for (int i = 0; i < data.scatterCount; i++)
         {
             Quaternion rndRot = data.bulletLocation.rotation * Quaternion.Euler(Random.Range(-data.rotation, data.rotation), Random.Range(-data.rotation, data.rotation), Random.Range(-data.rotation, data.rotation));
-            BulletBase bulletBase = LeanPool.Spawn(data.bulletPrefab, data.bulletLocation.position, rndRot);
+            BulletBase bulletBase = LeanPool.Spawn(data.bulletPrefab, data.bulletLocation.position, rndRot, BulletHolder);
             bulletBase.Rb.AddForce(bulletBase.transform.forward * data.force, data.forceMode);
             LeanPool.Despawn(bulletBase, 5);
         }

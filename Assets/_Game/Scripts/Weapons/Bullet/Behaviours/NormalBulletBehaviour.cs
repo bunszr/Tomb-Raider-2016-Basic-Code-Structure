@@ -21,7 +21,7 @@ public class NormalBulletBehaviour : BulletBehaviourBase, IBulletBehaviour, IExt
 
     public void Fire()
     {
-        BulletBase bulletBase = LeanPool.Spawn(data.bulletPrefab, data.bulletLocation.position, data.bulletLocation.rotation);
+        BulletBase bulletBase = LeanPool.Spawn(data.bulletPrefab, data.bulletLocation.position, data.bulletLocation.rotation, BulletHolder);
         bulletBase.Rb.AddForce(data.bulletLocation.forward * data.force, data.forceMode);
         LeanPool.Despawn(bulletBase, 5);
     }

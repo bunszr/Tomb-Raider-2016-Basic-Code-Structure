@@ -23,7 +23,7 @@ public class SplineBulletBehaviour : BulletBehaviourBase, IBulletBehaviour
 
     public void Fire()
     {
-        BulletBase bulletBase = LeanPool.Spawn(data.bulletPrefab, data.bulletLocation.position, data.bulletLocation.rotation);
+        BulletBase bulletBase = LeanPool.Spawn(data.bulletPrefab, data.bulletLocation.position, data.bulletLocation.rotation, BulletHolder);
         LeanPool.Despawn(bulletBase, 5);
 
         Vector3 startPos = data.bulletLocation.transform.position;
