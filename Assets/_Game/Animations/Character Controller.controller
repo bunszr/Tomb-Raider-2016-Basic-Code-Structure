@@ -57,7 +57,7 @@ AnimatorStateMachine:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Area Document
+  m_Name: AreaDocument
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -2001718544958274859}
@@ -468,7 +468,7 @@ AnimatorStateMachine:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Area Destructible
+  m_Name: AreaDestructible
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -5176832904797161683}
@@ -605,7 +605,7 @@ AnimatorStateMachine:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Fire Layer
+  m_Name: FireLayer
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1551699316576858673}
@@ -726,7 +726,7 @@ AnimatorStateMachine:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Draw And Aim
+  m_Name: DrawAndAimLayer
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 5268729468781206478}
@@ -825,7 +825,7 @@ AnimatorStateMachine:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Collect Inventory Item Layer
+  m_Name: CollectInventoryItemLayer
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -3224239373879044767}
@@ -991,7 +991,7 @@ AnimatorController:
     m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
-    m_Name: Base Layer
+    m_Name: BaseLayer
     m_StateMachine: {fileID: 110700000}
     m_Mask: {fileID: 0}
     m_Motions: []
@@ -1003,7 +1003,7 @@ AnimatorController:
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
   - serializedVersion: 5
-    m_Name: Draw And Aim
+    m_Name: DrawAndAimLayer
     m_StateMachine: {fileID: -768990780058925565}
     m_Mask: {fileID: 31900000, guid: 140f8085d66c18241b0866302017040b, type: 2}
     m_Motions: []
@@ -1015,7 +1015,7 @@ AnimatorController:
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
   - serializedVersion: 5
-    m_Name: Fire Layer
+    m_Name: FireLayer
     m_StateMachine: {fileID: -2642574564896311957}
     m_Mask: {fileID: 31900000, guid: d5d62067f6540ed4d8e18c09d7e85c1a, type: 2}
     m_Motions: []
@@ -1027,7 +1027,7 @@ AnimatorController:
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
   - serializedVersion: 5
-    m_Name: Collect Inventory Item Layer
+    m_Name: CollectInventoryItemLayer
     m_StateMachine: {fileID: -399766181053692531}
     m_Mask: {fileID: 0}
     m_Motions: []
@@ -1039,7 +1039,7 @@ AnimatorController:
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
   - serializedVersion: 5
-    m_Name: Area Document
+    m_Name: AreaDocument
     m_StateMachine: {fileID: -7362345925176603732}
     m_Mask: {fileID: 0}
     m_Motions: []
@@ -1051,7 +1051,7 @@ AnimatorController:
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
   - serializedVersion: 5
-    m_Name: Area Destructible
+    m_Name: AreaDestructible
     m_StateMachine: {fileID: -3227843068727374113}
     m_Mask: {fileID: 0}
     m_Motions: []
@@ -1063,7 +1063,7 @@ AnimatorController:
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
   - serializedVersion: 5
-    m_Name: Take Damage
+    m_Name: TakeDamage
     m_StateMachine: {fileID: 4224461787983070317}
     m_Mask: {fileID: 31900000, guid: 10ab1ce2dcb71b0418995347b3f40457, type: 2}
     m_Motions: []
@@ -13405,7 +13405,7 @@ AnimatorStateMachine:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Base Layer
+  m_Name: BaseLayer
   m_ChildStates: []
   m_ChildStateMachines:
   - serializedVersion: 1
@@ -20957,7 +20957,7 @@ AnimatorStateMachine:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Take Damage
+  m_Name: TakeDamage
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -3331104060955106280}
