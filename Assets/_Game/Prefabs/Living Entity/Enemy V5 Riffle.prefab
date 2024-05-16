@@ -409,6 +409,11 @@ PrefabInstance:
       objectReference: {fileID: 1941032863684074415}
     - target: {fileID: 6599666293080842250, guid: 4cdd815da9ced4d449bf22f733bf88f3,
         type: 3}
+      propertyPath: weaponHolder
+      value: 
+      objectReference: {fileID: 2543618198207968500}
+    - target: {fileID: 6599666293080842250, guid: 4cdd815da9ced4d449bf22f733bf88f3,
+        type: 3}
       propertyPath: thirdPersonController
       value: 
       objectReference: {fileID: 6366057272967358048}
@@ -504,6 +509,12 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 914509737307268398}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2543618198207968500 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3457711751027642842, guid: 4cdd815da9ced4d449bf22f733bf88f3,
+    type: 3}
+  m_PrefabInstance: {fileID: 914509737307268398}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2731469158214159408 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2979374665159387422, guid: 4cdd815da9ced4d449bf22f733bf88f3,
@@ -589,6 +600,21 @@ MonoBehaviour:
       Version: 1.6.6
   gizmoViewMode: 2
   showBehaviorDesignerGizmo: 1
+--- !u!114 &2219509124268043233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3815933102935568762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01f7bd24a3389c84795638c8398d8c87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 6279781789949363492}
+  behaviorTrees:
+  - {fileID: 47991453}
 --- !u!4 &3903566118381327371 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4223458844141646117, guid: 4cdd815da9ced4d449bf22f733bf88f3,

@@ -10,7 +10,9 @@ public abstract class LivingEntity : MonoBehaviour, IThirdPersonController
     [SerializeField] Animator animator;
     [SerializeField] vThirdPersonController thirdPersonController;
     [SerializeField] vThirdPersonInputBase thirdPersonInput;
-    public ReactiveProperty<float> HealthRP { get; private set; } = new ReactiveProperty<float>(80);
+    [SerializeField] GameObject weaponHolder;
+
+    public ReactiveProperty<float> HealthRP { get; protected set; } = new ReactiveProperty<float>(80);
 
     public float MaxHealth { get => maxHealth; }
 
@@ -38,4 +40,6 @@ public abstract class LivingEntity : MonoBehaviour, IThirdPersonController
     public bool IsWalking { get => thirdPersonController.freeSpeed.walkByDefault; set => thirdPersonController.freeSpeed.walkByDefault = value; }
 
     public MonoBehaviour ThirdPersonInputMonobehaviour => thirdPersonInput;
+
+    public GameObject WeaponHolder { get => weaponHolder; }
 }
