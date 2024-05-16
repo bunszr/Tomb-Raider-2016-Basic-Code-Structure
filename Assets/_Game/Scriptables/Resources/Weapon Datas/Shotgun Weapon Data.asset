@@ -24,5 +24,6 @@ MonoBehaviour:
     currAmmoCapacity: 65
   weaponAnimationData:
     fireAnimName: Rifle Fire
+    drawWeaponInputInt: 3
     reloadMagazineName: Riffle Magazine Reloading
     reloadMagazineTriggerName: RiffleMagazineReloading

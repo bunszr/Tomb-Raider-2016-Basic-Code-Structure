@@ -1,26 +1,35 @@
 using UnityEngine;
 using UniRx;
 using System;
-using Zenject;
-using System.Collections;
+using System.Linq;
 
 public class WeaponToggle : MonoBehaviour, IWeaponToggler
 {
+    public class WeaponDrawData
+    {
+        public Transform weaponParent;
+        public IWeaponForModel _weaponForModel;
+        public IWeapon _weapon;
+
+        public WeaponDrawData(Transform weaponParent, IWeaponForModel weaponForModel, IWeapon weapon)
+        {
+            this.weaponParent = weaponParent;
+            _weaponForModel = weaponForModel;
+            _weapon = weapon;
+        }
+    }
+
     IDisposable disposable;
+    AnimationEventMono animationEventMono;
+
+    WeaponDrawData oldWeaponDrawData;
+    WeaponDrawData requestedWeaponDrawData;
+    WeaponDrawData[] weaponDrawDatas;
+
     [SerializeField] LivingEntity livingEntity;
     [SerializeField] Transform weaponHolder;
 
-    ReactiveProperty<IWeapon> _OldWeaponRP = new ReactiveProperty<IWeapon>();
     public ReactiveProperty<IWeapon> _CurrWeaponRP { get; private set; }
-
-    int weaponIndex = -1;
-    // int oldSlot = -1;
-
-    // IEquipBehaviour _handEquipBehaviourRP;
-    // IEquipBehaviour _weaponEquipBehaviourRP;
-    AnimationEventMono animationEventMono;
-
-    public IWeapon[] GetWeapons() => GetComponentsInChildren<IWeapon>(true);
 
     private void Awake()
     {
@@ -28,26 +37,31 @@ public class WeaponToggle : MonoBehaviour, IWeaponToggler
 
         animationEventMono = livingEntity.gameObject.GetOrAddComponent<AnimationEventMono>();
         animationEventMono.onAnimationEvent += OnDrawAnim;
+    }
 
-        // _handEquipBehaviourRP = new HandEquipBehaviour(weaponHolder, animationEventMono, IM.Ins._Input.WeaponToggleInput);
-        // _weaponEquipBehaviourRP = new WeaponEquipBehaviour(weaponHolder, animationEventMono);
+    private void Start()
+    {
+        disposable = this.ObserveEveryValueChanged(x => x.transform.childCount).Subscribe(OnNewWeaponAdded);
+    }
+
+    void OnNewWeaponAdded(int count)
+    {
+        weaponDrawDatas = Enumerable.Range(0, weaponHolder.transform.childCount).Select(i => new WeaponDrawData(weaponHolder.transform.GetChild(i), weaponHolder.transform.GetChild(i).GetComponentInChildren<IWeaponForModel>(), weaponHolder.transform.GetChild(i).GetComponentInChildren<IWeapon>())).ToArray();
     }
 
     private void OnDestroy()
     {
         animationEventMono.onAnimationEvent -= OnDrawAnim;
+        disposable.Dispose();
     }
 
-    private void OnEnable()
+    WeaponDrawData GetGunDataFromInputIndex(int gunIndex)
     {
-        // _handEquipBehaviourRP.Enter();
-        // _weaponEquipBehaviourRP.Enter();
-    }
-
-    private void OnDisable()
-    {
-        //     _handEquipBehaviourRP.Exit();
-        //     _weaponEquipBehaviourRP.Exit();
+        for (int i = 0; i < weaponDrawDatas.Length; i++)
+        {
+            if (weaponDrawDatas[i]._weaponForModel.DrawWeaponInputInt == gunIndex) return weaponDrawDatas[i];
+        }
+        return null;
     }
 
     private void Update()
@@ -59,15 +73,11 @@ public class WeaponToggle : MonoBehaviour, IWeaponToggler
         else if (IM.Ins.Input.WeaponToggleInput.HasEquipGun3) pressedGunIndex = 2;
         else if (IM.Ins.Input.WeaponToggleInput.HasEquipGun4) pressedGunIndex = 3;
 
-        if (pressedGunIndex != -1)
+        if (pressedGunIndex != -1 && GetGunDataFromInputIndex(pressedGunIndex) != null && GetGunDataFromInputIndex(pressedGunIndex) != requestedWeaponDrawData)
         {
-            weaponIndex = pressedGunIndex;
-
-            if (!weaponHolder.GetChild(weaponIndex).gameObject.activeSelf)
-            {
-                livingEntity.Animator.SetInteger(APs.DrawWeaponInt, weaponIndex);
-                livingEntity.Animator.SetTrigger(APs.DrawWeaponTrigger);
-            }
+            requestedWeaponDrawData = GetGunDataFromInputIndex(pressedGunIndex);
+            livingEntity.Animator.SetInteger(APs.DrawWeaponInt, requestedWeaponDrawData._weaponForModel.DrawWeaponInputInt);
+            livingEntity.Animator.SetTrigger(APs.DrawWeaponTrigger);
         }
     }
 
@@ -84,18 +94,16 @@ public class WeaponToggle : MonoBehaviour, IWeaponToggler
 
         CheckMistake();
 
-        for (int i = 0; i < weaponHolder.childCount; i++)
+        if (oldWeaponDrawData != null)
         {
-            if (weaponHolder.GetChild(i).gameObject.activeSelf)
-            {
-                IWeapon _weapon = weaponHolder.GetChild(i).GetComponentInChildren<IWeapon>();
-                _weapon.Unequip();
-                _weapon.Transform.parent.gameObject.SetActive(false);
-            }
+            oldWeaponDrawData._weapon.Unequip();
+            oldWeaponDrawData._weapon.Transform.parent.gameObject.SetActive(false);
         }
 
-        _CurrWeaponRP.Value = weaponHolder.GetChild(weaponIndex).GetComponentInChildren<IWeapon>(true);
-        _CurrWeaponRP.Value.Transform.parent.gameObject.SetActive(true);
-        _CurrWeaponRP.Value.Equip();
+        oldWeaponDrawData = requestedWeaponDrawData;
+
+        requestedWeaponDrawData.weaponParent.gameObject.SetActive(true);
+        requestedWeaponDrawData._weapon.Equip();
+        _CurrWeaponRP.Value = requestedWeaponDrawData._weapon;
     }
 }

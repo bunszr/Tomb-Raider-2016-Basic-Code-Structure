@@ -24,5 +24,6 @@ MonoBehaviour:
     currAmmoCapacity: 32
   weaponAnimationData:
     fireAnimName: Pistol Fire
+    drawWeaponInputInt: 0
     reloadMagazineName: Pistol Magazine Reloading
     reloadMagazineTriggerName: PistolMagazineReloading
