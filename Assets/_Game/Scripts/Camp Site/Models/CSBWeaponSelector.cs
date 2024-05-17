@@ -12,5 +12,6 @@ namespace CampSite
         public Image lockImage;
         public Image highlightImage;
         public GameObject nextPanelTogglerGO;
+        public GameObject weaponParentGo;
     }
 }

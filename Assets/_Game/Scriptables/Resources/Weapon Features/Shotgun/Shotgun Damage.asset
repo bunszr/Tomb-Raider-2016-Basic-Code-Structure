@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc7b10594dcbd0b4ab89b6b953b2a790, type: 3}
+  m_Name: Shotgun Damage
+  m_EditorClassIdentifier: 
+  hash: 8750
+  featureName: Damage
+  description: Increases damage
+  isOpen: 0
+  requirementsScriptableBases: []
+  costDatas:
+  - inventoryItem: {fileID: 11400000, guid: 92344d4102e8e2b418586cb5b45f2462, type: 2}
+    costQuantity: 2
+  - inventoryItem: {fileID: 11400000, guid: 1d23c3d6c2e31874fa9e0050641adafd, type: 2}
+    costQuantity: 3
+  valueToAdd: 23

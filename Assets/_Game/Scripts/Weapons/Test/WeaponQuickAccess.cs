@@ -14,5 +14,8 @@ public class WeaponQuickAccess : ScriptableObject
     [Button, HorizontalGroup("5")] public void SelectPistol() => Selection.activeGameObject = FindObjectOfType<Pistol>(true).gameObject;
     [Button, HorizontalGroup("5")] public void SelectPistolEnemy() => Selection.activeGameObject = FindObjectOfType<PistolEnemy>(true).gameObject;
 
+    [SerializeField, HorizontalGroup("Inst")] GameObject prefab;
+    [Button, HorizontalGroup("Inst")] public void Instantiate() => GameObject.Instantiate(prefab);
+
 
 }

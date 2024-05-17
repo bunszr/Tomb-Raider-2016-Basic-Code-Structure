@@ -18,7 +18,7 @@ MonoBehaviour:
     recoilStability: 35
     reloadSpeed: 1
     ammoCapacity: 6
-    rateOfFire: 5
+    rateOfFire: 25
   normalAmmoSaveable:
     magazineCapacity: 6
     currAmmoCapacity: 65

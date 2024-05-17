@@ -7,6 +7,7 @@ namespace CampSite
         CSBWeaponSelector csbWeaponSelector;
 
         CommandExecuterWithCondition commandExecuter;
+        CommandExecuterWithCondition commandExecuterWhenPanelOnActive;
 
         protected void Start()
         {
@@ -18,15 +19,23 @@ namespace CampSite
             commandExecuter = new CommandExecuterWithCondition(new ICSBExecute[]
             {
                 new OpenNewPanelCommand(csbBase, csbWeaponSelector.nextPanelTogglerGO),
-                new ToggleActivationGameObjectCommand(csbWeaponSelector.weaponFeatureButtonsHolderGo, true)
+                new ToggleActivationGameObjectCommand(csbWeaponSelector.weaponFeatureButtonsHolderGo, true),
+                new ToggleActivationGameObjectCommand(csbWeaponSelector.weaponParentGo, true)
             },
                 () => csbWeaponSelector.FeatureTypeScriptable.IsOpenRP.Value);
+
+            commandExecuterWhenPanelOnActive = new CommandExecuterWithCondition(new ICSBExecute[]
+            {
+                new ToggleActivationGameObjectCommand(csbWeaponSelector.weaponFeatureButtonsHolderGo, false),
+                new ToggleActivationGameObjectCommand(csbWeaponSelector.weaponParentGo, false),
+            },
+                () => true);
         }
 
         public override void OnPanelActive()
         {
             base.OnPanelActive();
-            csbWeaponSelector.weaponFeatureButtonsHolderGo.SetActive(false);
+            commandExecuterWhenPanelOnActive.ExecuteAll();
         }
 
         public override void OnPointerClick(PointerEventData eventData)

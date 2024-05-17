@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: SMG
   weaponDataSaveable:
-    damage: 24
+    damage: 37
     recoilStability: 30
     reloadSpeed: 5
     ammoCapacity: 10
-    rateOfFire: 13
+    rateOfFire: 124
   normalAmmoSaveable:
     magazineCapacity: 7
     currAmmoCapacity: 45

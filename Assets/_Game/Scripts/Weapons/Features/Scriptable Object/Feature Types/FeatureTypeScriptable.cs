@@ -21,14 +21,17 @@ public abstract class FeatureTypeScriptable : ScriptableObject
     public void Load(bool isOpenPram) => IsOpenRP = new ReactiveProperty<bool>(isOpenPram);
     public void LoadFromItSelf() => IsOpenRP = new ReactiveProperty<bool>(isOpen);
 
-    [Button]
+    [Button(ButtonSizes.Small)]
     public bool AreRequirementsDone()
     {
         if (requirementsScriptableBases.Length == 0) return true;
         return requirementsScriptableBases.All(x => x.IsTrue());
     }
 
+
 #if UNITY_EDITOR
+    [Button(ButtonSizes.Small)] void OpenFeature() => IsOpenRP.Value = true;
+
     private void Awake()
     {
         hash = GetInstanceID();

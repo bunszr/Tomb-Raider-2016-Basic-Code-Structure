@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   editorDrawPivot: 1
   editorPathColor: {r: 1, g: 1, b: 1, a: 1}
-  editorAlwaysDraw: 1
+  editorAlwaysDraw: 0
   editorDrawThickness: 0
   editorBillboardThickness: 1
   isNewlyCreated: 0
@@ -64,26 +64,26 @@ MonoBehaviour:
       tangent: {x: 1.7037582, y: 0.014751911, z: 0.39044797}
       tangent2: {x: 1.754562, y: 0.014751911, z: 0.4509891}
     - _type: 0
-      position: {x: 0.48000914, y: 0, z: 1.0845163}
+      position: {x: 0.48000908, y: 0, z: 1.0845163}
       color: {r: 1, g: 1, b: 1, a: 1}
       normal: {x: 0, y: 1, z: 0}
       size: 1
-      tangent: {x: 0.48000914, y: 0, z: 1.0845163}
-      tangent2: {x: 0.48000914, y: 0, z: 1.0845163}
+      tangent: {x: 0.48000908, y: 0, z: 1.0845163}
+      tangent2: {x: 0.48000908, y: 0, z: 1.0845163}
     - _type: 0
-      position: {x: 0.41652104, y: 0, z: -0.33367014}
+      position: {x: 0.41652107, y: 0, z: -0.33367014}
       color: {r: 1, g: 1, b: 1, a: 1}
       normal: {x: 0, y: 1, z: 0}
       size: 1
-      tangent: {x: 0.41652104, y: 0, z: -0.33367014}
-      tangent2: {x: 0.41652104, y: 0, z: -0.33367014}
+      tangent: {x: 0.41652107, y: 0, z: -0.33367014}
+      tangent2: {x: 0.41652107, y: 0, z: -0.33367014}
     - _type: 0
-      position: {x: 0.40521237, y: 0, z: -2.760339}
+      position: {x: 0.4052124, y: 0, z: -2.760339}
       color: {r: 1, g: 1, b: 1, a: 1}
       normal: {x: 0, y: 1, z: 0}
       size: 1
-      tangent: {x: 0.40521237, y: 0, z: -2.760339}
-      tangent2: {x: 0.40521237, y: 0, z: -2.760339}
+      tangent: {x: 0.4052124, y: 0, z: -2.760339}
+      tangent2: {x: 0.4052124, y: 0, z: -2.760339}
     type: 3
     linearAverageDirection: 1
     customValueInterpolation:

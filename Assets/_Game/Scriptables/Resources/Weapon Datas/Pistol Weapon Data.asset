@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Pistol
   weaponDataSaveable:
-    damage: 13
+    damage: 72
     recoilStability: 24
     reloadSpeed: 3
     ammoCapacity: 5
