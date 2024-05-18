@@ -20,6 +20,8 @@ public class Player : LivingEntity, IEnemyTarget
     public ArmorFeatureScriptable ArmorFeatureScriptable { get => armorFeatureScriptable; }
 
     public float MaxArmor { get => maxArmor; }
+    public PlayerDataScriptable PlayerDataScriptable { get => playerDataScriptable; }
+
 
     private void Awake()
     {
