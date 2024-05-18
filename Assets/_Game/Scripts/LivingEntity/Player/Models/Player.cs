@@ -6,6 +6,7 @@ using Zenject;
 
 public class Player : LivingEntity, IEnemyTarget
 {
+    [SerializeField] PlayerDataScriptable playerDataScriptable;
     [SerializeField] float maxArmor = 100;
     [SerializeField] FastHealingFeatureScriptable fastHealingFeatureScriptable;
     [SerializeField] ArmorFeatureScriptable armorFeatureScriptable;

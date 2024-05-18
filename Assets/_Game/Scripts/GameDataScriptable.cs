@@ -8,6 +8,7 @@ public class GameDataScriptable : SingletonScriptableObject<GameDataScriptable>
     public bool loadFeatureFromJSONinEditor = false;
     public bool loadInventoryFromJSONinEditor = false;
     public bool loadWeaponDataFromJSONinEditor = false;
+    public bool loadPlayerDataFromJSONinEditor = false;
 
     public CampSiteScriptableData campSiteScriptableData;
     public WeaponScriptableData weaponScriptableData;
