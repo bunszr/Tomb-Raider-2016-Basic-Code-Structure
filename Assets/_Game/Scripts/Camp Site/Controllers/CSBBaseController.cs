@@ -16,6 +16,7 @@ namespace CampSite
 
         [Inject] protected CinemachineBrain brain;
         [Inject] protected CampSiteHolder campSiteHolder;
+        [Inject] protected Player player;
 
 #if UNITY_EDITOR
         [ReadOnly, ShowInInspector] string[] commands => csbActivateableList.Select(x => x.GetType().Name).ToArray();

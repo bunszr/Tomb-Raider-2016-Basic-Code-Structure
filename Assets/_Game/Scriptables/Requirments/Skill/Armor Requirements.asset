@@ -9,12 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f406074a5fb224b4a9c3d5002ced414a, type: 3}
-  m_Name: FastHealingFeatureScriptable
+  m_Script: {fileID: 11500000, guid: 83e813569ef058d4c98973a0f89f997c, type: 3}
+  m_Name: Armor Requirements
   m_EditorClassIdentifier: 
-  hash: 9142
-  featureName: Fast Healing
-  description: Fast heal when you fight to enemy
-  isOpen: 0
-  requirementsScriptableBases: []
-  skillCostAmount: 2
+  description: Open Fast Healing First
+  requireFeatureTypeScriptables:
+  - {fileID: 11400000, guid: e459c92c6ab9d3e4aa9a65f5c2301557, type: 2}

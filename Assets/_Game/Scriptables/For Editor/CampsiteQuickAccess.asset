@@ -18,3 +18,10 @@ MonoBehaviour:
   objectsB:
   - {fileID: 11400000, guid: 1cf8e4a221eec664d9da620445b8bda5, type: 2}
   - {fileID: 3291319348371380792, guid: 1a4d28feb6dece546a07d801ca0c35ea, type: 3}
+  - {fileID: 11400000, guid: 912fbe6eed9a69f4498ad7a184c837a6, type: 2}
+  selectClass:
+  - name: CSBWeaponFeature
+  - name: CSBFirstLevel
+  selectClass2:
+  - name: CSBWeaponSelector
+  - name: CSBSkillFeature

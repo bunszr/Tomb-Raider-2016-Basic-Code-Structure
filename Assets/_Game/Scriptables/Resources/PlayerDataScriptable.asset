@@ -23,4 +23,4 @@ MonoBehaviour:
     characterLevel: 0
     howManyEnemyKill: 0
     currNumSkillPoint: 0
-    initialNumSkillPoint: 2
+    initialNumSkillPoint: 3

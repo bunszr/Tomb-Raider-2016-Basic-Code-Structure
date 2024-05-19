@@ -15,6 +15,7 @@ MonoBehaviour:
   loadFeatureFromJSONinEditor: 0
   loadInventoryFromJSONinEditor: 0
   loadWeaponDataFromJSONinEditor: 0
+  loadPlayerDataFromJSONinEditor: 0
   campSiteScriptableData:
     showInformationScriptableData:
       fadeDuration: 0.3
@@ -57,6 +58,19 @@ MonoBehaviour:
       ease: 6
       duration: 0.1
       yMovement: 7.64
+    showTickImageCommandScriptableData:
+      ease: 4
+      duration: 0.25
+      yMovement: 5
+    showAvailableNumSkillPointScriptableData:
+      fadeDuration: 0.2
+      fadeEase: 4
+    skillInfoPanelScriptableData:
+      fadeDuration: 0.2
+      fadeEase: 4
+      yAnimationDuration: 0.4
+      yAnimationAmount: 30.09
+      yAnimEase: 6
   weaponScriptableData:
     maxWeaponDataSaveable:
       damage: 100

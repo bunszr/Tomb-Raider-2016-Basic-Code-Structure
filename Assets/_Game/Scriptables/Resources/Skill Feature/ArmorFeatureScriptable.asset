@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbff851c2b0768a4da56f989ba5049d0, type: 3}
   m_Name: ArmorFeatureScriptable
   m_EditorClassIdentifier: 
-  hash: -25388
+  hash: 9104
   featureName: Armor
-  description: Armor
+  description: Armor feature prove you to extra protection from damage
   isOpen: 0
-  requirementsScriptableBases: []
+  requirementsScriptableBases:
+  - {fileID: 11400000, guid: b6b79d0b600bc2f448a1ea913110f159, type: 2}
+  skillCostAmount: 1

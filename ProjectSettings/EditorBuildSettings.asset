@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/_Game/Scenes/Main Scene.unity
     guid: f2581f476cd8bbe41a9eab471c6a704b
   - enabled: 1
-    path: Assets/_Game/Scenes/Levels/Level 00.unity
+    path: Assets/_Game/Scenes/Levels/Campsite.unity
     guid: c92120aad8d9ac34b9abc536b9ae75ea
   - enabled: 1
     path: Assets/_Game/Scenes/Levels/Level 01.unity

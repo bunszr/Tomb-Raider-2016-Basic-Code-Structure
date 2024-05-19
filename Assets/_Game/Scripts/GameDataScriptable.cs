@@ -26,6 +26,8 @@ public class GameDataScriptable : SingletonScriptableObject<GameDataScriptable>
         public HighlightStateScriptableData highlightStateScriptableData;
         public LockedCommandScriptableData lockedCommandScriptableData;
         public ShowTickImageCommandScriptableData showTickImageCommandScriptableData;
+        public ShowAvailableNumSkillPointScriptableData showAvailableNumSkillPointScriptableData;
+        public SkillInfoPanelScriptableData skillInfoPanelScriptableData;
 
         [System.Serializable]
         public class ShowInformationScriptableData
@@ -110,6 +112,23 @@ public class GameDataScriptable : SingletonScriptableObject<GameDataScriptable>
             public Ease ease = Ease.InOutSine;
             public float duration = .25f;
             public float yMovement = 5f;
+        }
+
+        [System.Serializable]
+        public class ShowAvailableNumSkillPointScriptableData
+        {
+            public float fadeDuration = .2f;
+            public Ease fadeEase = Ease.InOutSine;
+        }
+
+        [System.Serializable]
+        public class SkillInfoPanelScriptableData
+        {
+            public float fadeDuration = .2f;
+            public Ease fadeEase = Ease.InOutSine;
+            public float yAnimationDuration = .4f;
+            public float yAnimationAmount = .3f;
+            public Ease yAnimEase = Ease.OutElastic;
         }
     }
 
