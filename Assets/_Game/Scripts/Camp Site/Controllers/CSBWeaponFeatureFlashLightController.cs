@@ -9,7 +9,7 @@ namespace CampSite
             CSBWeaponFeatureFlashLight csbWeaponFeatureFlashLight = csbBase as CSBWeaponFeatureFlashLight;
 
             RemoveCommand(x => x is ShowWeaponDataCommandView);
-            AddCommand(new ToggleCommandAccordingFeatureOpenController(csbBase.FeatureTypeScriptable,
+            AddCommand(new ToggleCommandBasedOnFeatureState(csbBase.FeatureTypeScriptable,
 
                 new ShowFlashLightCommandView(csbBase, campSiteHolder.WeaponShowLocation.gameObject, csbWeaponFeatureFlashLight.showFlashLightCommandViewData),
                 new ShowFlashLightAfterOpenCommandView(csbBase, campSiteHolder.WeaponShowLocation.gameObject)

@@ -1,12 +1,12 @@
 namespace CampSite
 {
-    public class ToggleCommandAccordingFeatureOpenController : ICSBActivateable
+    public class ToggleCommandBasedOnFeatureState : ICSBActivateable
     {
         FeatureTypeScriptable featureTypeScriptable;
         ICSBActivateable _activeCommandWhenOpen;
         ICSBActivateable _activeCommandWhenClose;
 
-        public ToggleCommandAccordingFeatureOpenController(FeatureTypeScriptable featureTypeScriptable, ICSBActivateable activeCommandWhenClose, ICSBActivateable activeCommandWhenOpen)
+        public ToggleCommandBasedOnFeatureState(FeatureTypeScriptable featureTypeScriptable, ICSBActivateable activeCommandWhenClose, ICSBActivateable activeCommandWhenOpen)
         {
             this.featureTypeScriptable = featureTypeScriptable;
             _activeCommandWhenOpen = activeCommandWhenOpen;

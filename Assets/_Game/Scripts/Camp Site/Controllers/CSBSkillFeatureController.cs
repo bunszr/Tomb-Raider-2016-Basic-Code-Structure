@@ -32,7 +32,7 @@ namespace CampSite
 
                 new ShowAndHighlightRequirementsCommandView(csbBase, campSiteHolder.skillInfoPanel.requirementSkillPanel.requirementText, featureTypeScriptable, csbSkillFeature.lockImage));
 
-            SkillPointCommandController skillPointCommandController = new SkillPointCommandController(featureTypeScriptable,
+            ToggleCommandBasedOnFeatureState toggleCommandAccordingFeatureOpenController = new ToggleCommandBasedOnFeatureState(featureTypeScriptable,
 
                 new SkillPointCostCommandView(csbBase, campSiteHolder.skillInfoPanel.skillCostPanel.numSkillPointText, NumSkillPointRP, csbSkillFeature.skillPointCostCommandViewData),
                 new DisappearWithCanvasGroupCommandView(csbBase, campSiteHolder.skillInfoPanel.skillCostPanel.canvasGroup));
@@ -42,7 +42,7 @@ namespace CampSite
                 new ShowTickImageCommandView(csbBase, csbSkillFeature.tickImage.gameObject));
 
             AddCommand(requirementsStateController);
-            AddCommand(skillPointCommandController);
+            AddCommand(toggleCommandAccordingFeatureOpenController);
             AddCommand(upgradedTickCommandController);
 
             commandExecuter = new CommandExecuterWithCondition(new ICSBExecute[]
