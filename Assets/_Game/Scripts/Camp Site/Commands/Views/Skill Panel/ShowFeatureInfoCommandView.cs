@@ -18,6 +18,7 @@ namespace CampSite
 
         protected override void OnPointerEnter(PointerEventData eventData)
         {
+            base.OnPointerEnter(eventData);
             nameText.text = csbBase.FeatureTypeScriptable.FeatureName;
             descriptionText.text = csbBase.FeatureTypeScriptable.Description;
         }

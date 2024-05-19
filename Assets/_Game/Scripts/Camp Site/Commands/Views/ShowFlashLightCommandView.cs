@@ -34,6 +34,7 @@ namespace CampSite
 
         protected override void OnPointerEnter(PointerEventData eventData)
         {
+            base.OnPointerEnter(eventData);
             _flashLightAddOn = weaponHolder.GetComponentInChildren<IFlashLightAddOn>();
             addOnDefaultlocalPos = _flashLightAddOn.FlashLightAddOnData.addOn.transform.localPosition;
             _flashLightAddOn.FlashLightAddOnData.addOn.SetActive(true);
@@ -47,6 +48,7 @@ namespace CampSite
 
         protected override void OnPointerExit(PointerEventData eventData)
         {
+            base.OnPointerExit(eventData);
             _flashLightAddOn.FlashLightAddOnData.addOn.transform.DOKill();
             _flashLightAddOn.FlashLightAddOnData.addOn.SetActive(false);
             _flashLightAddOn.FlashLightAddOnData.addOn.transform.localPosition = addOnDefaultlocalPos;

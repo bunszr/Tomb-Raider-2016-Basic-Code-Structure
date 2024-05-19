@@ -35,8 +35,18 @@ namespace CampSite
             image.transform.SetLocalPosY(defaultLocalY);
         }
 
-        protected override void OnPointerEnter(PointerEventData eventData) => tween.PlayForward();
-        protected override void OnPointerExit(PointerEventData eventData) => tween.PlayBackwards();
+        protected override void OnPointerEnter(PointerEventData eventData)
+        {
+            base.OnPointerEnter(eventData);
+            tween.PlayForward();
+        }
+
+        protected override void OnPointerExit(PointerEventData eventData)
+        {
+            base.OnPointerExit(eventData);
+            tween.PlayBackwards();
+        }
+
         void OnClick(PointerEventData eventData) => image.transform.DOLocalMoveY(data.yMovement, .2f).SetRelative(true).From(defaultLocalY).SetEase(Ease.InFlash, 2);
     }
 }

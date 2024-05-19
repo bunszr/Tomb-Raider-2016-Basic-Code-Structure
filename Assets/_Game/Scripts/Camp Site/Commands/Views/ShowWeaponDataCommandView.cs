@@ -29,6 +29,7 @@ namespace CampSite
 
         protected override void OnPointerEnter(PointerEventData eventData)
         {
+            base.OnPointerEnter(eventData);
             GameDataScriptable.WeaponScriptableData.MaxWeaponDataSaveable maxWeaponData = GameDataScriptable.Ins.weaponScriptableData.maxWeaponDataSaveable;
             WeaponData weaponData = weaponDataScriptable.WeaponData;
 
@@ -77,6 +78,7 @@ namespace CampSite
 
         protected override void OnPointerExit(PointerEventData eventData)
         {
+            base.OnPointerExit(eventData);
             holder.canvasGroup.DOKill();
             holder.canvasGroup.transform.DOKill();
 

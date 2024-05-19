@@ -52,6 +52,7 @@ namespace CampSite
 
         protected override void OnPointerEnter(PointerEventData eventData)
         {
+            base.OnPointerEnter(eventData);
             int count = Mathf.Min(weaponFeatureTypeScriptable.costDatas.Length, costAndInventoryPanel.groups.Length);
             for (int i = 0; i < count; i++)
             {
@@ -79,6 +80,7 @@ namespace CampSite
 
         protected override void OnPointerExit(PointerEventData eventData)
         {
+            base.OnPointerExit(eventData);
             costAndInventoryPanel.canvasGroup.DOKill();
             costAndInventoryPanel.canvasGroup.transform.DOKill();
 

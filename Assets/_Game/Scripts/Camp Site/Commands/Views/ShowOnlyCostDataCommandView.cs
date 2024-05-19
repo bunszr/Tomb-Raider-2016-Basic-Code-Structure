@@ -19,6 +19,7 @@ namespace CampSite
 
         protected override void OnPointerEnter(PointerEventData eventData)
         {
+            base.OnPointerEnter(eventData);
             costAndInventoryPanel.canvasGroup.DOFade(1, ScriptableData.fadeDuration).From(0).SetEase(ScriptableData.fadeEase);
             costAndInventoryPanel.canvasGroup.transform.DOLocalMoveX(ScriptableData.posAnimationAmount, ScriptableData.posAnimationDuration).SetEase(ScriptableData.posAnimEase).From(true);
             ChangeActivatetionCostAndInventoryGroups(false);
@@ -26,6 +27,7 @@ namespace CampSite
 
         protected override void OnPointerExit(PointerEventData eventData)
         {
+            base.OnPointerExit(eventData);
             costAndInventoryPanel.canvasGroup.DOKill();
             costAndInventoryPanel.canvasGroup.transform.DOKill();
 

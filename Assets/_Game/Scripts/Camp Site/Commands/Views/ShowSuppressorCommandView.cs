@@ -16,6 +16,7 @@ namespace CampSite
 
         protected override void OnPointerEnter(PointerEventData eventData)
         {
+            base.OnPointerEnter(eventData);
             ISuppressorAddOn _suppressorAddOn = weaponHolder.GetComponentInChildren<ISuppressorAddOn>();
             suppressorDefaultlocalPos = _suppressorAddOn.SuppressorGO.transform.localPosition;
             _suppressorAddOn.SuppressorGO.SetActive(true);
@@ -24,6 +25,7 @@ namespace CampSite
 
         protected override void OnPointerExit(PointerEventData eventData)
         {
+            base.OnPointerExit(eventData);
             ISuppressorAddOn _suppressorAddOn = weaponHolder.GetComponentInChildren<ISuppressorAddOn>();
             _suppressorAddOn.SuppressorGO.transform.DOKill();
             _suppressorAddOn.SuppressorGO.SetActive(false);

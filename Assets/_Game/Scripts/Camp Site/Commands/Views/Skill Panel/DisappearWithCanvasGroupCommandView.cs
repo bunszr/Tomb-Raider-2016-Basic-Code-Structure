@@ -17,11 +17,13 @@ namespace CampSite
 
         protected override void OnPointerEnter(PointerEventData eventData)
         {
+            base.OnPointerEnter(eventData);
             canvasGroup.alpha = 0;
         }
 
         protected override void OnPointerExit(PointerEventData eventData)
         {
+            base.OnPointerExit(eventData);
             canvasGroup.alpha = 1;
         }
     }

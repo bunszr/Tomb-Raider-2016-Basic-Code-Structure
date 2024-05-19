@@ -29,6 +29,7 @@ namespace CampSite
 
         protected override void OnPointerEnter(PointerEventData eventData)
         {
+            base.OnPointerEnter(eventData);
             campSiteHolder.WeaponShowLocation.DOKill();
             campSiteHolder.WeaponFeatureIndicator.DOKill();
 

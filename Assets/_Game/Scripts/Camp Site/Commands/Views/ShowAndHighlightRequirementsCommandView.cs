@@ -46,11 +46,13 @@ namespace CampSite
 
         protected override void OnPointerEnter(PointerEventData eventData)
         {
+            base.OnPointerEnter(eventData);
             requirementsText.text = description;
         }
 
         protected override void OnPointerExit(PointerEventData eventData)
         {
+            base.OnPointerExit(eventData);
             requirementsText.text = "";
             requirementsText.transform.DOKill();
             requirementsText.transform.SetLocalPosZ(0);

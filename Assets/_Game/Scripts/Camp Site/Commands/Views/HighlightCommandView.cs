@@ -26,7 +26,16 @@ namespace CampSite
             image.fillAmount = 0;
         }
 
-        protected override void OnPointerEnter(PointerEventData eventData) => tween.PlayForward();
-        protected override void OnPointerExit(PointerEventData eventData) => tween.PlayBackwards();
+        protected override void OnPointerEnter(PointerEventData eventData)
+        {
+            base.OnPointerEnter(eventData);
+            tween.PlayForward();
+        }
+
+        protected override void OnPointerExit(PointerEventData eventData)
+        {
+            base.OnPointerExit(eventData);
+            tween.PlayBackwards();
+        }
     }
 }

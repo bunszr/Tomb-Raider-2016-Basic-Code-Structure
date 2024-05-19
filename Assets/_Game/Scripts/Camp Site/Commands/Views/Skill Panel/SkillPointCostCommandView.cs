@@ -42,12 +42,14 @@ namespace CampSite
 
         protected override void OnPointerEnter(PointerEventData eventData)
         {
+            base.OnPointerEnter(eventData);
             numText.text = skillFeatureTypeScriptable.SkillCostAmount.ToString();
             numText.color = skillFeatureTypeScriptable.SkillCostAmount > numSkillPointRP.Value ? Color.red : numText.color;
         }
 
         protected override void OnPointerExit(PointerEventData eventData)
         {
+            base.OnPointerExit(eventData);
             numText.transform.transform.SetLocalPosZ(0);
         }
 
