@@ -1,4 +1,5 @@
 using System;
+using Sirenix.OdinInspector;
 
 public class CommandExecuterWithCondition
 {
@@ -15,4 +16,12 @@ public class CommandExecuterWithCondition
     {
         if (condition()) for (int i = 0; i < _executeableArray.Length; i++) _executeableArray[i].Execute();
     }
+
+#if UNITY_EDITOR
+    [Button]
+    void ExecuteAllWithNoCondition()
+    {
+        for (int i = 0; i < _executeableArray.Length; i++) _executeableArray[i].Execute();
+    }
+#endif
 }

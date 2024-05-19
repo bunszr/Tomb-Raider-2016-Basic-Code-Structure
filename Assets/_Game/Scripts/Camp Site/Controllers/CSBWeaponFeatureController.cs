@@ -12,8 +12,6 @@ namespace CampSite
 
         GameObject nextPanelTogglerGO => campSiteHolder.UpgradedPanel.gameObject;
 
-        CommandExecuterWithCondition commandExecuter;
-
         protected virtual void Start()
         {
             csbWeaponFeature = csbBase.GetComponent<CSBWeaponFeature>();

@@ -7,8 +7,6 @@ namespace CampSite
     {
         CSBFirstLevel csbFirstLevel;
 
-        CommandExecuterWithCondition commandExecuter;
-
         protected void Start()
         {
             csbFirstLevel = GetComponent<CSBFirstLevel>();

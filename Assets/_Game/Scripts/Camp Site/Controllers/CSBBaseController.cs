@@ -18,12 +18,15 @@ namespace CampSite
         [Inject] protected CampSiteHolder campSiteHolder;
         [Inject] protected Player player;
 
+        [ShowInInspector] protected CommandExecuterWithCondition commandExecuter;
+
 #if UNITY_EDITOR
         [ReadOnly, ShowInInspector] string[] commands => csbActivateableList.Select(x => x.GetType().Name).ToArray();
 #endif
 
         protected virtual void Awake()
         {
+
             csbBase = GetComponent<CSBBase>();
             GetComponentInParent<ISubject<IPanelObserver>>().Register(this);
         }
