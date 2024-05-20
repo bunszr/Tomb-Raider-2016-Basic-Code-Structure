@@ -30,7 +30,6 @@ namespace CampSite
             base.OnPointerEnter(eventData);
             // cam.LookAt = transform;
             tween.PlayForward();
-            Debug.Log("enter");
         }
 
         protected override void OnPointerExit(PointerEventData eventData)

@@ -41,5 +41,6 @@ public class DesktopInput : IInput
     {
         public bool HasPressedCollectItemKey => Input.GetKeyDown(KeyCode.E);
         public bool HasPressedHitKey => Input.GetKeyDown(KeyCode.E);
+        public bool HasPressedSitCampsiteKey => Input.GetKeyDown(KeyCode.E);
     }
 }
