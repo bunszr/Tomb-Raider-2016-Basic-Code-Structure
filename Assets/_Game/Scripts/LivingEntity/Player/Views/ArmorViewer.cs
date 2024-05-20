@@ -13,7 +13,7 @@ public class ArmorViewer : MonoBehaviour
 
     private void Start()
     {
-        player.ArmorRP.Subscribe(OnArmorChange).AddTo(disposables);
+        player.PlayerDataScriptable.ArmorRP.Subscribe(OnArmorChange).AddTo(disposables);
         player.ArmorFeatureScriptable.IsOpenRP.Subscribe(OnArmorFeatureChanged).AddTo(disposables);
     }
 
@@ -30,6 +30,6 @@ public class ArmorViewer : MonoBehaviour
     void OnArmorChange(float armor)
     {
         // armorTMPro.text = armor.ToString();
-        armorImage.fillAmount = armor / player.MaxArmor;
+        armorImage.fillAmount = armor / player.PlayerDataScriptable.MaxArmor;
     }
 }

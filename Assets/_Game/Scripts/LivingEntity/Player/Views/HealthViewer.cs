@@ -12,7 +12,7 @@ public class HealthViewer : MonoBehaviour
 
     private void Start()
     {
-        player.HealthRP.Subscribe(OnHealthChanged).AddTo(disposables);
+        player.PlayerDataScriptable.HealthRP.Subscribe(OnHealthChanged).AddTo(disposables);
     }
 
     private void OnDestroy()
@@ -23,6 +23,6 @@ public class HealthViewer : MonoBehaviour
     void OnHealthChanged(float health)
     {
         // healthTMPro.text = health + "|";
-        healthImage.fillAmount = health / player.MaxHealth;
+        healthImage.fillAmount = health / player.PlayerDataScriptable.MaxHealth;
     }
 }

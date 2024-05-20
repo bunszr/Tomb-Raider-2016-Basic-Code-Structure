@@ -21,7 +21,7 @@ namespace Character
             collisionEnterExitList = new List<ICollisionEnterExit>()
             {
                 new CrossFadeAnimWhenHitIGiveDamage(collisionCustom, player.Animator), // Its order in the list is improtant therefore IsHitTo bool
-                new HealthAndArmorController(collisionCustom, player.HealthRP, player.ArmorRP, player.ArmorFeatureScriptable),
+                new HealthAndArmorController(collisionCustom, player.PlayerDataScriptable.HealthRP, player.PlayerDataScriptable.ArmorRP, player.ArmorFeatureScriptable),
             };
 
             collisionEnterExitList.ForEach(x => x.Activate());

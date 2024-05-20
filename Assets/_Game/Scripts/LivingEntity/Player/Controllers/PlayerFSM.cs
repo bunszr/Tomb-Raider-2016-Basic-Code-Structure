@@ -31,7 +31,7 @@ namespace CharacterPlayer
             triggerCustom.onTriggerEnterEvent += OnCustomTriggerEnter;
             triggerCustom.onTriggerExitEvent += OnCustomTriggerExit;
 
-            player.HealthRP.Where(x => x <= 0).Subscribe(x => OnPlayerDeath());
+            player.PlayerDataScriptable.HealthRP.Where(x => x <= 0).Subscribe(x => OnPlayerDeath());
 
             player.FastHealingFeatureScriptable.IsOpenRP.Subscribe(OnFastHealing).AddTo(disposables);
         }
@@ -54,7 +54,7 @@ namespace CharacterPlayer
 
 
 #if UNITY_EDITOR
-        [Button] void SetHealth(int value = 0) => player.HealthRP.Value = value;
+        [Button] void SetHealth(int value = 0) => player.PlayerDataScriptable.HealthRP.Value = value;
 #endif
     }
 }
