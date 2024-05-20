@@ -53,6 +53,10 @@ public class NormalAimBehavior : AimBehaviourBase, IEquiptable
         _thirdPersonController.Animator.SetBool(APs.Aim, true);
         _thirdPersonController.IsStrafe = true;
         weaponAimData.aimIndicatorCanvas.gameObject.SetActive(true);
+        Vector3 strafeLook = (_thirdPersonController.Transform.position - weaponAimData.freeLookCam.transform.position).SetPosY(0);
+        _thirdPersonController.StrafeDirectionTransform.rotation = Quaternion.LookRotation(strafeLook);
+        _thirdPersonController.Transform.rotation = Quaternion.LookRotation(strafeLook);
+        weaponAimData.aimCamFollowTarget.rotation = Quaternion.LookRotation(strafeLook);
     }
 
     void ReleasedMethod()
@@ -67,7 +71,10 @@ public class NormalAimBehavior : AimBehaviourBase, IEquiptable
     public override void OnUpdate()
     {
         // Check if it is already pressed "HasPressedAimKey" when weapon toggling process
-        if (IM.Ins.Input.WeaponInput.HasHoldingAimKey && enter) PressedMethod();
+        if (IM.Ins.Input.WeaponInput.HasHoldingAimKey && enter)
+        {
+            aim = true;
+        }
         else if (IM.Ins.Input.WeaponInput.HasPressedAimKey) PressedMethod();
 
         if (IM.Ins.Input.WeaponInput.HasReleasedAimKey) ReleasedMethod();
@@ -78,6 +85,8 @@ public class NormalAimBehavior : AimBehaviourBase, IEquiptable
             Quaternion rotY = Quaternion.AngleAxis(-IM.Ins.Input.WeaponInput.VerticalMouseAxis * Time.deltaTime * ScriptableData.mouseSensitive, Vector3.right);
             weaponAimData.strafeDirectionTransform.rotation *= rotX;
             weaponAimData.aimCamFollowTarget.rotation *= rotY;
+
+            weaponAimData.freeLookCam.m_XAxis.Value = _thirdPersonController.Transform.rotation.eulerAngles.y;
 
             RaycastHit hit;
             Ray ray = cam.ScreenPointToRay(new Vector3(Screen.width * .5f, Screen.height * .5f));

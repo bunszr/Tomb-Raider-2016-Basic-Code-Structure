@@ -1,4 +1,5 @@
-﻿using Sirenix.OdinInspector;
+﻿using Cinemachine;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -11,6 +12,7 @@ namespace Invector.vCharacterController
         public KeyCode sprintInput = KeyCode.LeftShift;
         public string horizontalInput = "Horizontal";
         public string verticallInput = "Vertical";
+        public CinemachineFreeLook freeLookCam;
 
         protected override void Update()
         {
@@ -35,8 +37,19 @@ namespace Invector.vCharacterController
 
         public virtual void MoveInput()
         {
-            thirdPersonController.input.x = Input.GetAxis(horizontalInput);
-            thirdPersonController.input.z = Input.GetAxis(verticallInput);
+            Vector3 worldInput = new Vector3(Input.GetAxis(horizontalInput), 0, Input.GetAxis(verticallInput));
+            float angle = Utility.FindDegree(transform.position - freeLookCam.transform.position, Utility.DegreeSpace.xz);
+            Vector3 relativeCamInput = Quaternion.AngleAxis(freeLookCam.m_XAxis.Value, Vector3.up) * worldInput;
+
+
+            Debug.DrawRay(freeLookCam.transform.position, relativeCamInput, Color.red);
+            Debug.DrawRay(freeLookCam.transform.position, worldInput);
+
+            thirdPersonController.input.x = relativeCamInput.x;
+            thirdPersonController.input.z = relativeCamInput.z;
+
+            // thirdPersonController.input.x = Input.GetAxis(horizontalInput);
+            // thirdPersonController.input.z = Input.GetAxis(verticallInput);
         }
 
         protected virtual void StrafeInput()
