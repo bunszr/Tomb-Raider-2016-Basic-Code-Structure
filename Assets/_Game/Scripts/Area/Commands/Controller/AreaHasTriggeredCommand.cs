@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace TriggerableAreaNamespace
@@ -7,13 +6,8 @@ namespace TriggerableAreaNamespace
     {
         TriggerCustom triggerCustom;
         bool isEnterPlayer;
-        Func<bool> extraCondition;
 
-        public AreaHasTriggeredCommand(TriggerCustom triggerCustom, Func<bool> extraCondition)
-        {
-            this.triggerCustom = triggerCustom;
-            this.extraCondition = extraCondition;
-        }
+        public AreaHasTriggeredCommand(TriggerCustom triggerCustom) => this.triggerCustom = triggerCustom;
 
         public void Enter()
         {
@@ -29,7 +23,7 @@ namespace TriggerableAreaNamespace
 
         private void OnCustomTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent(out Player player) && extraCondition()) isEnterPlayer = true;
+            if (other.TryGetComponent(out Player player)) isEnterPlayer = true;
         }
 
         private void OnCustomTriggerExit(Collider other)

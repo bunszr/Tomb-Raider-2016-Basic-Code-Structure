@@ -1,8 +1,5 @@
 using System;
-using System.Collections.Generic;
-using Sirenix.OdinInspector;
 using UnityEngine;
-using Zenject;
 
 namespace TriggerableAreaNamespace
 {
@@ -26,7 +23,8 @@ namespace TriggerableAreaNamespace
             {
                 new ParalelCommand( new IAreaCommad[] {
                     new PressKeyCommand(() => IM.Ins.Input.AreaInput.HasPressedCollectItemKey),
-                    new AreaHasTriggeredCommand(triggerCustom, areaConditionCheck),
+                    new AreaHasTriggeredCommand(triggerCustom),
+                    new ExtraConditionCommand(areaConditionCheck),
                     new TriggeredPlayerSetterCommand(triggerCustom, TriggeredPlayerReference) }),
                 new DestoryAreaCommonViewerCommand(areaInventoryItem),
                 new DisableCharacterMovementCommand(TriggeredPlayerReference),

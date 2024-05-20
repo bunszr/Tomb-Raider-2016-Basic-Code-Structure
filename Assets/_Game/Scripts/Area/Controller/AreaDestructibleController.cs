@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using Zenject;
 
 namespace TriggerableAreaNamespace
 {
@@ -20,8 +19,6 @@ namespace TriggerableAreaNamespace
         {
             triggerCustom = gameObject.GetOrAddComponent<TriggerCustom>();
 
-
-            Func<bool> areaConditionCheck = new Func<bool>(() => true);
             Func<bool> pressPunchKeyConditionCheck = new Func<bool>(() => IM.Ins.Input.AreaInput.HasPressedHitKey);
 
             fragmentsRb = areaDestructible.fragmentsHolder.GetComponentsInChildren<Rigidbody>();
@@ -30,7 +27,7 @@ namespace TriggerableAreaNamespace
             {
                 new ParalelCommand( new IAreaCommad[] {
                     new PressKeyCommand(() => IM.Ins.Input.AreaInput.HasPressedCollectItemKey),
-                    new AreaHasTriggeredCommand(triggerCustom, areaConditionCheck),
+                    new AreaHasTriggeredCommand(triggerCustom),
                     new TriggeredPlayerSetterCommand(triggerCustom, TriggeredPlayerReference) }),
                 new DestoryAreaCommonViewerCommand(areaDestructible),
                 new CrossFadeAnimationCommand(TriggeredPlayerReference, areaDestructible.punchWallIdleAnim),

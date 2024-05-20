@@ -1,5 +1,3 @@
-using System;
-using CampSite;
 using UnityEngine;
 
 namespace TriggerableAreaNamespace
@@ -18,13 +16,11 @@ namespace TriggerableAreaNamespace
         {
             triggerCustom = gameObject.GetOrAddComponent<TriggerCustom>();
 
-            Func<bool> areaConditionCheck = new Func<bool>(() => true);
-
             IAreaCommad[] areaCommads = new IAreaCommad[]
             {
                 new ParalelCommand( new IAreaCommad[] {
                     new PressKeyCommand(() => IM.Ins.Input.AreaInput.HasPressedSitCampsiteKey),
-                    new AreaHasTriggeredCommand(triggerCustom, areaConditionCheck),
+                    new AreaHasTriggeredCommand(triggerCustom),
                     new TriggeredPlayerSetterCommand(triggerCustom, TriggeredPlayerReference) }),
                 new ToggleActivationGameObjectCommand(areaCampsite.PopUpGo, false),
                 new DisableCharacterMovementCommand(TriggeredPlayerReference),
