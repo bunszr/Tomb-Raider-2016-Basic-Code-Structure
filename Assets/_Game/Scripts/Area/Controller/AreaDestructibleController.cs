@@ -31,7 +31,7 @@ namespace TriggerableAreaNamespace
                     new TriggeredPlayerSetterCommand(triggerCustom, TriggeredPlayerReference) }),
                 new DestoryAreaCommonViewerCommand(areaDestructible),
                 new CrossFadeAnimationCommand(TriggeredPlayerReference, areaDestructible.punchWallIdleAnim),
-                new DisableCharacterMovementCommand(TriggeredPlayerReference),
+                new ChangePlayerInputCommand(PlayerInputType.None),
                 new ToggleCameraCommand(areaDestructible, TriggeredPlayerReference, true),
                 new MovePlayerToLocationCommand(areaDestructible, TriggeredPlayerReference),
                 new ParalelCommand(new IAreaCommad[] {
@@ -39,7 +39,7 @@ namespace TriggerableAreaNamespace
                     new PressKeyToInteractionWithDelayCommand(areaDestructible.punchPopUpGo, pressPunchKeyConditionCheck, 1, areaDestructible.maxPunchCount) }),
                 new CrossFadeAnimationCommand(TriggeredPlayerReference, APs.CrossFadeEmptyState),
                 new ToggleCameraCommand(areaDestructible, TriggeredPlayerReference, false),
-                new EnableCharacterMovementCommand(TriggeredPlayerReference),
+                new ChangePlayerInputCommand(PlayerInputType.Normal),
                 new DestroyFragmentWallCommand(fragmentsRb),
             };
 

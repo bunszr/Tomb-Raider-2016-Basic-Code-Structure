@@ -23,11 +23,11 @@ namespace TriggerableAreaNamespace
                     new AreaHasTriggeredCommand(triggerCustom),
                     new TriggeredPlayerSetterCommand(triggerCustom, TriggeredPlayerReference) }),
                 new DestoryAreaCommonViewerCommand(areaDocument),
-                new DisableCharacterMovementCommand(TriggeredPlayerReference),
+                new ChangePlayerInputCommand(PlayerInputType.None),
                 new ToggleCameraCommand(areaDocument, TriggeredPlayerReference, true),
                 new ParalelCommand(new IAreaCommad[] { new InvestigateDocumentCommand(TriggeredPlayerReference) , new CameraFieldOfViewCommand(areaDocument) }),
                 new ToggleCameraCommand(areaDocument, TriggeredPlayerReference, false),
-                new EnableCharacterMovementCommand(TriggeredPlayerReference),
+                new ChangePlayerInputCommand(PlayerInputType.Normal),
             };
 
             commandExecuter = new CommandExecuter(this, areaCommads) { commandExecuterDebug = commandExecuterDebug };

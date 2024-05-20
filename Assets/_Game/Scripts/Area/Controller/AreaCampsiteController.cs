@@ -23,10 +23,10 @@ namespace TriggerableAreaNamespace
                     new AreaHasTriggeredCommand(triggerCustom),
                     new TriggeredPlayerSetterCommand(triggerCustom, TriggeredPlayerReference) }),
                 new ToggleActivationGameObjectCommand(areaCampsite.PopUpGo, false),
-                new DisableCharacterMovementCommand(TriggeredPlayerReference),
+                new ChangePlayerInputCommand(PlayerInputType.None),
                 new ActivateCampsiteFirstPanelCommand(areaCampsite.campsiteFirstPanelToOpenGo),
                 new WaitForOnCampsiteExitCommand(),
-                new EnableCharacterMovementCommand(TriggeredPlayerReference),
+                new ChangePlayerInputCommand(PlayerInputType.Normal),
                 new ToggleActivationGameObjectCommand(areaCampsite.PopUpGo, true),
             };
 

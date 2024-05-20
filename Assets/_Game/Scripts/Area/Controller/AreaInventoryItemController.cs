@@ -27,11 +27,11 @@ namespace TriggerableAreaNamespace
                     new ExtraConditionCommand(areaConditionCheck),
                     new TriggeredPlayerSetterCommand(triggerCustom, TriggeredPlayerReference) }),
                 new DestoryAreaCommonViewerCommand(areaInventoryItem),
-                new DisableCharacterMovementCommand(TriggeredPlayerReference),
+                new ChangePlayerInputCommand(PlayerInputType.None),
                 new CollectAnimationCommand(TriggeredPlayerReference, 0),
                 new TakenInventoryItemViewCommand(areaInventoryItem),
                 new IncereaseInventoryItemCommand(areaInventoryItem),
-                new EnableCharacterMovementCommand(TriggeredPlayerReference),
+                new ChangePlayerInputCommand(PlayerInputType.Normal),
             };
 
             commandExecuter = new CommandExecuter(this, areaCommads) { commandExecuterDebug = commandExecuterDebug };
