@@ -2156,7 +2156,6 @@ MonoBehaviour:
   player: {fileID: 1461491027}
   playerControllerGo: {fileID: 955818762}
   stateMachineDebug:
-    isDebug: 1
     maxStateCountToShow: 8
     enteringStatesList: []
 --- !u!114 &955818766
@@ -2286,42 +2285,6 @@ Transform:
   m_Father: {fileID: 418663972}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 37.884, z: 0}
---- !u!21 &970593506
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: UI/RoundedCorners/RoundedCorners
-  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _ColorMask: 15
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _WidthHeightRadius: {r: 218.7164, g: 66.021, b: 20.82, a: 0}
-  m_BuildTextureStacks: []
 --- !u!114 &975940006 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8711674100925359047, guid: a3148b97b85400142826654780a0ea51,
@@ -2498,7 +2461,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 970593506}
+  m_Material: {fileID: 1995689275}
   m_Color: {r: 0, g: 0, b: 0, a: 0.2}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -3683,7 +3646,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 169aa2a6a91e73e4aa8bdbea7dfdedb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
   rb: {fileID: 975940013}
   colider: {fileID: 975940012}
   animator: {fileID: 975940011}
@@ -3692,7 +3654,6 @@ MonoBehaviour:
   weaponHolder: {fileID: 1969579105}
   playerDataScriptable: {fileID: 11400000, guid: 5e01616ab7f5d414a9a05348f3c4fd0c,
     type: 2}
-  maxArmor: 100
   fastHealingFeatureScriptable: {fileID: 11400000, guid: e459c92c6ab9d3e4aa9a65f5c2301557,
     type: 2}
   armorFeatureScriptable: {fileID: 11400000, guid: 912fbe6eed9a69f4498ad7a184c837a6,
@@ -5120,6 +5081,42 @@ MonoBehaviour:
     weaponAimData: {fileID: 1760880283}
     bodyAndHandRig: {fileID: 749161456}
   destroyExistingWeapons: 1
+--- !u!21 &1995689275
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI/RoundedCorners/RoundedCorners
+  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _WidthHeightRadius: {r: 206.7164, g: 22.4218, b: 11.3, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1 &2008879828
 GameObject:
   m_ObjectHideFlags: 0

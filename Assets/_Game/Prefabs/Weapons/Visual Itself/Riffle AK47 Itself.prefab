@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Suppressor
       objectReference: {fileID: 0}
+    - target: {fileID: 952426705763612614, guid: 994d8351c3334ac4aab88b186484f852,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6805985194609147686, guid: 994d8351c3334ac4aab88b186484f852,
         type: 3}
       propertyPath: m_RootOrder
@@ -278,6 +283,11 @@ PrefabInstance:
     - target: {fileID: 6595251343793767732, guid: 0803179d665d1be498fd9aea84676d56,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7559176015528249995, guid: 0803179d665d1be498fd9aea84676d56,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

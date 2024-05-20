@@ -1,14 +1,15 @@
 using UnityEngine;
 
-public class FlashLightBehaviour : IFlashBehaviour, IEquiptable
+public class FlashLightBehaviour : IEquiptable
 {
     WeaponBase weaponBase;
-    FlashLightAddOnData flashLightAddOnData;
+    IFlashLightAddOn _flashLightAddOn;
 
-    public FlashLightBehaviour(WeaponBase weapon, FlashLightAddOnData flashLightAddOnData)
+    public FlashLightBehaviour(WeaponBase weaponBase)
     {
-        weaponBase = weapon;
-        this.flashLightAddOnData = flashLightAddOnData;
+        this.weaponBase = weaponBase;
+        _flashLightAddOn = weaponBase as IFlashLightAddOn;
+        _flashLightAddOn.FlashLightAddOnData.addOn.SetActive(true);
     }
 
     public virtual void Enter() => UpdateManager.Ins.RegisterAsUpdate(weaponBase, OnUpdate);
@@ -16,6 +17,6 @@ public class FlashLightBehaviour : IFlashBehaviour, IEquiptable
 
     void OnUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.Q)) flashLightAddOnData.light.enabled = !flashLightAddOnData.light.enabled;
+        if (IM.Ins.Input.WeaponInput.HasPressFlashLightKey) _flashLightAddOn.FlashLightAddOnData.light.enabled = !_flashLightAddOn.FlashLightAddOnData.light.enabled;
     }
 }

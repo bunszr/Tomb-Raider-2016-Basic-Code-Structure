@@ -27,32 +27,12 @@ public class AK47lInstaller : PlayerWeaponBaseInstaller
 
     public void OnSuppressorGain(bool isOpen)
     {
-
+        (WeaponBase as ISuppressorAddOn).SuppressorGO.SetActive(isOpen);
+        if (!isOpen) AddExtraFire(new NormalMuzzleBehaviour(aK47.normalMuzzleBehaviourData));
     }
 
     public void OnFlashLightGain(bool isOpen)
     {
-        // FlashLightLoader flashLightLoader = new FlashLightLoader(aK47, isOpen, aK47.flashLightAddOnData, ref aK47._flashBehaviour);
+        if (isOpen) AddEquiptable(new FlashLightBehaviour(WeaponBase));
     }
-
-    // public class SuppressorLoader
-    // {
-    //     public SuppressorLoader(IWeapon weaponBase, bool hasSuppressor, GameObject suppressorGO, ref IMuzzleBehaviour _muzzleBehaviour, NormalMuzzleBehaviour.NormalMuzzleBehaviourData normalMuzzleBehaviourData)
-    //     {
-    //         ISuppressorAddOn _suppressorAddOn = weaponBase.Transform.GetComponent<ISuppressorAddOn>();
-    //         if (hasSuppressor) _muzzleBehaviour = new NullMuzzleBehaviour(weaponBase);
-    //         else _muzzleBehaviour = new NormalMuzzleBehaviour(weaponBase, normalMuzzleBehaviourData);
-    //         suppressorGO.SetActive(hasSuppressor);
-    //     }
-    // }
-
-    // public class FlashLightLoader
-    // {
-    //     public FlashLightLoader(IWeapon weaponBase, bool hasFlashLight, FlashLightAddOnData flashLightAddOnData, ref IFlashBehaviour _flashBehaviour)
-    //     {
-    //         if (hasFlashLight) _flashBehaviour = new FlashLightBehaviour(weaponBase, flashLightAddOnData);
-    //         else _flashBehaviour = new NullFlashLightBehaviour();
-    //         flashLightAddOnData.addOn.SetActive(hasFlashLight);
-    //     }
-    // }
 }

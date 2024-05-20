@@ -1,4 +1,1 @@
-public interface IMuzzleBehaviour
-{
-    void Fire();
-}
+public interface IMuzzleBehaviour : IExtraFire { }

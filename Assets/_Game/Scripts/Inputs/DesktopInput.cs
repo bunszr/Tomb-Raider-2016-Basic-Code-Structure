@@ -32,6 +32,7 @@ public class DesktopInput : IInput
         public bool HasPressedAimKey => Input.GetMouseButtonDown(1);
         public bool HasReleasedAimKey => Input.GetMouseButtonUp(1);
         public bool HasHoldingAimKey => Input.GetMouseButton(1);
+        public bool HasPressFlashLightKey => Input.GetKeyDown(KeyCode.E);
         public float HorizontalMouseAxis => Input.GetAxis("Mouse X");
         public float VerticalMouseAxis => Input.GetAxis("Mouse Y");
     }

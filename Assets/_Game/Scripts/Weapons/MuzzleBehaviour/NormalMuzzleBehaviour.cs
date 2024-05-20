@@ -1,23 +1,25 @@
-using Lean.Pool;
+using DG.Tweening;
 using UnityEngine;
 
-public class NormalMuzzleBehaviour : BaseMuzzleBehaviour
+public class NormalMuzzleBehaviour : IMuzzleBehaviour
 {
     [System.Serializable]
     public class NormalMuzzleBehaviourData
     {
-
+        public SpriteRenderer muzzleSpriteRenderer;
+        public float lifeTimeDuration = .1f;
     }
 
-    public NormalMuzzleBehaviourData data;
+    Tween tween;
+    NormalMuzzleBehaviourData data;
 
-    public NormalMuzzleBehaviour(WeaponBase weapon, NormalMuzzleBehaviourData data) : base(weapon)
-    {
-        this.data = data;
-    }
+    public NormalMuzzleBehaviour(NormalMuzzleBehaviourData data) => this.data = data;
 
-    public override void Fire()
+    public void Fire()
     {
-        // Add muzzle effect
+        data.muzzleSpriteRenderer.gameObject.SetActive(true);
+
+        tween.KillMine();
+        tween = DOVirtual.DelayedCall(data.lifeTimeDuration, () => data.muzzleSpriteRenderer.gameObject.SetActive(false));
     }
 }
