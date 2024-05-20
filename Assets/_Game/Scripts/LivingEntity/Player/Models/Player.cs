@@ -17,21 +17,4 @@ public class Player : LivingEntity, IEnemyTarget
     public ArmorFeatureScriptable ArmorFeatureScriptable { get => armorFeatureScriptable; }
 
     public PlayerDataScriptable PlayerDataScriptable { get => playerDataScriptable; }
-
-    private void Awake()
-    {
-        StaticColliderManager.PlayerDictionary.Add(transform.GetInstanceID(), this);
-        StaticColliderManager.AddIEnemyTarget(transform.GetInstanceID(), this);
-    }
-
-    private void OnDestroy()
-    {
-        StaticColliderManager.PlayerDictionary.Remove(transform.GetInstanceID());
-        StaticColliderManager.RemoveIEnemyTarget(transform.GetInstanceID(), this);
-    }
-
-    public void ToggleStrafe()
-    {
-
-    }
 }
