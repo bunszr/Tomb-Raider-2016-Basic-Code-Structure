@@ -2,6 +2,7 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.AI;
+using Zenject;
 
 namespace Invector.vCharacterController
 {
@@ -10,8 +11,6 @@ namespace Invector.vCharacterController
         public KeyCode jumpInput = KeyCode.Space;
         public KeyCode strafeInput = KeyCode.Tab; //Strafing is the act of moving sideways in a video game relative to the player's forward direction
         public KeyCode sprintInput = KeyCode.LeftShift;
-        public string horizontalInput = "Horizontal";
-        public string verticallInput = "Vertical";
         public CinemachineFreeLook freeLookCam;
 
         protected override void Update()
@@ -37,7 +36,7 @@ namespace Invector.vCharacterController
 
         public virtual void MoveInput()
         {
-            Vector3 worldInput = new Vector3(Input.GetAxis(horizontalInput), 0, Input.GetAxis(verticallInput));
+            Vector3 worldInput = new Vector3(IM.Ins.Input.PlayerInput.HorizontalInput, 0, IM.Ins.Input.PlayerInput.VerticalInput);
             float angle = Utility.FindDegree(transform.position - freeLookCam.transform.position, Utility.DegreeSpace.xz);
             Vector3 relativeCamInput = Quaternion.AngleAxis(freeLookCam.m_XAxis.Value, Vector3.up) * worldInput;
 
@@ -75,7 +74,7 @@ namespace Invector.vCharacterController
 
         protected virtual void JumpInput()
         {
-            if (Input.GetKeyDown(jumpInput) && JumpConditions())
+            if (IM.Ins.Input.PlayerInput.HasPressedJumpInput && JumpConditions())
                 thirdPersonController.Jump();
         }
     }
