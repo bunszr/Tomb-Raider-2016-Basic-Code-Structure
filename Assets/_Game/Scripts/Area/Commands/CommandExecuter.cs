@@ -13,18 +13,14 @@ namespace TriggerableAreaNamespace
         public class CommandExecuterDebug
         {
             int counter = 1;
-            [HorizontalGroup("a"), SerializeField] bool isDebug = false;
             [HorizontalGroup("a"), SerializeField] int maxStateCountToShow = 8;
             [SerializeField] List<string> enteringStatesList;
 
             public void Debug(string stateName)
             {
 #if UNITY_EDITOR
-                if (isDebug)
-                {
-                    if (enteringStatesList.Count > maxStateCountToShow - 1) enteringStatesList.RemoveAt(0);
-                    enteringStatesList.Add(counter++ + " " + stateName);
-                }
+                if (enteringStatesList.Count > maxStateCountToShow - 1) enteringStatesList.RemoveAt(0);
+                enteringStatesList.Add(counter++ + " " + stateName);
 #endif
             }
         }

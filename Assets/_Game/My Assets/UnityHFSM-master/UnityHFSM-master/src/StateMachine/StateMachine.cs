@@ -27,18 +27,14 @@ namespace FSM
 		public class StateMachineDebug
 		{
 			int counter = 1;
-			[HorizontalGroup("a"), SerializeField] bool isDebug = false;
 			[HorizontalGroup("a"), SerializeField] int maxStateCountToShow = 8;
 			[SerializeField] List<string> enteringStatesList;
 
 			public void Debug(string stateName)
 			{
 #if UNITY_EDITOR
-				if (isDebug)
-				{
-					if (enteringStatesList.Count > maxStateCountToShow - 1) enteringStatesList.RemoveAt(0);
-					enteringStatesList.Add(counter++ + " " + stateName);
-				}
+				if (enteringStatesList.Count > maxStateCountToShow - 1) enteringStatesList.RemoveAt(0);
+				enteringStatesList.Add(counter++ + " " + stateName);
 #endif
 			}
 		}
@@ -62,13 +58,14 @@ namespace FSM
 				transitions.Add(t);
 			}
 
-			public void AddTriggerTransition(TEvent trigger, TransitionBase<TStateId> transition) {
+			public void AddTriggerTransition(TEvent trigger, TransitionBase<TStateId> transition)
+			{
 				triggerToTransitions = triggerToTransitions
 					?? new Dictionary<TEvent, List<TransitionBase<TStateId>>>();
 
 				List<TransitionBase<TStateId>> transitionsOfTrigger;
 
-				if (! triggerToTransitions.TryGetValue(trigger, out transitionsOfTrigger))
+				if (!triggerToTransitions.TryGetValue(trigger, out transitionsOfTrigger))
 				{
 					transitionsOfTrigger = new List<TransitionBase<TStateId>>();
 					triggerToTransitions.Add(trigger, transitionsOfTrigger);
@@ -202,7 +199,8 @@ namespace FSM
 				}
 			}
 
-			if (activeState.isGhostState) {
+			if (activeState.isGhostState)
+			{
 				TryAllDirectTransitions();
 			}
 		}
@@ -287,14 +285,14 @@ namespace FSM
 
 			ChangeState(startState.state);
 
-			for (int i = 0; i < transitionsFromAny.Count; i ++)
+			for (int i = 0; i < transitionsFromAny.Count; i++)
 			{
 				transitionsFromAny[i].OnEnter();
 			}
 
 			foreach (List<TransitionBase<TStateId>> transitions in triggerTransitionsFromAny.Values)
 			{
-				for (int i = 0; i < transitions.Count; i ++)
+				for (int i = 0; i < transitions.Count; i++)
 				{
 					transitions[i].OnEnter();
 				}
@@ -350,7 +348,8 @@ namespace FSM
 
 			bool hasChangedState = TryAllGlobalTransitions();
 
-			if (!hasChangedState) {
+			if (!hasChangedState)
+			{
 				TryAllDirectTransitions();
 			}
 
@@ -375,10 +374,12 @@ namespace FSM
 		/// </summary>
 		/// <param name="name"></param>
 		/// <returns></returns>
-		private StateBundle GetOrCreateStateBundle(TStateId name) {
+		private StateBundle GetOrCreateStateBundle(TStateId name)
+		{
 			StateBundle bundle;
 
-			if (! nameToStateBundle.TryGetValue(name, out bundle)) {
+			if (!nameToStateBundle.TryGetValue(name, out bundle))
+			{
 				bundle = new StateBundle();
 				nameToStateBundle.Add(name, bundle);
 			}
@@ -467,7 +468,8 @@ namespace FSM
 
 			List<TransitionBase<TStateId>> transitionsOfTrigger;
 
-			if (!triggerTransitionsFromAny.TryGetValue(trigger, out transitionsOfTrigger)) {
+			if (!triggerTransitionsFromAny.TryGetValue(trigger, out transitionsOfTrigger))
+			{
 				transitionsOfTrigger = new List<TransitionBase<TStateId>>();
 				triggerTransitionsFromAny.Add(trigger, transitionsOfTrigger);
 			}
@@ -529,7 +531,7 @@ namespace FSM
 
 			if (triggerTransitionsFromAny.TryGetValue(trigger, out triggerTransitions))
 			{
-				for (int i = 0; i < triggerTransitions.Count; i ++)
+				for (int i = 0; i < triggerTransitions.Count; i++)
 				{
 					TransitionBase<TStateId> transition = triggerTransitions[i];
 
@@ -543,7 +545,7 @@ namespace FSM
 
 			if (activeTriggerTransitions.TryGetValue(trigger, out triggerTransitions))
 			{
-				for (int i = 0; i < triggerTransitions.Count; i ++)
+				for (int i = 0; i < triggerTransitions.Count; i++)
 				{
 					TransitionBase<TStateId> transition = triggerTransitions[i];
 
