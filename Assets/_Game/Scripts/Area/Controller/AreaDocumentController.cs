@@ -24,7 +24,10 @@ namespace TriggerableAreaNamespace
 
             IAreaCommad[] areaCommads = new IAreaCommad[]
             {
-                new ParalelCommand( new IAreaCommad[] { new PressKeyCommand(IM.Ins.Input.AreaInput), new AreaHasTriggeredCommand(triggerCustom, areaConditionCheck), new TriggeredPlayerSetterCommand(triggerCustom, TriggeredPlayerReference) }),
+                new ParalelCommand( new IAreaCommad[] {
+                    new PressKeyCommand(() => IM.Ins.Input.AreaInput.HasPressedCollectItemKey),
+                    new AreaHasTriggeredCommand(triggerCustom, areaConditionCheck),
+                    new TriggeredPlayerSetterCommand(triggerCustom, TriggeredPlayerReference) }),
                 new DestoryAreaCommonViewerCommand(areaDocument),
                 new DisableCharacterMovementCommand(TriggeredPlayerReference),
                 new ToggleCameraCommand(areaDocument, TriggeredPlayerReference, true),

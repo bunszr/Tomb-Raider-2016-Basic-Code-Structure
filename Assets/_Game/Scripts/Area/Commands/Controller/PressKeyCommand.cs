@@ -1,11 +1,13 @@
+using System;
+
 namespace TriggerableAreaNamespace
 {
     public class PressKeyCommand : IAreaCommad
     {
-        IAreaInput _areaInput;
-        public PressKeyCommand(IAreaInput areaInput) => _areaInput = areaInput;
+        Func<bool> successCondition;
+        public PressKeyCommand(Func<bool> successCondition) => this.successCondition = successCondition;
         public void Enter() { }
         public void Exit() { }
-        public TaskStatusEnum OnUpdate() => _areaInput.HasPressedCollectItemKey ? TaskStatusEnum.Success : TaskStatusEnum.Running;
+        public TaskStatusEnum OnUpdate() => successCondition() ? TaskStatusEnum.Success : TaskStatusEnum.Running;
     }
 }
