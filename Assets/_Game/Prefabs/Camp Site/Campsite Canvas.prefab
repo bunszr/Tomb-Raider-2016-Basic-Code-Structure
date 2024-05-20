@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 255230497416864093}
   m_Layer: 5
   m_Name: Campsite Canvas
-  m_TagString: Untagged
+  m_TagString: Campsite Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,7 +84,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &892877468192855629
 MonoBehaviour:
   m_ObjectHideFlags: 0

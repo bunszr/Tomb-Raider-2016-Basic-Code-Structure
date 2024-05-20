@@ -2,6 +2,7 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 using CampSite;
 using Cinemachine;
+using System.Linq;
 
 [CreateAssetMenu(fileName = "CampsiteQuickAccess", menuName = "Third-Person-Shooter/For Editor/CampsiteQuickAccess", order = 0)]
 public partial class CampsiteQuickAccess : ScriptableObject
@@ -19,6 +20,17 @@ public partial class CampsiteQuickAccess : ScriptableObject
         {
             x.gameObject.SetActive(false);
             // x.Priority.SetActive(false);
+        });
+    }
+
+    [Button, HorizontalGroup("6")]
+    public void OffCampsiteCanvasesGroups()
+    {
+        GameObject.FindGameObjectsWithTag("Campsite Canvas").Select(x => x.GetComponent<CanvasGroup>()).Foreach(x =>
+        {
+            x.blocksRaycasts = false;
+            x.interactable = false;
+            x.alpha = 0;
         });
     }
 }
