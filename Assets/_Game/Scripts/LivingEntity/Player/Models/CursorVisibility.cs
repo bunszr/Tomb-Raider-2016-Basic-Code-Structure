@@ -2,23 +2,12 @@ using UnityEngine;
 
 public class CursorVisibility : MonoBehaviour
 {
-    [SerializeField] bool isVisible;
-
-    private void Start()
-    {
-        if (isVisible)
-        {
-            Cursor.visible = isVisible;
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-    }
-
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
-            Cursor.visible = isVisible;
-            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = !Cursor.visible;
+            Cursor.lockState = Cursor.visible ? CursorLockMode.None : CursorLockMode.Locked;
         }
     }
 }
