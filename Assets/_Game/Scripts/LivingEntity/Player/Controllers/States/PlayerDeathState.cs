@@ -1,4 +1,5 @@
 using Character;
+using UniRx;
 using UnityEngine;
 
 namespace CharacterPlayer
@@ -19,6 +20,7 @@ namespace CharacterPlayer
             player.Rb.isKinematic = true;
             player.Colider.enabled = false;
             player.Animator.CrossFade("Death", .15f);
+            MessageBroker.Default.Publish(new OnPlayerDeathEvent(player));
         }
     }
 }

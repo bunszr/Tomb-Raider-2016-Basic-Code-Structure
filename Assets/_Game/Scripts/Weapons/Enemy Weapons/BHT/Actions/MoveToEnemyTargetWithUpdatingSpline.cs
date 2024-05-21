@@ -44,6 +44,7 @@ namespace EnemyNamescape.BHT
 
                 Owner.SetVariable(EnemyStaticData.BHTKey.MoveToEnemyTargetComputerGo, (SharedGameObject)computer.gameObject);
             }
+            else computer = sharedGameObject.Value.GetComponent<SplineComputer>();
 
             _thirdPersonController = thirdPersonControllerSGO.Value.GetComponent<IThirdPersonController>();
         }
