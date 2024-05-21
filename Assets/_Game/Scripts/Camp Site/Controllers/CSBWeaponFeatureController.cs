@@ -43,7 +43,7 @@ namespace CampSite
 
             commandExecuter = new CommandExecuterWithCondition(new ICSBExecute[]
             {
-                new OpenNewPanelCommand(csbBase, nextPanelTogglerGO),
+                new PanelTogglerCommand(csbBase, nextPanelTogglerGO, campSiteHolder.CSUndoCommandExecuter),
                 new BuyInventoryItemCommand(weaponFeatureTypeScriptable),
                 new UpgradeCommonWeaponDataCommand(csbWeaponFeature.weaponDataScriptable, weaponFeatureTypeScriptable),
                 new UpgradedPanelDataSetterCommand(nextPanelTogglerGO, featureTypeScriptable),

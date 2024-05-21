@@ -17,7 +17,7 @@ namespace CampSite
 
             commandExecuter = new CommandExecuterWithCondition(new ICSBExecute[]
             {
-                new OpenNewPanelCommand(csbBase, csbFirstLevel.nextPanelTogglerGO),
+                new PanelTogglerCommand(csbBase, csbFirstLevel.nextPanelTogglerGO, campSiteHolder.CSUndoCommandExecuter),
             },
                 () => csbBase.FeatureTypeScriptable.IsOpenRP.Value);
         }

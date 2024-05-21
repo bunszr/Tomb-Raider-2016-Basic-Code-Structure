@@ -39,7 +39,7 @@ namespace CampSite
         public void OnClick()
         {
             _panelToggler.Deactive();
-            campSiteHolder.CampsiteCommandExecuter.Undo();
+            campSiteHolder.CSUndoCommandExecuter.Undo();
         }
 
         IEnumerator CheckInput()

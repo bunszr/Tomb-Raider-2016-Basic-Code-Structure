@@ -1,9 +1,8 @@
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace CampSite
 {
-    public class CampsiteCommandExecuter : MonoBehaviour
+    public class CSUndoCommandExecuter
     {
         Stack<ICampsitePanelCommad> stack = new Stack<ICampsitePanelCommad>();
 

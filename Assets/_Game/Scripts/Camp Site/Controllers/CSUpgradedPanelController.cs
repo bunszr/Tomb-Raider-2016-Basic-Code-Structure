@@ -41,7 +41,7 @@ namespace CampSite
             .OnComplete(() =>
             {
                 _panelToggler.Deactive();
-                campSiteHolder.CampsiteCommandExecuter.Undo();
+                campSiteHolder.CSUndoCommandExecuter.Undo();
             });
         }
     }

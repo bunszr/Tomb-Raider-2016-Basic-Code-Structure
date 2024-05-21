@@ -6,7 +6,6 @@ namespace CampSite
     {
         CSBWeaponSelector csbWeaponSelector;
 
-        CommandExecuterWithCondition commandExecuter;
         CommandExecuterWithCondition commandExecuterWhenPanelOnActive;
 
         protected void Start()
@@ -18,7 +17,7 @@ namespace CampSite
 
             commandExecuter = new CommandExecuterWithCondition(new ICSBExecute[]
             {
-                new OpenNewPanelCommand(csbBase, csbWeaponSelector.nextPanelTogglerGO),
+                new PanelTogglerCommand(csbBase, csbWeaponSelector.nextPanelTogglerGO, campSiteHolder.CSUndoCommandExecuter),
                 new ToggleActivationGameObjectCommand(csbWeaponSelector.weaponFeatureButtonsHolderGo, true),
                 new ToggleActivationGameObjectCommand(csbWeaponSelector.weaponParentGo, true)
             },

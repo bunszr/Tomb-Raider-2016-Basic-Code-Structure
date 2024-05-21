@@ -14,7 +14,6 @@ namespace CampSite
         [SerializeField] FeatureInformationPanelHolder featureInformationPanelHolder;
         [SerializeField] CostAndInventoryPanel costAndInventoryPanel;
         [SerializeField] CSUpgradedPanel upgradedPanel;
-        [SerializeField] CampsiteCommandExecuter campsiteCommandExecuter;
 
         [SerializeField] CSSkillInfoPanel cSSkillInfoPanel;
         [SerializeField] TextMeshProUGUI skillPointCostText;
@@ -27,7 +26,7 @@ namespace CampSite
         public FeatureInformationPanelHolder FeatureInformationPanelHolder { get => featureInformationPanelHolder; }
         public CostAndInventoryPanel CostAndInventoryPanel { get => costAndInventoryPanel; }
         public CSUpgradedPanel UpgradedPanel { get => upgradedPanel; }
-        public CampsiteCommandExecuter CampsiteCommandExecuter { get => campsiteCommandExecuter; }
+        public CSUndoCommandExecuter CSUndoCommandExecuter { get; private set; } = new CSUndoCommandExecuter();
 
         public TextMeshProUGUI SkillPointCostText { get => skillPointCostText; }
         public CSSkillInfoPanel skillInfoPanel { get => cSSkillInfoPanel; }
