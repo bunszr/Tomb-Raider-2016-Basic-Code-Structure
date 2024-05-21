@@ -14,5 +14,6 @@ namespace CampSite
 
         public WeaponDataScriptable weaponDataScriptable;
         public WeaponRotationCommandView.WeaponRotationStateData weaponRotationStateData;
+        public CanvasGroupAndPosAnimationCommandView.CanvasGroupAndPosAnimationCommandViewData canvasGroupAndPosAnimationCommandViewData;
     }
 }

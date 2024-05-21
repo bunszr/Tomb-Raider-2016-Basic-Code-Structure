@@ -11,5 +11,6 @@ namespace CampSite
         public Image highlightImage;
 
         public SkillPointCostCommandView.SkillPointCostCommandViewData skillPointCostCommandViewData;
+        public CanvasGroupAndPosAnimationCommandView.CanvasGroupAndPosAnimationCommandViewData canvasGroupAndPosAnimationCommandViewData;
     }
 }

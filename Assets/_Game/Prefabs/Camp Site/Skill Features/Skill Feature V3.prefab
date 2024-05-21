@@ -162,6 +162,12 @@ MonoBehaviour:
   skillPointCostCommandViewData:
     zPos: 10
     duration: 0.2
+  canvasGroupAndPosAnimationCommandViewData:
+    targetLocalPos: {x: -40, y: 0, z: 0}
+    posDuration: 0.4
+    posEase: 6
+    fadeDuration: 0.2
+    fadeEase: 4
 --- !u!114 &5332792057441389741
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -24,7 +24,7 @@ namespace CampSite
             ReactiveProperty<int> NumSkillPointRP = player.PlayerDataScriptable.NumSkillPointRP;
 
             AddCommand(new HighlightCommandView(csbBase, csbSkillFeature.highlightImage));
-            AddCommand(new SkillInfoPanelCommandView(csbBase, campSiteHolder.skillInfoPanel.canvasGroup));
+            AddCommand(new CanvasGroupAndPosAnimationCommandView(csbBase, campSiteHolder.skillInfoPanel.canvasGroup, csbSkillFeature.canvasGroupAndPosAnimationCommandViewData));
             AddCommand(new ShowFeatureInfoCommandView(csbBase, campSiteHolder.skillInfoPanel.skillInfoPanel.skillNameText, campSiteHolder.skillInfoPanel.skillInfoPanel.skillDescriptionText));
             AddCommand(new ShowAvailableNumSkillPointCommandView(csbBase, campSiteHolder.skillInfoPanel.availableSkillPanel.numSkillPointText, NumSkillPointRP));
 

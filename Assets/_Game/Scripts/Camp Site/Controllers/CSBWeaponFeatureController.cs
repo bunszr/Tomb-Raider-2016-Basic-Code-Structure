@@ -21,7 +21,8 @@ namespace CampSite
 
             AddCommand(new HighlightCommandView(csbBase, csbWeaponFeature.highlightImage));
             AddCommand(new ShowWeaponDataCommandView(csbBase, csbWeaponFeature.weaponDataScriptable, campSiteHolder.WeaponDataSliderHolder));
-            AddCommand(new ShowInformationCommandView(csbBase, campSiteHolder.FeatureInformationPanelHolder, featureTypeScriptable));
+            AddCommand(new ShowFeatureInfoCommandView(csbBase, campSiteHolder.weaponPanelData.featureNameText, campSiteHolder.weaponPanelData.featureDescriptionText));
+            AddCommand(new CanvasGroupAndPosAnimationCommandView(csbBase, campSiteHolder.weaponPanelData.featureInfoPanelCanvasGroup, csbWeaponFeature.canvasGroupAndPosAnimationCommandViewData));
             AddCommand(new WeaponRotationCommandView(csbBase, csbWeaponFeature.weaponRotationStateData, campSiteHolder));
 
             RequirementsCommandController requirementsStateController = new RequirementsCommandController(featureTypeScriptable,

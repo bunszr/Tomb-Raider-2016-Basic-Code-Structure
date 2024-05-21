@@ -7,6 +7,21 @@ namespace CampSite
 {
     public class CampSiteHolder : MonoBehaviour
     {
+        public WeaponPanelData weaponPanelData;
+
+        [System.Serializable]
+        public class WeaponPanelData
+        {
+            public Transform weaponShowLocation;
+            public Transform weaponFeatureIndicator;
+            public WeaponDataSliderHolder weaponDataSliderHolder;
+            public CanvasGroup featureInfoPanelCanvasGroup;
+            public TextMeshProUGUI featureNameText;
+            public TextMeshProUGUI featureDescriptionText;
+            public TextMeshProUGUI featureRequirementText;
+            public CostAndInventoryPanel costAndInventoryPanel;
+        }
+
         [SerializeField] Transform weaponShowLocation;
         [SerializeField] Transform weaponFeatureIndicator;
         [SerializeField] Transform charaterStandLocation;

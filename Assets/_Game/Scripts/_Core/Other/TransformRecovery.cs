@@ -37,6 +37,13 @@ public struct TransformRecovery
         transform.localScale = scale;
     }
 
+    public void ResetWitLocalSpaceNoParent()
+    {
+        transform.localPosition = localPosition;
+        transform.localRotation = localRotation;
+        transform.localScale = scale;
+    }
+
     public void ResetWitWorldSpace()
     {
         transform.parent = parent;

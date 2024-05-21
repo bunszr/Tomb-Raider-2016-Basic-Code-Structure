@@ -1,4 +1,3 @@
-using DG.Tweening;
 using TMPro;
 using UnityEngine.EventSystems;
 
@@ -6,7 +5,6 @@ namespace CampSite
 {
     public class ShowFeatureInfoCommandView : CampsiteButtonCommandBase
     {
-        FeatureTypeScriptable featureTypeScriptable;
         TextMeshProUGUI nameText;
         TextMeshProUGUI descriptionText;
 
