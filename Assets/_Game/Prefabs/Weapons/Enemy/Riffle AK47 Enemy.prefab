@@ -90,7 +90,7 @@ MonoBehaviour:
   weaponDataScriptable: {fileID: 11400000, guid: e9d06158c50935b4d99520568a60d35e,
     type: 2}
   normalBulletModeData:
-    bulletPrefab: {fileID: 5873784681966129994, guid: 0dade95565689414e8416805f307eb7a,
+    bulletPrefab: {fileID: 5692816736722050449, guid: 5ef1921ff43c73340a16b5478b002b4c,
       type: 3}
     bulletLocation: {fileID: 2215994932912210599}
     forceMode: 2

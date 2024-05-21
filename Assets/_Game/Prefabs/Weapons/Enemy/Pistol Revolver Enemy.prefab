@@ -61,8 +61,6 @@ MonoBehaviour:
   weaponBase: {fileID: 2639141800740143554}
   livingEntity: {fileID: 0}
   pistolEnemy: {fileID: 2639141800740143554}
-  weaponHolder: {fileID: 0}
-  weaponHolderUnderHand: {fileID: 0}
 --- !u!1 &6238806732700709444 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4173680444465099000, guid: 101f28102a806ab48b1377dc84df6bb1,
@@ -84,7 +82,7 @@ MonoBehaviour:
   weaponDataScriptable: {fileID: 11400000, guid: 83b98135b73e2684da3a87e874255dfd,
     type: 2}
   normalBulletModeData:
-    bulletPrefab: {fileID: 5873784681966129994, guid: 0dade95565689414e8416805f307eb7a,
+    bulletPrefab: {fileID: 5692816736722050449, guid: 5ef1921ff43c73340a16b5478b002b4c,
       type: 3}
     bulletLocation: {fileID: 2469921294887581020}
     forceMode: 2

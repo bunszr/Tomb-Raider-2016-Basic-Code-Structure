@@ -226,6 +226,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 2519809860901329322, guid: daeceb3786ba6014b9719af5b44c30e9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 3475373706220360215, guid: daeceb3786ba6014b9719af5b44c30e9,
         type: 3}
       propertyPath: m_RootOrder
