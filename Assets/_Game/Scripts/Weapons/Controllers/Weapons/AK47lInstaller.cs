@@ -17,7 +17,7 @@ public class AK47lInstaller : PlayerWeaponBaseInstaller
 
         AddEquiptable(new AutomaticFireBehavior(WeaponBase, _ExtraFireList, _ChecksToFire));
         AddEquiptable(new AimBoolSetterBehavior(WeaponBase));
-        AddEquiptable(new NormalAimBehavior(WeaponBase, WeaponBase._ThirdPersonController, aK47.NormalAimBehaviorData, aK47.WeaponAimData));
+        AddEquiptable(new NormalAimBehavior(WeaponBase, WeaponBase._Animator, aK47.NormalAimBehaviorData, aK47.WeaponAimData));
 
         aK47.suppressorFeatureScriptable.IsOpenRP.Subscribe(OnSuppressorGain).AddTo(disposables);
         aK47.flashLightFeatureScriptable.IsOpenRP.Subscribe(OnFlashLightGain).AddTo(disposables);

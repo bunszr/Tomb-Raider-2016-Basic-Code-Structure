@@ -2,7 +2,7 @@ using UnityEngine;
 using UniRx;
 using Invector.vCharacterController;
 
-public abstract class LivingEntity : MonoBehaviour, IThirdPersonController
+public abstract class LivingEntity : MonoBehaviour, IThirdPersonController, IAnimator
 {
     [SerializeField] Rigidbody rb;
     [SerializeField] Collider colider;
@@ -37,4 +37,10 @@ public abstract class LivingEntity : MonoBehaviour, IThirdPersonController
     public MonoBehaviour ThirdPersonInputMonobehaviour => thirdPersonInput;
 
     public GameObject WeaponHolder { get => weaponHolder; }
+}
+
+public interface IAnimator
+{
+    Animator Animator { get; }
+    // MessageBroker MessageBroker { get; } // To listen and publish animator events in local scope
 }

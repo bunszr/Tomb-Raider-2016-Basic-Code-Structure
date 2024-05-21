@@ -21,11 +21,11 @@ public class AimBoolSetterBehavior : IEquiptable
         UpdateManager.Ins.RegisterAsUpdate(weaponBase, OnUpdate);
 
         MessageBroker.Default.Receive<OnAnimationStateEnterEvent>()
-            .Where(x => x.animator == weaponBase._ThirdPersonController.Animator && x.stateInfoEnum == StateInfoEnum.HasAimed)
+            .Where(x => x.animator == weaponBase._Animator.Animator && x.stateInfoEnum == StateInfoEnum.HasAimed)
             .Subscribe(OnAnimEnter).AddTo(disposables);
 
         MessageBroker.Default.Receive<OnAnimationStateExitEvent>()
-            .Where(x => x.animator == weaponBase._ThirdPersonController.Animator && x.stateInfoEnum == StateInfoEnum.HasAimed)
+            .Where(x => x.animator == weaponBase._Animator.Animator && x.stateInfoEnum == StateInfoEnum.HasAimed)
             .Subscribe(OnAnimExit).AddTo(disposables);
 
         nextTime = 0f;

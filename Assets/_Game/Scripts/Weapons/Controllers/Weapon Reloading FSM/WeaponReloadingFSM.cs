@@ -19,7 +19,7 @@ public class WeaponReloadingFSM : IEquiptable
 
         fsm = new StateMachine() { stateMachineDebug = stateMachineDebug };
 
-        Animator animator = weaponBase._ThirdPersonController.Animator;
+        Animator animator = weaponBase._Animator.Animator;
         factory = new WeaponCheckFactory(weaponBase);
 
         fsm.AddState("EmptyState", new State());

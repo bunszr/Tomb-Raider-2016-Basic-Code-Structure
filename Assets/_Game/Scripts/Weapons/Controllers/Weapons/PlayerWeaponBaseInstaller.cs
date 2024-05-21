@@ -24,7 +24,7 @@ public class PlayerWeaponBaseInstaller : WeaponBaseInstaller, IWeapon, IWeaponIn
 
         AddEquiptable(new WeaponReloadingFSM(WeaponBase));
 
-        AddExtraFire(new FireAnimationBehaviour(WeaponBase._ThirdPersonController.Animator, WeaponBase.WeaponDataScriptable.weaponAnimationData.fireAnimName));
+        AddExtraFire(new FireAnimationBehaviour(WeaponBase._Animator.Animator, WeaponBase.WeaponDataScriptable.weaponAnimationData.fireAnimName));
     }
 
     protected virtual void Start() { }

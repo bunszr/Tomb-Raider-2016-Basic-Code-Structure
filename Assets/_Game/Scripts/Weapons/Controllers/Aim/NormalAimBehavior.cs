@@ -27,16 +27,17 @@ public class NormalAimBehavior : AimBehaviourBase, IEquiptable
 
     NormalAimBehaviorData data;
     WeaponAimData weaponAimData;
+    IAnimator _animator;
     IThirdPersonController _thirdPersonController;
 
     GameDataScriptable.WeaponScriptableData.AimData ScriptableData => GameDataScriptable.Ins.weaponScriptableData.aimData;
 
-    public NormalAimBehavior(WeaponBase weaponBase, IThirdPersonController thirdPersonController, NormalAimBehaviorData data, WeaponAimData weaponAimData) : base(weaponBase)
+    public NormalAimBehavior(WeaponBase weaponBase, IAnimator _animator, NormalAimBehaviorData data, WeaponAimData weaponAimData) : base(weaponBase)
     {
         this.data = data;
         this.weaponAimData = weaponAimData;
         cam = Camera.main;
-        this._thirdPersonController = thirdPersonController;
+        this._thirdPersonController = _animator as IThirdPersonController;
     }
 
     public override void Enter()

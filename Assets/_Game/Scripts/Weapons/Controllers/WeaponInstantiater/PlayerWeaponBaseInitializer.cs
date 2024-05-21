@@ -21,7 +21,7 @@ public class PlayerWeaponBaseInitializer : WeaponInitializerBase
 
     public override void Initialize()
     {
-        playerWeaponBase._ThirdPersonController = _thirdPersonController;
+        playerWeaponBase._Animator = _thirdPersonController as IAnimator;
         playerWeaponBase.WeaponAimData = data.weaponAimData;
         playerWeaponBase.NormalAimBehaviorData.rigs = new Rig[] { data.bodyAndHandRig };
 

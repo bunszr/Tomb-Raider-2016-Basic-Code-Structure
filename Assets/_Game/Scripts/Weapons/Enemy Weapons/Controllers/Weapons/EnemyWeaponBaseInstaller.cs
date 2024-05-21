@@ -24,7 +24,7 @@ namespace WeaponNamescape.Enemy
                 new HasAimCheck(WeaponBase as IAimIsTaken),
             };
 
-            WeaponBase._ThirdPersonController = livingEntity as IThirdPersonController;
+            WeaponBase._Animator = livingEntity as IAnimator;
 
             AddEquiptable(new WeaponReloadingEnemyFSM(WeaponBase));
         }

@@ -14,6 +14,6 @@ public class PistolInstaller : PlayerWeaponBaseInstaller
 
         AddEquiptable(new SingleFireBehavior(WeaponBase, _ExtraFireList, _ChecksToFire));
         AddEquiptable(new AimBoolSetterBehavior(WeaponBase));
-        AddEquiptable(new NormalAimBehavior(WeaponBase, WeaponBase._ThirdPersonController, pistol.NormalAimBehaviorData, pistol.WeaponAimData));
+        AddEquiptable(new NormalAimBehavior(WeaponBase, WeaponBase._Animator, pistol.NormalAimBehaviorData, pistol.WeaponAimData));
     }
 }
