@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class SingletonAndDontDestroyOnLoad<T> : MonoBehaviour where T : Component
 {
+    public static bool IsNotNull => instance != null;
+
     private static T instance;
     public static T Ins
     {
