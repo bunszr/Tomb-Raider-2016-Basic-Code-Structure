@@ -5,22 +5,22 @@ using UnityEngine;
 public class ReloadMagazineState : WeaponStateBase
 {
     IDisposable _disposable;
-    Animator animator;
+    IAnimator _animator;
     float nextTime;
 
-    public ReloadMagazineState(WeaponBase weaponBase, Animator animator, bool needsExitTime, bool isGhostState = false) : base(weaponBase, needsExitTime, isGhostState)
+    public ReloadMagazineState(WeaponBase weaponBase, bool needsExitTime, bool isGhostState = false) : base(weaponBase, needsExitTime, isGhostState)
     {
-        this.animator = animator;
+        this._animator = weaponBase._Animator;
     }
 
     public override void OnEnter()
     {
         nextTime = 0f;
-        _disposable = MessageBroker.Default.Receive<OnAnimationStateEnterEvent>()
-                        .Where(x => x.animator == animator && x.stateInfo.IsName(weaponBase.WeaponDataScriptable.weaponAnimationData.reloadMagazineName))
+        _disposable = _animator.AnimatorMessageBroker.Receive<OnAnimationStateEnterEvent>()
+                        .Where(x => x.stateInfo.IsName(weaponBase.WeaponDataScriptable.weaponAnimationData.reloadMagazineName))
                         .Subscribe(OnReloadingEnter);
 
-        animator.SetTrigger(weaponBase.WeaponDataScriptable.weaponAnimationData.reloadMagazineTriggerName);
+        _animator.Animator.SetTrigger(weaponBase.WeaponDataScriptable.weaponAnimationData.reloadMagazineTriggerName);
     }
 
     public void OnReloadingEnter(OnAnimationStateEnterEvent onReloadingEnterEvent)

@@ -16,6 +16,9 @@ namespace Character
         {
             player.FastHealingFeatureScriptable.IsOpenRP.Subscribe(OnFastHealing).AddTo(disposables);
 
+            player.Animator.GetBehaviours<OnAnimationStateEnterSMB>().Foreach(x => x.SetMessageBroker(player.AnimatorMessageBroker));
+            player.Animator.GetBehaviours<OnAnimationStateExitSMB>().Foreach(x => x.SetMessageBroker(player.AnimatorMessageBroker));
+
             CollisionCustom collisionCustom = player.gameObject.GetOrAddComponent<CollisionCustom>();
 
             collisionEnterExitList = new List<ICollisionEnterExit>()

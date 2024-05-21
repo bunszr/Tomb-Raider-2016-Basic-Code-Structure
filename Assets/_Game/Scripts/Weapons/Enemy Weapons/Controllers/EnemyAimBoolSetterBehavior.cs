@@ -6,6 +6,7 @@ public class EnemyAimBoolSetterBehavior : IEquiptable
 {
     WeaponBase weaponBase;
     IAimIsTaken _aimIsTaken;
+    IAnimator _animator;
 
     float nextTime;
     CompositeDisposable disposables;
@@ -14,6 +15,7 @@ public class EnemyAimBoolSetterBehavior : IEquiptable
     {
         this.weaponBase = weaponBase;
         _aimIsTaken = weaponBase as IAimIsTaken;
+        _animator = weaponBase._Animator;
     }
 
     public virtual void Enter()
@@ -21,12 +23,12 @@ public class EnemyAimBoolSetterBehavior : IEquiptable
         UpdateManager.Ins.RegisterAsUpdate(weaponBase, OnUpdate);
         disposables = new CompositeDisposable();
 
-        MessageBroker.Default.Receive<OnAnimationStateEnterEvent>()
-            .Where(x => x.animator == weaponBase._Animator.Animator && x.stateInfoEnum == StateInfoEnum.HasAimed)
+        _animator.AnimatorMessageBroker.Receive<OnAnimationStateEnterEvent>()
+            .Where(x => x.stateInfoEnum == StateInfoEnum.HasAimed)
             .Subscribe(OnAnimEnter).AddTo(disposables);
 
-        MessageBroker.Default.Receive<OnAnimationStateExitEvent>()
-            .Where(x => x.animator == weaponBase._Animator.Animator && x.stateInfoEnum == StateInfoEnum.HasAimed)
+        _animator.AnimatorMessageBroker.Receive<OnAnimationStateExitEvent>()
+            .Where(x => x.stateInfoEnum == StateInfoEnum.HasAimed)
             .Subscribe(OnAnimExit).AddTo(disposables);
 
         nextTime = 0f;

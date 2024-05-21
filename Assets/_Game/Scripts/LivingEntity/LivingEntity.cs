@@ -14,6 +14,7 @@ public abstract class LivingEntity : MonoBehaviour, IThirdPersonController, IAni
     public Rigidbody Rb { get => rb; }
     public Collider Colider { get => colider; }
     public Animator Animator { get => animator; }
+    public MessageBroker AnimatorMessageBroker { get; } = new MessageBroker();
 
     public Transform Transform => transform;
     public float MoveSpeed => thirdPersonController.moveSpeed;
@@ -37,10 +38,4 @@ public abstract class LivingEntity : MonoBehaviour, IThirdPersonController, IAni
     public MonoBehaviour ThirdPersonInputMonobehaviour => thirdPersonInput;
 
     public GameObject WeaponHolder { get => weaponHolder; }
-}
-
-public interface IAnimator
-{
-    Animator Animator { get; }
-    // MessageBroker MessageBroker { get; } // To listen and publish animator events in local scope
 }

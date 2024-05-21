@@ -19,7 +19,7 @@ namespace TriggerableAreaNamespace
 
         public void Enter()
         {
-            _disposable = MessageBroker.Default.Receive<OnAnimationStateEnterEvent>()
+            _disposable = triggeredPlayerReference.Player.AnimatorMessageBroker.Receive<OnAnimationStateEnterEvent>()
                           .Where(x => x.stateInfoEnum == StateInfoEnum.InvestigateDocument).Subscribe(OnAnimEnter);
 
             nextTime = 0f;

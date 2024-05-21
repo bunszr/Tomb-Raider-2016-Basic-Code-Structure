@@ -18,6 +18,9 @@ namespace Character
         {
             CollisionCustom collisionCustom = enemy.gameObject.GetOrAddComponent<CollisionCustom>();
 
+            enemy.Animator.GetBehaviours<OnAnimationStateEnterSMB>().Foreach(x => x.SetMessageBroker(enemy.AnimatorMessageBroker));
+            enemy.Animator.GetBehaviours<OnAnimationStateExitSMB>().Foreach(x => x.SetMessageBroker(enemy.AnimatorMessageBroker));
+
             collisionEnterExitList = new List<ICollisionEnterExit>()
             {
                 new CrossFadeAnimWhenHitIGiveDamage(collisionCustom, enemy.Animator), // Its order in the list is improtant therefore IsHitTo bool
