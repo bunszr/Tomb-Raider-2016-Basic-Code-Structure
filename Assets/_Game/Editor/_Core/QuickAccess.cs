@@ -78,21 +78,5 @@ public class QuickAccess : OdinEditorWindow
     [Button, HorizontalGroup("5")] public void SelectPistol() => Selection.activeGameObject = FindObjectOfType<Pistol>(true).gameObject;
     [Button, HorizontalGroup("5")] public void SelectPistolEnemy() => Selection.activeGameObject = FindObjectOfType<PistolEnemy>(true).gameObject;
 
-    [Button, HorizontalGroup("5")]
-    public void ToogleLoadJSON()
-    {
-        GameDataScriptable.Ins.loadWeaponDataFromJSONinEditor = !GameDataScriptable.Ins.loadWeaponDataFromJSONinEditor;
-        GameDataScriptable.Ins.loadFeatureFromJSONinEditor = !GameDataScriptable.Ins.loadFeatureFromJSONinEditor;
-        GameDataScriptable.Ins.loadInventoryFromJSONinEditor = !GameDataScriptable.Ins.loadInventoryFromJSONinEditor;
-    }
-
-
-    // [Button(ButtonSizes.Small), HorizontalGroup("A")]
-    // public void SaveShatter()
-    // {
-    //     foreach (var item in FindObjectsOfType<RayFire.RayfireShatter>(true))
-    //     {
-    //         EditorUtility.SetDirty(item);
-    //     }
-    // }
+    // EditorUtility.SetDirty(item);
 }

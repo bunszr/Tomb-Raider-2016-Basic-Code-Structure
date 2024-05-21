@@ -5,10 +5,21 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "GameDataScriptable", menuName = "Third-Person-Shooter/GameDataScriptable", order = 0)]
 public class GameDataScriptable : SingletonScriptableObject<GameDataScriptable>
 {
+    [OnValueChanged("ToggleLoadMode"), SerializeField, Indent(2)] bool toggleAll;
+
     public bool loadFeatureFromJSONinEditor = false;
     public bool loadInventoryFromJSONinEditor = false;
     public bool loadWeaponDataFromJSONinEditor = false;
     public bool loadPlayerDataFromJSONinEditor = false;
+
+    private void ToggleLoadMode()
+    {
+        loadFeatureFromJSONinEditor = toggleAll;
+        loadInventoryFromJSONinEditor = toggleAll;
+        loadWeaponDataFromJSONinEditor = toggleAll;
+        loadPlayerDataFromJSONinEditor = toggleAll;
+    }
+
 
     public CampSiteScriptableData campSiteScriptableData;
     public WeaponScriptableData weaponScriptableData;

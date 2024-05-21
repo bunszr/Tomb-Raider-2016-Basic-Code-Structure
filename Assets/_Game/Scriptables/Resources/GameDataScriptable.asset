@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3ef430a5f0199544ac1a0f77fa4b4df, type: 3}
   m_Name: GameDataScriptable
   m_EditorClassIdentifier: 
+  toggleAll: 0
   loadFeatureFromJSONinEditor: 0
   loadInventoryFromJSONinEditor: 0
   loadWeaponDataFromJSONinEditor: 0
