@@ -18,9 +18,7 @@ namespace WeaponNamescape.Enemy
             AddEquiptable(new EnemyFireBehavior(WeaponBase, _ExtraFireList, _checksToFire));
             AddEquiptable(new EnemyAimBoolSetterBehavior(WeaponBase));
             AddEquiptable(new EnemyAimBehavior(WeaponBase, livingEntity, riffleAK47Enemy.enemyAimBehaviorData));
-
-            livingEntity.Animator.SetInteger(APs.DrawWeaponInt, 1); // Fix Later - Add DrawWeaponInt to WeaponDataScriptable
-            livingEntity.Animator.SetTrigger(APs.DrawWeaponTrigger);
+            AddEquiptable(new EnemyEquipBehaviour(livingEntity.Animator, WeaponBase.DrawWeaponInputInt));
         }
     }
 }

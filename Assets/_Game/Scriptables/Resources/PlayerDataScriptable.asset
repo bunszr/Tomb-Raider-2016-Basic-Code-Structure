@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerName: Player
   playerData:
-    initialHealth: 50
+    initialHealth: 181.13
     currHealth: 50
     maxHealth: 100
     initialArmor: 50

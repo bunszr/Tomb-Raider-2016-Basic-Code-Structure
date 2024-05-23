@@ -482,6 +482,7 @@ Transform:
   - {fileID: 131964257}
   - {fileID: 179053850}
   - {fileID: 217536600}
+  - {fileID: 1720917515}
   - {fileID: 1026573799}
   - {fileID: 695001411}
   m_Father: {fileID: 0}
@@ -1196,6 +1197,70 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 159185367}
     m_Modifications:
+    - target: {fileID: 47991453, guid: 7fdbcdeb4a3a58f4594ceadd34132808, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.JSONSerialization
+      value: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(0,0)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(-0.471206665,120.855217)"},"ID":1,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":"","Int32mValue":15},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"","BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"","BooleanmValue":false},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(-2.274785,164.851746)"},"ID":2,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-1003.60162,461.110779)","Comment":"Enemy
+        Death"},"ID":3,"Name":"Sequence","Instant":true,"AbortTypeabortType":"LowerPriority","Children":[{"Type":"EnemyNamescape.BHT.EnemyIsDeath","NodeData":{"Offset":"(-147.432053,146.189621)"},"ID":4,"Name":"Enemy
+        Is Death","Instant":true},{"Type":"EnemyNamescape.BHT.SetToCoverEmpty","NodeData":{"Offset":"(-5.95068359,152.208069)"},"ID":5,"Name":"Set
+        To Cover Empty","Instant":true},{"Type":"BehaviorDesigner.Runtime.Tasks.Idle","NodeData":{"Offset":"(131.549255,152.20813)"},"ID":6,"Name":"Idle","Instant":true}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-727.536255,224.7836)","Comment":"Move
+        to player if he is death"},"ID":7,"Name":"Sequence","Instant":true,"AbortTypeabortType":"LowerPriority","Children":[{"Type":"EnemyNamescape.BHT.PlayerIsDeath","NodeData":{"Offset":"(-166.552963,112.835129)"},"ID":8,"Name":"Player
+        Is Death","Instant":true},{"Type":"EnemyNamescape.BHT.ToggleWalking","NodeData":{"Offset":"(-36.552948,113.704758)"},"ID":9,"Name":"Toggle
+        Walking","Instant":true,"BooleanisWalking":true},{"Type":"EnemyNamescape.BHT.MoveToEnemyTargetWithUpdatingSpline","NodeData":{"Offset":"(142.577484,114.574326)"},"ID":10,"Name":"Move
+        To Enemy Target With Updating Spline","Instant":true,"SharedGameObjectthirdPersonControllerSGO":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"ThirdPersonControllerGo","IsShared":true,"GameObjectmValue":0},"SharedFloatdistanceTravelSF":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"","SinglemValue":0},"SharedFloatcomputerLengthSF":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"","SinglemValue":0},"SingledelayedCall":0.4,"SingleenemyTargetNearByThreashold":1.5,"SinglemaxDstBetweenEvaluatedPosAndCharacterPos":0.4,"SingleextraSpeed":0.4}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-365.1723,360.344666)","Comment":"Move
+        to cover and then fire while move in the cover as ping pong"},"ID":11,"Name":"Sequence","Instant":true,"AbortTypeabortType":"LowerPriority","Children":[{"Type":"EnemyNamescape.BHT.CanSeeIEnemyTarget","NodeData":{"Offset":"(-130.243835,145.853577)"},"ID":12,"Name":"Can
+        See I Enemy Target","Instant":true,"SharedFloatfieldOfViewAngle":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"","SinglemValue":30},"SharedFloatviewDistance":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"","SinglemValue":5},"SharedGameObjectthirdPersonControllerGo":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"ThirdPersonControllerGo","IsShared":true,"GameObjectmValue":1}},{"Type":"BehaviorDesigner.Runtime.Tasks.Unity.SharedVariables.SetSharedBool","NodeData":{"Offset":"(19.321106,139.339661)"},"ID":13,"Name":"Set
+        Shared Bool","Instant":true,"SharedBooltargetValue":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBooltargetVariable":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"EnemySeen","IsShared":true,"IsDynamic":true,"BooleanmValue":false}}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-224.771332,535.534)","Comment":"Move
+        to cover and then fire while move in the cover as ping pong"},"ID":14,"Name":"Sequence","Instant":true,"AbortTypeabortType":"LowerPriority","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Unity.Math.BoolComparison","NodeData":{"Offset":"(-229.866241,151.498566)"},"ID":15,"Name":"Bool
+        Comparison","Instant":true,"SharedBoolbool1":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"EnemySeen","IsShared":true,"IsDynamic":true,"BooleanmValue":false},"SharedBoolbool2":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true}},{"Type":"EnemyNamescape.BHT.IsThereEmptyCover","NodeData":{"Offset":"(-65.58012,159.999878)"},"ID":16,"Name":"Is
+        There Empty Cover","Instant":true},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(46.4673157,304.947021)"},"ID":17,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"EnemyNamescape.BHT.CoverLocationSelector","NodeData":{"Offset":"(-231.315765,160)"},"ID":18,"Name":"Cover
+        Location Selector","Instant":true},{"Type":"EnemyNamescape.BHT.ToggleWalking","NodeData":{"Offset":"(-56.7911339,165.643677)"},"ID":19,"Name":"Toggle
+        Walking","Instant":true,"BooleanisWalking":false},{"Type":"EnemyNamescape.BHT.CreateComputerAccordingNavmesh","NodeData":{"Offset":"(122.716393,160)"},"ID":20,"Name":"Create
+        Computer According Navmesh","Instant":true},{"Type":"EnemyNamescape.BHT.MoveToTargetLocation","NodeData":{"Offset":"(330.851654,160)"},"ID":21,"Name":"Move
+        To Target Location","Instant":true,"SinglemaxDstBetweenEvaluatedPosAndCharacterPos":0.5,"SingleextraSpeed":0.4},{"Type":"EnemyNamescape.BHT.ToggleWalking","NodeData":{"Offset":"(480.3246,163.870972)"},"ID":22,"Name":"Toggle
+        Walking","Instant":true,"BooleanisWalking":true}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Parallel","NodeData":{"Offset":"(241.21463,140.3833)"},"ID":23,"Name":"Parallel","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"EnemyNamescape.BHT.AimPositionerAction","NodeData":{"Offset":"(-46.8505249,157.366562)"},"ID":24,"Name":"Aim
+        Positioner Action","Instant":true,"SharedTransformaimTargetSH":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"AimTarget","IsShared":true,"TransformmValue":2}},{"Type":"EnemyNamescape.BHT.EnemyShotAction","NodeData":{"Offset":"(102.648193,157.366562)"},"ID":25,"Name":"Enemy
+        Shot Action","Instant":true,"SharedGameObjectweaponControllerGo":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"WeaponController","IsShared":true,"GameObjectmValue":3}},{"Type":"EnemyNamescape.BHT.MoveInCoverAsPingPong","NodeData":{"Offset":"(278.445557,164.705872)"},"ID":26,"Name":"Move
+        In Cover As Ping Pong","Instant":true,"SinglestrafeTurnSmoothSpeed":1.65,"SingleextraSpeed":0.4,"SinglemaxDstBetweenEvaluatedPosAndCharacterPos":0.5}]}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(198.618164,179.735458)","Comment":"Continuously
+        move and fire"},"ID":27,"Name":"Sequence","Instant":true,"AbortTypeabortType":"LowerPriority","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Unity.Math.BoolComparison","NodeData":{"Offset":"(-283.1035,264.1377)"},"ID":28,"Name":"Bool
+        Comparison","Instant":true,"SharedBoolbool1":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"EnemySeen","IsShared":true,"IsDynamic":true,"BooleanmValue":false},"SharedBoolbool2":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true}},{"Type":"BehaviorDesigner.Runtime.Tasks.Inverter","NodeData":{"Offset":"(-157.884277,144.2623)"},"ID":29,"Name":"Inverter","Instant":true,"Children":[{"Type":"EnemyNamescape.BHT.IsThereEmptyCover","NodeData":{"Offset":"(44.58098,123.809509)"},"ID":30,"Name":"Is
+        There Empty Cover","Instant":true}]},{"Type":"EnemyNamescape.BHT.ToggleWalking","NodeData":{"Offset":"(-29.3939133,144.848511)"},"ID":31,"Name":"Toggle
+        Walking","Instant":true,"BooleanisWalking":false},{"Type":"BehaviorDesigner.Runtime.Tasks.Parallel","NodeData":{"Offset":"(101.693192,131.428482)"},"ID":32,"Name":"Parallel","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"EnemyNamescape.BHT.AimPositionerAction","NodeData":{"Offset":"(-10.5608826,116.66687)"},"ID":33,"Name":"Aim
+        Positioner Action","Instant":true,"SharedTransformaimTargetSH":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"AimTarget","IsShared":true,"TransformmValue":4}},{"Type":"EnemyNamescape.BHT.EnemyShotAction","NodeData":{"Offset":"(149.438889,116.66687)"},"ID":34,"Name":"Enemy
+        Shot Action","Instant":true,"SharedGameObjectweaponControllerGo":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"WeaponController","IsShared":true,"GameObjectmValue":5}},{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(289.4389,126.66687)"},"ID":35,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":"","Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"","BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"","BooleanmValue":true},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(4.994873,123.333374)"},"ID":36,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Wait","NodeData":{"Offset":"(-75.00513,113.333435)"},"ID":37,"Name":"Wait","Instant":true,"SharedFloatwaitTime":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"","SinglemValue":0.6},"SharedBoolrandomWait":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"","BooleanmValue":false},"SharedFloatrandomWaitMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"","SinglemValue":1},"SharedFloatrandomWaitMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"","SinglemValue":1}},{"Type":"EnemyNamescape.BHT.ToggleStrafeWithEnemyTargetDistance","NodeData":{"Offset":"(104.994873,113.333435)"},"ID":38,"Name":"Toggle
+        Strafe With Enemy Target Distance","Instant":true,"SinglemaxDstThresholdToStrafeTrue":8}]}]},{"Type":"EnemyNamescape.BHT.MoveToEnemyTargetWithUpdatingSpline","NodeData":{"Offset":"(479.438965,126.66687)"},"ID":39,"Name":"Move
+        To Enemy Target With Updating Spline","Instant":true,"SharedGameObjectthirdPersonControllerSGO":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"ThirdPersonControllerGo","IsShared":true,"GameObjectmValue":6},"SharedFloatdistanceTravelSF":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"","SinglemValue":0},"SharedFloatcomputerLengthSF":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"","SinglemValue":0},"SingledelayedCall":0.4,"SingleenemyTargetNearByThreashold":4.5,"SinglemaxDstBetweenEvaluatedPosAndCharacterPos":0.4,"SingleextraSpeed":0.4}]}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(587.744263,171.2108)","Comment":"Patrol"},"ID":40,"Name":"Sequence","Instant":true,"AbortTypeabortType":"LowerPriority","Children":[{"Type":"PatrolAction","NodeData":{"Offset":"(-60,132.142868)"},"ID":41,"Name":"Patrol
+        Action","Instant":true,"SharedGameObjectthirdPersonControllerSGO":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"ThirdPersonControllerGo","IsShared":true,"GameObjectmValue":7},"SharedGameObjectcomputerSGO":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"patrolSpline","IsShared":true,"GameObjectmValue":8},"SinglemaxDstBetweenEvaluatedPosAndCharacterPos":0.5,"SingleextraSpeed":0.4},{"Type":"BehaviorDesigner.Runtime.Tasks.Wait","NodeData":{"Offset":"(45.43228,127.40593)"},"ID":42,"Name":"Wait","Instant":true,"SharedFloatwaitTime":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"","SinglemValue":1},"SharedBoolrandomWait":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"","BooleanmValue":false},"SharedFloatrandomWaitMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"","SinglemValue":1},"SharedFloatrandomWaitMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"","SinglemValue":1}}]}]}]},"DetachedTasks":[{"Type":"EnemyNamescape.BHT.CanSeeIEnemyTarget","NodeData":{"Offset":"(-496.896362,1083.44812)"},"ID":43,"Name":"Can
+        See I Enemy Target","Instant":true,"SharedFloatfieldOfViewAngle":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"","SinglemValue":30},"SharedFloatviewDistance":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"","SinglemValue":5},"SharedGameObjectthirdPersonControllerGo":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"ThirdPersonControllerGo","IsShared":true,"GameObjectmValue":9}},{"Type":"BehaviorDesigner.Runtime.Tasks.Unity.Math.BoolComparison","NodeData":{"Offset":"(-654.4446,783.888855)"},"ID":44,"Name":"Bool
+        Comparison","Instant":true,"SharedBoolbool1":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"EnemySeen","IsShared":true,"IsDynamic":true,"BooleanmValue":false},"SharedBoolbool2":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false}}],"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"patrolSpline","IsShared":true,"GameObjectmValue":10},{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"ThirdPersonControllerGo","IsShared":true,"GameObjectmValue":11},{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"AimTarget","IsShared":true,"TransformmValue":12},{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"WeaponController","IsShared":true,"GameObjectmValue":13},{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"EnemySeen","IsShared":true,"IsDynamic":true,"BooleanmValue":false}]}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 47991453, guid: 7fdbcdeb4a3a58f4594ceadd34132808, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 1397760693}
+    - target: {fileID: 47991453, guid: 7fdbcdeb4a3a58f4594ceadd34132808, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 817657444}
+    - target: {fileID: 47991453, guid: 7fdbcdeb4a3a58f4594ceadd34132808, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[3]
+      value: 
+      objectReference: {fileID: 805936696}
+    - target: {fileID: 47991453, guid: 7fdbcdeb4a3a58f4594ceadd34132808, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[4]
+      value: 
+      objectReference: {fileID: 817657444}
+    - target: {fileID: 47991453, guid: 7fdbcdeb4a3a58f4594ceadd34132808, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[5]
+      value: 
+      objectReference: {fileID: 805936696}
+    - target: {fileID: 47991453, guid: 7fdbcdeb4a3a58f4594ceadd34132808, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[7]
+      value: 
+      objectReference: {fileID: 1397760693}
+    - target: {fileID: 47991453, guid: 7fdbcdeb4a3a58f4594ceadd34132808, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[8]
+      value: 
+      objectReference: {fileID: 1328762120}
     - target: {fileID: 5240216270882560543, guid: 7fdbcdeb4a3a58f4594ceadd34132808,
         type: 3}
       propertyPath: m_Name
@@ -1885,7 +1950,7 @@ Transform:
   m_Children:
   - {fileID: 383722272}
   m_Father: {fileID: 159185367}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &695001412
 MonoBehaviour:
@@ -1931,6 +1996,117 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 669986514}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &756820288
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 159185367}
+    m_Modifications:
+    - target: {fileID: 47991453, guid: 7fdbcdeb4a3a58f4594ceadd34132808, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.JSONSerialization
+      value: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(0,0)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(-0.471206665,120.855217)"},"ID":1,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":"","Int32mValue":15},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"","BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"","BooleanmValue":false},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(-2.274785,164.851746)"},"ID":2,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-1003.60162,461.110779)","Comment":"Enemy
+        Death"},"ID":3,"Name":"Sequence","Instant":true,"AbortTypeabortType":"LowerPriority","Children":[{"Type":"EnemyNamescape.BHT.EnemyIsDeath","NodeData":{"Offset":"(-147.432053,146.189621)"},"ID":4,"Name":"Enemy
+        Is Death","Instant":true},{"Type":"EnemyNamescape.BHT.SetToCoverEmpty","NodeData":{"Offset":"(-5.95068359,152.208069)"},"ID":5,"Name":"Set
+        To Cover Empty","Instant":true},{"Type":"BehaviorDesigner.Runtime.Tasks.Idle","NodeData":{"Offset":"(131.549255,152.20813)"},"ID":6,"Name":"Idle","Instant":true}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-727.536255,224.7836)","Comment":"Move
+        to player if he is death"},"ID":7,"Name":"Sequence","Instant":true,"AbortTypeabortType":"LowerPriority","Children":[{"Type":"EnemyNamescape.BHT.PlayerIsDeath","NodeData":{"Offset":"(-166.552963,112.835129)"},"ID":8,"Name":"Player
+        Is Death","Instant":true},{"Type":"EnemyNamescape.BHT.ToggleWalking","NodeData":{"Offset":"(-36.552948,113.704758)"},"ID":9,"Name":"Toggle
+        Walking","Instant":true,"BooleanisWalking":true},{"Type":"EnemyNamescape.BHT.MoveToEnemyTargetWithUpdatingSpline","NodeData":{"Offset":"(142.577484,114.574326)"},"ID":10,"Name":"Move
+        To Enemy Target With Updating Spline","Instant":true,"SharedGameObjectthirdPersonControllerSGO":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"ThirdPersonControllerGo","IsShared":true,"GameObjectmValue":0},"SharedFloatdistanceTravelSF":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"","SinglemValue":0},"SharedFloatcomputerLengthSF":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"","SinglemValue":0},"SingledelayedCall":0.4,"SingleenemyTargetNearByThreashold":1.5,"SinglemaxDstBetweenEvaluatedPosAndCharacterPos":0.4,"SingleextraSpeed":0.4}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-365.1723,360.344666)","Comment":"Move
+        to cover and then fire while move in the cover as ping pong"},"ID":11,"Name":"Sequence","Instant":true,"AbortTypeabortType":"LowerPriority","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Unity.Math.BoolComparison","NodeData":{"Offset":"(-300.7693,128.461487)"},"ID":12,"Name":"Bool
+        Comparison","Instant":true,"SharedBoolbool1":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"EnemySeen","IsShared":true,"IsDynamic":true,"BooleanmValue":false},"SharedBoolbool2":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false}},{"Type":"EnemyNamescape.BHT.CanSeeIEnemyTarget","NodeData":{"Offset":"(-134.137726,125.861938)"},"ID":13,"Name":"Can
+        See I Enemy Target","Instant":true,"SharedFloatfieldOfViewAngle":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"","SinglemValue":30},"SharedFloatviewDistance":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"","SinglemValue":5},"SharedGameObjectthirdPersonControllerGo":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"ThirdPersonControllerGo","IsShared":true,"GameObjectmValue":1}},{"Type":"BehaviorDesigner.Runtime.Tasks.Unity.SharedVariables.SetSharedBool","NodeData":{"Offset":"(19.321106,139.339661)"},"ID":14,"Name":"Set
+        Shared Bool","Instant":true,"SharedBooltargetValue":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBooltargetVariable":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"EnemySeen","IsShared":true,"IsDynamic":true,"BooleanmValue":false}}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-224.771332,535.534)","Comment":"Move
+        to cover and then fire while move in the cover as ping pong"},"ID":15,"Name":"Sequence","Instant":true,"AbortTypeabortType":"LowerPriority","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Unity.Math.BoolComparison","NodeData":{"Offset":"(-229.866241,151.498566)"},"ID":16,"Name":"Bool
+        Comparison","Instant":true,"SharedBoolbool1":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"EnemySeen","IsShared":true,"IsDynamic":true,"BooleanmValue":false},"SharedBoolbool2":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true}},{"Type":"EnemyNamescape.BHT.IsThereEmptyCover","NodeData":{"Offset":"(-65.58012,159.999878)"},"ID":17,"Name":"Is
+        There Empty Cover","Instant":true},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(46.4673157,304.947021)"},"ID":18,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"EnemyNamescape.BHT.CoverLocationSelector","NodeData":{"Offset":"(-231.315765,160)"},"ID":19,"Name":"Cover
+        Location Selector","Instant":true},{"Type":"EnemyNamescape.BHT.ToggleWalking","NodeData":{"Offset":"(-56.7911339,165.643677)"},"ID":20,"Name":"Toggle
+        Walking","Instant":true,"BooleanisWalking":false},{"Type":"EnemyNamescape.BHT.CreateComputerAccordingNavmesh","NodeData":{"Offset":"(122.716393,160)"},"ID":21,"Name":"Create
+        Computer According Navmesh","Instant":true},{"Type":"EnemyNamescape.BHT.MoveToTargetLocation","NodeData":{"Offset":"(330.851654,160)"},"ID":22,"Name":"Move
+        To Target Location","Instant":true,"SinglemaxDstBetweenEvaluatedPosAndCharacterPos":0.5,"SingleextraSpeed":0.4},{"Type":"EnemyNamescape.BHT.ToggleWalking","NodeData":{"Offset":"(480.3246,163.870972)"},"ID":23,"Name":"Toggle
+        Walking","Instant":true,"BooleanisWalking":true}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Parallel","NodeData":{"Offset":"(241.21463,140.3833)"},"ID":24,"Name":"Parallel","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"EnemyNamescape.BHT.AimPositionerAction","NodeData":{"Offset":"(-46.8505249,157.366562)"},"ID":25,"Name":"Aim
+        Positioner Action","Instant":true,"SharedTransformaimTargetSH":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"AimTarget","IsShared":true,"TransformmValue":2}},{"Type":"EnemyNamescape.BHT.EnemyShotAction","NodeData":{"Offset":"(102.648193,157.366562)"},"ID":26,"Name":"Enemy
+        Shot Action","Instant":true,"SharedGameObjectweaponControllerGo":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"WeaponController","IsShared":true,"GameObjectmValue":3}},{"Type":"EnemyNamescape.BHT.MoveInCoverAsPingPong","NodeData":{"Offset":"(278.445557,164.705872)"},"ID":27,"Name":"Move
+        In Cover As Ping Pong","Instant":true,"SinglestrafeTurnSmoothSpeed":1.65,"SingleextraSpeed":0.4,"SinglemaxDstBetweenEvaluatedPosAndCharacterPos":0.5}]}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(198.618164,179.735458)","Comment":"Continuously
+        move and fire"},"ID":28,"Name":"Sequence","Instant":true,"AbortTypeabortType":"LowerPriority","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Unity.Math.BoolComparison","NodeData":{"Offset":"(-283.1035,264.1377)"},"ID":29,"Name":"Bool
+        Comparison","Instant":true,"SharedBoolbool1":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"EnemySeen","IsShared":true,"IsDynamic":true,"BooleanmValue":false},"SharedBoolbool2":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true}},{"Type":"BehaviorDesigner.Runtime.Tasks.Inverter","NodeData":{"Offset":"(-157.884277,144.2623)"},"ID":30,"Name":"Inverter","Instant":true,"Children":[{"Type":"EnemyNamescape.BHT.IsThereEmptyCover","NodeData":{"Offset":"(44.58098,123.809509)"},"ID":31,"Name":"Is
+        There Empty Cover","Instant":true}]},{"Type":"EnemyNamescape.BHT.ToggleWalking","NodeData":{"Offset":"(-29.3939133,144.848511)"},"ID":32,"Name":"Toggle
+        Walking","Instant":true,"BooleanisWalking":false},{"Type":"BehaviorDesigner.Runtime.Tasks.Parallel","NodeData":{"Offset":"(101.693192,131.428482)"},"ID":33,"Name":"Parallel","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"EnemyNamescape.BHT.AimPositionerAction","NodeData":{"Offset":"(-10.5608826,116.66687)"},"ID":34,"Name":"Aim
+        Positioner Action","Instant":true,"SharedTransformaimTargetSH":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"AimTarget","IsShared":true,"TransformmValue":4}},{"Type":"EnemyNamescape.BHT.EnemyShotAction","NodeData":{"Offset":"(149.438889,116.66687)"},"ID":35,"Name":"Enemy
+        Shot Action","Instant":true,"SharedGameObjectweaponControllerGo":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"WeaponController","IsShared":true,"GameObjectmValue":5}},{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(289.4389,126.66687)"},"ID":36,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":"","Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"","BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"","BooleanmValue":true},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(4.994873,123.333374)"},"ID":37,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Wait","NodeData":{"Offset":"(-75.00513,113.333435)"},"ID":38,"Name":"Wait","Instant":true,"SharedFloatwaitTime":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"","SinglemValue":0.6},"SharedBoolrandomWait":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"","BooleanmValue":false},"SharedFloatrandomWaitMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"","SinglemValue":1},"SharedFloatrandomWaitMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"","SinglemValue":1}},{"Type":"EnemyNamescape.BHT.ToggleStrafeWithEnemyTargetDistance","NodeData":{"Offset":"(104.994873,113.333435)"},"ID":39,"Name":"Toggle
+        Strafe With Enemy Target Distance","Instant":true,"SinglemaxDstThresholdToStrafeTrue":8}]}]},{"Type":"EnemyNamescape.BHT.MoveToEnemyTargetWithUpdatingSpline","NodeData":{"Offset":"(479.438965,126.66687)"},"ID":40,"Name":"Move
+        To Enemy Target With Updating Spline","Instant":true,"SharedGameObjectthirdPersonControllerSGO":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"ThirdPersonControllerGo","IsShared":true,"GameObjectmValue":6},"SharedFloatdistanceTravelSF":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"","SinglemValue":0},"SharedFloatcomputerLengthSF":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"","SinglemValue":0},"SingledelayedCall":0.4,"SingleenemyTargetNearByThreashold":4.5,"SinglemaxDstBetweenEvaluatedPosAndCharacterPos":0.4,"SingleextraSpeed":0.4}]}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(587.744263,171.2108)","Comment":"Patrol"},"ID":41,"Name":"Sequence","Instant":true,"AbortTypeabortType":"LowerPriority","Children":[{"Type":"PatrolAction","NodeData":{"Offset":"(-60,132.142868)"},"ID":42,"Name":"Patrol
+        Action","Instant":true,"SharedGameObjectthirdPersonControllerSGO":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"ThirdPersonControllerGo","IsShared":true,"GameObjectmValue":7},"SharedGameObjectcomputerSGO":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"patrolSpline","IsShared":true,"GameObjectmValue":8},"SinglemaxDstBetweenEvaluatedPosAndCharacterPos":0.5,"SingleextraSpeed":0.4},{"Type":"BehaviorDesigner.Runtime.Tasks.Wait","NodeData":{"Offset":"(45.43228,127.40593)"},"ID":43,"Name":"Wait","Instant":true,"SharedFloatwaitTime":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"","SinglemValue":1},"SharedBoolrandomWait":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"","BooleanmValue":false},"SharedFloatrandomWaitMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"","SinglemValue":1},"SharedFloatrandomWaitMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"","SinglemValue":1}}]}]}]},"DetachedTasks":[{"Type":"EnemyNamescape.BHT.CanSeeIEnemyTarget","NodeData":{"Offset":"(-496.896362,1083.44812)"},"ID":44,"Name":"Can
+        See I Enemy Target","Instant":true,"SharedFloatfieldOfViewAngle":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"","SinglemValue":30},"SharedFloatviewDistance":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"","SinglemValue":5},"SharedGameObjectthirdPersonControllerGo":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"ThirdPersonControllerGo","IsShared":true,"GameObjectmValue":9}},{"Type":"BehaviorDesigner.Runtime.Tasks.Unity.SharedVariables.CompareSharedBool","NodeData":{"Offset":"(-629.739868,890.3594)"},"ID":45,"Name":"Compare
+        Shared Bool","Instant":true,"SharedBoolvariable":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedBoolcompareTo":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"EnemySeen","IsShared":true,"IsDynamic":true,"BooleanmValue":false}}],"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"patrolSpline","IsShared":true,"GameObjectmValue":10},{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"ThirdPersonControllerGo","IsShared":true,"GameObjectmValue":11},{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":"AimTarget","IsShared":true,"TransformmValue":12},{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"WeaponController","IsShared":true,"GameObjectmValue":13},{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"EnemySeen","IsShared":true,"IsDynamic":true,"BooleanmValue":false}]}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5240216270882560543, guid: 7fdbcdeb4a3a58f4594ceadd34132808,
+        type: 3}
+      propertyPath: m_Name
+      value: Enemy V5 Riffle (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5240216270882560543, guid: 7fdbcdeb4a3a58f4594ceadd34132808,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6964981690612250137, guid: 7fdbcdeb4a3a58f4594ceadd34132808,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6964981690612250137, guid: 7fdbcdeb4a3a58f4594ceadd34132808,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 6964981690612250137, guid: 7fdbcdeb4a3a58f4594ceadd34132808,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6964981690612250137, guid: 7fdbcdeb4a3a58f4594ceadd34132808,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 6964981690612250137, guid: 7fdbcdeb4a3a58f4594ceadd34132808,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.00000035762784
+      objectReference: {fileID: 0}
+    - target: {fileID: 6964981690612250137, guid: 7fdbcdeb4a3a58f4594ceadd34132808,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6964981690612250137, guid: 7fdbcdeb4a3a58f4594ceadd34132808,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6964981690612250137, guid: 7fdbcdeb4a3a58f4594ceadd34132808,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6964981690612250137, guid: 7fdbcdeb4a3a58f4594ceadd34132808,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6964981690612250137, guid: 7fdbcdeb4a3a58f4594ceadd34132808,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -180
+      objectReference: {fileID: 0}
+    - target: {fileID: 6964981690612250137, guid: 7fdbcdeb4a3a58f4594ceadd34132808,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7fdbcdeb4a3a58f4594ceadd34132808, type: 3}
 --- !u!1 &786584041
 GameObject:
   m_ObjectHideFlags: 0
@@ -2014,6 +2190,18 @@ Transform:
   m_Father: {fileID: 1760880282}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0.381, y: 4.631, z: 0.039}
+--- !u!1 &805936696 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4133992755844762541, guid: 7fdbcdeb4a3a58f4594ceadd34132808,
+    type: 3}
+  m_PrefabInstance: {fileID: 460965721}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &817657444 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4430708660598967667, guid: 7fdbcdeb4a3a58f4594ceadd34132808,
+    type: 3}
+  m_PrefabInstance: {fileID: 460965721}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &899075173 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2795514480679959454, guid: d0c743e04caee9e448281c96c425adef,
@@ -2466,7 +2654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2119109931}
+  m_Material: {fileID: 988526952}
   m_Color: {r: 0, g: 0, b: 0, a: 0.2}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -2606,6 +2794,42 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f66a39f6ecd3724ea229b69cb541873, type: 3}
+--- !u!21 &988526952
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI/RoundedCorners/RoundedCorners
+  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _WidthHeightRadius: {r: 206.7164, g: 22.4218, b: 11.3, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1 &993074759
 GameObject:
   m_ObjectHideFlags: 0
@@ -2833,7 +3057,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 159185367}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1047649888
 GameObject:
@@ -3406,6 +3630,12 @@ Transform:
   m_Father: {fileID: 1461491025}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1328762120 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6851880390688688687, guid: 7fdbcdeb4a3a58f4594ceadd34132808,
+    type: 3}
+  m_PrefabInstance: {fileID: 460965721}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1329894126
 GameObject:
   m_ObjectHideFlags: 0
@@ -3549,6 +3779,12 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 1513445728}
+--- !u!1 &1397760693 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3404349695985840237, guid: 7fdbcdeb4a3a58f4594ceadd34132808,
+    type: 3}
+  m_PrefabInstance: {fileID: 460965721}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1411161623
 GameObject:
   m_ObjectHideFlags: 0
@@ -4204,6 +4440,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7292432474349288602, guid: 5c0759f732d6ee54c800bffbe450f26d,
     type: 3}
   m_PrefabInstance: {fileID: 4391270445092776143}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1720917515 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6964981690612250137, guid: 7fdbcdeb4a3a58f4594ceadd34132808,
+    type: 3}
+  m_PrefabInstance: {fileID: 756820288}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1760880281
 GameObject:
@@ -13195,42 +13437,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e8ba17d4e609ae489025f492212428a, type: 3}
---- !u!21 &2119109931
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: UI/RoundedCorners/RoundedCorners
-  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _ColorMask: 15
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _WidthHeightRadius: {r: 218.7164, g: 66.021, b: 20.82, a: 0}
-  m_BuildTextureStacks: []
 --- !u!1 &725295317302285708
 GameObject:
   m_ObjectHideFlags: 0

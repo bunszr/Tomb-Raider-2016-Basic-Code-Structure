@@ -43,7 +43,7 @@ namespace Character
             enemy.Rb.isKinematic = true;
             enemy.Colider.enabled = false;
             enemy.Animator.CrossFade("Death", .15f);
-            behaviorTrees.Foreach(x => x.enabled = false);
+            // behaviorTrees.Foreach(x => x.enabled = false); // Does not call SetToCoverEmpty node if we deactivate here. And also there is a Idle node in BHT.
             // enemy.WeaponHolder.GetComponentInChildren<IWeapon>().Unequip(); // BHT is called. Therefore you can not call twice
             enemy.GetComponent<RigBuilder>().enabled = false;
         }
