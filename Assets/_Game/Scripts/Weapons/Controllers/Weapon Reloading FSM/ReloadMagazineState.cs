@@ -20,7 +20,7 @@ public class ReloadMagazineState : WeaponStateBase
                         .Where(x => x.stateInfo.IsName(weaponBase.WeaponDataScriptable.weaponAnimationData.reloadMagazineName))
                         .Subscribe(OnReloadingEnter);
 
-        _animator.Animator.SetTrigger(weaponBase.WeaponDataScriptable.weaponAnimationData.reloadMagazineTriggerName);
+        _animator.Animator.CrossFade(weaponBase.WeaponDataScriptable.weaponAnimationData.reloadMagazineName, .1f);
     }
 
     public void OnReloadingEnter(OnAnimationStateEnterEvent onReloadingEnterEvent)
