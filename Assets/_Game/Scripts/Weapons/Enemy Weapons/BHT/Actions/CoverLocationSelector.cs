@@ -17,7 +17,7 @@ namespace EnemyNamescape.BHT
             CoverLocationData coverLocationData = EnemyManager.Ins.coverLocationHolder.coverLocationDatas.OrderBy(x => Vector3.SqrMagnitude(x.transform.position - thirdPersonT.position)).First();
             coverLocationData.EnemyInCoverRP.Value = thirdPersonT.GetComponent<Enemy>();
 
-            Vector3 target = coverLocationData.computer.GetPoints().OrderBy(x => Vector3.SqrMagnitude(x.position - thirdPersonT.position)).First().position;
+            Vector3 target = coverLocationData.computer.GetPoint(0).position;
 
             Owner.SetVariable(EnemyStaticData.BHTKey.NavmeshDestination, (SharedVector3)target);
             Owner.SetVariable(EnemyStaticData.BHTKey.CoverLocationDataGo, (SharedGameObject)coverLocationData.gameObject);
