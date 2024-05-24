@@ -8,7 +8,10 @@ public class NormalAimBehavior : AimBehaviourBase, IEquiptable
     public class NormalAimBehaviorData
     {
         public Rig[] rigs;
+        public float aimTargetPosSmoothTime = .1f;
     }
+
+    Vector3 aimTargetPosCurrVel;
 
     float weights;
     float Weights
@@ -93,8 +96,11 @@ public class NormalAimBehavior : AimBehaviourBase, IEquiptable
             Ray ray = cam.ScreenPointToRay(new Vector3(Screen.width * .5f, Screen.height * .5f));
             Physics.Raycast(ray, out hit, ScriptableData.rayMaxDistance, ScriptableData.layerMask);
 
-            if (hit.collider != null) weaponAimData.aimTargetTransform.position = hit.point;
-            else weaponAimData.aimTargetTransform.position = cam.transform.position + cam.transform.forward * ScriptableData.depth;
+            Vector3 targetAimPos;
+            if (hit.collider != null) targetAimPos = hit.point;
+            else targetAimPos = cam.transform.position + cam.transform.forward * ScriptableData.depth;
+
+            weaponAimData.aimTargetTransform.position = Vector3.SmoothDamp(weaponAimData.aimTargetTransform.position, targetAimPos, ref aimTargetPosCurrVel, data.aimTargetPosSmoothTime);
         }
 
         Weights += aim ? Time.deltaTime / ScriptableData.rigWeightDuration : -1f * Time.deltaTime / ScriptableData.rigWeightDuration;

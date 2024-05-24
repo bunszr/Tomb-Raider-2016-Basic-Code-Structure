@@ -66,12 +66,6 @@ MonoBehaviour:
     showAvailableNumSkillPointScriptableData:
       fadeDuration: 0.2
       fadeEase: 4
-    skillInfoPanelScriptableData:
-      fadeDuration: 0.2
-      fadeEase: 4
-      yAnimationDuration: 0.4
-      yAnimationAmount: 30.09
-      yAnimEase: 6
   weaponScriptableData:
     maxWeaponDataSaveable:
       damage: 100
@@ -86,4 +80,4 @@ MonoBehaviour:
       mouseSensitive: 350
       layerMask:
         serializedVersion: 2
-        m_Bits: 695
+        m_Bits: 4791
