@@ -4,12 +4,13 @@ using UniRx;
 
 public abstract class WeaponBase : MonoBehaviour, IWeaponForModel
 {
-    [SerializeField] WeaponDataScriptable weaponDataScriptable;
-    [ReadOnly, ShowInInspector] public ReactiveProperty<IAmmoData> _AmmoRP { get; set; }
+    [SerializeField] WeaponAnimationData weaponAnimationData;
 
-    public WeaponDataScriptable WeaponDataScriptable { get => weaponDataScriptable; set => weaponDataScriptable = value; }
+    [ReadOnly, ShowInInspector] public ReactiveProperty<IAmmoData> _AmmoDataRP { get; set; }
+
+    public Transform Transform => transform;
     public IAnimator _Animator { get; set; }
 
-    public int DrawWeaponInputInt => weaponDataScriptable.weaponAnimationData.drawWeaponInputInt;
-    public Transform Transform => transform;
+    public int DrawWeaponInputInt => WeaponAnimationData.drawWeaponInputInt;
+    public WeaponAnimationData WeaponAnimationData { get => weaponAnimationData; }
 }

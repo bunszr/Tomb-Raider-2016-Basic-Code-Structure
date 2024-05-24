@@ -124,10 +124,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 935fda5c2c4669b4388cd1324724752c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponAnimationData:
+    fireAnimName: Rifle Fire
+    drawWeaponInputInt: 1
+    reloadMagazineName: Riffle Magazine Reloading
   weaponDataScriptable: {fileID: 11400000, guid: 79f275702380bf94b8c68736ea6aa37c,
     type: 2}
   weaponItSelfFeatureTypeScriptable: {fileID: 11400000, guid: 4297b56ef976fa849a865b0769bf26eb,
     type: 2}
+  weaponAimData: {fileID: 0}
+  normalAimBehaviorData:
+    rigs: []
   scatterBulletBehaviourData:
     bulletPrefab: {fileID: 5873784681966129994, guid: 0dade95565689414e8416805f307eb7a,
       type: 3}
@@ -217,17 +224,17 @@ PrefabInstance:
     - target: {fileID: 805397128193972084, guid: 229cafe332d4a8247a966a29df7ef0ae,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 805397128193972084, guid: 229cafe332d4a8247a966a29df7ef0ae,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 805397128193972084, guid: 229cafe332d4a8247a966a29df7ef0ae,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 805397128193972084, guid: 229cafe332d4a8247a966a29df7ef0ae,
         type: 3}

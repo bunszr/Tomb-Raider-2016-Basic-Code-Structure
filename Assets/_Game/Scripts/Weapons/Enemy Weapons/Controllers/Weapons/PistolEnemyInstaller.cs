@@ -12,10 +12,10 @@ namespace WeaponNamescape.Enemy
             base.Awake();
             pistolEnemy = WeaponBase as PistolEnemy;
 
-            AddExtraFire(new FireAnimationBehaviour(livingEntity.Animator, WeaponBase.WeaponDataScriptable.weaponAnimationData.fireAnimName));
+            AddExtraFire(new FireAnimationBehaviour(livingEntity.Animator, WeaponBase.WeaponAnimationData.fireAnimName));
             AddExtraFire(new NormalBulletBehaviour(pistolEnemy, pistolEnemy.normalBulletModeData));
 
-            AddEquiptable(new EnemyFireBehavior(WeaponBase, _ExtraFireList, _checksToFire));
+            AddEquiptable(new EnemyFireBehavior(WeaponBase, enemyWeaponBase.WeaponData, _ExtraFireList, _ChecksToFire));
             AddEquiptable(new EnemyAimBoolSetterBehavior(WeaponBase));
             AddEquiptable(new EnemyAimBehavior(WeaponBase, livingEntity, pistolEnemy.enemyAimBehaviorData));
             AddEquiptable(new EnemyEquipBehaviour(livingEntity.Animator, WeaponBase.DrawWeaponInputInt));

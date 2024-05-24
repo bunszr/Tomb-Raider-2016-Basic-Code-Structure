@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class NormalAmmoView : MonoBehaviour
 {
-    [SerializeField] WeaponBase weaponBase;
+    [SerializeField] WeaponDataScriptable weaponDataScriptable;
     [SerializeField] PlayerWeaponBaseInstaller playerWeaponBaseInstaller;
     [SerializeField] GameObject panelParent;
     [SerializeField] TextMeshProUGUI currAmmoTMPro;
@@ -18,6 +18,7 @@ public class NormalAmmoView : MonoBehaviour
     private void Awake()
     {
         viewDisposables = new CompositeDisposable();
+        _normalAmmo = weaponDataScriptable as INormalAmmo;
         disposable = playerWeaponBaseInstaller.GetComponent<IWeapon>().HasEquipRP.Subscribe(OnChangeEquipStatus);
     }
 
@@ -30,7 +31,6 @@ public class NormalAmmoView : MonoBehaviour
     public void OnEquip()
     {
         panelParent.SetActive(true);
-        _normalAmmo = weaponBase.WeaponDataScriptable as INormalAmmo;
 
         _normalAmmo.NormalAmmo.BulletCountInMagazineRP.Subscribe(OnBulletCountInMagazine).AddTo(viewDisposables);
         _normalAmmo.NormalAmmo.CurrAmmoCapacityRP.Subscribe(OnCurrAmmoChanged).AddTo(viewDisposables);

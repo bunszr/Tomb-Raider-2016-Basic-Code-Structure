@@ -5,12 +5,14 @@ public class FireBehaviourBase : IFireBehaviour
     protected WeaponBase weaponBase;
     protected List<IExtraFire> _extraFireList;
     protected List<ICheck> _checkList;
+    protected WeaponData weaponData;
 
-    protected float RateOfFireDivided100 => weaponBase.WeaponDataScriptable.WeaponData.RateOfFireRP.Value / 100f;
+    protected float RateOfFireDivided100 => weaponData.RateOfFireRP.Value / 100f;
 
-    public FireBehaviourBase(WeaponBase weaponBase, List<IExtraFire> extraFireList, List<ICheck> checkList)
+    public FireBehaviourBase(WeaponBase weaponBase, WeaponData weaponData, List<IExtraFire> extraFireList, List<ICheck> checkList)
     {
         this.weaponBase = weaponBase;
+        this.weaponData = weaponData;
         this._extraFireList = extraFireList;
         this._checkList = checkList;
     }

@@ -38,7 +38,7 @@ public class WeaponReloadingEnemyFSM : IEquiptable
 
     public void Enter()
     {
-        weaponBase._AmmoRP.Value.BulletCountInMagazineRP.Where(x => x == 0).Subscribe(OnBulletCountZero).AddTo(disposables);
+        weaponBase._AmmoDataRP.Value.BulletCountInMagazineRP.Where(x => x == 0).Subscribe(OnBulletCountZero).AddTo(disposables);
         UpdateManager.Ins.RegisterAsUpdate(weaponBase, fsm.OnLogic);
     }
 

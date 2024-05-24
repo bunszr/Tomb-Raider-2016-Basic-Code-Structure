@@ -2,5 +2,5 @@ public class HasAmmoCheck : ICheck
 {
     WeaponBase weaponBase;
     public HasAmmoCheck(WeaponBase weapon) => weaponBase = weapon;
-    public bool Check() => weaponBase._AmmoRP.Value.CurrAmmoCapacityRP.Value > 0;
+    public bool Check() => weaponBase._AmmoDataRP.Value.CurrAmmoCapacityRP.Value > 0;
 }

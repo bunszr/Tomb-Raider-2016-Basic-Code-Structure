@@ -203,6 +203,12 @@ PrefabInstance:
       objectReference: {fileID: 6730589368444427489}
     - target: {fileID: 5131685726745698827, guid: 229cafe332d4a8247a966a29df7ef0ae,
         type: 3}
+      propertyPath: weaponDataScriptable
+      value: 
+      objectReference: {fileID: 11400000, guid: b0d51eb8610af37438fcf2a004635432,
+        type: 2}
+    - target: {fileID: 5131685726745698827, guid: 229cafe332d4a8247a966a29df7ef0ae,
+        type: 3}
       propertyPath: playerWeaponBaseInstaller
       value: 
       objectReference: {fileID: 8382166155138846416}
@@ -318,6 +324,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc12a086b09cd3240a3a2c4d51f31c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponAnimationData:
+    fireAnimName: Rifle Fire
+    drawWeaponInputInt: 1
+    reloadMagazineName: Riffle Magazine Reloading
   weaponDataScriptable: {fileID: 11400000, guid: b0d51eb8610af37438fcf2a004635432,
     type: 2}
   weaponItSelfFeatureTypeScriptable: {fileID: 11400000, guid: 98cef1838e746c2499b65f4da14196d4,
@@ -348,7 +358,6 @@ MonoBehaviour:
     addOn: {fileID: 8402882481330969543}
     light: {fileID: 252587155029180140}
   suppressorGO: {fileID: 7957262101229245282}
-  muzzleSpriteRender: {fileID: 0}
 --- !u!1 &7957262101229245282 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5785320819255553196, guid: f672bc3e5e5aaf64dbf1b73dcc0f5411,

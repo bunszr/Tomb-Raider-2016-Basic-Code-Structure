@@ -9,22 +9,21 @@ public class PlayerWeaponBaseInstaller : WeaponBaseInstaller, IWeapon, IWeaponIn
     protected PlayerWeaponBase playerWeaponBase;
 
     public Transform Transform => transform;
-    protected List<ICheck> _ChecksToFire { get; private set; } = new List<ICheck>();
 
     public ReactiveProperty<bool> HasEquipRP { get; private set; } = new ReactiveProperty<bool>();
 
     public virtual void Install()
     {
-        WeaponBase._AmmoRP = new ReactiveProperty<IAmmoData>(WeaponBase.WeaponDataScriptable.NormalAmmo);
-
         playerWeaponBase = WeaponBase as PlayerWeaponBase;
 
-        AddChecksToFire(new HasBulletInTheMagazineCheck(WeaponBase));
+        WeaponBase._AmmoDataRP = new ReactiveProperty<IAmmoData>(playerWeaponBase.WeaponDataScriptable.NormalAmmo);
+
+        AddChecksToFire(new HasBulletInTheMagazineCheck(WeaponBase._AmmoDataRP));
         AddChecksToFire(new HasAimCheck(WeaponBase as IAimIsTaken));
 
         AddEquiptable(new WeaponReloadingFSM(WeaponBase));
 
-        AddExtraFire(new FireAnimationBehaviour(WeaponBase._Animator.Animator, WeaponBase.WeaponDataScriptable.weaponAnimationData.fireAnimName));
+        AddExtraFire(new FireAnimationBehaviour(WeaponBase._Animator.Animator, WeaponBase.WeaponAnimationData.fireAnimName));
     }
 
     protected virtual void Start() { }
@@ -45,8 +44,4 @@ public class PlayerWeaponBaseInstaller : WeaponBaseInstaller, IWeapon, IWeaponIn
         HasEquipRP.Value = false;
     }
 
-    protected void AddChecksToFire(ICheck _check)
-    {
-        _ChecksToFire.Add(_check);
-    }
 }

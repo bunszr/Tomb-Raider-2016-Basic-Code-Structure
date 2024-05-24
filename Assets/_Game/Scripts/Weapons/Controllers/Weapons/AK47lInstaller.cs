@@ -15,7 +15,7 @@ public class AK47lInstaller : PlayerWeaponBaseInstaller
         AddExtraFire(new NormalBulletBehaviour(aK47, aK47.normalBulletModeData));
         AddExtraFire(new NormalShellCasingBehaviour(aK47, aK47.normalShellCasingData));
 
-        AddEquiptable(new AutomaticFireBehavior(WeaponBase, _ExtraFireList, _ChecksToFire));
+        AddEquiptable(new AutomaticFireBehavior(WeaponBase, playerWeaponBase.WeaponDataScriptable.WeaponData, _ExtraFireList, _ChecksToFire));
         AddEquiptable(new AimBoolSetterBehavior(WeaponBase));
         AddEquiptable(new NormalAimBehavior(WeaponBase, WeaponBase._Animator, aK47.NormalAimBehaviorData, aK47.WeaponAimData));
 

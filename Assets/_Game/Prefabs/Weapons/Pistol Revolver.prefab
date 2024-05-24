@@ -285,6 +285,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab35bf931efde6e4c834318175b72cab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponAnimationData:
+    fireAnimName: Pistol Fire
+    drawWeaponInputInt: 0
+    reloadMagazineName: Pistol Magazine Reloading
   weaponDataScriptable: {fileID: 11400000, guid: 6f165140cf81ebb40aaf970c60194007,
     type: 2}
   weaponItSelfFeatureTypeScriptable: {fileID: 11400000, guid: f5a0ceea85be0374dad19ab8f87bc0a6,

@@ -12,7 +12,7 @@ public class PistolInstaller : PlayerWeaponBaseInstaller
         AddExtraFire(new NormalBulletBehaviour(pistol, pistol.normalBulletModeData));
         AddExtraFire(new NormalShellCasingBehaviour(pistol, pistol.normalShellCasingData));
 
-        AddEquiptable(new SingleFireBehavior(WeaponBase, _ExtraFireList, _ChecksToFire));
+        AddEquiptable(new SingleFireBehavior(WeaponBase, playerWeaponBase.WeaponDataScriptable.WeaponData, _ExtraFireList, _ChecksToFire));
         AddEquiptable(new AimBoolSetterBehavior(WeaponBase));
         AddEquiptable(new NormalAimBehavior(WeaponBase, WeaponBase._Animator, pistol.NormalAimBehaviorData, pistol.WeaponAimData));
     }

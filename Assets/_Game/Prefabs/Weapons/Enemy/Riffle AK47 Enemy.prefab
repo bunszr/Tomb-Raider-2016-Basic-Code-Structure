@@ -87,8 +87,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 508e663be93fa514cbef070ee7860b66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponDataScriptable: {fileID: 11400000, guid: e9d06158c50935b4d99520568a60d35e,
-    type: 2}
+  weaponAnimationData:
+    fireAnimName: Rifle Fire
+    drawWeaponInputInt: 1
+    reloadMagazineName: Riffle Magazine Reloading
+  weaponDataSaveable:
+    damage: 22
+    recoilStability: 13
+    reloadSpeed: 3
+    ammoCapacity: 8
+    rateOfFire: 53
+  normalAmmoSaveable:
+    magazineCapacity: 7
+    currAmmoCapacity: 500
   normalBulletModeData:
     bulletPrefab: {fileID: 5692816736722050449, guid: 5ef1921ff43c73340a16b5478b002b4c,
       type: 3}
@@ -125,4 +136,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponBase: {fileID: 388254309}
   livingEntity: {fileID: 0}
+  enemyWeaponBase: {fileID: 0}
   riffleAK47Enemy: {fileID: 388254309}

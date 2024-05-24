@@ -5,7 +5,7 @@ public class SingleFireBehavior : FireBehaviourBase, IEquiptable
 {
     float nextTime;
 
-    public SingleFireBehavior(WeaponBase weaponBase, List<IExtraFire> extraFireList, List<ICheck> checkList) : base(weaponBase, extraFireList, checkList)
+    public SingleFireBehavior(WeaponBase weaponBase, WeaponData weaponData, List<IExtraFire> extraFireList, List<ICheck> checkList) : base(weaponBase, weaponData, extraFireList, checkList)
     {
     }
 
@@ -20,7 +20,7 @@ public class SingleFireBehavior : FireBehaviourBase, IEquiptable
         if (IM.Ins.Input.WeaponInput.HasPressedFireKey && nextTime < Time.time && AllCheckListIsTrue())
         {
             FireExtraFireList();
-            weaponBase._AmmoRP.Value.BulletCountInMagazineRP.Value--;
+            weaponBase._AmmoDataRP.Value.BulletCountInMagazineRP.Value--;
             nextTime = Time.time + RateOfFireDivided100;
         }
     }

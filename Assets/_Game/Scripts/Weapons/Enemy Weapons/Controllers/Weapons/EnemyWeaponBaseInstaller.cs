@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UniRx;
 using UnityEngine;
@@ -8,23 +7,24 @@ namespace WeaponNamescape.Enemy
     public class EnemyWeaponBaseInstaller : WeaponBaseInstaller, IWeapon
     {
         [SerializeField] protected LivingEntity livingEntity;
+        [SerializeField] protected EnemyWeaponBase enemyWeaponBase;
 
         public Transform Transform => transform;
-        protected List<ICheck> _checksToFire;
 
         public ReactiveProperty<bool> HasEquipRP { get; private set; } = new ReactiveProperty<bool>();
 
         protected virtual void Awake()
         {
-            WeaponBase.WeaponDataScriptable = WeaponBase.WeaponDataScriptable.CreateInstance();
-            WeaponBase._AmmoRP = new ReactiveProperty<IAmmoData>(WeaponBase.WeaponDataScriptable.NormalAmmo);
-            _checksToFire = new List<ICheck>()
-            {
-                new HasBulletInTheMagazineCheck(WeaponBase),
-                new HasAimCheck(WeaponBase as IAimIsTaken),
-            };
-
             WeaponBase._Animator = livingEntity as IAnimator;
+            enemyWeaponBase = WeaponBase as EnemyWeaponBase;
+
+            enemyWeaponBase.WeaponData = new WeaponData(enemyWeaponBase.WeaponDataSaveable);
+            enemyWeaponBase.NormalAmmo = new NormalAmmo(enemyWeaponBase.NormalAmmoSaveable);
+
+            WeaponBase._AmmoDataRP = new ReactiveProperty<IAmmoData>(enemyWeaponBase.NormalAmmo);
+
+            AddChecksToFire(new HasBulletInTheMagazineCheck(WeaponBase._AmmoDataRP));
+            AddChecksToFire(new HasAimCheck(WeaponBase as IAimIsTaken));
 
             AddEquiptable(new WeaponReloadingEnemyFSM(WeaponBase));
         }

@@ -19,7 +19,7 @@ public class WeaponCheckFactory
                 if (_hasAmmoCheck == null) _hasAmmoCheck = new HasAmmoCheck(weaponBase);
                 return _hasAmmoCheck.Check();
             case WeaponCheckType.HasBulletInTheMagazineCheck:
-                if (_hasBulletInTheMagazineCheck == null) _hasBulletInTheMagazineCheck = new HasBulletInTheMagazineCheck(weaponBase);
+                if (_hasBulletInTheMagazineCheck == null) _hasBulletInTheMagazineCheck = new HasBulletInTheMagazineCheck(weaponBase._AmmoDataRP);
                 return _hasBulletInTheMagazineCheck.Check();
         }
         return false;

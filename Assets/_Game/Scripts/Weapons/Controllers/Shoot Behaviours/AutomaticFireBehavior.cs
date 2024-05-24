@@ -5,7 +5,7 @@ public class AutomaticFireBehavior : FireBehaviourBase, IFireBehaviour, IEquipta
 {
     float nextTime;
 
-    public AutomaticFireBehavior(WeaponBase weaponBase, List<IExtraFire> extraFireList, List<ICheck> checkList) : base(weaponBase, extraFireList, checkList)
+    public AutomaticFireBehavior(WeaponBase weaponBase, WeaponData weaponData, List<IExtraFire> extraFireList, List<ICheck> checkList) : base(weaponBase, weaponData, extraFireList, checkList)
     {
     }
 
@@ -20,7 +20,7 @@ public class AutomaticFireBehavior : FireBehaviourBase, IFireBehaviour, IEquipta
         if (IM.Ins.Input.WeaponInput.HasHoldingFireKey && nextTime < Time.time && AllCheckListIsTrue())
         {
             FireExtraFireList();
-            weaponBase._AmmoRP.Value.BulletCountInMagazineRP.Value--;
+            weaponBase._AmmoDataRP.Value.BulletCountInMagazineRP.Value--;
             nextTime = Time.time + RateOfFireDivided100;
         }
     }

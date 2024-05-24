@@ -60,6 +60,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponBase: {fileID: 2639141800740143554}
   livingEntity: {fileID: 0}
+  enemyWeaponBase: {fileID: 0}
   pistolEnemy: {fileID: 2639141800740143554}
 --- !u!1 &6238806732700709444 stripped
 GameObject:
@@ -79,8 +80,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af863278b6023fa4d8234755879fe8d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponDataScriptable: {fileID: 11400000, guid: 83b98135b73e2684da3a87e874255dfd,
-    type: 2}
+  weaponAnimationData:
+    fireAnimName: Pistol Fire
+    drawWeaponInputInt: 0
+    reloadMagazineName: Pistol Magazine Reloading
+  weaponDataSaveable:
+    damage: 13
+    recoilStability: 24
+    reloadSpeed: 3
+    ammoCapacity: 0
+    rateOfFire: 200
+  normalAmmoSaveable:
+    magazineCapacity: 3
+    currAmmoCapacity: 100
   normalBulletModeData:
     bulletPrefab: {fileID: 5692816736722050449, guid: 5ef1921ff43c73340a16b5478b002b4c,
       type: 3}

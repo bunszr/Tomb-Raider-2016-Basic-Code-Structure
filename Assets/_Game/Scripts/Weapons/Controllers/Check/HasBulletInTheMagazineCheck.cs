@@ -1,7 +1,8 @@
+using UniRx;
 
 public class HasBulletInTheMagazineCheck : ICheck
 {
-    WeaponBase weaponBase;
-    public HasBulletInTheMagazineCheck(WeaponBase weapon) => weaponBase = weapon;
-    public bool Check() => weaponBase._AmmoRP.Value.BulletCountInMagazineRP.Value > 0;
+    ReactiveProperty<IAmmoData> _ammoDataRP;
+    public HasBulletInTheMagazineCheck(ReactiveProperty<IAmmoData> ammoDataRP) => _ammoDataRP = ammoDataRP;
+    public bool Check() => _ammoDataRP.Value.BulletCountInMagazineRP.Value > 0;
 }

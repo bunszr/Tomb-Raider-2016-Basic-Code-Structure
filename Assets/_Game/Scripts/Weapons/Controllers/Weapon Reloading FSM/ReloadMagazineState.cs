@@ -17,10 +17,10 @@ public class ReloadMagazineState : WeaponStateBase
     {
         nextTime = 0f;
         _disposable = _animator.AnimatorMessageBroker.Receive<OnAnimationStateEnterEvent>()
-                        .Where(x => x.stateInfo.IsName(weaponBase.WeaponDataScriptable.weaponAnimationData.reloadMagazineName))
+                        .Where(x => x.stateInfo.IsName(weaponBase.WeaponAnimationData.reloadMagazineName))
                         .Subscribe(OnReloadingEnter);
 
-        _animator.Animator.CrossFade(weaponBase.WeaponDataScriptable.weaponAnimationData.reloadMagazineName, .1f);
+        _animator.Animator.CrossFade(weaponBase.WeaponAnimationData.reloadMagazineName, .1f);
     }
 
     public void OnReloadingEnter(OnAnimationStateEnterEvent onReloadingEnterEvent)
