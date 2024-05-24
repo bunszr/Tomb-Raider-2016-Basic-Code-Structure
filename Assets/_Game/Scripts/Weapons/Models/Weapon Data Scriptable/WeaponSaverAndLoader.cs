@@ -42,7 +42,17 @@ public class WeaponSaverAndLoader : MonoBehaviour
     }
 
     [Button]
-    private void LoadFromItSelf() => weaponItSelfFeatureTypeScriptables.Foreach(x => x.weaponDataScriptable.LoadFromItSelf());
+    private void LoadFromItSelf()
+    {
+        foreach (var weaponItSelf in weaponItSelfFeatureTypeScriptables)
+        {
+            weaponItSelf.weaponDataScriptable.WeaponData = new WeaponData(weaponItSelf.weaponDataScriptable.WeaponDataSaveable);
+            weaponItSelf.weaponDataScriptable.NormalAmmo = new NormalAmmo(weaponItSelf.weaponDataScriptable.NormalAmmoSaveable);
+
+            IFireAmmo _fireAmmo = weaponItSelf.weaponDataScriptable as IFireAmmo;
+            if (_fireAmmo != null) _fireAmmo.FireAmmo = new FireAmmo(_fireAmmo.FireAmmoSaveable);
+        }
+    }
 
     [Button]
     private void LoadFromJSON()
@@ -58,10 +68,19 @@ public class WeaponSaverAndLoader : MonoBehaviour
         {
             if (dicWeaponDataSaveable.TryGetValue(weaponItSelf.Hash, out WeaponDataSaveable outWeaponDataSaveable))
                 weaponItSelf.weaponDataScriptable.WeaponData = new WeaponData(outWeaponDataSaveable);
+            else weaponItSelf.weaponDataScriptable.WeaponData = new WeaponData(weaponItSelf.weaponDataScriptable.WeaponDataSaveable);
+
             if (dicNormalAmmoSaveable.TryGetValue(weaponItSelf.Hash, out NormalAmmoSaveable outNormalAmmoSaveable))
                 weaponItSelf.weaponDataScriptable.NormalAmmo = new NormalAmmo(outNormalAmmoSaveable);
-            if (dicFireAmmoSaveable.TryGetValue(weaponItSelf.Hash, out FireAmmoSaveable outFireAmmoSaveable))
-                (weaponItSelf.weaponDataScriptable as IFireAmmo).FireAmmo = new FireAmmo(outFireAmmoSaveable);
+            else weaponItSelf.weaponDataScriptable.NormalAmmo = new NormalAmmo(weaponItSelf.weaponDataScriptable.NormalAmmoSaveable);
+
+            IFireAmmo _fireAmmo = weaponItSelf.weaponDataScriptable as IFireAmmo;
+            if (_fireAmmo != null)
+            {
+                if (dicFireAmmoSaveable.TryGetValue(weaponItSelf.Hash, out FireAmmoSaveable outFireAmmoSaveable))
+                    _fireAmmo.FireAmmo = new FireAmmo(outFireAmmoSaveable);
+                else _fireAmmo.FireAmmo = new FireAmmo(_fireAmmo.FireAmmoSaveable);
+            }
         }
     }
 
