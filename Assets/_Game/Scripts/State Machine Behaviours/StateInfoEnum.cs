@@ -4,4 +4,5 @@ public enum StateInfoEnum
     CollectInventoryItem = 1,
     InvestigateDocument = 2,
     HasAimed = 3,
+    WeaponReloading = 4,
 }
