@@ -1,8 +1,6 @@
 using Cinemachine;
-using Inventory;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace TriggerableAreaNamespace
 {
@@ -12,6 +10,8 @@ namespace TriggerableAreaNamespace
         public GameObject popUpGo;
         public GameObject notAllowedGo;
         public CinemachineVirtualCamera cam;
+        public CameraFieldOfViewCommand.CameraFieldOfViewCommandData cameraFieldOfViewCommandData;
+        public CrossFadeAnimAndWaitUntilFinishCommand.CrossFadeAnimAndWaitUntilFinishCommandData investigateDocumentCommandData;
 
         public GameObject PopUpGo => popUpGo;
         public bool HasPopUp => true;

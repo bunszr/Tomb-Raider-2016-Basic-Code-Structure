@@ -13,6 +13,8 @@ public static class APs
     public static readonly int Falling = Animator.StringToHash("Falling");
     public static readonly int CloseWar = Animator.StringToHash("CloseWar");
 
+    public static readonly int NewState = Animator.StringToHash("New State");
+
     public static readonly int DrawWeaponTrigger = Animator.StringToHash("DrawWeaponTrigger");
     public static readonly int DrawWeaponInt = Animator.StringToHash("DrawWeaponInt");
     public static readonly int Shot = Animator.StringToHash("Shot");

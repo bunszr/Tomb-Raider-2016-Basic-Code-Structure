@@ -25,7 +25,9 @@ namespace TriggerableAreaNamespace
                 new DestoryAreaCommonViewerCommand(areaDocument),
                 new ChangePlayerInputCommand(PlayerInputType.None),
                 new ToggleCameraCommand(areaDocument, TriggeredPlayerReference, true),
-                new ParalelCommand(new IAreaCommad[] { new InvestigateDocumentCommand(TriggeredPlayerReference) , new CameraFieldOfViewCommand(areaDocument) }),
+                new ParalelCommand(new IAreaCommad[] {
+                    new CrossFadeAnimAndWaitUntilFinishCommand(TriggeredPlayerReference, areaDocument.investigateDocumentCommandData),
+                    new CameraFieldOfViewCommand(areaDocument, areaDocument.cameraFieldOfViewCommandData) }),
                 new ToggleCameraCommand(areaDocument, TriggeredPlayerReference, false),
                 new ChangePlayerInputCommand(PlayerInputType.Normal),
             };

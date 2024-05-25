@@ -206,6 +206,12 @@ MonoBehaviour:
   popUpGo: {fileID: 678911151429366591}
   notAllowedGo: {fileID: 322812791742935772}
   cam: {fileID: 1015500427}
+  cameraFieldOfViewCommandData:
+    targetFOV: 30
+    duration: 2
+    ease: 4
+  investigateDocumentCommandData:
+    animStateName: Investigate Document
 --- !u!4 &5726911709534408711 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1874065324201862457, guid: 23a4362470b590449b7c31ddc8943302,
@@ -244,6 +250,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   areaDocument: {fileID: 509282797}
   commandExecuterDebug:
-    isDebug: 0
     maxStateCountToShow: 8
     enteringStatesList: []

@@ -1,27 +1,31 @@
-using System;
-using System.Linq;
 using DG.Tweening;
-using UniRx;
-using UnityEngine;
 
 namespace TriggerableAreaNamespace
 {
     public class CameraFieldOfViewCommand : IAreaCommad
     {
+        [System.Serializable]
+        public class CameraFieldOfViewCommandData
+        {
+            public float targetFOV = 30;
+            public float duration = 2;
+            public Ease ease = Ease.InOutSine;
+        }
+
+        CameraFieldOfViewCommandData data;
         IAreaCamera _areaCamera;
-        AreaBase areaBase;
         Tween tween;
 
-        public CameraFieldOfViewCommand(AreaBase areaBase)
+        public CameraFieldOfViewCommand(IAreaCamera _areaCamera, CameraFieldOfViewCommandData data)
         {
-            this.areaBase = areaBase;
-            _areaCamera = areaBase as IAreaCamera;
+            this._areaCamera = _areaCamera;
+            this.data = data;
         }
 
         public void Enter()
         {
-            float val = 40;
-            tween = DOTween.To(() => val, x => val = x, 20, 3).SetEase(Ease.InFlash, 2).OnUpdate(() =>
+            float val = _areaCamera.VirtualCamera.m_Lens.FieldOfView;
+            tween = DOTween.To(() => val, x => val = x, data.targetFOV, data.duration).SetEase(data.ease).SetLoops(2, LoopType.Yoyo).OnUpdate(() =>
             {
                 _areaCamera.VirtualCamera.m_Lens.FieldOfView = val;
             });
