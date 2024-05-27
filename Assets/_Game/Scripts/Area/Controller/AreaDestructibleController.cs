@@ -3,21 +3,15 @@ using UnityEngine;
 
 namespace TriggerableAreaNamespace
 {
-    public class AreaDestructibleController : MonoBehaviour
+    public class AreaDestructibleController : AreaBaseController
     {
-        TriggerCustom triggerCustom;
-        CommandExecuter commandExecuter;
-        [SerializeField] AreaDestructible areaDestructible;
-
         Rigidbody[] fragmentsRb;
 
-        [SerializeField] CommandExecuter.CommandExecuterDebug commandExecuterDebug;
-
-        public TriggeredPlayerReference TriggeredPlayerReference { get; private set; } = new TriggeredPlayerReference();
-
-        private void Start()
+        protected override void Start()
         {
-            triggerCustom = gameObject.GetOrAddComponent<TriggerCustom>();
+            base.Start();
+
+            AreaDestructible areaDestructible = areaBase as AreaDestructible;
 
             Func<bool> pressPunchKeyConditionCheck = new Func<bool>(() => IM.Ins.Input.AreaInput.HasPressedHitKey);
 
@@ -49,10 +43,11 @@ namespace TriggerableAreaNamespace
             commandExecuter.Activate();
         }
 
-        void OnFinishedExecutionOfCommands()
+        protected override void OnFinishedExecutionOfCommands()
         {
+            base.OnFinishedExecutionOfCommands();
             commandExecuter.Deactivate();
-            Destroy(areaDestructible.transform.parent.gameObject, 1);
+            Destroy(areaBase.transform.parent.gameObject, 1);
         }
     }
 }

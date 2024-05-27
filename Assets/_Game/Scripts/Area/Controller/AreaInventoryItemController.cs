@@ -3,19 +3,13 @@ using UnityEngine;
 
 namespace TriggerableAreaNamespace
 {
-    public class AreaInventoryItemController : MonoBehaviour
+    public class AreaInventoryItemController : AreaBaseController
     {
-        TriggerCustom triggerCustom;
-        CommandExecuter commandExecuter;
-        [SerializeField] AreaInventoryItem areaInventoryItem;
-
-        [SerializeField] CommandExecuter.CommandExecuterDebug commandExecuterDebug;
-
-        public TriggeredPlayerReference TriggeredPlayerReference { get; private set; } = new TriggeredPlayerReference();
-
-        private void Start()
+        protected override void Start()
         {
-            triggerCustom = gameObject.GetOrAddComponent<TriggerCustom>();
+            base.Start();
+
+            AreaInventoryItem areaInventoryItem = areaBase as AreaInventoryItem;
 
             Func<bool> areaConditionCheck = new Func<bool>(() => areaInventoryItem.inventoryItemScriptableBase.QuantityRP.Value < areaInventoryItem.inventoryItemScriptableBase.MaxQuantity);
 
@@ -40,10 +34,11 @@ namespace TriggerableAreaNamespace
             commandExecuter.Activate();
         }
 
-        void OnFinishedExecutionOfCommands()
+        protected override void OnFinishedExecutionOfCommands()
         {
+            base.OnFinishedExecutionOfCommands();
             commandExecuter.Deactivate();
-            Destroy(areaInventoryItem.transform.parent.gameObject, 1);
+            Destroy(areaBase.transform.parent.gameObject, 1);
         }
     }
 }

@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1780231a3b502e9499d19cbf556d71a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  areaCampsite: {fileID: 1547086794}
+  areaBase: {fileID: 1547086794}
   commandExecuterDebug:
     maxStateCountToShow: 8
     enteringStatesList: []

@@ -124,9 +124,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca503f2ba01f28648ba3769e1ef17122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  areaInventoryItem: {fileID: 1176815666}
+  areaBase: {fileID: 1176815666}
   commandExecuterDebug:
-    isDebug: 1
     maxStateCountToShow: 8
     enteringStatesList: []
 --- !u!1 &4742190642443853023 stripped

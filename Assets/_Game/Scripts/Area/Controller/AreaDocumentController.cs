@@ -2,19 +2,13 @@ using UnityEngine;
 
 namespace TriggerableAreaNamespace
 {
-    public class AreaDocumentController : MonoBehaviour
+    public class AreaDocumentController : AreaBaseController
     {
-        TriggerCustom triggerCustom;
-        CommandExecuter commandExecuter;
-        [SerializeField] AreaDocument areaDocument;
-
-        [SerializeField] CommandExecuter.CommandExecuterDebug commandExecuterDebug;
-
-        public TriggeredPlayerReference TriggeredPlayerReference { get; private set; } = new TriggeredPlayerReference();
-
-        private void Start()
+        protected override void Start()
         {
-            triggerCustom = gameObject.GetOrAddComponent<TriggerCustom>();
+            base.Start();
+
+            AreaDocument areaDocument = areaBase as AreaDocument;
 
             IAreaCommad[] areaCommads = new IAreaCommad[]
             {
@@ -38,10 +32,11 @@ namespace TriggerableAreaNamespace
             commandExecuter.Activate();
         }
 
-        void OnFinishedExecutionOfCommands()
+        protected override void OnFinishedExecutionOfCommands()
         {
+            base.OnFinishedExecutionOfCommands();
             commandExecuter.Deactivate();
-            Destroy(areaDocument.transform.parent.gameObject, 1);
+            Destroy(areaBase.transform.parent.gameObject, 1);
         }
     }
 }

@@ -248,7 +248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e30887111681cb741af93936777f71f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  areaDocument: {fileID: 509282797}
+  areaBase: {fileID: 509282797}
   commandExecuterDebug:
     maxStateCountToShow: 8
     enteringStatesList: []

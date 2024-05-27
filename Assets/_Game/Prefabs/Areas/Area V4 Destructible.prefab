@@ -666,9 +666,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4597f08a6b3bb64cb1571a40c471e9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  areaDestructible: {fileID: 3660664}
+  areaBase: {fileID: 3660664}
   commandExecuterDebug:
-    isDebug: 1
     maxStateCountToShow: 8
     enteringStatesList: []
 --- !u!4 &2155340962067855737 stripped

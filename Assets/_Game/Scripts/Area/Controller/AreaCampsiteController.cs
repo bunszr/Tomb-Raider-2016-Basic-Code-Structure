@@ -2,19 +2,13 @@ using UnityEngine;
 
 namespace TriggerableAreaNamespace
 {
-    public class AreaCampsiteController : MonoBehaviour
+    public class AreaCampsiteController : AreaBaseController
     {
-        TriggerCustom triggerCustom;
-        CommandExecuter commandExecuter;
-        [SerializeField] AreaCampsite areaCampsite;
-
-        [SerializeField] CommandExecuter.CommandExecuterDebug commandExecuterDebug;
-
-        public TriggeredPlayerReference TriggeredPlayerReference { get; private set; } = new TriggeredPlayerReference();
-
-        private void Start()
+        protected override void Start()
         {
-            triggerCustom = gameObject.GetOrAddComponent<TriggerCustom>();
+            base.Start();
+
+            AreaCampsite areaCampsite = areaBase as AreaCampsite;
 
             IAreaCommad[] areaCommads = new IAreaCommad[]
             {
@@ -36,8 +30,9 @@ namespace TriggerableAreaNamespace
             commandExecuter.Activate();
         }
 
-        void OnFinishedExecutionOfCommands()
+        protected override void OnFinishedExecutionOfCommands()
         {
+            base.OnFinishedExecutionOfCommands();
             commandExecuter.Deactivate();
             commandExecuter.Activate();
         }
