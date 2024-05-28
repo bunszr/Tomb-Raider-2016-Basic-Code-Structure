@@ -29,7 +29,7 @@ namespace CampSite
 
                 new ShowAndHighlightRequirementsCommandView(csbBase, campSiteHolder.FeatureInformationPanelHolder.requirementsText, featureTypeScriptable, csbWeaponFeature.lockImage));
 
-            CostDataCommandController costDataCommandController = new CostDataCommandController(featureTypeScriptable,
+            ToggleCommandBasedOnFeatureState toggleCommandBasedOnFeatureState = new ToggleCommandBasedOnFeatureState(featureTypeScriptable,
 
                 new ShowCostDataCommandView(csbBase, campSiteHolder.CostAndInventoryPanel, weaponFeatureTypeScriptable, csbWeaponFeature.featureNameText),
                 new ShowOnlyCostDataCommandView(csbBase, campSiteHolder.CostAndInventoryPanel));
@@ -39,7 +39,7 @@ namespace CampSite
                 new ShowTickImageCommandView(csbBase, csbWeaponFeature.tickImage.gameObject));
 
             AddCommand(requirementsStateController);
-            AddCommand(costDataCommandController);
+            AddCommand(toggleCommandBasedOnFeatureState);
             AddCommand(upgradedTickCommandController);
 
             commandExecuter = new CommandExecuterWithCondition(new ICSBExecute[]
