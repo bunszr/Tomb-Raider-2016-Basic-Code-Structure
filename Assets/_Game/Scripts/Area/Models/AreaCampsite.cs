@@ -11,9 +11,6 @@ namespace TriggerableAreaNamespace
         public GameObject campsiteFirstPanelToOpenGo;
 
         public GameObject PopUpGo => popUpGo;
-        public bool HasPopUp => true;
-
         public GameObject NotAllowedGo => notAllowedGo;
-        public bool NotAllowedCondition => false;
     }
 }

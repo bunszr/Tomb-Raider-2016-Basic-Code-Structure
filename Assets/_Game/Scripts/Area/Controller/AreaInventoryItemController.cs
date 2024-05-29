@@ -20,7 +20,7 @@ namespace TriggerableAreaNamespace
                     new AreaHasTriggeredCommand(triggerCustom),
                     new ExtraConditionCommand(areaConditionCheck),
                     new TriggeredPlayerSetterCommand(triggerCustom, TriggeredPlayerReference) }),
-                new DestoryAreaCommonViewerCommand(areaInventoryItem),
+                new DestoryPopUpControllerCommand(areaInventoryItem),
                 new ChangePlayerInputCommand(PlayerInputType.None),
                 new CollectAnimationCommand(TriggeredPlayerReference, 0),
                 new TakenInventoryItemViewCommand(areaInventoryItem),

@@ -21,9 +21,6 @@ namespace TriggerableAreaNamespace
         public int ItemCountToTake { get => itemCountToTake; }
 
         public GameObject PopUpGo => popUpGo;
-        public bool HasPopUp => inventoryItemScriptableBase.QuantityRP.Value < inventoryItemScriptableBase.MaxQuantity;
-
         public GameObject NotAllowedGo => notAllowedGo;
-        public bool NotAllowedCondition => inventoryItemScriptableBase.QuantityRP.Value >= inventoryItemScriptableBase.MaxQuantity;
     }
 }

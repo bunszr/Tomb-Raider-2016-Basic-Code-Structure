@@ -16,7 +16,7 @@ namespace TriggerableAreaNamespace
                     new PressKeyCommand(() => IM.Ins.Input.AreaInput.HasPressedCollectItemKey),
                     new AreaHasTriggeredCommand(triggerCustom),
                     new TriggeredPlayerSetterCommand(triggerCustom, TriggeredPlayerReference) }),
-                new DestoryAreaCommonViewerCommand(areaDocument),
+                new DestoryPopUpControllerCommand(areaDocument),
                 new ChangePlayerInputCommand(PlayerInputType.None),
                 new ToggleCameraCommand(areaDocument, TriggeredPlayerReference, true),
                 new ParalelCommand(new IAreaCommad[] {

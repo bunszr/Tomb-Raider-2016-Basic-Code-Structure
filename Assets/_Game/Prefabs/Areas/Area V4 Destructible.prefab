@@ -670,6 +670,19 @@ MonoBehaviour:
   commandExecuterDebug:
     maxStateCountToShow: 8
     enteringStatesList: []
+--- !u!114 &991597006193017873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199819635712861402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24dfca19732237d429d9977ee8d759b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  areaBase: {fileID: 3660664}
 --- !u!4 &2155340962067855737 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 614745036, guid: e2051cfeef937c54a9f23a1298f44b46,
@@ -718,19 +731,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2155340961453144757}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3660663
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7048298971219372969}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64164702b4c59d841b6d86ae818a6315, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  areaBase: {fileID: 3660664}
 --- !u!114 &7266957520268990944 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8732519755962901333, guid: e2051cfeef937c54a9f23a1298f44b46,

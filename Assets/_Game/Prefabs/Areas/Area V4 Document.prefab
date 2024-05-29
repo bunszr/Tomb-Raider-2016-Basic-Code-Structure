@@ -168,19 +168,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6158698469952271678}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &135892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2156817844362472216}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64164702b4c59d841b6d86ae818a6315, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  areaBase: {fileID: 509282797}
 --- !u!1 &5271974284846854426 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2040630972431811620, guid: 23a4362470b590449b7c31ddc8943302,
@@ -252,3 +239,16 @@ MonoBehaviour:
   commandExecuterDebug:
     maxStateCountToShow: 8
     enteringStatesList: []
+--- !u!114 &5237655192306865486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7825151063757874283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24dfca19732237d429d9977ee8d759b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  areaBase: {fileID: 509282797}

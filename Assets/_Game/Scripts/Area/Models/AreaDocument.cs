@@ -14,10 +14,7 @@ namespace TriggerableAreaNamespace
         public CrossFadeAnimAndWaitUntilFinishCommand.CrossFadeAnimAndWaitUntilFinishCommandData investigateDocumentCommandData;
 
         public GameObject PopUpGo => popUpGo;
-        public bool HasPopUp => true;
-
         public GameObject NotAllowedGo => notAllowedGo;
-        public bool NotAllowedCondition => false;
 
         public CinemachineVirtualCamera VirtualCamera => cam;
     }

@@ -23,7 +23,7 @@ namespace TriggerableAreaNamespace
                     new PressKeyCommand(() => IM.Ins.Input.AreaInput.HasPressedCollectItemKey),
                     new AreaHasTriggeredCommand(triggerCustom),
                     new TriggeredPlayerSetterCommand(triggerCustom, TriggeredPlayerReference) }),
-                new DestoryAreaCommonViewerCommand(areaDestructible),
+                new DestoryPopUpControllerCommand(areaDestructible),
                 new CrossFadeAnimationCommand(TriggeredPlayerReference, areaDestructible.punchWallIdleAnim),
                 new ChangePlayerInputCommand(PlayerInputType.None),
                 new ToggleCameraCommand(areaDestructible, TriggeredPlayerReference, true),

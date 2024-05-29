@@ -18,13 +18,10 @@ namespace TriggerableAreaNamespace
         public string punchWallIdleAnim;
 
         public GameObject PopUpGo => popUpGo;
-        public bool HasPopUp => true;
+        public GameObject NotAllowedGo => notAllowedGo;
 
         public CinemachineVirtualCamera VirtualCamera => cam;
 
         public Transform PlayerLocation => playerLocation;
-
-        public GameObject NotAllowedGo => notAllowedGo;
-        public bool NotAllowedCondition => false; // Gain digging tool
     }
 }
