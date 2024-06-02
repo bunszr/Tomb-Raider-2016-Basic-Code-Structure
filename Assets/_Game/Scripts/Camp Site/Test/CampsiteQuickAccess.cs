@@ -33,4 +33,13 @@ public partial class CampsiteQuickAccess : ScriptableObject
             x.alpha = 0;
         });
     }
+
+    [Button, HorizontalGroup("6")]
+    public void OnCampsiteCanvasesGroups()
+    {
+        GameObject.FindGameObjectsWithTag("Campsite Canvas").Select(x => x.GetComponent<CanvasGroup>()).Foreach(x =>
+        {
+            x.alpha = 1;
+        });
+    }
 }

@@ -26,7 +26,6 @@ namespace CampSite
 
         protected virtual void Awake()
         {
-
             csbBase = GetComponent<CSBBase>();
             GetComponentInParent<ISubject<IPanelObserver>>().Register(this);
         }

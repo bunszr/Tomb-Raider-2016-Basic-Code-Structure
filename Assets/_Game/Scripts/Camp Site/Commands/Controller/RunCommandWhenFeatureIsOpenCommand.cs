@@ -1,11 +1,11 @@
 namespace CampSite
 {
-    public class UpgradedTickCommandController : ICSBActivateable
+    public class RunCommandWhenFeatureIsOpenCommand : ICSBActivateable
     {
         FeatureTypeScriptable featureTypeScriptable;
         ICSBActivateable _showTickImageCommand;
 
-        public UpgradedTickCommandController(FeatureTypeScriptable featureTypeScriptable, ICSBActivateable showTickImageCommand)
+        public RunCommandWhenFeatureIsOpenCommand(FeatureTypeScriptable featureTypeScriptable, ICSBActivateable showTickImageCommand)
         {
             this.featureTypeScriptable = featureTypeScriptable;
             _showTickImageCommand = showTickImageCommand;

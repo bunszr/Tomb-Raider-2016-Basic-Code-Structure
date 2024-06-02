@@ -7,7 +7,6 @@ namespace CampSite
     public class CSBWeaponFeatureController : CSBBaseController
     {
         CSBWeaponFeature csbWeaponFeature;
-        FeatureTypeScriptable featureTypeScriptable;
         WeaponFeatureTypeScriptable weaponFeatureTypeScriptable;
 
         GameObject nextPanelTogglerGO => campSiteHolder.UpgradedPanel.gameObject;
@@ -16,7 +15,7 @@ namespace CampSite
         {
             csbWeaponFeature = csbBase.GetComponent<CSBWeaponFeature>();
 
-            featureTypeScriptable = csbWeaponFeature.FeatureTypeScriptable;
+            FeatureTypeScriptable featureTypeScriptable = csbWeaponFeature.FeatureTypeScriptable;
             weaponFeatureTypeScriptable = (WeaponFeatureTypeScriptable)csbWeaponFeature.FeatureTypeScriptable;
 
             AddCommand(new HighlightCommandView(csbBase, csbWeaponFeature.highlightImage));
@@ -34,7 +33,7 @@ namespace CampSite
                 new ShowCostDataCommandView(csbBase, campSiteHolder.CostAndInventoryPanel, weaponFeatureTypeScriptable, csbWeaponFeature.featureNameText),
                 new ShowOnlyCostDataCommandView(csbBase, campSiteHolder.CostAndInventoryPanel));
 
-            UpgradedTickCommandController upgradedTickCommandController = new UpgradedTickCommandController(featureTypeScriptable,
+            RunCommandWhenFeatureIsOpenCommand upgradedTickCommandController = new RunCommandWhenFeatureIsOpenCommand(featureTypeScriptable,
 
                 new ShowTickImageCommandView(csbBase, csbWeaponFeature.tickImage.gameObject));
 

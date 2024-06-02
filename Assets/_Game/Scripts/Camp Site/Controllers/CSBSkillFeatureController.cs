@@ -37,7 +37,7 @@ namespace CampSite
                 new SkillPointCostCommandView(csbBase, campSiteHolder.skillInfoPanel.skillCostPanel.numSkillPointText, NumSkillPointRP, csbSkillFeature.skillPointCostCommandViewData),
                 new DisappearWithCanvasGroupCommandView(csbBase, campSiteHolder.skillInfoPanel.skillCostPanel.canvasGroup));
 
-            UpgradedTickCommandController upgradedTickCommandController = new UpgradedTickCommandController(featureTypeScriptable,
+            RunCommandWhenFeatureIsOpenCommand upgradedTickCommandController = new RunCommandWhenFeatureIsOpenCommand(featureTypeScriptable,
 
                 new ShowTickImageCommandView(csbBase, csbSkillFeature.tickImage.gameObject));
 
