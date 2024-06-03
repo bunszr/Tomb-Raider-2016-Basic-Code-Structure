@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class FillMagazineState : WeaponStateBase
 {
-    public FillMagazineState(WeaponBase weaponBase, bool needsExitTime, bool isGhostState = false) : base(weaponBase, needsExitTime, isGhostState) { }
+    public FillMagazineState(WeaponBase weaponBase, bool needsExitTime, bool isGhostState) : base(weaponBase, needsExitTime, isGhostState) { }
 
     public override void OnEnter()
     {

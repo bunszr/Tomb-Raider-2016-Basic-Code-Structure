@@ -18,9 +18,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b0d51eb8610af37438fcf2a004635432, type: 2}
   objectsB:
   - {fileID: 8627159283635660551, guid: 1037133ff907fe7488fbfdfc47b4749f, type: 3}
-  - {fileID: 11400000, guid: 83b98135b73e2684da3a87e874255dfd, type: 2}
   - {fileID: 2729375312485972615, guid: f4c71250342203e42a1aecf89b7f02be, type: 3}
-  - {fileID: 11400000, guid: 83b98135b73e2684da3a87e874255dfd, type: 2}
   selectClass:
   - name: Pistol
   selectClass2:

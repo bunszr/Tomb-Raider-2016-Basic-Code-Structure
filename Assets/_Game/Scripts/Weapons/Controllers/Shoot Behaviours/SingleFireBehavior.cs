@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SingleFireBehavior : FireBehaviourBase, IEquiptable
+public class SingleFireBehavior : FireBehaviourBase
 {
     float nextTime;
 

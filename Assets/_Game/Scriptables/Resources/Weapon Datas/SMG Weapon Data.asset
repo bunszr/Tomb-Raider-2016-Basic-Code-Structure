@@ -18,12 +18,7 @@ MonoBehaviour:
     recoilStability: 30
     reloadSpeed: 5
     ammoCapacity: 10
-    rateOfFire: 124
+    rateOfFire: 19
   normalAmmoSaveable:
-    magazineCapacity: 7
+    magazineCapacity: 15
     currAmmoCapacity: 45
-  weaponAnimationData:
-    fireAnimName: Rifle Fire
-    drawWeaponInputInt: 2
-    reloadMagazineName: Riffle Magazine Reloading
-    reloadMagazineTriggerName: RiffleMagazineReloading

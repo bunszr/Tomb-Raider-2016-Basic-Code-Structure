@@ -1,5 +1,1 @@
-public interface IAimBehaviour
-{
-    void Enter();
-    void Exit();
-}
+public interface IAimBehaviour : IEquiptable { }

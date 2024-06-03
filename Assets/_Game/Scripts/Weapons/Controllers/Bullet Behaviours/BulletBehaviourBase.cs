@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BulletBehaviourBase
+public class BulletBehaviourBase : IBulletBehaviour
 {
     static Transform bulletHolder;
     public static Transform BulletHolder
@@ -18,4 +18,6 @@ public class BulletBehaviourBase
     {
         weaponBase = weapon;
     }
+
+    public virtual void Fire() { }
 }

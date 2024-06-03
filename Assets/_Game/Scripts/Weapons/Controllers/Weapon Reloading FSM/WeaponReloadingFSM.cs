@@ -23,9 +23,9 @@ public class WeaponReloadingFSM : IEquiptable
         factory = new WeaponCheckFactory(weaponBase);
 
         fsm.AddState("EmptyState", new State());
-        fsm.AddState("ReloadMagazineState", new ReloadMagazineState(weaponBase, animator, true));
+        fsm.AddState("ReloadMagazineState", new ReloadMagazineState(weaponBase, true));
         fsm.AddState("FillMagazineState", new FillMagazineState(weaponBase, false, true));
-        fsm.AddState("EmptyShotState", new EmptyShotState(weaponBase, true, true));
+        fsm.AddState("EmptyShotState", new EmptyShotState(weaponBase, false));
 
         fsm.AddTriggerTransition("OnMagazineEmpty", new Transition("EmptyState", "ReloadMagazineState"));
         fsm.AddTriggerTransition("OnMagazineAndAmmoIsEmpty", new Transition("EmptyState", "EmptyShotState"));

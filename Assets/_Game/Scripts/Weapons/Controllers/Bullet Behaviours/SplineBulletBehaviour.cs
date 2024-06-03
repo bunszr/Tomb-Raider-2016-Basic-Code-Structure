@@ -2,7 +2,7 @@ using DG.Tweening;
 using Lean.Pool;
 using UnityEngine;
 
-public class SplineBulletBehaviour : BulletBehaviourBase, IBulletBehaviour
+public class SplineBulletBehaviour : BulletBehaviourBase
 {
     [System.Serializable]
     public class SplineBulletBehaviourData
@@ -15,16 +15,16 @@ public class SplineBulletBehaviour : BulletBehaviourBase, IBulletBehaviour
     public SplineBulletBehaviourData data;
     WeaponAimData weaponAimData;
 
-    public SplineBulletBehaviour(WeaponBase weaponBase, SplineBulletBehaviourData data) : base(weaponBase)
+    public SplineBulletBehaviour(WeaponBase weaponBase, SplineBulletBehaviourData data, WeaponAimData weaponAimData) : base(weaponBase)
     {
-        weaponAimData = weaponBase.GetComponentInParent<WeaponAimData>();
         this.data = data;
+        this.weaponAimData = weaponAimData;
     }
 
-    public void Fire()
+    public override void Fire()
     {
+        base.Fire();
         BulletBase bulletBase = LeanPool.Spawn(data.bulletPrefab, data.bulletLocation.position, data.bulletLocation.rotation, BulletHolder);
-        LeanPool.Despawn(bulletBase, 5);
 
         Vector3 startPos = data.bulletLocation.transform.position;
         Vector3 targetPos = weaponAimData.aimTargetTransform.position;
@@ -37,6 +37,10 @@ public class SplineBulletBehaviour : BulletBehaviourBase, IBulletBehaviour
             targetPos,
         };
 
-        bulletBase.transform.DOPath(path, 2, PathType.CatmullRom, gizmoColor: Color.red).SetLookAt(0.1f).SetEase(Ease.OutSine).SetUpdate(UpdateType.Fixed);
+        bulletBase.transform.DOPath(path, 2, PathType.CatmullRom, gizmoColor: Color.red).SetLookAt(0.1f).SetEase(Ease.OutSine).SetUpdate(UpdateType.Fixed)
+        .OnComplete(() =>
+        {
+            LeanPool.Despawn(bulletBase);
+        });
     }
 }

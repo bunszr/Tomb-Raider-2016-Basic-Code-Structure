@@ -1,5 +1,1 @@
-public interface IFireBehaviour
-{
-    void Enter();
-    void Exit();
-}
+public interface IFireBehaviour : IEquiptable { }

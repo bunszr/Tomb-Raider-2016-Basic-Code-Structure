@@ -1,5 +1,1 @@
-
-public interface IShellCasingBehaviour
-{
-    void Fire();
-}
+public interface IShellCasingBehaviour : IExtraFire { }

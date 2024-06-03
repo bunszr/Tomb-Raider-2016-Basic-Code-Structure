@@ -34,14 +34,3 @@ public class AnimationEventMono : MonoBehaviour
 //         }
 //     }
 // }
-
-// public class GiantAttackEventMono : MonoBehaviour
-// {
-//     [SerializeField] Transform gunT;
-//     public static event System.Action<Vector3> onHit;
-
-//     public void Attack()
-//     {
-//         onHit?.Invoke(gunT.position + transform.forward);
-//     }
-// }

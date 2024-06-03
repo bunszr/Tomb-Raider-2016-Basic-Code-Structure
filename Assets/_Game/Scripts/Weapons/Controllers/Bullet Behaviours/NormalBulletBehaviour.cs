@@ -1,7 +1,7 @@
 using Lean.Pool;
 using UnityEngine;
 
-public class NormalBulletBehaviour : BulletBehaviourBase, IBulletBehaviour, IExtraFire
+public class NormalBulletBehaviour : BulletBehaviourBase
 {
     [System.Serializable]
     public class NormalBulletBehaviourData
@@ -19,8 +19,9 @@ public class NormalBulletBehaviour : BulletBehaviourBase, IBulletBehaviour, IExt
         this.data = data;
     }
 
-    public void Fire()
+    public override void Fire()
     {
+        base.Fire();
         BulletBase bulletBase = LeanPool.Spawn(data.bulletPrefab, data.bulletLocation.position, data.bulletLocation.rotation, BulletHolder);
         bulletBase.Rb.AddForce(data.bulletLocation.forward * data.force, data.forceMode);
         LeanPool.Despawn(bulletBase, 5);

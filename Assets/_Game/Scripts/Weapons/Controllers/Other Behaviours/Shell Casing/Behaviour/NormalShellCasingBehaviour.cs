@@ -1,7 +1,7 @@
 using Lean.Pool;
 using UnityEngine;
 
-public class NormalShellCasingBehaviour : ShellCasingBehaviourBase, IShellCasingBehaviour, IExtraFire
+public class NormalShellCasingBehaviour : IShellCasingBehaviour
 {
     [System.Serializable]
     public class NormalShellCasingBehaviourData
@@ -14,7 +14,7 @@ public class NormalShellCasingBehaviour : ShellCasingBehaviourBase, IShellCasing
 
     public NormalShellCasingBehaviourData data;
 
-    public NormalShellCasingBehaviour(WeaponBase weaponBase, NormalShellCasingBehaviourData data) : base(weaponBase)
+    public NormalShellCasingBehaviour(WeaponBase weaponBase, NormalShellCasingBehaviourData data)
     {
         this.data = data;
     }

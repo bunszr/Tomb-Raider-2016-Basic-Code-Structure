@@ -89,7 +89,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponAnimationData:
     fireAnimName: Rifle Fire
-    drawWeaponInputInt: 1
+    drawWeaponInputInt: 2
     reloadMagazineName: Riffle Magazine Reloading
   weaponDataScriptable: {fileID: 11400000, guid: 2f8959d96801d8d469bb1ac7358b19c4,
     type: 2}
@@ -98,6 +98,7 @@ MonoBehaviour:
   weaponAimData: {fileID: 0}
   normalAimBehaviorData:
     rigs: []
+    aimTargetPosSmoothTime: 0.1
   splineBulletBehaviourData:
     bulletPrefab: {fileID: 932703039572541664, guid: 91e051b805068024f9fb71707eabcd04,
       type: 3}
@@ -263,6 +264,12 @@ PrefabInstance:
       propertyPath: weaponBase
       value: 
       objectReference: {fileID: 204838806169564940}
+    - target: {fileID: 5131685726745698827, guid: 229cafe332d4a8247a966a29df7ef0ae,
+        type: 3}
+      propertyPath: weaponDataScriptable
+      value: 
+      objectReference: {fileID: 11400000, guid: 2f8959d96801d8d469bb1ac7358b19c4,
+        type: 2}
     - target: {fileID: 5131685726745698827, guid: 229cafe332d4a8247a966a29df7ef0ae,
         type: 3}
       propertyPath: playerWeaponBaseInstaller

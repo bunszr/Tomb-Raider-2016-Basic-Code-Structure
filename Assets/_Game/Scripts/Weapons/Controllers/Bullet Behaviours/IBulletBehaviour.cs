@@ -1,6 +1,1 @@
-using Lean.Pool;
-
-public interface IBulletBehaviour
-{
-    void Fire();
-}
+public interface IBulletBehaviour : IExtraFire { }

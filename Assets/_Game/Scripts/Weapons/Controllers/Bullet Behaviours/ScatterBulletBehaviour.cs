@@ -1,7 +1,7 @@
 using Lean.Pool;
 using UnityEngine;
 
-public class ScatterBulletBehaviour : BulletBehaviourBase, IBulletBehaviour
+public class ScatterBulletBehaviour : BulletBehaviourBase
 {
     [System.Serializable]
     public class ScatterBulletBehaviourData
@@ -21,8 +21,9 @@ public class ScatterBulletBehaviour : BulletBehaviourBase, IBulletBehaviour
         this.data = data;
     }
 
-    public void Fire()
+    public override void Fire()
     {
+        base.Fire();
         for (int i = 0; i < data.scatterCount; i++)
         {
             Quaternion rndRot = data.bulletLocation.rotation * Quaternion.Euler(Random.Range(-data.rotation, data.rotation), Random.Range(-data.rotation, data.rotation), Random.Range(-data.rotation, data.rotation));

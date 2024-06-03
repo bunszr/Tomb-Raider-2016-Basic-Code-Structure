@@ -3,7 +3,7 @@ using UniRx;
 using System;
 using System.Linq;
 
-public class WeaponToggle : MonoBehaviour, IWeaponToggler
+public class WeaponToggle : MonoBehaviour
 {
     public class WeaponDrawData
     {
