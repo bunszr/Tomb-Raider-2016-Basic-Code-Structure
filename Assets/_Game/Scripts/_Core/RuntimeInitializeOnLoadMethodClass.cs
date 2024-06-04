@@ -7,33 +7,15 @@ class RuntimeInitializeOnLoadMethodClass
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     static void BeforeSceneLoad()
     {
-        CreateFeatureSaverAndLoader();
-        CreateInventorySaverAndLoader();
-        CreateWeaponSaverAndLoader();
-        CreatePlayerDataSaverAndLoader();
+        CreateFeatureSaverAndLoader<FeatureSaverAndLoader>();
+        CreateFeatureSaverAndLoader<InventorySaverAndLoader>();
+        CreateFeatureSaverAndLoader<WeaponSaverAndLoader>();
+        CreateFeatureSaverAndLoader<PlayerDataSaverAndLoader>();
     }
 
-    static void CreateFeatureSaverAndLoader()
+    static void CreateFeatureSaverAndLoader<T>() where T : Component
     {
-        GameObject go = new GameObject("FeatureSaverAndLoader", typeof(FeatureSaverAndLoader));
-        GameObject.DontDestroyOnLoad(go);
-    }
-
-    static void CreateInventorySaverAndLoader()
-    {
-        GameObject go = new GameObject("InventorySaverAndLoader", typeof(InventorySaverAndLoader));
-        GameObject.DontDestroyOnLoad(go);
-    }
-
-    static void CreateWeaponSaverAndLoader()
-    {
-        GameObject go = new GameObject("WeaponSaverAndLoader", typeof(WeaponSaverAndLoader));
-        GameObject.DontDestroyOnLoad(go);
-    }
-
-    static void CreatePlayerDataSaverAndLoader()
-    {
-        GameObject go = new GameObject("PlayerDataSaverAndLoader", typeof(PlayerDataSaverAndLoader));
+        GameObject go = new GameObject(typeof(T).Name, typeof(T));
         GameObject.DontDestroyOnLoad(go);
     }
 
