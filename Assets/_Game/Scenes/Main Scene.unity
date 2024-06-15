@@ -386,8 +386,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 122407391}
-  m_LocalRotation: {x: 0.114573844, y: -0, z: -0, w: 0.99341476}
-  m_LocalPosition: {x: -0.82, y: 4.339544, z: -9.90705}
+  m_LocalRotation: {x: 0.067642204, y: 0.08188432, z: -0.004947799, w: 0.9943314}
+  m_LocalPosition: {x: -1.6996614, y: 2.5830255, z: -6.1801934}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -461,7 +461,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &159185367
 Transform:
   m_ObjectHideFlags: 0
@@ -1394,7 +1394,6 @@ MonoBehaviour:
   _monoInstallers:
   - {fileID: 507421876}
   - {fileID: 122407397}
-  - {fileID: 0}
   - {fileID: 507421877}
   _installerPrefabs: []
   _autoRun: 1
@@ -2637,7 +2636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 1682696030}
+  m_Material: {fileID: 1665373001}
   m_Color: {r: 0, g: 0, b: 0, a: 0.2}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -4223,7 +4222,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1604184798
 Transform:
   m_ObjectHideFlags: 0
@@ -4308,7 +4307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!21 &1682696030
+--- !u!21 &1665373001
 Material:
   serializedVersion: 8
   m_ObjectHideFlags: 0
@@ -4342,7 +4341,7 @@ Material:
     - _StencilWriteMask: 255
     - _UseUIAlphaClip: 0
     m_Colors:
-    - _WidthHeightRadius: {r: 206.7164, g: 22.4218, b: 12.9, a: 0}
+    - _WidthHeightRadius: {r: 218.7164, g: 66.021, b: 20.82, a: 0}
   m_BuildTextureStacks: []
 --- !u!1001 &1702088971
 PrefabInstance:
