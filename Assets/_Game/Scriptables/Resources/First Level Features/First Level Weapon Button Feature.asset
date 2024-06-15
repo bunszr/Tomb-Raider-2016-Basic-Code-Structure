@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c04fa57f501b424a9f02c4bc6487b4e, type: 3}
-  m_Name: CSBFastTravelFeatureScriptable
+  m_Script: {fileID: 11500000, guid: 84bb133593360494eac968ab429120e2, type: 3}
+  m_Name: First Level Weapon Button Feature
   m_EditorClassIdentifier: 
-  hash: -84752
-  featureName: Fast Travel
+  hash: -84996
+  featureName: Weapon
   description: 
-  isOpen: 0
+  isOpen: 1
   requirementsScriptableBases: []
