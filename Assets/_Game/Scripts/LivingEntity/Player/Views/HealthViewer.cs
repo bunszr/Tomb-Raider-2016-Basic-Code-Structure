@@ -17,7 +17,7 @@ public class HealthViewer : MonoBehaviour
 
     private void OnDestroy()
     {
-        disposables.Clear();
+        disposables.Dispose();
     }
 
     void OnHealthChanged(float health)

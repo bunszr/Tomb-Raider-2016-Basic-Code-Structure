@@ -19,7 +19,7 @@ public class ArmorViewer : MonoBehaviour
 
     private void OnDestroy()
     {
-        disposables.Clear();
+        disposables.Dispose();
     }
 
     public void OnArmorFeatureChanged(bool isOpen)
