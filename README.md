@@ -8,6 +8,8 @@ Another important aspect is gradually presenting new features to the player with
 
 I also touched on some points where I violated MVC or had bad code implementation in youtube video. Youtube video consist these parts: Intruduction, Area, Campsite, Weapon, Enemy, Player, Save System, Input, MVC, Violating MVC, SOLID, DI, Power of UniRx, Working with Non-Monobehaviour classes, ...Ability(Testability, Maintainability...) and Final Thoughts.
 
+Youtube video link: https://www.youtube.com/watch?v=YoijL8v2vGo 
+
 ## **If you review the project and watch the YouTube video, you can learn the following;**
 
 - **MVC (Model-View-Controller)**
